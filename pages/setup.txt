@@ -4,7 +4,7 @@
    /restindex
 
 =========================
-Setup
+A quick tour
 =========================
 
 Augeas is an early prototype. To explore it, you have to build it from
@@ -59,11 +59,164 @@ Finally, tell Augeas to change the actual files:
 With these commands, Augeas has created new files ``etc/hosts.augnew`` and 
 ``etc/ssh/sshd_config`` in the sandbox in ``build/try`` [1]_. You can use
 ``diff`` in the shell to convince yourself that the changes happened as
-expected. 
+expected. The two diffs will be:
+
+::
+
+  --- ./etc/hosts 2008-02-14 17:29:33.000000000 -0800
+  +++ ./etc/hosts.augnew  2008-02-22 14:55:29.000000000 -0800
+  @@ -4,3 +4,4 @@
+   #172.31.122.254   granny.watzmann.net granny puppet
+   #172.31.122.1     galia.watzmann.net galia
+   172.31.122.14   orange.watzmann.net orange
+  +192.168.0.1    pigiron.example.com
+ 
+and
+
+::
+
+  --- ./etc/ssh/sshd_config       2008-02-18 14:54:18.000000000 -0800
+  +++ ./etc/ssh/sshd_config.augnew        2008-02-22 14:55:29.000000000 -0800
+  @@ -93,7 +93,7 @@
+   # Accept locale-related environment variables
+   AcceptEnv LANG LC_CTYPE LC_NUMERIC LC_TIME LC_COLLATE LC_MONETARY LC_MESSAGES 
+   AcceptEnv LC_PAPER LC_NAME LC_ADDRESS LC_TELEPHONE LC_MEASUREMENT 
+  -AcceptEnv LC_IDENTIFICATION LC_ALL
+  +AcceptEnv LC_IDENTIFICATION LC_ALL FOO
+   #AllowTcpForwarding yes
+   #GatewayPorts no
+   #X11Forwarding no
+
+As you can see from these diffs, Augeas works very hard to preserve
+comments and formatting details. It can also break entries in files into
+very fine detail: the ``AcceptEnv`` entries in ``sshd_config`` are broken
+into individual entries in the tree, regardless of whether they are on the
+same line or not, and the lines are reassembled when you save changes.
+
+File descriptions
+-----------------
+
+How files are processed and transformed into the tree is described in text
+files that tell Augeas about the file format, what parts of the file should
+be copied into the tree, and what parts are comments and formatting detail
+like commas and spaces. The ``try`` script loads these descriptions from
+the ``spec/`` directory in the source checkout.
+
+The language for file descriptions is designed such that the description
+specifies at the same time how the file should be transformed into the tree
+**and** how the tree should be transformed back into the file.
+
+As an example, here is the description for ``/etc/hosts`` [2]_:
+
+::
+
+  map
+    grammar hosts
+    include '/etc/hosts' '/system/config/hosts'
+  end
+
+  grammar hosts
+    token SEPTAB /[ \t]+/ = '\t'
+    token SEPSPC /[ \t]+/ = ' '
+    token OPT_WS /[ \t]*/ = '\t'
+    token EOR '\n'
+    token POUND_TO_EOL /#.*\n/ = '# '
+    token WORD /[^ \n\t]+/ = ''
+
+    file: ( comment | record ) *
+
+    comment: [ store POUND_TO_EOL ]
+
+    record: [ seq 'record' .
+              [ label 'ipaddr' . store WORD . SEPTAB ] . 
+              [ label 'canonical' . store WORD ] . 
+              [ label 'aliases' . counter 'aliases' .
+                ( [ seq 'aliases' . SEPSPC . store WORD ] ) *
+              ]
+              . EOR
+           ]
+  end
+
+The ``map`` block tells Augeas which files to process, here it is told to
+use the grammar ``hosts`` on the file ``/etc/hosts`` and to put the
+resulting tree underneath ``/system/config/hosts`` in Augeas' global tree.
+
+The ``grammar`` block defines in detail how to process a file. The
+``token`` statements define regular expressions for matching in the
+file. The default value after the ``=`` is used when Augeas needs to
+produce a brandnew host entry.
+
+The grammar rules describe the actual file format; by convention, the first
+rule in the grammar, here called ``file``, is applied to the whole
+file. The ``file`` rule states that the file is made up of any number of
+comments and records in any order.
+
+A comment is anything matched by the regular expression ``POUND_TO_EOL``. A
+record consists of an IP address, a canonical host name, and a list of
+aliases. The symbol ``.`` concatenates two expressions together, and the
+``[ ... ]`` constructs puts everything inside of it into a new subtree
+whose label is determined by a ``label``, ``seq`` or ``key`` statement. In
+more detail, the various functions used in the ``record`` rule do the
+following:
+
+* ``seq NAME`` produces a new integer from a counter ``NAME``. Augeas
+  maintains counters with arbitrary names during parsing. They are
+  generally used to turn what logically is a list into a numbered
+  subtrees.
+* ``label S`` tells Augeas to use the fixed string ``S`` as the label for
+  the enclosing subtree
+* ``store RE`` parses a string matching the regular expression ``RE`` from
+  the file and stores it as the value in a tree leaf.
+* ``counter NAME`` declares a counter ``NAME`` and resets it everytime it
+  is encountered during parsing. In the ``/etc/hosts`` example, this is
+  used to number the aliases for each host entry starting from 0.
+* a plain regular expression ``RE`` in the rule tells Augeas to expect a
+  matching string in the file, but not store it in the tree. When Augeas
+  writes the tree back to file, it remembers that string and prints it
+  out. If what is being written is completely new, the default for ``RE``
+  is used.
+
+The treatment of aliases in the ``/etc/hosts`` example is a good way to put
+this all together. The statements
+
+::
+
+   [ label 'aliases' . counter 'aliases' .
+     ( [ seq 'aliases' . SEPSPC . store WORD ] ) *
+
+result in Augeas matching the regular expression ``(SEPSPC . WORD)*``,
+since ``label``, ``counter`` and ``seq`` are only concerned with building
+the tree, not with matching. The outer ``[ ... ]`` tells Augeas to put the
+result of parsing into a subtree with label ``aliases/`` and the inner ``[
+... ]`` tells it to put each match of ``SEPSPC . WORD`` into a new subtree,
+labelled with sequentially increasing labels ``0/``, ``1/``, etc. Since
+only the regular expression ``WORD`` is used with ``store``, the spaces
+matched by ``SEPSPC`` are excluded from the tree. All in all, when the
+above two lines are applied to the part of the line
+
+::
+
+  192.168.0.1 pigiron.example.com   pigiron pigiron.example
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+indicated by the arrows, they construct the subtree
+
+::
+
+  aliases/
+    0/ = pigiron
+    1/ = pigiron.example
 
 .. [1] To make testing easier, Augeas does not overwrite the original
    files. Instead it creates a file with extension ``augnew``. Eventually,
    that has to change, of course.
+
+.. [2] The format of these files will change in the near future, though the
+   underlying ideas will remain the same. If you write your own file format
+   descriptions, and send them to me, I promise to port them forward as the
+   format changes. Be warned that the current Augeas code is missing a lot
+   of error checking, and lets you write file descriptions that are invalid
+   in subtle ways. This will be addressed very soon
 
 .. _autotools: http://sources.redhat.com/autobook/
 .. _Bison: http://www.gnu.org/software/bison/

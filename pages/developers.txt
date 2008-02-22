@@ -23,3 +23,16 @@ Where is the mailing list ?
 
 The mailing list will be set up soon.
 
+How can I help ?
+----------------
+
+One easy way to help is to write a description for your favorite config
+file; you don't need to be a developer to do that. 
+
+If you want to roll up your sleeves and hack, the Todo_ list has some items
+that desparately need somebody to look at. Particularly, writing language
+bindings and getting Augeas to build on a wide variety of platforms do
+not require a lot of knowledge of Augeas internals, and might be an ideal
+way to cut your teeth.
+
+.. _Todo: todo.html

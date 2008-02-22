@@ -31,7 +31,7 @@ Augeas goals:
 * Make it easy to integrate new config files into the Augeas tree
 
 The code is an early prototype. Instructions on how to explore the current
-implementation can be found on the Setup_ page.
+implementation can be found on the `introductory tour`_.
 
-.. _Setup: setup.html
+.. _introductory tour: setup.html
 
