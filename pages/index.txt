@@ -1,0 +1,37 @@
+.. -*- rst -*-
+   restindex
+     initialheaderlevel: 2
+     page-title: Main
+   /restindex
+
+==================================
+Augeas - a Linux configuration API
+==================================
+
+Augeas is a configuration editing tool. It parses configuration files in
+their native formats and transforms them into a tree. Configuration changes
+are made by manipulating this tree and saving them back into native config
+files.
+
+Augeas is:
+==========
+
+* A Linux configuration API provided by a C library
+* A command line tool to manipulate configuration from the shell (and shell
+  scripts)
+* Language bindings to do the same from your favoirte scripting language
+
+Augeas goals:
+=============
+
+* Manipulate configuration files safely, safer than the ad-hoc techniques
+  generally used with grep, sed, awk and similar mechanisms in scripting
+  languages 
+* Provide a local configuration API for Linux 
+* Make it easy to integrate new config files into the Augeas tree
+
+The code is an early prototype. Instructions on how to explore the current
+implementation can be found on the Setup_ page.
+
+.. _Setup: setup.html
+

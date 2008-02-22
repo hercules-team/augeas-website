@@ -1,0 +1,25 @@
+.. -*- rst -*-
+   restindex
+     initialheaderlevel: 2
+   /restindex
+
+=========================
+Developers
+=========================
+
+Where is the source ?
+---------------------
+
+Sources are in a `mercurial repository`_. To check out the code, run
+
+::
+
+  hg clone http://hg.et.redhat.com/misc/augeas
+
+.. _mercurial repository: http://hg.et.redhat.com/misc/augeas 
+
+Where is the mailing list ?
+---------------------------
+
+The mailing list will be set up soon.
+

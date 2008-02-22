@@ -1,0 +1,63 @@
+/*
+ * based on the OVirt stylesheet by Michael Langlie and Dan Berrange
+ */ 
+body { font-family: Arial, sans-serif; font-size: 14px; color: #000000; text-align: center;  background: #fff url('../styles/fade.png') repeat-x scroll top left; margin: 0; padding: 0;}
+/* a { color: #0066dd; } */
+img { border: none; margin: 0px; padding: 0px; }
+#wrapper { margin: 0px auto; text-align: left; }
+
+table, tr, td { margin: 0px; padding: 0px; vertical-align: top; }
+#left { width: 100px; padding: 0px 10px; padding-top: 30px; }
+#right { padding: 0px 10px; padding-top: 30px; }
+
+#header { margin-top: 10px; font-size: 120%; color:#777; position: absolute; }
+
+#sidebar { }
+.side { margin-bottom: 30px; width: 6em }
+.side strong { display: block; font-weight: bold; text-transform: uppercase; color: #777; font-size: 14px; }
+.side ul, .side li { list-style: none; margin: 0px; padding: 0px; }
+.side ul { padding-top: 5px; }
+.side li { padding: 5px 0px; font-size: 16px; }
+.side ul li a { text-decoration: none; color: #005a9c; font-size: 16px; }
+.side ul li a:hover { text-decoration: underline; }
+ul.sub { margin-left: 10px; }
+
+#content { margin-top: 50px; }
+/* #content p { line-height: 150%; } */
+h1, h2, h3, h4, h5, h6 { color: #005a9c; }
+h1 {
+	font: 150% sans-serif;
+	font-weight: bold;
+}
+h2 {
+	font: 120% sans-serif;
+	font-weight: bold;
+}
+h3 {
+	font: 110% sans-serif;
+	font-weight: medium;
+}
+h4 {
+	font-style: italic;
+        margin-bottom: .7em;
+}
+h5 {
+	font-style: italic;
+        margin-bottom: .7em;
+}
+h6 {
+	font-style: italic;
+        margin-bottom: .7em;
+}
+.floater { padding-left: 10px; width: 200px; float: right; color: #990000; }
+.floater a { color: #990000; }
+
+td.screenshot { text-align: center; color: #5f5c5c; padding: 10px; }
+a.screenshot { text-decoration: none; }
+img.screenshot { background-color: #f6f7f8; border: 2px solid #e8eaec; padding: 5px; }
+
+dd { margin-top: 5px; margin-bottom: 20px; }
+dt { font-style: italic; }
+
+pre { background-color: #eeeeff; padding: 5px; border: 1px solid #aaa }
+/* pre { width: 90%; padding: 1em; background: #eee; border: 1px solid #aaa } */

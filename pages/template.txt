@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <title>Augeas &mdash; <% title %></title>
+
+  <# keywords = "configuration management" #>
+  <# description = "Configuration API for Linux" #>
+
+  <meta name="keywords" content="<% keywords %>">
+  <meta name="description" content="<% description %>">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+  <link rel="shortcut icon" href="<% path_to_root %>/styles/favicon.ico" type="image/x-icon">
+
+  <link rel="StyleSheet" type="text/css" href="<% path_to_root %>styles/default.css" title="Main style">
+</head>
+
+<body>
+
+  <div id="wrapper">
+
+    <table><tr>
+    <td id="left">
+      <div id="sidebar">
+        <!-- This space reserved for a logo -->
+        <div class="side">
+          <!-- <strong>About Augeas</strong> -->
+          <ul>
+            <#
+              minibar(sections, displayval="crumb", liststart='', listend='',
+              intro='<li>Menu</li>',
+              subintro='<ul class="sub">Sections</ul>')
+            #>
+          </ul>
+        </div>
+      </div>
+
+    </td>
+    <td id="right">
+      <!-- Some catchy headline -->
+      <div id="header"><# print_crumbs(breadcrumbs, item='%s', divider='&gt;') #></div>
+
+      <div id="content">
+      <% body %>
+      </div>
+    </td>
+    </tr></table>
+
+  </div> <!-- end #wrapper -->
+
+  <div id="footer">
+    <p>
+<!--    Web design &copy; 2008 David Lutterkort, Mike Langlie &amp; Daniel
+    P. Berrange, Red Hat.<br> -->
+    A project from the <a href="http://et.redhat.com/">Red Hat Emerging Technologies</a> group.
+    </p>
+  </div>
+</body>
+</html>
