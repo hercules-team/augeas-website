@@ -1,0 +1,10 @@
+The files for the Augeas website.
+
+You need python-docutils since all the content is in restructured text[1]
+
+You also need rest2web[2], that is used as the template engine. I am afraid the Makefile has the path to it in my home directory hardcoded :(
+
+[1] http://docutils.sourceforge.net/rst.html
+
+[2] http://www.voidspace.org.uk/python/rest2web/
+
