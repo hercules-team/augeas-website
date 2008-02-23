@@ -1,0 +1,49 @@
+.. -*- rst -*-
+   restindex
+     initialheaderlevel: 2
+   /restindex
+
+===============
+Todo list
+===============
+
+Here are the items that need to be addressed before Augeas is ready for
+real-world usage:
+
+1. Reasonable error checking. Currently, Augeas accepts file descriptions
+   that are broken in subtle ways. Even though that brokenness can be
+   diagnosed from the description alone, that code is missing right
+   now. Following ideas from Boomerang_, these checks require computations
+   with regular languages, such as computing the intersection of regular
+   languages and deciding whether two regular languages are unambiguously
+   concatenable and iterable.
+
+2. The language for file descriptions is very limited and forces a lot of
+   copy and paste work. Again, following Boomerang_, the language needs to
+   be changed into a simple functional languages. That will make it
+   possible to reuse regular expressions and lenses for different file
+   formats, and severley cut down on the number of times something like *a
+   comment goes from # to the end of line* has to be written as a new
+   regular expression
+
+These are the two top priorities. Other issues that need to be addressed,
+but that are a little simpler are
+
+* Write descriptors for more files. Eventually, Augeas should cover *all*
+  commonly used configuration files
+* Reasonable runtime error reporting. Since Augeas is meant to be used as a
+  library, spewing errors on the console is useless. Errors encountered
+  during parsing are already reported underneath ``/augeas/files``. Many
+  other errors, e.g. when the tree was modified in such a way that writing
+  it to disk would result in a syntactically incorrect file, need to be
+  reported in a similar way.
+* Bring the code to production quality. Particularly memory management is a
+  sore area, and the current code more than likely leaks like a sieve.
+* Make Augeas buildable on more platforms. I develop on Fedora 8; it seems
+  that the current code doesn't build even on RHEL 5.1 (apparently the
+  version of Flex is too old)
+* Write language bindings for Python and Ruby. This could happen right
+  now. The public API in ``augeas.h`` is pretty stable, and that's all that
+  should be visible to users of the library.
+
+.. _Boomerang: http://alliance.seas.upenn.edu/~harmony/
