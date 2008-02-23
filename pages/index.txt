@@ -2,6 +2,7 @@
    restindex
      initialheaderlevel: 2
      page-title: Main
+     section-pages: , setup, todo, developers
    /restindex
 
 ==================================
