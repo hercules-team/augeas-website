@@ -21,7 +21,8 @@ Sources are in a `mercurial repository`_. To check out the code, run
 Where is the mailing list ?
 ---------------------------
 
-The mailing list will be set up soon.
+The mailing list is ``augeas-devel@redhat.com``. Subscribe by going to `the
+list page`_.
 
 How can I help ?
 ----------------
@@ -36,3 +37,4 @@ not require a lot of knowledge of Augeas internals, and might be an ideal
 way to cut your teeth.
 
 .. _Todo: todo.html
+.. _the list page: https://www.redhat.com/mailman/listinfo/augeas-devel
