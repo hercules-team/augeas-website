@@ -29,7 +29,7 @@
             <#
               minibar(sections, displayval="crumb", liststart='', listend='',
               intro='<li>Menu</li>',
-              subintro='<ul class="sub">Sections</ul>')
+              subintro='')
             #>
           </ul>
         </div>

@@ -1,0 +1,20 @@
+.. -*- rst -*-
+   restindex
+     initialheaderlevel: 2
+     page-title: Documentation
+   /restindex
+
+=============
+Documentation
+=============
+
+Various pieces of documentation:
+
+* `An explanation`_ of the structure of Augeas' tree and how files are mapped
+  into it.
+* The transformation of the contents of a config file into the tree is
+  described by lenses_
+
+
+.. _An explanation: tree.html
+.. _lenses: lenses.html
