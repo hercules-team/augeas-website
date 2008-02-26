@@ -24,7 +24,7 @@ A sample session
 -------------------------
 
 The ``try`` script sets up the environment variables ``AUGEAS_ROOT`` and
-``AUGEAS_SPECLIB`` and then starts ``augtool``. This runs ``augtool`` in a
+``AUGEAS_LENS_LIB`` and then starts ``augtool``. This runs ``augtool`` in a
 sandbox in ``build/try``, filled with config files from ``tests/root``.
 
 In the ``augtool`` shell, type ``help`` to get a list of commands. For
