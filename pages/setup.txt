@@ -16,9 +16,10 @@ best to copy ``/etc`` somewhere else on your system and set up a sandbox:
 
 ::
 
-  sudo cp -pr /etc /tmp/augeas-sandbox
-  sudo chown -R $USER /tmp/augeas-sandbox
   export AUGEAS_ROOT=/tmp/augeas-sandbox
+  mkdir $AUGEAS_ROOT
+  sudo cp -pr /etc $AUGEAS_ROOT
+  sudo chown -R $USER $AUGEAS_ROOT
   augtool
 
 A sample session
