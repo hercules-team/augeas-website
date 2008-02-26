@@ -20,7 +20,7 @@ Augeas is:
 * A Linux configuration API provided by a C library
 * A command line tool to manipulate configuration from the shell (and shell
   scripts)
-* Language bindings to do the same from your favoirte scripting language
+* Language bindings to do the same from your favorite scripting language
 
 Augeas goals:
 =============
