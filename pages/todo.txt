@@ -39,9 +39,9 @@ but that are a little simpler are
   reported in a similar way.
 * Bring the code to production quality. Particularly memory management is a
   sore area, and the current code more than likely leaks like a sieve.
-* Make Augeas buildable on more platforms. I develop on Fedora 8; it seems
-  that the current code doesn't build even on RHEL 5.1 (apparently the
-  version of Flex is too old)
+* Make Augeas buildable on more platforms. It has been built on Fedora and
+  RHEL, but I have no idea how hard it is to build Augeas on other
+  platforms. Given a POSIX C library, the changes needed should be slight.
 * Write language bindings for Python and Ruby. This could happen right
   now. The public API in ``augeas.h`` is pretty stable, and that's all that
   should be visible to users of the library.

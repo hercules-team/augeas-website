@@ -1,31 +1,28 @@
 .. -*- rst -*-
    restindex
      initialheaderlevel: 2
+     page-title: Quick Tour
    /restindex
 
 =========================
 A quick tour
 =========================
 
-Augeas is an early prototype. To explore it, you have to build it from
-source:
+Augeas is an early prototype. To explore it, `download and install`_ it
+first.
+
+Avoid any corruption on your system (this is a prototype, remember?), it is
+best to copy ``/etc`` somewhere else on your system and set up a sandbox:
 
 ::
-  
-  hg clone http://hg.et.redhat.com/misc/augeas
-  cd augeas
-  ./autogen.sh && make
-  ./src/try cli
 
-Besides autotools_, you will need to have Bison_ and Flex_ installed to
-build Augeas successfully.
+  sudo cp -pr /etc /tmp/augeas-sandbox
+  sudo chown -R $USER /tmp/augeas-sandbox
+  export AUGEAS_ROOT=/tmp/augeas-sandbox
+  augtool
 
 A sample session
 -------------------------
-
-The ``try`` script sets up the environment variables ``AUGEAS_ROOT`` and
-``AUGEAS_LENS_LIB`` and then starts ``augtool``. This runs ``augtool`` in a
-sandbox in ``build/try``, filled with config files from ``tests/root``.
 
 In the ``augtool`` shell, type ``help`` to get a list of commands. For
 example, in a sample session you might add a new entry to ``/etc/hosts``:
@@ -56,10 +53,10 @@ Finally, tell Augeas to change the actual files:
 
   save
 
-With these commands, Augeas has created new files ``etc/hosts.augnew`` and 
-``etc/ssh/sshd_config`` in the sandbox in ``build/try`` [1]_. You can use
-``diff`` in the shell to convince yourself that the changes happened as
-expected. The two diffs will be:
+With these commands, Augeas has created new files ``etc/hosts.augnew`` and
+``etc/ssh/sshd_config`` in the sandbox [1]_. You can use ``diff`` in the
+shell to convince yourself that the changes happened as expected. The two
+diffs will be:
 
 ::
 
@@ -218,6 +215,4 @@ indicated by the arrows, they construct the subtree
    of error checking, and lets you write file descriptions that are invalid
    in subtle ways. This will be addressed very soon
 
-.. _autotools: http://sources.redhat.com/autobook/
-.. _Bison: http://www.gnu.org/software/bison/
-.. _Flex: http://flex.sourceforge.net/
+.. _download and install: download.html

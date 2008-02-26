@@ -16,6 +16,19 @@ Sources are in a `mercurial repository`_. To check out the code, run
 
   hg clone http://hg.et.redhat.com/misc/augeas
 
+To build and explore, you need to:
+
+::
+
+  cd augeas
+  ./autogen.sh && make
+  # Start a session with augtool that reads lens descriptions from ./spec
+  # and runs with AUGEAS_ROOT=./build/try, populated from ./tests/root/
+  ./src/try cli
+
+Besides autotools_, you will need to have ``readline-devel``, Bison_ and
+Flex_ installed to build Augeas successfully.
+
 .. _mercurial repository: http://hg.et.redhat.com/misc/augeas 
 
 Where is the mailing list ?
@@ -38,3 +51,6 @@ way to cut your teeth.
 
 .. _Todo: todo.html
 .. _the list page: https://www.redhat.com/mailman/listinfo/augeas-devel
+.. _autotools: http://sources.redhat.com/autobook/
+.. _Bison: http://www.gnu.org/software/bison/
+.. _Flex: http://flex.sourceforge.net/
