@@ -4,8 +4,29 @@
    /restindex
 
 =========================
-Developers
+Contribute
 =========================
+
+Where is the mailing list ?
+---------------------------
+
+The mailing list is ``augeas-devel@redhat.com``. Subscribe by going to `the
+list page`_.
+
+The list is for any discussion around Augeas, be it bug reports, feature
+requests, trouble writing file format descriptions etc.
+
+How can I help ?
+----------------
+
+One easy way to help is to write a description for your favorite config
+file; you don't need to be a developer to do that. 
+
+If you want to roll up your sleeves and hack, the Todo_ list has some items
+that desparately need somebody to look at. Particularly, writing language
+bindings and getting Augeas to build on a wide variety of platforms do
+not require a lot of knowledge of Augeas internals, and might be an ideal
+way to cut your teeth.
 
 Where is the source ?
 ---------------------
@@ -30,24 +51,6 @@ Besides autotools_, you will need to have ``readline-devel``, Bison_ and
 Flex_ installed to build Augeas successfully.
 
 .. _mercurial repository: http://hg.et.redhat.com/misc/augeas 
-
-Where is the mailing list ?
----------------------------
-
-The mailing list is ``augeas-devel@redhat.com``. Subscribe by going to `the
-list page`_.
-
-How can I help ?
-----------------
-
-One easy way to help is to write a description for your favorite config
-file; you don't need to be a developer to do that. 
-
-If you want to roll up your sleeves and hack, the Todo_ list has some items
-that desparately need somebody to look at. Particularly, writing language
-bindings and getting Augeas to build on a wide variety of platforms do
-not require a lot of knowledge of Augeas internals, and might be an ideal
-way to cut your teeth.
 
 .. _Todo: todo.html
 .. _the list page: https://www.redhat.com/mailman/listinfo/augeas-devel
