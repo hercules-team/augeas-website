@@ -8,13 +8,27 @@
 Documentation
 =============
 
-Various pieces of documentation:
+There are two very different things one might want to do with Augeas:
 
-* `An explanation`_ of the structure of Augeas' tree and how files are mapped
-  into it.
-* The transformation of the contents of a config file into the tree is
-  described by lenses_
+1. use its public API and existing file format descriptions to edit config
+   files
 
+2. write new file format descriptions
 
-.. _An explanation: tree.html
+Using the Augeas API
+--------------------
+If you are mainly interested in Augeas' public API, the best documentation
+right now is the public header file ``augeas.h`` and ``augtool``'s
+``help`` command. The commands in ``augtool`` mirror the public API
+closely, and therefore give you an easy way to tinker with it without
+writing any code.
+
+Writing file format descriptions
+--------------------------------
+
+If you are mainly interested in describing new file formats, you should
+read about Augeas' `internal tree representation`_ and about `lenses`_, the
+basic building blocks of the transformation between files and the tree.
+
+.. _internal tree representation: tree.html
 .. _lenses: lenses.html
