@@ -1,0 +1,57 @@
+.. -*- rst -*-
+   restindex
+     initialheaderlevel: 2
+     page-title: libfa
+   /restindex
+
+===============
+Finite Automata
+===============
+
+For Augeas, I needed a library to perform certain operations on regular
+languages, not just regular expressions. For example, Augeas needs to
+decide if two regular languages have words in common. Computations like
+these require working with finite automata, one of the theoretical
+underpinnings of regular expressions. 
+
+Sadly, there does not seem to be a well-maintained open source C library
+out there. That forced me to write my own. Luckily, there is a very good
+automata library written in Java: `dk.brics.automaton`_. ``libfa`` is
+largely a reimplementation in C.
+
+Getting ``libfa``
+-----------------
+
+To save others from the pain I had to go through, ``libfa`` is built into a
+separate DSO when you build Augeas. To download it, `download and install
+Augeas`_. It's not distributed separately, but if there's interest, I am
+more than happy to make that so.
+
+When you install Augeas, ``libfa`` is installed as ``libfa.so``, and the
+header file ``fa.h`` is put into ``/usr/include``.
+
+Sources
+-------
+
+The source for ``libfa`` is in the files ``src/fa.[ch]`` in the Augeas
+sources. See `Operations`_ or ``fa.h`` for details on the operations
+supported by ``libfa``.
+
+License
+-------
+
+Just like Augeas, ``libfa`` is licensed under the LGPL, version 2 or
+later.
+
+Contact
+-------
+
+If you find ``libfa`` useful, or have any comments/feature requests for it,
+or even better, patches, feel free to contact me_ directly or post
+something on the `Augeas mailing list`_.
+
+.. _dk.brics.automaton: http://www.brics.dk/automaton/
+.. _me: mailto:dlutter@redhat.com
+.. _Augeas mailing list: ../developers.html
+.. _download and install Augeas: ../download.html
+.. _Operations: operations.html

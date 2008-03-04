@@ -1,0 +1,54 @@
+.. -*- rst -*-
+   restindex
+     initialheaderlevel: 2
+     page-title: Operations
+   /restindex
+
+=================================
+Operations supported by ``libfa``
+=================================
+
+The library supports most common operations on finite automata. See the
+file ``fa.h`` for the exact definition of the interface.
+
+``fa_compile``
+  Compile a regular expression into a finite automaton. The
+  regular expressions accepted by ``fa_compile`` are extended POSIX regular
+  expressions [1]_, so that you can perform your automata calculations with
+  ``libfa``, but still use the much more optimized POSIX matchers out
+  there, like the one included with glibc.
+``fa_minimze``
+  Minimize a finite automaton using Brzozowski's algorithm.
+``fa_concat``, ``fa_union``, ``fa_iter``
+  Form the concatenation, union or iteration of automata. For regular
+  expressions ``A`` and ``B``, this corresponds to the regular expression
+  ``AB``, ``A|B``, and constructs like ``A*``, ``A+``, and ``A{m,n}``
+``fa_intersect``
+   Creates an automaton that accepts the intersection of two languages.
+``fa_complement``
+  Creates an automaton that accepts the complement of a regular language.
+``fa_minus``
+  Creates an automaton that accepts words in the set difference of two
+  languages.
+``fa_contains``, ``fa_equals``
+  Compare two automata and decide whether the language of one is contained
+  in that of the other, or if their languages are equal.
+``fa_overlap``
+  Compute the overlap of two regular languages. The overlap of two
+  languages is the set of strings that can be split in more than one way
+  into a left part in the first language and a right part in the second
+  language.
+``fa_dot``
+  Generate a dot file of the automaton that can be displayed with
+  `Graphviz's dot`_.
+
+If you are a finite automata aficionado, you might have noticed that there
+is no distinction between deterministic (DFA) and nondeterministic (NFA)
+automata in the interface. ``libfa`` will decide on its own when it needs
+to turn an NFA into a DFA and perform these conversions transparently to
+callers of the library.
+
+.. _Graphviz's dot: http://graphviz.org/
+.. [1] There are a handful of small differences: named character classes
+   and collating sequences are not supported. The most important difference
+   probably is that the character ``.`` does not match a newline.
