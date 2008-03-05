@@ -10,7 +10,7 @@ Download
 Augeas can be downloaded in one of the following ways:
 
 * RPM's for Fedora/RHEL can be found in `my yum repo`_
-* The latest released tarball is on the `download page`_
+* The latest released tarball ``augeas-*`` is on the `download page`_
 * Check out Augeas from source from the `mercurial repository`_ (see
   Contribute_ for instructions)
 
@@ -18,7 +18,19 @@ No matter what you do, remember that Augeas is **prototype** code and will
 most likely **eat** members of your **immediate family** (and not
 necessarily the ones you thought had it coming)
 
+Ruby bindings
+-------------
+
+Ruby bindings for Augeas are available:
+
+* RPM's for Fedora/RHEL can be found in `my yum repo`_
+* The latest released tarball ``ruby-augeas-*`` is on the `download page`_
+* Check out the `Ruby bindings`_ from the mercurial repository (see
+  Contribute_ for instructions)
+
+
 .. _my yum repo: http://people.redhat.com/dlutter/yum
 .. _download page: http://augeas.net/download/
 .. _mercurial repository: http://hg.et.redhat.com/misc/augeas
+.. _Ruby bindings: http://hg.et.redhat.com/misc/ruby-augeas
 .. _Contribute: developers.html
