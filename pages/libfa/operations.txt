@@ -38,6 +38,8 @@ file ``fa.h`` for the exact definition of the interface.
   languages is the set of strings that can be split in more than one way
   into a left part in the first language and a right part in the second
   language.
+``fa_example``
+  Generate an example of words accepted by an automaton.
 ``fa_dot``
   Generate a dot file of the automaton that can be displayed with
   `Graphviz's dot`_.
