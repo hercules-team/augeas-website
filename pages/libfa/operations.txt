@@ -39,7 +39,14 @@ file ``fa.h`` for the exact definition of the interface.
   into a left part in the first language and a right part in the second
   language.
 ``fa_example``
-  Generate an example of words accepted by an automaton.
+  Generate an example of words accepted by an automaton. Picks a word from
+  the automaton's language, trying to make the choice 'sensible'.
+``fa_ambig_example``
+  Given two automata, generate a word ``upv`` so that ``u`` and ``up`` are
+  accepted by the first automaton, and ``pv`` and ``v`` are accepted by the
+  second automaton. The existence of such a word proves that the two
+  languages are not unambiguously concatenable. Contrast that with
+  ``fa_overlap`` which only returns the ``p`` from such words.
 ``fa_dot``
   Generate a dot file of the automaton that can be displayed with
   `Graphviz's dot`_.
