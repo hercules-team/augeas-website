@@ -18,7 +18,9 @@ file ``fa.h`` for the exact definition of the interface.
   ``libfa``, but still use the much more optimized POSIX matchers out
   there, like the one included with glibc.
 ``fa_minimze``
-  Minimize a finite automaton using Brzozowski's algorithm.
+  Minimize a finite automaton using Hopcroft's or Brzozowski's
+  algorithm. Which one is used can be set with the global variable
+  ``fa_minimization_algorithm``.
 ``fa_concat``, ``fa_union``, ``fa_iter``
   Form the concatenation, union or iteration of automata. For regular
   expressions ``A`` and ``B``, this corresponds to the regular expression
