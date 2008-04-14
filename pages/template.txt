@@ -27,7 +27,8 @@
           <!-- <strong>About Augeas</strong> -->
           <ul>
             <#
-              minibar(sections, displayval="crumb", liststart='', listend='',
+              minibar(sections, displayval="link-title",
+               liststart='', listend='',
               intro='<li>Menu</li>',
               subintro='')
             #>

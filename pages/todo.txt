@@ -45,5 +45,12 @@ but that are a little simpler are
 * Write language bindings for Python . This could happen right
   now. The public API in ``augeas.h`` is pretty stable, and that's all that
   should be visible to users of the library.
+* Remove libfa's dependency on glib by using a different hashtable
+  implementation (maybe kazlib_) Requiring glib just for a hash table is
+  overkill - but so is writing our own.
+* Named character classes in regular expressions
+* Use ustr_ for strings instead of naked C strings
 
 .. _Boomerang: http://alliance.seas.upenn.edu/~harmony/
+.. _ustr: http://www.and.org/ustr/
+.. _kazlib: http://users.footprints.net/~kaz/kazlib.html
