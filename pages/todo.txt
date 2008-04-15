@@ -7,27 +7,8 @@
 Todo list
 ===============
 
-Here are the items that need to be addressed before Augeas is ready for
-real-world usage:
-
-1. Reasonable error checking. Currently, Augeas accepts file descriptions
-   that are broken in subtle ways. Even though that brokenness can be
-   diagnosed from the description alone, that code is missing right
-   now. Following ideas from Boomerang_, these checks require computations
-   with regular languages, such as computing the intersection of regular
-   languages and deciding whether two regular languages are unambiguously
-   concatenable and iterable.
-
-2. The language for file descriptions is very limited and forces a lot of
-   copy and paste work. Again, following Boomerang_, the language needs to
-   be changed into a simple functional languages. That will make it
-   possible to reuse regular expressions and lenses for different file
-   formats, and severley cut down on the number of times something like *a
-   comment goes from # to the end of line* has to be written as a new
-   regular expression
-
-These are the two top priorities. Other issues that need to be addressed,
-but that are a little simpler are
+In now particular order, these are the things that need to be addressed,
+hopefully soon; patches enthusiastically appreciated: 
 
 * Write descriptors for more files. Eventually, Augeas should cover *all*
   commonly used configuration files
@@ -48,7 +29,10 @@ but that are a little simpler are
 * Remove libfa's dependency on glib by using a different hashtable
   implementation (maybe kazlib_) Requiring glib just for a hash table is
   overkill - but so is writing our own.
-* Named character classes in regular expressions
+* Named character classes in regular expressions. Other differences to
+  extended POSIX regexps are probably not worth addressing (collating
+  sequences) or are impossible to address with true regular expressions
+  (back references)
 * Use ustr_ for strings instead of naked C strings
 
 .. _Boomerang: http://alliance.seas.upenn.edu/~harmony/
