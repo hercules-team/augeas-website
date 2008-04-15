@@ -2,17 +2,20 @@
    restindex
      initialheaderlevel: 2
      page-title: Quick Tour
+     encoding: utf8
    /restindex
 
 =========================
 A quick tour
 =========================
 
-Augeas is an early prototype. To explore it, `download and install`_ it
-first.
-
-Avoid any corruption on your system (this is a prototype, remember?), it is
-best to copy ``/etc`` somewhere else on your system and set up a sandbox:
+This tutorial gives a brief overview of using Augeas, and ``augtool`` in
+particular. It's highly recommended that you follow along on your own; to
+do so, first `download and install`_ Augeas. Then, create a sandbox so that
+you can safely modify files without affecting your system. The commands
+below create the sandbox from ``/etc`` on your system, but you might want to
+copy the files from ``tests/root`` in the source tarball |---| all the
+examples below were run against those files.
 
 ::
 
@@ -20,62 +23,210 @@ best to copy ``/etc`` somewhere else on your system and set up a sandbox:
   mkdir $AUGEAS_ROOT
   sudo cp -pr /etc $AUGEAS_ROOT
   sudo chown -R $USER $AUGEAS_ROOT
-  augtool
+  augtool -b
 
-A sample session
--------------------------
+The ``-b`` option tells ``augtool`` to preserve the original file with an
+extension of ``.augsave`` whenever it makes a change.
 
-In the ``augtool`` shell, type ``help`` to get a list of commands. For
-example, in a sample session you might add a new entry to ``/etc/hosts``:
+In the ``augtool`` shell, type ``help`` to get a list of commands. The
+``print`` command is particularly useful to explore what data is present in
+the tree. The commands to run can either be typed interactively into
+``augtool`` (with TAB completion on commands and tree paths), or piped in
+from standard input.
 
-::
+Adding an entry to ``/etc/hosts``
+---------------------------------
 
-  set /system/config/hosts/10000/ipaddr 192.168.0.1
-  set /system/config/hosts/10000/canonical pigiron.example.com
-  clear /system/config/hosts/10000/aliases
-
-and also add a new environment variable to the ``AcceptEnv`` setting in
-``/etc/ssh/sshd_config``:
-
-::
-
-  set /system/config/sshd/AcceptEnv/10000 FOO
-
-Verify that your changes are in the tree using ``print``:
+To warm up, let's do something very simple: adding a new entry to
+``/etc/hosts``. In the ``augtool`` shell, type the following commands:
 
 ::
 
-  print /system/config/hosts
-  print /system/config/sshd/AcceptEnv
-
-Finally, tell Augeas to change the actual files:
-
-::
-
+  set /files/etc/hosts/10000/ipaddr 192.168.0.1
+  set /files/etc/hosts/10000/canonical pigiron.example.com
+  set /files/etc/hosts/10000/alias[1] pigiron
+  set /files/etc/hosts/10000/alias[2] piggy
   save
 
-With these commands, Augeas has created new files ``etc/hosts.augnew`` and
-``etc/ssh/sshd_config`` in the sandbox [1]_. You can use ``diff`` in the
-shell to convince yourself that the changes happened as expected. The two
-diffs will be:
+The four ``set`` commands create four nodes underneath
+``/files/etc/hosts/10000``, and assign them the values passed as the second
+argument. The data parsed from a file with full path ``FILE`` in the
+filesystem is stored in the tree underneath ``/files/FILE``; with that the
+``set`` commands manipulate an entry in the file ``/etc/hosts``. A second
+hierarchy underneath ``/augeas/files/FILE`` contains metadata about the
+file, such as an indication of any errors encountered when the file was
+read.
+
+The ``set`` command creates non-existant nodes as needed. There is a second
+command, ``ins``, to create new nodes in the tree that provides more
+control over where exactly a new node shows up, in particular where in the
+list of its siblings it appears. Because files are inherently sequential,
+the order of sibling nodes in the tree matters.
+
+There is nothing special about calling that host entry ``10000``: we just
+chose that since it's safe to assume that such an entry does not exist
+yet. The schema for ``/etc/hosts`` requires that the names of the host
+entries are positive numbers, though they don't need to be numbered
+sequentially.
+
+The notation ``alias[1]`` and ``alias[2]`` tells Augeas to set the value
+for the first and second child of ``/files/etc/hosts/10000``. Both nodes
+are called ``/files/etc/hosts/10000/alias``; the new host entry can be
+listed with
 
 ::
 
-  --- ./etc/hosts 2008-02-14 17:29:33.000000000 -0800
-  +++ ./etc/hosts.augnew  2008-02-22 14:55:29.000000000 -0800
+  ls /files/etc/hosts/10000
+
+or searched for with
+
+::
+
+  match /files/etc/hosts/*/ipaddr 192.168.0.1
+
+which prints ``/files/etc/hosts/10000/ipaddr``.
+
+Running ``(cd ${AUGEAS_ROOT} &&  gendiff . .augsave)`` in the sandbox
+confirms that ``/etc/hosts`` now has one additional entry at the end:
+
+::
+
+  diff -up ./etc/hosts.augsave ./etc/hosts
+  --- ./etc/hosts.augsave
+  +++ ./etc/hosts
   @@ -4,3 +4,4 @@
    #172.31.122.254   granny.watzmann.net granny puppet
    #172.31.122.1     galia.watzmann.net galia
    172.31.122.14   orange.watzmann.net orange
-  +192.168.0.1    pigiron.example.com
- 
-and
+  +192.168.0.1    pigiron.example.com pigiron piggy
+
+
+Changing ``/etc/grub.conf``
+---------------------------
+
+Modifying a slightly more complex file, ``/etc/grub.conf``, follows the
+same lines as modifying ``/etc/hosts``. One of the big advantages of Augeas
+is that configuration data is manipulated in the same way, regardless of
+how it is stored in the native config files.
+
+While the above change to ``/etc/hosts`` can be easily achieved with
+standard shell tools (``cat`` comes to mind), and ``/etc/hosts`` in general
+can be manipulated relatively easily with ``sed``, ``grep``, ``awk``, or
+tools readily available in most scripting languages, manipulating
+``/etc/grub.conf`` with those tools is quite a bit harder.
+
+We want to change ``/etc/grub.conf`` so that ``grub`` boots the second boot
+entry by default, and remove the third boot record completely. The
+following two commands do that |---| you should look at the tree before and
+after the change using ``print /files/etc/grub.conf``:
 
 ::
 
-  --- ./etc/ssh/sshd_config       2008-02-18 14:54:18.000000000 -0800
-  +++ ./etc/ssh/sshd_config.augnew        2008-02-22 14:55:29.000000000 -0800
-  @@ -93,7 +93,7 @@
+  set /files/etc/grub.conf/default 1
+  rm /files/etc/grub.conf/title[3]
+  save
+
+The diff between the old and new file confirms that Augeas changed what was
+intended:
+
+::
+
+  diff -up ./etc/grub.conf.augsave ./etc/grub.conf
+  --- ./etc/grub.conf.augsave     2008-04-09 16:14:06.000000000 -0700
+  +++ ./etc/grub.conf     2008-04-15 15:32:09.000000000 -0700
+  @@ -7,7 +7,7 @@
+   #          kernel /vmlinuz-version ro root=/dev/vg00/lv00
+   #          initrd /initrd-version.img
+   #boot=/dev/sda
+  -default=0
+  +default=1
+   timeout=5
+   splashimage=(hd0,0)/grub/splash.xpm.gz
+   hiddenmenu
+  @@ -19,11 +19,6 @@ title Fedora (2.6.24.3-50.fc8)
+          root (hd0,0)
+          kernel /vmlinuz-2.6.24.3-50.fc8 ro root=/dev/vg00/lv00
+          initrd /initrd-2.6.24.3-50.fc8.img
+  -title Fedora (2.6.21.7-3.fc8xen)
+  -       root (hd0,0)
+  -       kernel /xen.gz-2.6.21.7-3.fc8
+  -       module /vmlinuz-2.6.21.7-3.fc8xen ro root=/dev/vg00/lv00
+  -       module /initrd-2.6.21.7-3.fc8xen.img
+   title Fedora (2.6.24.3-34.fc8)
+          root (hd0,0)
+          kernel /vmlinuz-2.6.24.3-34.fc8 ro root=/dev/vg00/lv00
+
+Making ``sshd`` accept an additional environment variable
+---------------------------------------------------------
+
+The config file for ``sshd`` is deceptively simple, but has some subtle
+intricacies. One of them are ``Match`` blocks at the end of the file,
+another is the fact that some settings can be repeated in the file, and
+values are accumulated, and that their values are best viewed as arrays.
+
+To illustrate this, we will add a new environment variable ``FOO`` to the
+``AcceptEnv`` setting in ``/etc/ssh/sshd_config``. The schema that Augeas
+uses for ``sshd_config``[1]_ by default maps multiple ``AcceptEnv`` lines
+into multiple tree nodes with the name ``AcceptEnv``, similar to how
+multiple aliases in ``/etc/hosts`` are handled. Since each line contains a
+list of environment variables, the schema splits that list into separate
+tree nodes numbered starting at one.  The following lines in ``sshd_config``
+
+::
+  
+  AcceptEnv LANG LC_CTYPE
+  AcceptEnv LC_IDENTIFICATION LC_ALL
+
+are mapped into a tree
+
+::
+
+  AcceptEnv[1]/1 = "LANG"
+  AcceptEnv[1]/2 = "LC_CTYPE"
+  AcceptEnv[2]/1 = "LC_IDENTIFICATION"
+  AcceptEnv[2]/2 = "LC_ALL"
+
+This allows for very fine-grained access to individual value in the
+``sshd_config`` file, and preserves enough information so that Augeas can
+decide which entries go on the same line. To see all ``AcceptEnv`` entries,
+run
+
+::
+
+  print /files/etc/ssh/sshd_config/AcceptEnv/*
+
+
+To add a new variable ``FOO`` at the end of the last ``AcceptEnv`` line, we
+perform
+
+::
+
+  set /files/etc/ssh/sshd_config/AcceptEnv[last()]/10000 FOO
+  save
+
+The addition of ``[last()]`` to ``AcceptEnv`` in the path tells Augeas that
+we are talking about the last node named ``AcceptEnv``. Augeas requires
+that for a ``set`` the path expression corresponds either to an existing
+node, or to no node at all (in which case a new node is created). Writing
+the above command as
+
+::
+
+  set /files/etc/ssh/sshd_config/AcceptEnv/10000 FOO
+
+results in an error when there are multiple ``AcceptEnv`` entries in the
+tree. In that case, Augeas can not figure out under which of them you want
+to put the entry labelled ``10000``.
+
+Again, the above commands lead to the expected diff, the addition of
+``FOO`` to the last ``AcceptEnv`` line:
+
+::
+
+  diff -up ./etc/ssh/sshd_config.augsave ./etc/ssh/sshd_config
+  --- ./etc/ssh/sshd_config.augsave
+  +++ ./etc/ssh/sshd_config
+  @@ -93,7 +93,7 @@ UsePAM yes
    # Accept locale-related environment variables
    AcceptEnv LANG LC_CTYPE LC_NUMERIC LC_TIME LC_COLLATE LC_MONETARY LC_MESSAGES 
    AcceptEnv LC_PAPER LC_NAME LC_ADDRESS LC_TELEPHONE LC_MEASUREMENT 
@@ -85,135 +236,8 @@ and
    #GatewayPorts no
    #X11Forwarding no
 
-As you can see from these diffs, Augeas works very hard to preserve
-comments and formatting details. It can also break entries in files into
-very fine detail: the ``AcceptEnv`` entries in ``sshd_config`` are broken
-into individual entries in the tree, regardless of whether they are on the
-same line or not, and the lines are reassembled when you save changes.
-
-File descriptions
------------------
-
-How files are processed and transformed into the tree is described in text
-files that tell Augeas about the file format, what parts of the file should
-be copied into the tree, and what parts are comments and formatting detail
-like commas and spaces. The ``try`` script loads these descriptions from
-the ``spec/`` directory in the source checkout.
-
-The language for file descriptions is designed such that the description
-specifies at the same time how the file should be transformed into the tree
-**and** how the tree should be transformed back into the file.
-
-As an example, here is the description for ``/etc/hosts`` [2]_:
-
-::
-
-  map
-    grammar hosts
-    include '/etc/hosts' '/system/config/hosts'
-  end
-
-  grammar hosts
-    token SEPTAB /[ \t]+/ = '\t'
-    token SEPSPC /[ \t]+/ = ' '
-    token OPT_WS /[ \t]*/ = '\t'
-    token EOR '\n'
-    token POUND_TO_EOL /#.*\n/ = '# '
-    token WORD /[^ \n\t]+/ = ''
-
-    file: ( comment | record ) *
-
-    comment: [ store POUND_TO_EOL ]
-
-    record: [ seq 'record' .
-              [ label 'ipaddr' . store WORD . SEPTAB ] . 
-              [ label 'canonical' . store WORD ] . 
-              [ label 'aliases' . counter 'aliases' .
-                ( [ seq 'aliases' . SEPSPC . store WORD ] ) *
-              ]
-              . EOR
-           ]
-  end
-
-The ``map`` block tells Augeas which files to process, here it is told to
-use the grammar ``hosts`` on the file ``/etc/hosts`` and to put the
-resulting tree underneath ``/system/config/hosts`` in Augeas' global tree.
-
-The ``grammar`` block defines in detail how to process a file. The
-``token`` statements define regular expressions for matching in the
-file. The default value after the ``=`` is used when Augeas needs to
-produce a brandnew host entry.
-
-The grammar rules describe the actual file format; by convention, the first
-rule in the grammar, here called ``file``, is applied to the whole
-file. The ``file`` rule states that the file is made up of any number of
-comments and records in any order.
-
-A comment is anything matched by the regular expression ``POUND_TO_EOL``. A
-record consists of an IP address, a canonical host name, and a list of
-aliases. The symbol ``.`` concatenates two expressions together, and the
-``[ ... ]`` constructs puts everything inside of it into a new subtree
-whose label is determined by a ``label``, ``seq`` or ``key`` statement. In
-more detail, the various functions used in the ``record`` rule do the
-following:
-
-* ``seq NAME`` produces a new integer from a counter ``NAME``. Augeas
-  maintains counters with arbitrary names during parsing. They are
-  generally used to turn what logically is a list into a numbered
-  subtrees.
-* ``label S`` tells Augeas to use the fixed string ``S`` as the label for
-  the enclosing subtree
-* ``store RE`` parses a string matching the regular expression ``RE`` from
-  the file and stores it as the value in a tree leaf.
-* ``counter NAME`` declares a counter ``NAME`` and resets it everytime it
-  is encountered during parsing. In the ``/etc/hosts`` example, this is
-  used to number the aliases for each host entry starting from 0.
-* a plain regular expression ``RE`` in the rule tells Augeas to expect a
-  matching string in the file, but not store it in the tree. When Augeas
-  writes the tree back to file, it remembers that string and prints it
-  out. If what is being written is completely new, the default for ``RE``
-  is used.
-
-The treatment of aliases in the ``/etc/hosts`` example is a good way to put
-this all together. The statements
-
-::
-
-   [ label 'aliases' . counter 'aliases' .
-     ( [ seq 'aliases' . SEPSPC . store WORD ] ) *
-
-result in Augeas matching the regular expression ``(SEPSPC . WORD)*``,
-since ``label``, ``counter`` and ``seq`` are only concerned with building
-the tree, not with matching. The outer ``[ ... ]`` tells Augeas to put the
-result of parsing into a subtree with label ``aliases/`` and the inner ``[
-... ]`` tells it to put each match of ``SEPSPC . WORD`` into a new subtree,
-labelled with sequentially increasing labels ``0/``, ``1/``, etc. Since
-only the regular expression ``WORD`` is used with ``store``, the spaces
-matched by ``SEPSPC`` are excluded from the tree. All in all, when the
-above two lines are applied to the part of the line
-
-::
-
-  192.168.0.1 pigiron.example.com   pigiron pigiron.example
-                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-indicated by the arrows, they construct the subtree
-
-::
-
-  aliases/
-    0/ = pigiron
-    1/ = pigiron.example
-
-.. [1] To make testing easier, Augeas does not overwrite the original
-   files. Instead it creates a file with extension ``augnew``. Eventually,
-   that has to change, of course.
-
-.. [2] The format of these files will change in the near future, though the
-   underlying ideas will remain the same. If you write your own file format
-   descriptions, and send them to me, I promise to port them forward as the
-   format changes. Be warned that the current Augeas code is missing a lot
-   of error checking, and lets you write file descriptions that are invalid
-   in subtle ways. This will be addressed very soon
-
+.. _[1]: all schemas can be found in the ``lenses/`` subdirectory in the
+   source tarball, which by default is installed into
+   ``/usr/share/augeas/lenses``
 .. _download and install: download.html
+.. |---| unicode:: U+2014  .. em dash
