@@ -9,10 +9,13 @@ Lenses
 =========
 
 *Lenses* [1]_ are the basic building blocks for establishing the mapping
-from files into the Augeas tree and back. You can think of a lens as a pair
-of functions *get* and *put* where the *get* part takes the contents
-of a text file, parses it and produces part of Augeas' tree. The *put*
-part takes a tree and transforms it back into a text file.
+from files into the Augeas tree and back. You can think of a lens as a
+record of three functions *get*, *put* and *create*, where the *get*
+function takes the contents of a text file, parses it and produces part of
+Augeas' tree. The *put* and *create* functions take a tree and transforms
+it back into a text file. The difference is that *put* is used when the
+part of the tree being transformed into the file corresponds to something
+in the input file, and the *create* function is used when it does not.
 
 Structuring the transformation this way has some importnat consequences:
 
@@ -22,100 +25,99 @@ Structuring the transformation this way has some importnat consequences:
 2. Usually, it is enough to focus on the text -> tree transformation when
    describing a config file format; the tree -> text direction comes
    (almost) for free
-3. Augeas expects the tree to have a certain structure, implictly defined
-   through the lenses that make up a grammar. If the tree does not have
-   that structure, for example, because there is no ``canonical`` entry for
-   a host in ``/system/config/hosts``, Augeas will refuse to transform such
-   a tree back into the corresponding file.
+3. Augeas expects the tree to have a certain structure, implicitly defined
+   by the lens for each file. If the tree does not have that structure, for
+   example, because there is no ``canonical`` entry for a host in
+   ``/files/etc/hosts``, Augeas will refuse to transform such a tree back
+   into the corresponding file.
 
-Lenses come in two large flavors: *primitive lenses* and *lens
-combinators*. The former take some piece of the file and process it in
-some way, the latter combine smaller lenses to form one large
-lens. Ultimatley, when Augeas applies a grammar to a config file, it
-applies the first lens mentioned in the file (often called ``file``) to the
-whole file.
+Lenses come in two flavors: *lens primitives* and *lens combinators*. The
+former take some piece of the file and process it in some way, the latter
+combine smaller lenses to form one large lens.
 
-Tokens and regular expressions
-------------------------------
+Strings and regular expressions
+-------------------------------
 
-Before we talk about Augeas' builtin lenses, a word on regular expressions:
-regular expressions are denoted enclosed in ``/.../``. The regular
+Two basic types in the schema language are strings and regular
+expressions. String literals are enclosed in double quotes, and can contain
+escape sequences, similar to the escape sequences in C strings. In
+particular, the sequences ``\n``,  and ``\t`` are translated to the
+new line and tab characters respectively. Therefore, the string literal
+``"\t\n"`` denotes a two character string consisting of a tab and a newline
+character.
+
+Regular expression literals are enclosed in slashes (``/.../``). The regular
 expression syntax is that of extended POSIX regular expressions, with the
-small difference that ``.`` does *not* match newlines.
+small difference that ``.`` does *not* match newlines. To put a literal
+``/`` into a regular expression, escape it as ``\/``. The same escape
+sequences as for string literals are recognized, so that the regular
+expresion literal ``/(\t|\n)/`` matches either a tab or a newline
+character.
 
-Inside a grammar, tokens can be defined. The definition serves two
-purposes: (1) to give a more descriptive name to a regular expression and
-(2) to declare a default for that regular expression in the *put*
-direction. If some part of the Augeas tree is constructed from scratch, for
-example, to add a new line to ``/etc/hosts``, Augeas needs to know what to
-use as separators between fields. The ``hosts.aug`` file declares a token
-``SEPTAB`` as 
+In a context where a regular expression is expected, but a string is
+provided, the string is automatically coerced to a regular expression
+matching that string exactly. Characters that have a special meaning inside
+regular expressions are escaped, so that the string ``"()"`` is coerced to
+the regular expression ``/\(\)/``.
 
-::
-
-  token SEPTAB /[ \t]+/ = '\t'
-
-with the effect that wherever ``SEPTAB`` is used, during parsing the input
-will be matched against the regular expression ``/[ \t]+/``. In the *put*
-direction going from the tree back to the file, ``SEPTAB`` either results
-in the writing of whatever string was matched when the file was parsed
-initially, or a tab character, if we are dealing with a brand new entry in
-the tree.
-
-
-Primitive lenses
+Lens primitives
 ----------------
 
-The following primitive lenses are built into Augeas:
+The following lens primitives are built into Augeas; the arguments to them
+are either regular expressions, indicated by ``RE`` or strings indicated by
+``STR``.
 
-a token
-  A token matches its regular expression in the *get* direction. The result
+``del RE STR``
+  Match the regular expression ``RE`` in the *get* direction. The result
   of the match does not appear anywhere in the tree, but Augeas remembers
   the exact value it saw during parsing and restores it in the *put*
-  direction. If a value is needed in a part of the tree that was newly
-  created, the token's default is used.
-``store TOKEN``
-  Store whatever matches the regular expression for ``TOKEN`` as the value
-  of a new leaf.
-``counter NAME``
-  Declare a new counter with the given ``NAME`` and reset its value to
-  0. Counters don't need to be declared, but using this statement makes it
-  possible to reset counters. This is used, for example, for processing
-  ``/etc/hosts`` to count the aliases for each host starting from 0,
-  instead of numbering them all in sequence across the whole file.
-``seq NAME``
-  Take the next value from the counter ``NAME`` and use it as the label of
-  the enclosing subtree.
+  direction. The *create* function produces the default ``STR`` value.
+``store RE``
+  Store whatever matches the regular expression ``RE`` as the value of the
+  enclosing subtree.
+``counter STR``
+  Declare a new counter with name ``STR`` and reset its value to
+  1. Counters don't need to be declared, but using this statement makes it
+  possible to reset counters.
+``seq STR``
+  Take the next value from the counter with name ``STR`` and use it as the
+  label of the enclosing subtree.
 ``key RE``
-  Match the reguler expression (or token) ``RE`` against the current
-  position in the input, and use the result of the match as the label of
-  the enclosing subtree.
-``label STRING``
-  Use the literal string ``STRING`` as the label of the enclosing subtree.
+  Match the reguler expression ``RE`` against the current position in the
+  input, and use the result of the match as the label of the enclosing
+  subtree.
+``label STR``
+  Use the string ``STR`` as the label of the enclosing subtree.
 
 Lens combinators
 ----------------
 
 Concatenation
-  The ``.`` operator concatenates two lenses ``L1 . L2``. In the
-  *get* direction, the resulting lens first applies ``L1`` and then
-  ``L2``.
+  The ``.`` operator concatenates two lenses ``L1 . L2``, by applying
+  ```L1`` and then ``L2``. Concatenation requires that any string (for the
+  *get* direction) or any tree (for the *put*/*create* direction) that
+  matches ``L1 . L2`` can be split in exactly one way into one part matching
+  ``L1`` and one part matching ``L2``.
 Union
-  The union of two lenses ``L1 | L2`` is formed with the ``|`` operator. In
-  the *get* direction, the resulting lens determines whether ``L1`` or
-  ``L2`` apply at the current point in the file, and applies the first one
-  that does.
+  The union of two lenses ``L1 | L2`` is formed with the ``|`` operator. It
+  determines whether ``L1`` or ``L2`` apply at the current position, and
+  uses ``L1`` if it does, and ``L2`` if ``L1`` does not apply, but ``L2``
+  does. This means that for the union ``del /[a-z]+/ | store /[a-zA-Z]+/``,
+  the ``store`` will never be used for strings matching ``/[a-z]+/``, they
+  will always be processed by the ``del`` lens.
 Repetition
   A lens ``L`` can be repeated by using the postfix operators ``*``, ``+``,
   and ``?``, with the same meaning as for regular expressions. For example,
   ``(L)+`` matches one or more occurences of ``L``.
 Subtree
-  For a lens ``L``, the subtree lens ``[ L ]`` constructs a subtree. In the
-  *get* direction, ``L`` is first applied to the input. The resulting
-  tree is then put underneath a new node, whose label is determined by a
-  ``key``, ``label``, or ``seq`` statement from within ``L``. ``L`` can
-  only contain one of these statements, having multiple of them is an
-  error.
+  For a lens ``L``, the subtree lens ``[ L ]`` constructs a new tree
+  node. The label of the node is determined by a ``key``, ``label`` or
+  ``seq`` lens inside ``L``, and the value by a ``store`` lens inside
+  ``L``; either of these may be missing in which case the label or value
+  are set to ``NULL``. The children of the new node are the tree(s)
+  constructed by ``L``. ``L`` can contain at most one ``key``, ``label`` or
+  ``seq`` lens and at most one ``store`` lens. The typechecker will reject
+  violations.
 
 .. [1] The term *lens* was coined by `Harmony and Boomerang`_, systems for
    constructing bidirectional maps between trees and between strings,
