@@ -1,0 +1,156 @@
+.. -*- rst -*-
+   restindex
+     initialheaderlevel: 2
+     page-title: Schema tutotial
+     encoding: utf8
+   /restindex
+
+Writing Schemas
+===============
+
+The mapping of files into the tree and back is governed by schemas written
+in Augeas' domain specific language; the language implements a very small
+subset of ML, a popular functional language. The subset is in fact so
+small, that writing schemas only requires knowing three or four
+constructs.
+
+The schemas shipping with Augeas can be found in the ``lenses/`` directory
+in the source distributon, which by default is installed to
+``/usr/share/augeas/lenses``.
+
+When devloping schemas, it is better to use ``augparse``, a tool better
+suited to spotting problems in schemas than ``augtool``. As an example,
+run the following command 
+
+::
+
+  augparse -I $P/lenses $P/lenses/tests/test_hosts.aug
+
+where ``$P`` is the toplevel dir of the source distribution or
+``/usr/share/augeas`` for binary distributions. The command will run the
+tests for the ``/etc/hosts`` schema, and if they pass exit without printing
+anything.
+
+More detailed information on the language construct can be found in the
+`language overview`_ and the description of lenses_.
+
+When writing schema, it is best to start with lenses that process parts of
+the file and using unit tests for them. Generally, it is best to split the
+lenses and tests into two separate files, ``module.aug`` and
+``tests/module.aug``, though for the sake of simplicity, we just do
+everything in one file here.
+
+Simple schemas
+--------------
+
+To get started, let's write a simple lens that transforms lines of the form
+``key = value`` to a tree ``{ "key" = "value" }``. Save the following
+(without the line numbers) in a file ``tutorial.aug``:
+
+::
+
+  1: module Tutorial =
+  2:   let kv = key /[a-z]+/ . del /[ \t]*=[ \t]*/ "=" . store /[a-z]+/
+  3:   let lns = [ kv ]
+  
+  4:   test lns get "key = value" = ?
+
+Running it with  ``augparse tutorial.aug`` produces
+
+::
+
+  Test result: tutorial.aug:4.4-.34:
+  /key = "value"
+
+Line 2 creates a lens ``kv`` by concatenating the three lenses ``key``,
+``del``, and ``store``. The first of these, ``key /[a-z]+/`` takes whatever
+matches the regular expression ``/[a-z]+/`` and marks it as the label as a
+new tree node; the ``del`` lens matches an equal sign, surrounded by
+optional whitespace, and remembers it; the match is used when transforming
+the tree back into a string. The second argument to ``del`` is used as the
+default when a (part of a) tree is transformed into a string that was not
+present when the tree was initially constructed from a string. The last
+lens, ``store``, again matches a sequence of lower-case characters, and
+marks them to be stored as the value of a tree node.
+
+The ``kv`` lens on line 2 does not construct any trees yet, it only marks
+various pieces of the input string for how they should be mapped to the
+tree. The tree is constructed on line 3 by the ``lns`` lens: the ``[
+L ]`` subtree operator applies the lens ``L`` to the input string and
+creates a tree from what ``L`` marked as a label and value.
+
+The given lens ``lns`` only processes one key/value pair. If we had files
+with many key value pairs, we need to modify the definition of ``lns`` to
+
+::
+
+  let lns = [ kv . del "\n" "\n" ] *
+
+A new test, appended to ``tutorial.aug`` confirms that that now does what
+we want: appending the following test to ``tutorial.aug``
+
+::
+
+  test lns get "ka=va\nkb=vb\n" = ?
+
+and running it through ``augparse`` gives us
+
+::
+
+  Test result: tutorial.aug:7.4-.37:
+  /ka = "va"
+  /kb = "vb"
+
+The first test we wrote should have also failed, because the input string
+did not end with a ``"\n"``.
+
+TO BE CONTINUED ... See examples in ``lenses/``
+
+Transformations and Autoload
+----------------------------
+
+So far, we have seen how we can construct lenses and test them using fixed
+input strings. For ``augtool``, we also need to indicate which files need
+to be transformed with what lens. This is done using the ``transform``
+function which takes a lens and a *file filter*. When ``augtool`` starts,
+it applies all transforms marked for autoloading, by finding all files that
+match the file filter and applying the corresponding lens to their
+contents. 
+
+The tree resulting form applying the lens to the contents of a file with
+absolute path ``/PATH`` is put into Augeas' tree underneath
+``/files/PATH``.
+
+A module set up for autoloading for ``augtool`` has the general structure
+::
+
+  module Tutorial
+    autoload xfm
+
+    let lns = ...
+   
+    let filter = ...
+
+    let xfm = transform lns filter
+
+The ``autoload`` statement must be the very first statement inside the
+module. 
+
+File filters are built by concatenating applications of the builtin
+functions ``incl`` and ``excl``, both take a shell glob as their sole
+argument:
+
+::
+
+  let filter = (incl "/etc/pam.d/*") . (excl "*.rpmsave")
+
+This filter matches all files in ``/etc/pam.d`` that do not end in
+``.rpmsave``. The order of ``incl`` and ``excl`` in the filter does not
+matter |---| a file is included if it is matched by at least one ``incl``
+glob, and by none of the ``excl`` globs. Globs that do not contain any
+``/`` are matched against the basename of a file, otherwise, they are
+matched against the full path name of the file.
+
+.. _language overview: language.html
+.. _lenses: lenses.html
+.. |---| unicode:: U+2014  .. em dash
