@@ -34,6 +34,14 @@ hopefully soon; patches enthusiastically appreciated:
   sequences) or are impossible to address with true regular expressions
   (back references)
 * Use ustr_ for strings instead of naked C strings
+* Expand the XPath like language:
+
+  - Add an operator for "match any number of children", either using ``//``
+    like XPath or ``**`` as some file utilities like ``rsync`` do
+  - Allow simple arithmetic expressions in path indices; in particular
+    allow ``label[last()-N]`` to address the N-th last node called
+    ``label``.
+
 
 .. _Boomerang: http://alliance.seas.upenn.edu/~harmony/
 .. _ustr: http://www.and.org/ustr/
