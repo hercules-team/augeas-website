@@ -11,7 +11,12 @@ This page gives a brief overview of the public API. More documentation can
 be found in the (yet to be written) man pages and in the include file
 ``augeas.h``. That file declares the entire public API of Augeas.
 
-Initializing and closing Augeas
+* `Initializing and Closing Augeas`_
+* `Reading and Writing Values`_
+* `Inserting, Deleting and Searching Nodes`_
+* `Saving the Tree`_
+
+Initializing and Closing Augeas
 ===============================
 
 Before calling any other Augeas function, you must obtain a handle from
@@ -43,7 +48,7 @@ To free up resources associated with an ``AUGEAS_T`` structure, call
 
   void aug_close(augeas_t aug);
 
-Reading and writing values
+Reading and Writing Values
 ==========================
 
 Node existance
@@ -116,7 +121,7 @@ of matching nodes. If ``CHILDREN`` is not ``NULL``, allocate a new array of
 strings and return it as ``*CHILDREN``. The array is filled with path
 expressions matching exactly one of the nodes matched by ``PATH``.
 
-Saving the tree
+Saving the Tree
 ===============
 
 ::
