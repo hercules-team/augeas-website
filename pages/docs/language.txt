@@ -1,0 +1,247 @@
+.. -*- rst -*-
+   restindex
+     initialheaderlevel: 2
+     page-title: Language
+   /restindex
+
+Language Overview
+=================
+
+* `Files and Modules`_
+* `Lexical Conventions`_
+
+  * Comments_
+  * Variables_
+  * Strings_
+  * `Regular Expressions`_
+
+* Expressions_
+* `Functions and Types`_
+* `Unit Tests`_
+
+Files and modules
+-----------------
+
+All the code that Augeas executes must be contained in a module. A file
+``file.aug`` must start with a line
+
+::
+
+  module File =
+
+Both ``augparse`` and ``augtool`` search for ``.aug`` files in the
+directories listed in the ``AUGEAS_LENS_LIB`` environment variable,
+followed by the directories given with ``-I`` command line arguments, and
+finally in the default directory ``/usr/share/augeas/lenses``.
+
+Notice that the name of the module must be the capitalized name of the file
+it is in without the ``.aug`` extension.
+
+Lexical conventions
+-------------------
+
+Comments
+++++++++
+
+Comments are anything enclosed in matching pairs of ``(*`` and ``*)``
+delimiters. Comments can be nested.
+
+Variables
++++++++++
+
+Variables are declared inside a module with the keyword ``let`` [1]_:
+
+::
+
+  let hello = "Hello"
+
+In expressions, variables from the current module and builtins_ can be
+referenced without any qualification; variables from other modules must be
+prefixed with the module name as in ``Module.var`` for a variable ``var``
+declared in the module ``Module`` (which must be in a file called
+``module.aug``).
+
+Variable names must match the regular expression ``/[a-z][A-Za-z0-9_]*/``.
+
+Strings
++++++++
+
+Two basic types in the schema language are strings and regular
+expressions. String literals are enclosed in double quotes, and can contain
+escape sequences, similar to the escape sequences in C strings. In
+particular, the sequences ``\n``,  and ``\t`` are translated to the
+new line and tab characters respectively. Therefore, the string literal
+``"\t\n"`` denotes a two character string consisting of a tab and a newline
+character.
+
+Regular expressions
++++++++++++++++++++
+
+Regular expression literals are enclosed in slashes (``/.../``). The regular
+expression syntax is that of extended POSIX regular expressions, with the
+small difference that ``.`` does *not* match newlines. To put a literal
+``/`` into a regular expression, escape it as ``\/``. The same escape
+sequences as for string literals are recognized, so that the regular
+expresion literal ``/(\t|\n)/`` matches either a tab or a newline
+character.
+
+Regular expressions can be concatenated with ``.`` and unioned with
+``|``. They can also be iterated with the usual postfix operators ``*``,
+``+``, and ``?``:
+
+Expressions
+-----------
+
+Augeas has a few standard operators: binary operators ``.`` for
+concatenation and ``|`` for union, and unary postfix operators ``*``,
+``+``, and ``?`` for repetition. In addition, the subtree operator ``[ exp
+]`` builds a subtree lens. All these operators can be applied to lenses;
+for lenses they are described in detail on the lenses_ page.
+
+In addition, the concatenation operator can be used to concatenate strings
+and regular expressions, and the union operator and the repetition
+operators can be used for regular expressions:
+
+::
+
+  let hello = "Hello"
+  let world = "World"
+  let hello_world = hello . " " . world . "\n" 
+
+  let a = /a/
+  let b = /b/
+  let a_b = /a/ . /b/         (* Same as /ab/    *)
+  let a_or_b = /a/ | /b/      (* Same as /(a|b)/ *)
+  let a_plus = /a/+           (* Same as /a+/    *) 
+
+
+Strings are automatically coerced to a regular expression matching that
+string exactly, whenever needed. Characters that have a special meaning
+inside regular expressions are escaped, so that the string ``"()"`` is
+coerced to the regular expression ``/\(\)/``. The following are legal:
+
+::
+
+  let hello_world_re = "Hello" . /[\t ]/ . "World"
+  let letter_or_bracks = /[a-z]/ | "[]"
+
+Functions and Types
+-------------------
+
+Besides the types ``string`` and ``regexp``, Augeas also has a type
+``lens`` for lenses_, ``filter`` for file name filters and ``transform`` for
+describing what files are transformed with what lens.
+
+Functions are declared similar to variables, by adding a list of parameters
+and their types to the declaration of the function name:
+
+::
+
+  let x_space_y (x:string) (y:string) = x . " " . y
+
+declares a function of two arguments ``x`` and ``y``, which must both be
+strings. Types are statically checked by the interpreter.
+
+To evaluate a function, simply write
+
+::
+
+  let hello_world = x_space_y "Hello" "World"
+
+You can also create new functions by currying:
+
+::
+
+  let hello_y = x_space_y "Hello"
+
+Now, ``hello_y`` is a function that takes one string argument and appends
+it to the string ``"Hello" . " "``, so that
+
+::
+
+  let hello_world2 = hello_y "World"
+
+has the same value as ``hello_world``.
+
+Unit Tests
+-----------
+
+The Augeas language has a builtin facility for unit testing lenses. Let's
+first declare a simple lens
+
+::
+
+  let lns = [ key /[a-z]+/ . del /[ \t]*:[ \t]*/ ": " . store /[a-z]+/ . del "\n" "\n"]*
+
+This lens transforms a line like ``var :  value`` into a tree ``{ "var" =
+"value" }``. The notation we use for trees is
+
+::
+
+ TREE ::= '{' LABEL '=' VALUE TREE '}' TREE
+
+For example, ``{ "k1" = "v1" } { "k2" = "v2" { "k2.1" } }`` is a tree with
+two nodes at the root level, labeled ``k1`` and ``k2`` with values ``v1``
+and ``v2``, and ``k2`` has one child labeled ``k2.1`` with no associated
+value.
+
+*get* tests
++++++++++++++
+
+The *get* direction of ``lns`` can be tested with
+
+::
+
+  test lns get "var : value\n" = { "var" = "value" }
+
+The test transforms the string ``"var : value"`` using ``lns`` and checks
+that it produces a tree with one node labeled ``var`` with value
+``value``. The test result after the ``=`` can also be a ``?``, which
+prints the result of the transformation, and a ``*``, which expects that
+the test fails with an exception:
+
+::
+
+  test lns get "var : value\n" = ?   (* Prints the tree *)
+  test lns get "var1 : value\n" = *
+
+The latter test succeeds, because applying the *get* of ``lns`` to ``var1 :
+value`` fails: the regular expression ``/[a-z]+/`` in the ``key`` lens for
+``lns`` does not match ``var1``, so that the *get* of ``lns`` does not
+process the entire input string, which is flagged as an error.
+
+*put* tests
++++++++++++
+
+Testing the *put* direction involves a roundtrip from string to tree back
+to string, with possible modifications of the tree:
+
+::
+
+  test lns put "var : value\n" after set "/var" "othervalue" = "var : othervalue\n"
+
+The test first transforms ``"var : value"`` into a tree, then modifies the
+tree with the commands listed after the ``after`` keyword, and transforms
+the modified tree back to a string. That string is then compared to the
+right hand side of the test statement. The right handside can either be a
+string, in which case the test must produce that exact same string, or
+``?`` to print the test result, or ``*`` to indicate that the transform
+must fail.
+
+The ``after`` commands can make multiple changes to the tree; commands are
+separated by a ``;``:
+
+::
+
+  test lns put "var : value" after 
+     set "/var" "othervalue";
+     set "/newvar" "newvalue"
+   = "var : othervalue\nnewvar: newvalue"
+
+Besides the command ``set PATH VALUE``, the command ``rm PATH`` can be used
+to remove parts of the tree.
+
+.. [1] The syntax for local lets ``let var in exp`` is also
+   supported. Needs to be documented better.
+.. _builtins: builtin.html
+.. _lenses: lenses.html
