@@ -74,6 +74,11 @@ new line and tab characters respectively. Therefore, the string literal
 ``"\t\n"`` denotes a two character string consisting of a tab and a newline
 character.
 
+Variables must be declared before they can be used. Variables aren't
+declared until after the ``let var = exp`` statement has been processed;
+that implies that Augeas does not support recursion, since ``var`` can not
+be used in ``exp``.
+
 Regular expressions
 +++++++++++++++++++
 
