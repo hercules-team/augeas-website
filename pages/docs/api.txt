@@ -1,0 +1,131 @@
+.. -*- rst -*-
+   restindex
+     initialheaderlevel: 2
+   /restindex
+
+================
+Public API
+================
+
+This page gives a brief overview of the public API. More documentation can
+be found in the (yet to be written) man pages and in the include file
+``augeas.h``. That file declares the entire public API of Augeas.
+
+Initializing and closing Augeas
+===============================
+
+Before calling any other Augeas function, you must obtain a handle from
+
+::
+
+  augeas_t aug_init(const char *root, const char *loadpath, unsigned int flags)
+
+with arguments
+
+``ROOT``
+  a file system path; all files loaded by Augeas are loaded underneath
+  ``ROOT``
+``LOADPATH``
+  a colon separated list of directories; these directories are searched for
+  schema definitions
+``FLAGS``
+  a bitmask of ``AUG_FLAGS`` to control how Augeas saves modified files and
+  whether the slower operations of the type checker should be performed
+
+The call returns a new ``AUGEAS_T`` structure on success; that structure
+must be passed to any other calls in the API. If initialization fails, the
+call returns ``NULL``.
+
+
+To free up resources associated with an ``AUGEAS_T`` structure, call
+
+::
+
+  void aug_close(augeas_t aug);
+
+Reading and writing values
+==========================
+
+Node existance
+--------------
+::
+
+  int aug_exists(augeas_t aug, const char *path)
+
+where ``PATH`` is a `path expression`_ that matches at most one node in the
+tree. Returns ``1`` if the node exists, ``0`` if it does not exist, and
+``-1`` if the path expression is invalid or matches more than one node.
+
+Get node value
+--------------
+::
+
+  const char *aug_get(augeas_t aug, const char *path)
+
+Return the value associated with `path expression`_ ``PATH``. The value
+might be ``NULL``. Fails if ``PATH`` matches more than one path. Use
+``aug_exists`` to determine if you get ``NULL`` because of an error or
+because the value is actually ``NULL`` (Blech)
+
+Set node value
+--------------
+
+::
+
+  int aug_set(augeas_t aug, const char *path, const char *value)
+ 
+Fails and returns ``-1`` if `path expression`_ ``PATH`` matches more than
+one node. If no node exists for ``PATH``, one is created, including
+intermediate nodes, and its value is set to ``VALUE``, which may be
+``NULL``.
+
+Inserting, Deleting and Searching Nodes
+=======================================
+
+Inserting a node
+----------------
+
+::
+
+  int aug_insert(augeas_t aug, const char *path, const char *label, int  before)
+
+Insert a new sibling of `path expression`_ ``PATH`` with label ``LABEL``
+before or after ``PATH``, depending on ``BEFORE``. ``PATH`` must match
+exactly one node in the tree.
+
+Deleting nodes
+--------------
+
+::
+
+  int aug_rm(augeas_t aug, const char *path)
+
+Remove all nodes matching `path expression`_ ``PATH`` and all their
+children. Returns total number of nodes removed, or ``-1`` if ``PATH`` is
+an invalid path expression.
+
+Searching Nodes
+---------------
+
+::
+
+  int aug_match(augeas_t aug, const char *path, char ***matches)
+
+Find all nodes matching `path expression`_ ``PATH`` and return the number
+of matching nodes. If ``CHILDREN`` is not ``NULL``, allocate a new array of
+strings and return it as ``*CHILDREN``. The array is filled with path
+expressions matching exactly one of the nodes matched by ``PATH``.
+
+Saving the tree
+===============
+
+::
+
+  int aug_save(augeas_t aug)
+
+Save the parts of the tree that have been changed into their respective
+files. Return ``0`` on success and ``-1`` on failure. Yes, error reporting
+needs to be improved. Some info can be found in the ``error`` nodes
+underneath ``/augeas/files`` in the tree.
+
+.. _path expression: tree.html
