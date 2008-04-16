@@ -7,6 +7,13 @@ img { border: none; margin: 0px; padding: 0px; }
 #wrapper { margin: 0px auto; text-align: left; }
 
 table, tr, td { margin: 0px; padding: 0px; vertical-align: top; }
+table.simple-table { 
+  border-collapse: collapse;
+  border: solid;
+  border-width: 1px;
+}
+.simple-table tr, .simple-table td { padding: 2px }
+.simple-table th { background: #eeeeff; padding: 2px }
 #left { width: 100px; padding: 0px 10px; padding-top: 30px; }
 #right { padding: 0px 10px; padding-top: 30px; }
 
