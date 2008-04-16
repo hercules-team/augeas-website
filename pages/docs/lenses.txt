@@ -94,7 +94,7 @@ Lens combinators
 
 Concatenation
   The ``.`` operator concatenates two lenses ``L1 . L2``, by applying
-  ```L1`` and then ``L2``. Concatenation requires that any string (for the
+  ``L1`` and then ``L2``. Concatenation requires that any string (for the
   *get* direction) or any tree (for the *put*/*create* direction) that
   matches ``L1 . L2`` can be split in exactly one way into one part matching
   ``L1`` and one part matching ``L2``.
