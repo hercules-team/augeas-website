@@ -2,6 +2,7 @@
    restindex
      initialheaderlevel: 2
      page-title: Documentation
+     section-pages: , api, tree, lenses 
    /restindex
 
 =============
@@ -23,12 +24,22 @@ right now is the public header file ``augeas.h`` and ``augtool``'s
 closely, and therefore give you an easy way to tinker with it without
 writing any code.
 
-Writing file format descriptions
---------------------------------
+* `Public API`_
+* `Tree Representation and Path Expressions`_
+
+Writing schemas
+---------------
 
 If you are mainly interested in describing new file formats, you should
-read about Augeas' `internal tree representation`_ and about `lenses`_, the
-basic building blocks of the transformation between files and the tree.
+read about `lenses`_, the basic building blocks of the transformation
+between files and the tree, and the tutorial on `writing schemas`_.
 
-.. _internal tree representation: tree.html
+* Lenses_
+* `Writing Schemas`_
+* `Language Overview`_
+
+.. _tree representation and path expressions: tree.html
+.. _writing schemas: writing-schemas.html
 .. _lenses: lenses.html
+.. _Public API: api.html
+.. _Language Overview: language.html
