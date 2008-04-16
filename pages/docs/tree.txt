@@ -2,6 +2,7 @@
    restindex
      initialheaderlevel: 2
      page-title: Tree
+     encoding: utf8
    /restindex
 
 =========
@@ -9,98 +10,132 @@ The tree
 =========
 
 The tree that Augeas maintains is very similar to the tree of files and
-directories in a filesystem: the components of a path are strings that can
-not contain the character ``/``, and leaves have an optional value
-associated with them, which can be an arbitrary string.
+directories in a filesystem: the components of a path are strings that can,
+and nodes have an optional value associated with them, which can be an
+arbitrary string.
 
-Augeas' tree deviates from this model in one important way: multiple
-children in a tree can have the same label. For example, the lens that
-processes ``sshd_config`` uses that to map multiple ``AcceptEnv`` lines
-into multiple nodes ``/system/config/sshd/AcceptEnv``, one for each line in
-the file. You can see those nodes in ``augtool`` with
+Augeas' tree deviates from the files-in-a-filesystem model in one important
+way: multiple children in a tree can have the same label. For example, the
+schema for ``/etc/hosts`` uses that to map multiple aliases for the same
+host to multiple nodes, all with the path ``/files/etc/hosts/N/alias``,
+where ``N`` is the number of the host entry in the file. All numbering in
+Augeas starts with one, not zero.
 
-::
+With that, a tree node consists of three pieces of data:
 
-  augtool> print /system/config/sshd
+a *label*
+  a string that is part of the path of the node. The string can contain any
+  characters except for ``/``, ``*``, or ``[``. Strictly speaking, nodes
+  can also have ``NULL`` as a label, but such nodes are not accessible
+  through the public API |---| they are sometimes used by the lenses
+  processing the files to store important formatting information.
+a *value*
+  an arbitrary string or ``NULL``
+the *children*
+  a list of tree nodes, where multiple children can have the same
+  label. Since files are inherently sequential, ordering in the list of
+  children matters.
 
-The Augeas API makes sure that these nodes appear as one logical node:
-compare the result of the above print with the result of 
+Path expressions
+----------------
 
-::
+The paths passed in through the public API are in fact path expressions,
+implementing a very small subset of XPath_. Formally, a path expression
+consists of a list of segments, separated by ``/``. Each segment can either
+be a label, a label followed by ``[N]`` where ``N`` is a poitive number or
+``last()``, or a ``*``. When Augeas traverses its tree to find the node(s)
+corresponding to path expressions, it matches segments against node labels,
+following these rules:
 
-  augtool> ls /system/config/sshd/AcceptEnv
+``*``
+  matches any node label; the ``*`` does *not* match multiple segments of
+  the path, i.e. ``/a/*/c`` matches a node at ``/a/b/c`` but not
+  ``/a/b1/b2/c``.
+``label[N]``
+  matches the N-th node with label ``label``, counting siblings with the
+  same label starting at one. The special value ``last()`` matches the last
+  sibling with the given label.
+``label``
+  matches *all* nodes with that label
 
-The ``ls`` command in ``augtool`` directly corresponds to the ``aug_ls``
-call in the public API.
+To illustrate this, a few examples:
+
+.. class:: simple-table
+
+========================== =======
+Path expression            matches
+========================== =======
+``/a``                     All children of the root with label ``a``
+``/b[last()]/c``           All children of the last ``b`` child of the
+                           root whose label is ``c``
+``/*``                     All children of the root, regardless of label
+``/*/b``                   All children of the nodes matched by ``/\*``
+                           with a label ``b``
+``/a[3]/b[last()]``        The last child with label ``b`` of the third
+                           child with label ``a`` of the root
+========================== =======
+
+The ``match`` command in ``augtool`` provides a simple way to explore what
+path expressions match which nodes.
 
 Important paths
 ---------------
 
 The Augeas tree consist of two separate hierarchies: ``/augeas`` used for
-reporting important information about how files were processed, and
-``/system/config`` containing the result of parsing configuration files.
+reporting important metadata, in particular information about how files
+were processed, and ``/files`` containing the result of parsing
+configuration files.
 
-Configuration data in ``/system/config``
+Configuration data in ``/files``
 ****************************************
 
-By convention, all configuration files get parsed into the
-``/system/config`` hierarchy. You can think of it as corresponding to the
-``/etc`` directory in the file system.
-
-How a file is mapped into the tree is controlled by the ``map`` statement
-in the Augeas descriptor. The ``map`` statement has the following syntax:
-
-::
-
-  map
-    grammar NAME
-    include GLOB P1 P2 ... PN
-  end
-
-The ``include`` statement establishes the actual mapping of files into the
-tree: ``GLOB`` can be an arbitrary shell globbing expression, for example,
-``/etc/pam.d/*``. Any file matching that glob [1]_ will be processed according
-to this ``map`` statement, using the grammar with name ``NAME``. The
-grammar can be declared in the same file or in a different file, as long as
-it can be found on Augeas's search path, which defaults to
-``/usr/share/augeas/lenses`` and the paths in the environment variable
-``AUGEAS_LENS_LIB``.
-
-The point where the contents of a file are mapped into the tree is computed
-from the path components ``P1``, ``P2``, ... ``PN``: each of them can be a
-string denoting a path, or the special symbol ``$basename``, which
-evaluates to the basename of the file matched by the glob [2]_. The final
-path in the tree is the concatenation of all the ``Pi``.
+By convention, all configuration files get parsed into the ``/files``
+hierarchy. The contents of a file that has the absolute path ``/PATH`` in
+the file system appears at ``/files/PATH`` in the tree. For example, the
+contents of ``/etc/hosts`` appear at ``/files/etc/hosts``.
 
 Metainformation in ``/augeas``
 ******************************
 
-The ``/augeas`` hierarchy reports some information for each file ``p`` that
-was processed in ``/augeas/files/$p``. For example, for the file
-``/etc/hosts``, printing ``/augeas/files/etc/hosts`` shows:
+The ``/augeas`` hierarchy reports important metadata about Augeas' inner
+workings. All entries under ``/augeas`` are readonly |---| it is possible
+to change them by issuing ``set`` commands, but those changes have no
+influence on how Augeas goes about its business.
 
-::
+The entries ``/augeas/root`` and ``/augeas/save`` report the file system
+root from which files are read, and how files are saved. The save modes,
+corresponding to starting ``augtool`` with the ``-n``, the ``-b``, or
+neither of these options are ``newfile``, ``backup``, and ``overwrite``.
 
-  augtool> print /augeas/files/etc/hosts
-  /augeas/files/etc/hosts/path = /system/config/hosts
-  /augeas/files/etc/hosts/grammar = hosts
-  /augeas/files/etc/hosts/error
+For each file ``/PATH`` that was processed, some metadata is presented in
+``/augeas/files/PATH``. That information is due to be revised soon; the
+entries mentioned here will remain, but other entries may be removed.
 
-The ``path`` value indicates that the result of parsing ``/etc/hosts`` can
-be found underneath ``/system/config/hosts``. That mapping is controlled by
-the ``map`` statement in ``hosts.aug``. The ``grammar`` value indicates the
-grammar used to process ``/etc/hosts``. The ``error`` entry is set if any
-errors happen during processing the file, e.g. if the file can not be read
-or can not be parsed using the specified grammar. Successful processing, as
-is the case here, is indicated by the ``error`` entry having the value
-``NULL``.
+Underneath ``/augeas/files/PATH``, the entry ``error`` has no value if
+processing of the file was successful. Values that indicate errors are
 
-.. [1] Some files are actually never matched by a glob: anything that
-    looks like an editor backup file (ending in ``~``) or files with the
-    extension ``.augnew`` are suppressed. Which files are excluded in this
-    way is hardcoded right now.
+``read_failed``
+  Reading the file failed; this means that the file exists, but can not be
+  read, for example, because of insufficient permissions
+``parse_failed``
+  Parsing the file into the tree failed. This usually means that the file
+  does not match the lens that was applied to it.
+``put_read``
+  Reading the file before saving changes of it failed, for similar reasons
+  as ``read_failed`` indicates. Before Augeas writes a changed file, it
+  has to read the original file back in to extract comments etc.
+``rename_augsave``
+  Renaming the original file to one ending with ``.augsave`` failed; this
+  can only happen when the save mode is ``backup``
+``rename_augnew``
+  Renaming the new file with extension ``.augnew`` to the original file
+  name failed; this can only happen when the save mode is ``backup``
 
-.. [2] It would, of course, be desirable to have more flexible ways to
-   map file names to tree paths. That will likely only happen after the
-   Augeas language has been revamped, since more flexible mappings require
-   much more flexibility in the language.
+The entry ``lens/info`` underneath ``/augeas/files/PATH`` indicates the lens
+that is used to process the file. The value contains the path to the
+``.aug`` schema definition, and the line and column number where that lens
+was defined. For example, ``/augeas/files/etc/hosts/lens/info`` might
+have the value ``/usr/share/augeas/lenses/hosts.aug:18.12-.34``.
+
+.. _XPath: http://www.w3.org/TR/xpath
+.. |---| unicode:: U+2014  .. em dash
