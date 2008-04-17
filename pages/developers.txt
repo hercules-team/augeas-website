@@ -43,7 +43,7 @@ To build and explore, you need to:
 
   cd augeas
   ./autogen.sh && make
-  # Start a session with augtool that reads lens descriptions from ./spec
+  # Start a session with augtool that reads lens descriptions from ./lenses
   # and runs with AUGEAS_ROOT=./build/try, populated from ./tests/root/
   ./src/try cli
 
