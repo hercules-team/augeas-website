@@ -62,7 +62,7 @@ Can I use Augeas in a shell script ?
   underlying files with shell scripts. Run ``augtool help`` for a list of
   commands ``augtool`` supports.
 Can I use Augeas from Ruby/Python/PHP ... ?
-  Ruby bindings have been implemented and are available for
+  Ruby and Python bindings have been implemented and are available for
   download_. Patches/aditions for other languages are eagerly anticipated.
   The public API that needs to be exposed by language bindings is small
   |--| only 11 functions.

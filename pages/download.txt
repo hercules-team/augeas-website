@@ -18,6 +18,17 @@ No matter what you do, remember that Augeas is **prototype** code and will
 most likely **eat** members of your **immediate family** (and not
 necessarily the ones you thought had it coming)
 
+Python bindings
+---------------
+
+Python bindings for Augeas are available:
+
+* RPM's for Fedora/RHEL can be found in `my yum repo`_
+* The latest released tarball ``python/python-augeas-*`` is on the
+  `download page`_
+* Check out the `Python bindings`_ from the mercurial repository (see
+  Contribute_ for instructions)
+
 Ruby bindings
 -------------
 
@@ -33,4 +44,5 @@ Ruby bindings for Augeas are available:
 .. _download page: http://augeas.net/download/
 .. _mercurial repository: http://hg.et.redhat.com/misc/augeas
 .. _Ruby bindings: http://hg.et.redhat.com/misc/ruby-augeas
+.. _Python bindings: http://hg.et.redhat.com/misc/python-augeas
 .. _Contribute: developers.html

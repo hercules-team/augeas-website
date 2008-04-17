@@ -53,6 +53,9 @@ Besides autotools_, you will need to have ``readline-devel``,
 What language bindings are available ?
 --------------------------------------
 
+Ruby
+++++
+
 Ruby bindings have been contributed by Bryan Kearney and can be found in a
 `separate mercurial repository`_. To check them out, run
 
@@ -63,8 +66,19 @@ Ruby bindings have been contributed by Bryan Kearney and can be found in a
 To build them, you need ``rake``. Simply run ``rake build`` to compile
 them.
 
+Python
+++++++
+
+Python bindings have been contributed by Harald Hoyer and can be found in
+`their own mercurial repository`_. To check them out, run
+
+::
+
+  hg clone http://hg.et.redhat.com/misc/python-augeas
+
 .. _mercurial repository: http://hg.et.redhat.com/misc/augeas
 .. _separate mercurial repository: http://hg.et.redhat.com/misc/ruby-augeas
+.. _their own mercurial repository: http://hg.et.redhat.com/misc/python-augeas
 .. _Todo: todo.html
 .. _the list page: https://www.redhat.com/mailman/listinfo/augeas-devel
 .. _autotools: http://sources.redhat.com/autobook/

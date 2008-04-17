@@ -23,9 +23,6 @@ hopefully soon; patches enthusiastically appreciated:
 * Make Augeas buildable on more platforms. It has been built on Fedora and
   RHEL, but I have no idea how hard it is to build Augeas on other
   platforms. Given a POSIX C library, the changes needed should be slight.
-* Write language bindings for Python . This could happen right
-  now. The public API in ``augeas.h`` is pretty stable, and that's all that
-  should be visible to users of the library.
 * Remove libfa's dependency on glib by using a different hashtable
   implementation (maybe kazlib_) Requiring glib just for a hash table is
   overkill - but so is writing our own.
