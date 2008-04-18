@@ -31,6 +31,8 @@ How do I get Augeas ?
   The download_ page explains where you can find released RPM's and
   tarballs and how you can check the latest development version out from
   Mercurial
+What's with that name ?
+  To quote Wikipedia_: "*In Greek mythology, Augeas ... was King of Elis ... He is best known ... for his stables, which housed the single greatest number of cattle in the country and had never been cleaned.*"
 How do I contribute to Augeas ?
   The main means of communication is the `Augeas mailing list`_
   ``augeas-devel@redhat.com``. For more information on contributing, see
@@ -184,5 +186,6 @@ Why is there no operation to match a regular expression against a string ?
 .. _Libfa: libfa/
 .. _here: libfa/operations.html
 .. _GNU Regex: http://www.delorie.com/gnu/docs/regex/regex.html
+.. _Wikipedia:  http://en.wikipedia.org/wiki/Augeas
 .. |--| unicode:: U+2013  .. em dash
 .. |---| unicode:: U+2014  .. em dash
