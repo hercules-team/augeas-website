@@ -23,9 +23,6 @@ hopefully soon; patches enthusiastically appreciated:
 * Make Augeas buildable on more platforms. It has been built on Fedora and
   RHEL, but I have no idea how hard it is to build Augeas on other
   platforms. Given a POSIX C library, the changes needed should be slight.
-* Remove libfa's dependency on glib by using a different hashtable
-  implementation (maybe kazlib_) Requiring glib just for a hash table is
-  overkill - but so is writing our own.
 * Named character classes in regular expressions. Other differences to
   extended POSIX regexps are probably not worth addressing (collating
   sequences) or are impossible to address with true regular expressions
