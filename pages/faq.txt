@@ -38,7 +38,7 @@ How do I contribute to Augeas ?
   ``augeas-devel@redhat.com``. For more information on contributing, see
   `the contribute page`_
 I don't know any C |---| can I still help ?
-  Of course. Besides writing code, there are many more areas where Augeas
+  Of course. Besides writing code, there are `many more areas`_ where Augeas
   needs help: evaluating existing tree representations of configuration
   files, writing descriptions for new file formats, and documenting Augeas'
   tree structure are all areas where help is sorely needed.
@@ -179,7 +179,8 @@ Why is there no operation to match a regular expression against a string ?
 .. _LGPL: http://www.gnu.org/licenses/lgpl.html
 .. _download: download.html
 .. _Augeas mailing list: https://www.redhat.com/mailman/listinfo/augeas-devel
-.. _the contribute page: contribute.html
+.. _the contribute page: developers.html
+.. _many more areas: developers.html
 .. _XPath: http://www.w3.org/TR/xpath
 .. _Harmony project: http://alliance.seas.upenn.edu/~harmony/
 .. _extended POSIX regexps: http://www.regular-expressions.info/posix.html

@@ -7,6 +7,19 @@
 Contribute
 =========================
 
+How can I help ?
+----------------
+
+One easy way to help is to `write a description`_ for your favorite config
+file; you don't need to be a developer to do that. 
+
+If you want to roll up your sleeves and hack, the Todo_ list has some items
+that desparately need somebody to look at. Particularly, getting Augeas to
+build on a wide variety of platforms and packaging it for them do not
+require a lot of knowledge of Augeas internals. Since Augeas is a fairly
+low-level service, patching your favorite config management
+tool/script/application to use it is also a great way to help.
+
 Where is the mailing list ?
 ---------------------------
 
@@ -16,17 +29,15 @@ list page`_.
 The list is for any discussion around Augeas, be it bug reports, feature
 requests, trouble writing file format descriptions etc.
 
-How can I help ?
-----------------
+Where is the IRC channel ?
+--------------------------
 
-One easy way to help is to write a description for your favorite config
-file; you don't need to be a developer to do that. 
+The best place to find somebody connected to Augeas on IRC is ``#augeas``
+on Freenode_. Use the following settings on your IRC client:
 
-If you want to roll up your sleeves and hack, the Todo_ list has some items
-that desparately need somebody to look at. Particularly, writing language
-bindings and getting Augeas to build on a wide variety of platforms do
-not require a lot of knowledge of Augeas internals, and might be an ideal
-way to cut your teeth.
+* Server: ``chat.freenode.net``
+* Port: ``6667`` (the default IRC port)
+* Channel: ``#augeas``
 
 Where is the source ?
 ---------------------
@@ -84,3 +95,5 @@ Python bindings have been contributed by Harald Hoyer and can be found in
 .. _autotools: http://sources.redhat.com/autobook/
 .. _Bison: http://www.gnu.org/software/bison/
 .. _Flex: http://flex.sourceforge.net/
+.. _Freenode: http://freenode.net/
+.. _write a description: docs/writing-schemas.html
