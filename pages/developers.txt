@@ -33,7 +33,7 @@ Where is the IRC channel ?
 --------------------------
 
 The best place to find somebody connected to Augeas on IRC is ``#augeas``
-on Freenode_. Use the following settings on your IRC client:
+on Freenode_. Use the following settings in your IRC client:
 
 * Server: ``chat.freenode.net``
 * Port: ``6667`` (the default IRC port)
