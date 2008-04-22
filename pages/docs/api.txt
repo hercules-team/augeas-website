@@ -51,26 +51,21 @@ To free up resources associated with an ``AUGEAS_T`` structure, call
 Reading and Writing Values
 ==========================
 
-Node existance
---------------
+Get node value and node existance
+---------------------------------
 ::
 
-  int aug_exists(augeas_t aug, const char *path)
+  int aug_get(augeas_t aug, const char *path, const char **value)
 
-where ``PATH`` is a `path expression`_ that matches at most one node in the
-tree. Returns ``1`` if the node exists, ``0`` if it does not exist, and
-``-1`` if the path expression is invalid or matches more than one node.
+Lookup the value associated with PATH. VALUE can be NULL, in which case
+it is ignored. If VALUE is not NULL, it is used to return a pointer to
+the value associated with PATH if PATH matches exactly one node. If PATH
+matches no nodes or more than one node, \*VALUE is set to NULL.
 
-Get node value
---------------
-::
+Return 1 if there is exactly one node matching PATH, 0 if there is none,
+and a negative value if there is more than one node matching PATH, or if
+PATH is not a legal path expression.
 
-  const char *aug_get(augeas_t aug, const char *path)
-
-Return the value associated with `path expression`_ ``PATH``. The value
-might be ``NULL``. Fails if ``PATH`` matches more than one path. Use
-``aug_exists`` to determine if you get ``NULL`` because of an error or
-because the value is actually ``NULL`` (Blech)
 
 Set node value
 --------------
