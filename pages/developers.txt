@@ -58,8 +58,9 @@ To build and explore, you need to:
   # and runs with AUGEAS_ROOT=./build/try, populated from ./tests/root/
   ./src/try cli
 
-Besides autotools_, you will need to have ``readline-devel``,
-``glib-devel``, Bison_ and Flex_ installed to build Augeas successfully.
+Besides autotools_ (in particular, ``autoconf``, ``automake``, and
+``libtool``), you will need to have ``readline-devel``, Bison_ and Flex_
+installed to build Augeas successfully.
 
 What language bindings are available ?
 --------------------------------------
