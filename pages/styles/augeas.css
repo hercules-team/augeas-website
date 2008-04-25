@@ -1,0 +1,371 @@
+
+
+
+h1 {
+    font-weight: normal;
+}
+
+body {
+    background: white;
+    color: black;
+}
+
+#header {
+    margin: 0px;
+    height: 106px;
+    width: 100%;
+    background: url(topbar-bg.png) 5px 0px repeat-x;
+    border: 0px;
+}
+
+#body {
+    float: left;
+    border: 0px;
+    left: 0px;
+    margin: 0px;
+    width: 100%;
+}
+
+#content {
+    padding: 0px;
+    margin: 0px;
+    margin-left: 210px;
+}
+
+
+#intro {
+    float: left;
+    top: 0px;
+    width: 351px;
+}
+
+#bullets {
+    margin-left: 355px;
+}
+
+
+#frontpage h1 {
+    padding: 0px;
+    margin: 0px;
+    color: #82aa32;
+}
+
+#frontpage h2 {
+    border-bottom: 1px solid #ccc;
+    padding: 0px;
+    margin: 0px;
+}
+
+#bullets {
+    padding-top: 0.3em;
+    padding-left: 1em;
+}
+
+#bullets h2 {
+    padding-bottom: 0.2em;
+}
+
+#bullets li {
+    margin-bottom: 0.5em;
+}
+
+#graphic {
+    padding-top: 1em;
+}
+
+#menu {
+    float: left;
+    padding-top: 0px;
+    left: 0px;
+    width: 200px;
+    margin-bottom: 1em;
+}
+
+#menu ul {
+    background: white;
+    margin: 0px;
+    padding: 0px;
+    margin-left: 10px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+
+#menu li ul {
+    margin-left: 0px;
+    padding: 0px;
+}
+
+#menu ul li {
+    list-style: none;
+    color: black;
+    padding: 0px;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+#menu li ul li {
+    font-size: 1em;
+}
+
+#menu ul li a, #menu ul li span {
+    text-decoration: inherit;
+    color: inherit;
+    display: block;
+    padding: 6px;
+    margin: 1px;
+}
+
+#menu ul li .active {
+    background: #bad08e;
+}
+
+#menu ul.l0 li .inactive {
+    background: #d3e1b7;
+}
+
+
+#menu ul.l1 li .inactive {
+    background: #ecf2e0;
+    border-left: 6px solid #d3e1b7;
+}
+
+#menu ul.l1 li .inactive,
+#menu ul.l1 li .active {
+    padding-left: 1em;
+}
+
+#menu ul.l1 li .active {
+    border-left: 6px solid #bad08e;
+}
+
+#headerLogo {
+    position: absolute;
+    top: 0px;
+    left:0px;
+    height: 105px;
+    width: 390px;
+    background: url(topbar-graphic.png);
+}
+#headerSearch {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    padding: 2em;
+}
+
+#headerSearch input {
+    border: 1px solid #999999;
+    color: #999999;
+    background: white;
+    padding: 3px;
+    font-size: 1em;
+}
+
+#headerSearch #submit {
+    border: 1px solid #999999;
+    background: #eeeeee;
+    color: black;
+    padding: 3px;
+    font-size: 1em;
+}
+
+
+#sitemap ul li {
+    list-style: none;
+}
+
+#sitemap ul {
+    margin: 1em;
+    padding: 0em;
+}
+
+#sitemap ul ul {
+    padding-left: 2em;
+}
+
+#sitemap li {
+    margin: 0.5em;
+}
+
+#sitemap a {
+    color: inherit;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+pre {
+    border: 1px solid #bad08e;
+    background: #d3e1b7;
+    color: black;
+    padding: 1em;
+}
+
+a {
+    color: inherit;
+}
+
+
+h1 a, h2 a, h3 a, h4 a, h5 a {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+#changelog .author {
+    color: #3c857c;
+    font-weight: bold;
+}
+
+p.image {
+    text-align: center;
+}
+
+
+#footer {
+    clear: both;
+    position: relative;
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    width: 100%;
+    background: #757575;
+    height: 180px;
+}
+/* This is hidden from IE <= 6 because it can't do transparency */
+body > #footer {
+    background: #757575 url(footer_pattern.png) repeat-x;
+}
+
+#footer p {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    margin: 0px;
+    border: 0px;
+    width: 220px;
+    text-align: center;
+}
+
+#footer p a img {
+    border: 0px;
+}
+
+#projects {
+    margin: 0px;
+    border: 0px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+}
+
+
+#projects dl {
+    margin: 0px;
+    border: 0px solid white;
+    height: 180px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+/* This is hidden from IE <= 6 because it can't do transparency */
+head:first-child+body #projects dl {
+    background: url(footer_corner.png) no-repeat;
+}
+
+
+#projects #p1 {
+    margin-left: 25%;
+    width: 75%;
+}
+
+#projects #p2 {
+    margin-left: 50%;
+    width: 50%;
+}
+
+#projects #p3 {
+    margin-left: 75%;
+    width: 25%;
+}
+
+#projects dt, #projects dd {
+    padding: 0px;
+    margin: 0px;
+}
+
+#projects #p1 dt, #projects #p1 dd {
+    width: 33%;
+    }
+#projects #p2 dt, #projects #p2 dd {
+    width: 50%;
+}
+#projects #p3 dt, #projects #p3 dd {
+    width: 99%;
+}
+
+#projects {
+}
+
+#projects span {
+    font-size: 0.8em;
+    display: block;
+    padding-left: 1em;
+    padding-top: 0.5em;
+}
+
+#projects a {
+    font-size: 0.8em;
+    display: block;
+    padding-left: 0.8em;
+    padding-top: 1em;
+}
+
+#projects a {
+    color: white;
+    text-decoration: inherit;
+}
+
+#projects span {
+    color: #ccc;
+}
+
+
+.screenshot1 img,
+.screenshot2 img {
+    border: 0px;
+}
+
+.screenshot1,
+.screenshot2 {
+    padding: 1em;
+    background: #6a7178;
+    color: #dddddd;
+    text-align: center;
+    width: 45%;
+    margin-top: 1em;
+    margin-bottom: 3em;
+}
+
+.screenshot1 {
+    position: relative;
+    float: left;
+    margin-left: auto ! important;
+    margin-right: auto ! important;
+    clear: both;
+}
+.screenshot2 {
+    position: relative;
+    float: right;
+    margin-left: auto ! important;
+    margin-right: auto ! important;
+    clear: right;
+}
+
+.screenshot1 a,
+.screenshot2 a {
+    color: inherit;
+}
+
+dd {
+    padding-bottom: 1em;
+}

@@ -1,5 +1,5 @@
 BUILD=build/html
-all: rest2web $(BUILD)/styles/default.css $(BUILD)/styles/favicon.ico
+all: rest2web $(BUILD)/styles/default.css $(BUILD)/styles/favicon.ico $(BUILD)/styles/augeas.css $(BUILD)/styles/et_logo.png
 
 rest2web:
 	python /homes/lutter/packages/rest2web-0.5.1/r2w.py
