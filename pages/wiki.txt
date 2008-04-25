@@ -1,0 +1,6 @@
+.. -*- rst -*-
+   restindex
+     target: wiki/
+     build: no
+     page-title: Wiki
+   /restindex
