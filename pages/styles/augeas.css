@@ -1,9 +1,18 @@
 
+/*
+  Color scheme:
+    dark green:  #65a703     Active menu entry
+    light green: #c9e027     Inactive menu entries
+    pale green:  #ebf8d5     Callout background
+    brown:       #8d4a2c     Headings
+*/
 
+h1, h2 { font-weight: bold; color: #8d4a2c; }
 
-h1 {
-    font-weight: normal;
-}
+h1.title { margin-top: 0px; margin-bottom: 14px }
+
+h3, h4, h5, h6 { font-weight: normal; color: #8d4a2c; }
+
 
 body {
     background: white;
@@ -14,7 +23,6 @@ body {
     margin: 0px;
     height: 106px;
     width: 100%;
-    background: url(topbar-bg.png) 5px 0px repeat-x;
     border: 0px;
 }
 
@@ -23,13 +31,15 @@ body {
     border: 0px;
     left: 0px;
     margin: 0px;
+    padding-top: 0px;
     width: 100%;
 }
 
 #content {
     padding: 0px;
-    margin: 0px;
+    margin-top: 0px;
     margin-left: 210px;
+    margin-bottom: 20px;
 }
 
 
@@ -100,12 +110,13 @@ body {
     color: black;
     padding: 0px;
     font-weight: bold;
-    font-size: 1.2em;
 }
 
+/*
 #menu li ul li {
     font-size: 1em;
 }
+*/
 
 #menu ul li a, #menu ul li span {
     text-decoration: inherit;
@@ -116,17 +127,17 @@ body {
 }
 
 #menu ul li .active {
-    background: #bad08e;
+    background: #65a703;
 }
 
 #menu ul.l0 li .inactive {
-    background: #d3e1b7;
+    background: #c9e027;
 }
 
 
 #menu ul.l1 li .inactive {
-    background: #ecf2e0;
-    border-left: 6px solid #d3e1b7;
+    background: #c9e027;
+    border-left: 6px solid #65a703;
 }
 
 #menu ul.l1 li .inactive,
@@ -135,40 +146,19 @@ body {
 }
 
 #menu ul.l1 li .active {
-    border-left: 6px solid #bad08e;
+    border-left: 6px solid #65a703;
 }
 
 #headerLogo {
     position: absolute;
-    top: 0px;
-    left:0px;
-    height: 105px;
-    width: 390px;
-    background: url(topbar-graphic.png);
+    top: 3px;
+    left: 3px;
+    height: 90px;
+    width: 260px;
+    background: url(augeas-logo.png);
+    background-repeat: no-repeat;
+    background-position: top left;
 }
-#headerSearch {
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    padding: 2em;
-}
-
-#headerSearch input {
-    border: 1px solid #999999;
-    color: #999999;
-    background: white;
-    padding: 3px;
-    font-size: 1em;
-}
-
-#headerSearch #submit {
-    border: 1px solid #999999;
-    background: #eeeeee;
-    color: black;
-    padding: 3px;
-    font-size: 1em;
-}
-
 
 #sitemap ul li {
     list-style: none;
@@ -194,10 +184,17 @@ body {
 }
 
 pre {
-    border: 1px solid #bad08e;
-    background: #d3e1b7;
-    color: black;
-    padding: 1em;
+  border: 1px solid #65a703;
+  background: #ebf8d5;
+  padding: 5px;
+  margin-right: 10px;
+}
+
+.callout {
+  border: 0px;
+  background: #ebf8d5;
+  padding: 5px;
+  margin-right: 10px;
 }
 
 a {
@@ -228,7 +225,7 @@ p.image {
     border: 0px;
     width: 100%;
     background: #757575;
-    height: 180px;
+    height: 120px;
 }
 /* This is hidden from IE <= 6 because it can't do transparency */
 body > #footer {
@@ -262,7 +259,7 @@ body > #footer {
 #projects dl {
     margin: 0px;
     border: 0px solid white;
-    height: 180px;
+    height: 120px;
     position: absolute;
     top: 0px;
     left: 0px;
@@ -366,6 +363,17 @@ head:first-child+body #projects dl {
     color: inherit;
 }
 
+dt {
+  color: #8d4a2c;
+}
 dd {
     padding-bottom: 1em;
 }
+
+table.simple-table {
+  border-collapse: collapse;
+  border: solid;
+  border-width: 1px;
+}
+.simple-table tr, .simple-table td { padding: 6px }
+.simple-table th { background: #c9e027; padding: 6px }

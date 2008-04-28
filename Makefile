@@ -1,5 +1,10 @@
 BUILD=build/html
-all: rest2web $(BUILD)/styles/default.css $(BUILD)/styles/favicon.ico $(BUILD)/styles/augeas.css $(BUILD)/styles/et_logo.png
+BSTY=$(BUILD)/styles
+all: rest2web $(BSTY)/default.css $(BSTY)/favicon.ico \
+     $(BSTY)/augeas.css $(BSTY)/generic.css \
+     $(BSTY)/default-debug.css $(BSTY)/debug.css \
+     $(BSTY)/et_logo.png $(BSTY)/augeas-logo.png \
+     $(BSTY)/footer_corner.png $(BSTY)/footer_pattern.png
 
 rest2web:
 	python /homes/lutter/packages/rest2web-0.5.1/r2w.py
