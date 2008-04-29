@@ -2,7 +2,7 @@
 /*
   Color scheme:
     dark green:  #65a703     Active menu entry
-    light green: #c9e027     Inactive menu entries
+    light green: #c9e0a7     Inactive menu entries
     pale green:  #ebf8d5     Callout background
     brown:       #8d4a2c     Headings
 */
@@ -39,6 +39,7 @@ body {
     padding: 0px;
     margin-top: 0px;
     margin-left: 210px;
+    margin-right: 5px;
     margin-bottom: 20px;
 }
 
@@ -131,12 +132,12 @@ body {
 }
 
 #menu ul.l0 li .inactive {
-    background: #c9e027;
+    background: #c9e0a7;
 }
 
 
 #menu ul.l1 li .inactive {
-    background: #c9e027;
+    background: #c9e0a7;
     border-left: 6px solid #65a703;
 }
 
@@ -398,4 +399,4 @@ table.simple-table {
   border-width: 1px;
 }
 .simple-table tr, .simple-table td { padding: 6px }
-.simple-table th { background: #c9e027; padding: 6px }
+.simple-table th { background: #c9e0a7; padding: 6px }
