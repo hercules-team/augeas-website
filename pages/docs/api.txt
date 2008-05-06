@@ -23,7 +23,7 @@ Before calling any other Augeas function, you must obtain a handle from
 
 ::
 
-  augeas_t aug_init(const char *root, const char *loadpath, unsigned int flags)
+  augeas *aug_init(const char *root, const char *loadpath, unsigned int flags)
 
 with arguments
 
@@ -37,16 +37,16 @@ with arguments
   a bitmask of ``AUG_FLAGS`` to control how Augeas saves modified files and
   whether the slower operations of the type checker should be performed
 
-The call returns a new ``AUGEAS_T`` structure on success; that structure
-must be passed to any other calls in the API. If initialization fails, the
-call returns ``NULL``.
+The call returns a pointer to a new ``AUGEAS`` structure on success; that
+structure must be passed to any other calls in the API. If initialization
+fails, the call returns ``NULL``.
 
 
-To free up resources associated with an ``AUGEAS_T`` structure, call
+To free up resources associated with an ``AUGEAS`` structure, call
 
 ::
 
-  void aug_close(augeas_t aug);
+  void aug_close(augeas *aug);
 
 Reading and Writing Values
 ==========================
@@ -55,7 +55,7 @@ Get node value and node existance
 ---------------------------------
 ::
 
-  int aug_get(augeas_t aug, const char *path, const char **value)
+  int aug_get(augeas *aug, const char *path, const char **value)
 
 Lookup the value associated with PATH. VALUE can be NULL, in which case
 it is ignored. If VALUE is not NULL, it is used to return a pointer to
@@ -72,8 +72,8 @@ Set node value
 
 ::
 
-  int aug_set(augeas_t aug, const char *path, const char *value)
- 
+  int aug_set(augeas *aug, const char *path, const char *value)
+
 Fails and returns ``-1`` if `path expression`_ ``PATH`` matches more than
 one node. If no node exists for ``PATH``, one is created, including
 intermediate nodes, and its value is set to ``VALUE``, which may be
@@ -87,7 +87,7 @@ Inserting a node
 
 ::
 
-  int aug_insert(augeas_t aug, const char *path, const char *label, int  before)
+  int aug_insert(augeas *aug, const char *path, const char *label, int  before)
 
 Insert a new sibling of `path expression`_ ``PATH`` with label ``LABEL``
 before or after ``PATH``, depending on ``BEFORE``. ``PATH`` must match
@@ -98,7 +98,7 @@ Deleting nodes
 
 ::
 
-  int aug_rm(augeas_t aug, const char *path)
+  int aug_rm(augeas *aug, const char *path)
 
 Remove all nodes matching `path expression`_ ``PATH`` and all their
 children. Returns total number of nodes removed, or ``-1`` if ``PATH`` is
@@ -109,7 +109,7 @@ Searching Nodes
 
 ::
 
-  int aug_match(augeas_t aug, const char *path, char ***matches)
+  int aug_match(augeas *aug, const char *path, char ***matches)
 
 Find all nodes matching `path expression`_ ``PATH`` and return the number
 of matching nodes. If ``CHILDREN`` is not ``NULL``, allocate a new array of
@@ -121,7 +121,7 @@ Saving the Tree
 
 ::
 
-  int aug_save(augeas_t aug)
+  int aug_save(augeas *aug)
 
 Save the parts of the tree that have been changed into their respective
 files. Return ``0`` on success and ``-1`` on failure. Yes, error reporting
