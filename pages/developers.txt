@@ -11,7 +11,7 @@ How can I help ?
 ----------------
 
 One easy way to help is to `write a description`_ for your favorite config
-file; you don't need to be a developer to do that. 
+file; you don't need to be a developer to do that.
 
 If you want to roll up your sleeves and hack, the Todo_ list has some items
 that desparately need somebody to look at. Particularly, getting Augeas to
@@ -88,6 +88,17 @@ Python bindings have been contributed by Harald Hoyer and can be found in
 
   hg clone http://hg.et.redhat.com/misc/python-augeas
 
+OCaml
++++++
+
+`OCaml bindings`_ have been contributed by Rich Jones and can be found in
+`this mercurial repository`_. To check them out, run
+
+::
+
+  hg clone http://hg.et.redhat.com/misc/ocaml-augeas
+
+
 .. _mercurial repository: http://hg.et.redhat.com/misc/augeas
 .. _separate mercurial repository: http://hg.et.redhat.com/misc/ruby-augeas
 .. _their own mercurial repository: http://hg.et.redhat.com/misc/python-augeas
@@ -98,3 +109,5 @@ Python bindings have been contributed by Harald Hoyer and can be found in
 .. _Flex: http://flex.sourceforge.net/
 .. _Freenode: http://freenode.net/
 .. _write a description: docs/writing-schemas.html
+.. _OCaml bindings: http://et.redhat.com/~rjones/augeas/
+.. _this mercurial repository: http://hg.et.redhat.com/misc/ocaml-augeas
