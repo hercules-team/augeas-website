@@ -7,17 +7,11 @@
 Todo list
 ===============
 
-In now particular order, these are the things that need to be addressed,
-hopefully soon; patches enthusiastically appreciated: 
+In no particular order, these are the things that need to be addressed,
+hopefully soon; patches enthusiastically appreciated:
 
 * Write descriptors for more files. Eventually, Augeas should cover *all*
   commonly used configuration files
-* Reasonable runtime error reporting. Since Augeas is meant to be used as a
-  library, spewing errors on the console is useless. Errors encountered
-  during parsing are already reported underneath ``/augeas/files``. Many
-  other errors, e.g. when the tree was modified in such a way that writing
-  it to disk would result in a syntactically incorrect file, need to be
-  reported in a similar way.
 * Bring the code to production quality. Particularly memory management is a
   sore area, and the current code more than likely leaks like a sieve.
 * Make Augeas buildable on more platforms. It has been built on Fedora and
