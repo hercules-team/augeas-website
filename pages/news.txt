@@ -1,0 +1,120 @@
+.. -*- rst -*-
+   restindex
+     initialheaderlevel: 2
+     page-title: Releases
+     section-pages: , faq, tour, todo, news, developers
+   /restindex
+
+====================
+Releases
+====================
+
+0.1.1 - 2008-05-16
+--------------------
+
+- Add subtraction of regexps to the language, for example ``let re =
+  /[a-z]+/ - /(Allow|Deny)Users/`` is now legal
+- Report errors during get/put in the tree; added subnodes to
+  ``/augeas/files/PATH/error`` for that purpose
+- Many many bugfixes:
+
+  - plugged all known memory leaks
+  - fixed typecheck for lens union (l1 | l2) which was plain wrong
+  - reduce overall memory usage by releasing unused compiled regexps
+  - further performance improvements in libfa
+  - check that values match the regexps in STORE when saving
+
+- libfa can now convert an automaton back to a regular expression
+  (FA_AS_REGEXP)
+- New lenses for ``/etc/fstab``, ``/etc/xinetd.conf`` and ``/etc/xinetd.d/*``
+
+
+0.1.0 - 2008-05-01
+--------------------
+
+- Various changes to public API:
+
+  * Remove aug_exists from public API, and merge functionality into aug_get
+  * Do not hide pointer behind typedef; instead Augeas 'handle' type is now
+    struct augeas, typedef'd to augeas (Jim Meyering)
+  * Const-correctness of public API, return error indication
+    from aug_print (Jim Meyering)
+  * Make buildable on Debian Etch (remove -fstack-protector from compiler
+    switches)
+
+- Public API is now stable, and existing calls will be supported without
+  further changes
+- New schema:
+
+  * /etc/sysconfig/network-scripts/ifcfg-* (Alan Pevec)
+  * Assorted other files from /etc/sysconfig (the ones that just set
+    shell variables)
+  * /etc/apt/sources.list and /etc/apt/sources.list.d/* (Dean Wilson)
+
+- Man page for augtool (Dean Wilson)
+
+0.0.8 - 2008-04-16
+--------------------
+
+- Complete rewrite of the language for schema descriptions
+
+0.0.7 - 2008-03-14
+--------------------
+
+- Typecheck lenses; in particular, discover and complain about ambiguous
+  concatenation and iteration
+- Enable typechecking for augparse by default, and for augtool via the
+  '-c' flag
+- Fixed lens definitions in spec/ to pass typechecking. They contained
+  quite a few stupid and subtle problems
+- Greatly improved libfa performance to make typechecking reasonably
+  fast. Typechecking cmfm.aug went from more than two hours to under two
+  seconds
+
+0.0.6 - 2008-03-05
+--------------------
+
+- Make it possible to overwrite files when saving with and without
+  backups
+- Take the filesystem root as an optional argument to aug_init
+- Expose these two things as command line options in augtool
+
+
+0.0.5 - 2008-03-05
+--------------------
+
+- Changed public API to contain explicit reference to augeas_t
+  structure. This makes it easier to write threadsafe code using Augeas
+- Added libfa, finite automata library, though it's not yet used by
+  Augeas
+
+0.0.4 - 2008-02-25
+--------------------
+
+- package as RPM and make sure Augeas can be build on Fedora/RHEL
+
+0.0.3 - 2008-02-25
+--------------------
+
+- further rework; file processing now resembles Boomerang lenses much
+  more closely
+- major revamp of the internal tree representation (ordered tree where
+  multiple children can have the same label, including NULL labels)
+- move away from LL(1) parsing in favor of regular languages, since they
+  enable much better ahead-of-time checks (which are not implemented yet)
+
+0.0.2 - 2008-01-29:
+--------------------
+
+- completely reworked
+- processing of files is now based on a textual description of the
+  structure of the files (basically a LL(1) grammar)
+
+0.0.1 - 2007-12-01:
+--------------------
+
+- First release.
+- Public API and basic tree data structure.
+- Record scanning works.
+- Providers for pam.d, inittab and /etc/hosts
+- Simple tests and test driver
