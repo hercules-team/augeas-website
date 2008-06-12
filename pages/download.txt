@@ -14,10 +14,6 @@ Augeas can be downloaded in one of the following ways:
 * Check out Augeas from source from the `mercurial repository`_ (see
   Contribute_ for instructions)
 
-No matter what you do, remember that Augeas is **prototype** code and will
-most likely **eat** members of your **immediate family** (and not
-necessarily the ones you thought had it coming)
-
 Python bindings
 ---------------
 
