@@ -12,11 +12,16 @@ hopefully soon; patches enthusiastically appreciated:
 
 * Write descriptors for more files. Eventually, Augeas should cover *all*
   commonly used configuration files
-* Bring the code to production quality. Particularly memory management is a
-  sore area, and the current code more than likely leaks like a sieve.
-* Make Augeas buildable on more platforms. It has been built on Fedora and
-  RHEL, but I have no idea how hard it is to build Augeas on other
-  platforms. Given a POSIX C library, the changes needed should be slight.
+* Processing of ``httpd.conf``. It's notjust a big file with lots of
+  different directives, it can also not be described by a regular language,
+  since it allows nesting things lie ``<IfModule ...> ... </IfModule``
+  arbitrarily deep.
+* Support case-insensitive matching of regular expressions, either with a
+  new builtin function of type regexp->regexp, or by expanding the regexp
+  literal syntax to allow /[a-z]/i, i.e. add flags at the end of the regexp
+  (or both)
+* Bring the code to production quality. Particularly allocation failures
+  need to be carefully looked at.
 * Named character classes in regular expressions. Other differences to
   extended POSIX regexps are probably not worth addressing (collating
   sequences) or are impossible to address with true regular expressions
@@ -29,7 +34,9 @@ hopefully soon; patches enthusiastically appreciated:
   - Allow simple arithmetic expressions in path indices; in particular
     allow ``label[last()-N]`` to address the N-th last node called
     ``label``.
-
+  - More adventurous query syntax like
+    ``/files/etc/inittab/*/runlevels[../action="initdefault"]`` to select the
+    runlevels part of the line in inittab that sets the default runlevel.
 
 .. _Boomerang: http://alliance.seas.upenn.edu/~harmony/
 .. _ustr: http://www.and.org/ustr/
