@@ -2,7 +2,7 @@
    restindex
      initialheaderlevel: 2
      page-title: Documentation
-     section-pages: , api, tree, lenses 
+     section-pages: , api, tree, lenses
    /restindex
 
 =============
@@ -38,8 +38,15 @@ between files and the tree, and the tutorial on `writing schemas`_.
 * `Writing Schemas`_
 * `Language Overview`_
 
+Other
+-----
+
+* Slides from my talk at the `Red Hat Summit`_ `(OpenOffice presentation)`_
+
 .. _tree representation and path expressions: tree.html
 .. _writing schemas: writing-schemas.html
 .. _lenses: lenses.html
 .. _Public API: api.html
 .. _Language Overview: language.html
+.. _Red Hat Summit: augeas.pdf
+.. _(OpenOffice presentation): augeas.odp
