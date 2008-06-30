@@ -63,11 +63,11 @@ Can I use Augeas in a shell script ?
   Yes, the ``augtool`` command can be used to manipulate the tree and the
   underlying files with shell scripts. Run ``augtool help`` for a list of
   commands ``augtool`` supports.
-Can I use Augeas from Ruby/Python/OCaml/PHP ... ?
-  Ruby, Python, and OCaml bindings have been implemented and are available for
-  download_. Patches/aditions for other languages are eagerly anticipated.
-  The public API that needs to be exposed by language bindings is small
-  |--| only 10 functions.
+Can I use Augeas from Ruby/Python/OCaml/Perl/PHP ... ?
+  Ruby, Python, OCaml, and Perl bindings have been implemented and are
+  available for download_. Patches/aditions for other languages are eagerly
+  anticipated.  The public API that needs to be exposed by language
+  bindings is small |--| only 10 functions.
 Do I need to know how file formats are described ?
   No, that is only necessary if you want to change how files are mapped
   into the tree or map new files. For using Augeas, it is enough to
