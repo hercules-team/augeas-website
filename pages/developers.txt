@@ -39,6 +39,12 @@ on Freenode_. Use the following settings in your IRC client:
 * Port: ``6667`` (the default IRC port)
 * Channel: ``#augeas``
 
+Where is the Bugtracker ?
+-------------------------
+
+Bugs are kept in a `Trac instance`_ on fedorahosted.org. You need to have
+an account in the `Fedora Account System`_ to log into it.
+
 Where is the source ?
 ---------------------
 
@@ -120,3 +126,5 @@ can be found in a `repository on Sourceforge`_ and is also `documented`_.
 .. _Perl bindings: http://search.cpan.org/dist/Config-Augeas
 .. _repository on Sourceforge: http://config-model.svn.sourceforge.net/viewvc/config-model/trunk/config-augeas/
 .. _documented: http://search.cpan.org/~ddumont/Config-Augeas-0.200/lib/Config/Augeas.pm
+.. _Trac instance: https://fedorahosted.org/augeas/report/1
+.. _Fedora Account System: https://admin.fedoraproject.org/accounts/
