@@ -41,12 +41,17 @@ between files and the tree, and the tutorial on `writing schemas`_.
 Other
 -----
 
-* Slides from my talk at the `Red Hat Summit`_ `(OpenOffice presentation)`_
+* Slides from my talk at the `Red Hat Summit <augeas.pdf>`__ `(OpenOffice
+  presentation) <augeas.odp>`__
+* Talk at the `2008 Ottawa Linux Symposium
+  <http://www.linuxsymposium.org/2008/>`__ : there are `slides
+  <augeas-ols-2008.pdf>`__ `(OpenOffice presentation)
+  <augeas-ols-2008.odp>`__ from the talk and the `paper
+  <http://ols.fedoraproject.org/OLS/Reprints-2008/lutterkort-reprint.pdf>`__
+  for the proceedings
 
 .. _tree representation and path expressions: tree.html
 .. _writing schemas: writing-schemas.html
 .. _lenses: lenses.html
 .. _Public API: api.html
 .. _Language Overview: language.html
-.. _Red Hat Summit: augeas.pdf
-.. _(OpenOffice presentation): augeas.odp
