@@ -38,6 +38,12 @@ between files and the tree, and the tutorial on `writing schemas`_.
 * `Writing Schemas`_
 * `Language Overview`_
 
+Reference documentation
+-----------------------
+
+* `Existing lenses <references/lenses/index.html>`__
+* `C API <references/c_api/index.html>`__
+
 Other
 -----
 
