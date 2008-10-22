@@ -48,11 +48,11 @@ an account in the `Fedora Account System`_ to log into it.
 Where is the source ?
 ---------------------
 
-Sources are in a `mercurial repository`_. To check out the code, run
+Sources are in a `git repository`_. To check out the code, run
 
 ::
 
-  hg clone http://hg.et.redhat.com/misc/augeas
+  git clone git://git.fedorahosted.org/augeas.git
 
 To build and explore, you need to:
 
@@ -111,7 +111,7 @@ Perl
 `Perl bindings`_ have been contributed by Dominique Dumont. Their source
 can be found in a `repository on Sourceforge`_ and is also `documented`_.
 
-.. _mercurial repository: http://hg.et.redhat.com/misc/augeas
+.. _git repository: http://git.fedoraproject.org/git/?p=augeas.git;a=summary
 .. _separate mercurial repository: http://hg.et.redhat.com/misc/ruby-augeas
 .. _their own mercurial repository: http://hg.et.redhat.com/misc/python-augeas
 .. _Todo: todo.html
