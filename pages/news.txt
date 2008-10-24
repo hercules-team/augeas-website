@@ -9,6 +9,11 @@
 Releases
 ====================
 
+0.3.3 - 2008-10-24
+------------------
+- restore the behavior of aug_save; in 0.3.2, aug_save broke API by
+  returning the number of files changed on success instead of 0
+
 0.3.2 - 2008-10-21
 ------------------
 
