@@ -104,7 +104,9 @@ and running it through ``augparse`` gives us
 The first test we wrote should have also failed, because the input string
 did not end with a ``"\n"``.
 
-TO BE CONTINUED ... See examples in ``lenses/``
+More information can be found `on the Wiki`_ and in the existing lenses.
+
+.. _on the Wiki: ../wiki
 
 Transformations and Autoload
 ----------------------------
