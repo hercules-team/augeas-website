@@ -22,7 +22,7 @@ examples below were run against those files.
   export AUGEAS_ROOT=/tmp/augeas-sandbox
   mkdir $AUGEAS_ROOT
   sudo cp -pr /etc $AUGEAS_ROOT
-  sudo chown -R $USER $AUGEAS_ROOT
+  sudo chown -R $(id -nu):$(id -ng) $AUGEAS_ROOT
   augtool -b
 
 The ``-b`` option tells ``augtool`` to preserve the original file with an
@@ -86,7 +86,7 @@ or searched for with
 
 which prints ``/files/etc/hosts/10000/ipaddr``.
 
-Running ``(cd ${AUGEAS_ROOT} &&  gendiff . .augsave)`` in the sandbox
+Running ``(cd ${AUGEAS_ROOT} && diff -u ./etc/hosts ./etc/hosts.augsave)``
 confirms that ``/etc/hosts`` now has one additional entry at the end:
 
 ::
@@ -104,10 +104,10 @@ confirms that ``/etc/hosts`` now has one additional entry at the end:
 Changing ``/etc/grub.conf``
 ---------------------------
 
-Modifying a slightly more complex file, ``/etc/grub.conf``, follows the
-same lines as modifying ``/etc/hosts``. One of the big advantages of Augeas
-is that configuration data is manipulated in the same way, regardless of
-how it is stored in the native config files.
+Modifying a slightly more complex file, ``/etc/grub.conf`` [#grub_conf]_,
+follows the same lines as modifying ``/etc/hosts``. One of the big
+advantages of Augeas is that configuration data is manipulated in the same
+way, regardless of how it is stored in the native config files.
 
 While the above change to ``/etc/hosts`` can be easily achieved with
 standard shell tools (``cat`` comes to mind), and ``/etc/hosts`` in general
@@ -166,14 +166,15 @@ values are accumulated, and that their values are best viewed as arrays.
 
 To illustrate this, we will add a new environment variable ``FOO`` to the
 ``AcceptEnv`` setting in ``/etc/ssh/sshd_config``. The schema that Augeas
-uses for ``sshd_config``[1]_ by default maps multiple ``AcceptEnv`` lines
-into multiple tree nodes with the name ``AcceptEnv``, similar to how
-multiple aliases in ``/etc/hosts`` are handled. Since each line contains a
-list of environment variables, the schema splits that list into separate
-tree nodes numbered starting at one.  The following lines in ``sshd_config``
+uses for ``sshd_config`` [#sshd_config]_ by default maps multiple
+``AcceptEnv`` lines into multiple tree nodes with the name ``AcceptEnv``,
+similar to how multiple aliases in ``/etc/hosts`` are handled. Since each
+line contains a list of environment variables, the schema splits that list
+into separate tree nodes numbered starting at one.  The following lines in
+``sshd_config``
 
 ::
-  
+
   AcceptEnv LANG LC_CTYPE
   AcceptEnv LC_IDENTIFICATION LC_ALL
 
@@ -228,16 +229,23 @@ Again, the above commands lead to the expected diff, the addition of
   +++ ./etc/ssh/sshd_config
   @@ -93,7 +93,7 @@ UsePAM yes
    # Accept locale-related environment variables
-   AcceptEnv LANG LC_CTYPE LC_NUMERIC LC_TIME LC_COLLATE LC_MONETARY LC_MESSAGES 
-   AcceptEnv LC_PAPER LC_NAME LC_ADDRESS LC_TELEPHONE LC_MEASUREMENT 
+   AcceptEnv LANG LC_CTYPE LC_NUMERIC LC_TIME LC_COLLATE LC_MONETARY LC_MESSAGES
+   AcceptEnv LC_PAPER LC_NAME LC_ADDRESS LC_TELEPHONE LC_MEASUREMENT
   -AcceptEnv LC_IDENTIFICATION LC_ALL
   +AcceptEnv LC_IDENTIFICATION LC_ALL FOO
    #AllowTcpForwarding yes
    #GatewayPorts no
    #X11Forwarding no
 
-.. _[1]: all schemas can be found in the ``lenses/`` subdirectory in the
-   source tarball, which by default is installed into
+.. [#grub_conf] some distributions do not have a ``/etc/grub.conf``, but
+   only a ``/boot/grub/menu.lst`` or similar. The simplest way to follow
+   these examples is to create a symbolic link
+   ``$AUGEAS_ROOT/etc/grub.conf`` that points to the real grub config in
+   your sandbox. In real life, you would change paths like
+   ``/files/etc/grub.conf/...`` to ``/files/boot/grub/menu.lst/...`` when
+   interacting with Augeas
+.. [#sshd_config] all schemas can be found in the ``lenses/`` subdirectory
+   in the source tarball, which by default is installed into
    ``/usr/share/augeas/lenses``
 .. _download and install: download.html
 .. |---| unicode:: U+2014  .. em dash
