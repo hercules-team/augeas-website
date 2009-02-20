@@ -21,7 +21,7 @@ naturaldocs:
 	  cp -pr $(ND_DOCSDIR)/output/* $(BUILD_REFS))
 
 rest2web:
-	python /homes/lutter/packages/rest2web-0.5.1/r2w.py
+	PYTHONPATH=$$PWD python /homes/lutter/packages/rest2web-0.5.1/r2w.py
 
 $(BUILD)/styles/%: pages/styles/%
 	mkdir -p $(BUILD)/styles
