@@ -54,6 +54,14 @@ Perl bindings for Augeas are available:
 * Check out the `Perl bindings`_ from their subversion repository on
   Sourceforge
 
+Haskell bindings
+----------------
+
+Haskell bindings for Augeas have `their own project`_
+
+* The latest released tarball from `Hackage`_
+* Check out the `Haskell bindings`_ from their Darcs repository
+
 .. _EPEL: https://fedoraproject.org/wiki/EPEL
 .. _download page: http://augeas.net/download/
 .. _git repository: http://git.fedoraproject.org/git/?p=augeas.git;a=summary
@@ -63,3 +71,6 @@ Perl bindings for Augeas are available:
 .. _Contribute: developers.html
 .. _CPAN: http://search.cpan.org/dist/Config-Augeas/
 .. _Perl bindings: http://config-model.svn.sourceforge.net/viewvc/config-model/trunk/config-augeas/
+.. _their own project: http://trac.haskell.org/augeas/
+.. _Hackage: http://hackage.haskell.org/cgi-bin/hackage-scripts/package/augeas
+.. _Haskell bindings: http://code.haskell.org/augeas/
