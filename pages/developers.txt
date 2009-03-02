@@ -111,6 +111,12 @@ Perl
 `Perl bindings`_ have been contributed by Dominique Dumont. Their source
 can be found in a `repository on Sourceforge`_ and is also `documented`_.
 
+Haskell
++++++++
+
+`Haskell bindings`_ have been contributed by Jude Nagurney. Their source
+can be found at `code.haskell.org`_
+
 .. _git repository: http://git.fedoraproject.org/git/?p=augeas.git;a=summary
 .. _separate mercurial repository: http://hg.et.redhat.com/misc/ruby-augeas
 .. _their own mercurial repository: http://hg.et.redhat.com/misc/python-augeas
@@ -128,3 +134,5 @@ can be found in a `repository on Sourceforge`_ and is also `documented`_.
 .. _documented: http://search.cpan.org/~ddumont/Config-Augeas-0.200/lib/Config/Augeas.pm
 .. _Trac instance: https://fedorahosted.org/augeas/report/1
 .. _Fedora Account System: https://admin.fedoraproject.org/accounts/
+.. _Haskell bindings: http://trac.haskell.org/augeas/
+.. _code.haskell.org: http://code.haskell.org/augeas/
