@@ -36,47 +36,9 @@ the *children*
   label. Since files are inherently sequential, ordering in the list of
   children matters.
 
-Path expressions
-----------------
+The tree can be searched in all kinds of ways by using `path expressions`_
 
-The paths passed in through the public API are in fact path expressions,
-implementing a very small subset of XPath_. Formally, a path expression
-consists of a list of segments, separated by ``/``. Each segment can either
-be a label, a label followed by ``[N]`` where ``N`` is a poitive number or
-``last()``, or a ``*``. When Augeas traverses its tree to find the node(s)
-corresponding to path expressions, it matches segments against node labels,
-following these rules:
-
-``*``
-  matches any node label; the ``*`` does *not* match multiple segments of
-  the path, i.e. ``/a/*/c`` matches a node at ``/a/b/c`` but not
-  ``/a/b1/b2/c``.
-``label[N]``
-  matches the N-th node with label ``label``, counting siblings with the
-  same label starting at one. The special value ``last()`` matches the last
-  sibling with the given label.
-``label``
-  matches *all* nodes with that label
-
-To illustrate this, a few examples:
-
-.. class:: simple-table
-
-========================== =======
-Path expression            matches
-========================== =======
-``/a``                     All children of the root with label ``a``
-``/b[last()]/c``           All children of the last ``b`` child of the
-                           root whose label is ``c``
-``/*``                     All children of the root, regardless of label
-``/*/b``                   All children of the nodes matched by ``/\*``
-                           with a label ``b``
-``/a[3]/b[last()]``        The last child with label ``b`` of the third
-                           child with label ``a`` of the root
-========================== =======
-
-The ``match`` command in ``augtool`` provides a simple way to explore what
-path expressions match which nodes.
+.. _path expressions: /page/Path_expressions
 
 Important paths
 ---------------
