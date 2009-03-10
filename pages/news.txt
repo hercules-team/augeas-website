@@ -9,26 +9,42 @@
 Releases
 ====================
 
+0.4.2 - 2009-03-09
+------------------
+- Do not delete files that had an error upon parsing
+- For Fedora/EPEL RPM's, BuildRequire libselinux-devel (bug #26)
+- In path expressions, the meaning of '<' and '<=' was reversed
+- Always create an entry /files in aug_init
+- New builtin 'Sys' module with functions 'getenv' and 'read_file',
+  the latter reads a the contents of a file into a string
+- Lens changes/additions
+
+  * Postfix_main: handle continuation lines
+  * Bbhosts, Hosts, Logrotate, Sudoers: label comment nodes as '#comment'
+  * Sshd: map comments as '#comment' nodes
+  * Squid: add all keywords from squid 2.7 and 3 (Francois Deppierraz)
+  * Logrotate: process unit suffixes for 'size' and 'minsize'
+
 0.4.1 - 2009-03-02
 ------------------
-  - Remove files when their entire subtree under /files is deleted
-  - Various bug fixes and syntax enhancements for path expressions
-    (see tests/xpath.tests for details)
-  - Evaluate path expressions with multiple predicates correctly
-  - Fix incorrect setting of /augeas/events/saved
-  - Major cleanup of matching during get; drastically improves
-    performance for very large (on the order of 10k lines) config files
-  - Small performance improvement in the typechecker
-  - Reject invalid character sets like [x-u] during typecheck
-  - Build with compile warnings set to 'maximum' instead of 'error', so
-    that builds on platforms with broken headers will work out of the box
-  - Lens changes/additions
+- Remove files when their entire subtree under /files is deleted
+- Various bug fixes and syntax enhancements for path expressions
+  (see tests/xpath.tests for details)
+- Evaluate path expressions with multiple predicates correctly
+- Fix incorrect setting of /augeas/events/saved
+- Major cleanup of matching during get; drastically improves
+  performance for very large (on the order of 10k lines) config files
+- Small performance improvement in the typechecker
+- Reject invalid character sets like [x-u] during typecheck
+- Build with compile warnings set to 'maximum' instead of 'error', so
+  that builds on platforms with broken headers will work out of the box
+- Lens changes/additions
 
-    * Util.stdexcl now excludes .augsave and .augnew files
-    * Logrotate: allow 'yearly' schedule, spaces around braces
-    * Ntp: fix so that it processes ntp.conf on Fedora 10
-    * Services: lens for /etc/services (Raphael Pinson)
-    * Xorg: new lens and tests (Raphael Pinson)
+  * Util.stdexcl now excludes .augsave and .augnew files
+  * Logrotate: allow 'yearly' schedule, spaces around braces
+  * Ntp: fix so that it processes ntp.conf on Fedora 10
+  * Services: lens for /etc/services (Raphael Pinson)
+  * Xorg: new lens and tests (Raphael Pinson)
 
 0.4.0 - 2009-02-06
 ------------------
