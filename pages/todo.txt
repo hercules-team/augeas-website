@@ -27,4 +27,20 @@ If you want to work on any of those items, please get in touch first, to
 avoid duplicate work. If you want to add to the list of todo items, file a
 new ticket with milestone 'wishlist'.
 
+Quick janitorial tasks
+----------------------
+
+If you want to help but aren't very familiar with Augeas and/or don't have
+much time, here are some very quick things that would help us tremendously:
+
+* Install the latest Augeas release on your machine and run ``augtool print
+  /augeas//error`` - if that produces any output, file a `ticket in the
+  bugtracker`_. Please include the output from ``augtool`` in the ticket, and
+  attach the files for which ``augtool`` reports a failure.
+* Launch ``augtool`` and look at the entries in ``/files`` and compare that
+  with the configuration files on your system. If there are files you think
+  augeas should parse, you can report a bug as a wishlist, or comment on
+  one that is already open about this file.
+
 .. _tickets in the bugtracker: https://fedorahosted.org/augeas/report/9
+.. _ticket in the bugtracker: https://fedorahosted.org/augeas/report

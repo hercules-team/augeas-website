@@ -13,12 +13,10 @@ How can I help ?
 One easy way to help is to `write a description`_ for your favorite config
 file; you don't need to be a developer to do that.
 
-If you want to roll up your sleeves and hack, the Todo_ list has some items
-that desparately need somebody to look at. Particularly, getting Augeas to
-build on a wide variety of platforms and packaging it for them do not
-require a lot of knowledge of Augeas internals. Since Augeas is a fairly
-low-level service, patching your favorite config management
-tool/script/application to use it is also a great way to help.
+If you want to roll up your sleeves and help, the Todo_ list has some items
+that desparately need somebody to look at, including some items that only
+take a few minutes but would be enormously useful to us to make sure Augeas
+correctly processes as many files as possible.
 
 Where is the mailing list ?
 ---------------------------
