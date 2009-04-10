@@ -43,6 +43,7 @@ Reference documentation
 
 * `Existing lenses <references/lenses/index.html>`__
 * `C API <references/c_api/index.html>`__
+* `Ruby API documentation <ruby/api/index.html>`__
 
 Other
 -----
