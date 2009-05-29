@@ -19,6 +19,11 @@ def print_entry(page, active):
             page["aug_cls"] = "active"
         else:
             page["aug_cls"] = "inactive"
+        i = page["target"].find("http:")
+        if i == -1:
+            i = page["target"].find("https:")
+        if i != -1:
+            page["target"] = page["target"][i:]
         print "<a class='%(aug_cls)s' title='%(link-title)s' href='%(target)s'>%(link-title)s</a>" % page
 
 def menu(thispage, indextree):
