@@ -73,11 +73,11 @@ Ruby
 ++++
 
 Ruby bindings have been contributed by Bryan Kearney and can be found in a
-`separate mercurial repository`_. To check them out, run
+`separate git repository`_. To check them out, run
 
 ::
 
-  hg clone http://hg.et.redhat.com/misc/ruby-augeas
+  git clone git://git.et.redhat.com/ruby-augeas.git
 
 To build them, you need ``rake``. Simply run ``rake build`` to compile
 them.
@@ -116,7 +116,7 @@ Haskell
 can be found at `code.haskell.org`_
 
 .. _git repository: http://git.fedoraproject.org/git/?p=augeas.git;a=summary
-.. _separate mercurial repository: http://hg.et.redhat.com/misc/ruby-augeas
+.. _separate git repository: http://git.et.redhat.com/?p=ruby-augeas.git;a=summary
 .. _their own mercurial repository: http://hg.et.redhat.com/misc/python-augeas
 .. _Todo: todo.html
 .. _the list page: https://www.redhat.com/mailman/listinfo/augeas-devel

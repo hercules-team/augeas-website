@@ -68,7 +68,7 @@ Haskell bindings for Augeas have `their own project`_
 .. _EPEL: https://fedoraproject.org/wiki/EPEL
 .. _download page: http://augeas.net/download/
 .. _git repository: http://git.fedoraproject.org/git/?p=augeas.git;a=summary
-.. _Ruby bindings: http://hg.et.redhat.com/misc/ruby-augeas
+.. _Ruby bindings: http://git.et.redhat.com/?p=ruby-augeas.git;a=summary
 .. _Python bindings: http://hg.et.redhat.com/misc/python-augeas
 .. _OCaml bindings:  http://hg.et.redhat.com/misc/ocaml-augeas
 .. _Contribute: developers.html
