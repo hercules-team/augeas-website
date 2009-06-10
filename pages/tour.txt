@@ -42,14 +42,14 @@ To warm up, let's do something very simple: adding a new entry to
 
 ::
 
-  set /files/etc/hosts/10000/ipaddr 192.168.0.1
-  set /files/etc/hosts/10000/canonical pigiron.example.com
-  set /files/etc/hosts/10000/alias[1] pigiron
-  set /files/etc/hosts/10000/alias[2] piggy
+  set /files/etc/hosts/01/ipaddr 192.168.0.1
+  set /files/etc/hosts/01/canonical pigiron.example.com
+  set /files/etc/hosts/01/alias[1] pigiron
+  set /files/etc/hosts/01/alias[2] piggy
   save
 
 The four ``set`` commands create four nodes underneath
-``/files/etc/hosts/10000``, and assign them the values passed as the second
+``/files/etc/hosts/01``, and assign them the values passed as the second
 argument. The data parsed from a file with full path ``FILE`` in the
 filesystem is stored in the tree underneath ``/files/FILE``; with that the
 ``set`` commands manipulate an entry in the file ``/etc/hosts``. A second
@@ -57,26 +57,30 @@ hierarchy underneath ``/augeas/files/FILE`` contains metadata about the
 file, such as an indication of any errors encountered when the file was
 read.
 
+The tree for ``/etc/hosts`` puts each host entry into its own subtree,
+numbered sequentially from 1, so that the first host entry appears under
+``/files/etc/hosts/1``, the second under ``/files/etc/hosts/2``, etc. We
+use the label ``01`` and put the details of our new host entry underneath
+``/files/etc/hosts/01``. This works because reading in a ``/etc/hosts``
+file will never use labels starting with 0, and tree labels are strings,
+their numeric value is irrelevant. The order in which host entries are
+written back to file is determined by the order in which they appear in the
+tree.
+
 The ``set`` command creates non-existant nodes as needed. There is a second
 command, ``ins``, to create new nodes in the tree that provides more
 control over where exactly a new node shows up, in particular where in the
 list of its siblings it appears. Because files are inherently sequential,
 the order of sibling nodes in the tree matters.
 
-There is nothing special about calling that host entry ``10000``: we just
-chose that since it's safe to assume that such an entry does not exist
-yet. The schema for ``/etc/hosts`` requires that the names of the host
-entries are positive numbers, though they don't need to be numbered
-sequentially.
-
 The notation ``alias[1]`` and ``alias[2]`` tells Augeas to set the value
-for the first and second child of ``/files/etc/hosts/10000``. Both nodes
-are called ``/files/etc/hosts/10000/alias``; the new host entry can be
+for the first and second child of ``/files/etc/hosts/01``. Both nodes
+are called ``/files/etc/hosts/01/alias``; the new host entry can be
 listed with
 
 ::
 
-  ls /files/etc/hosts/10000
+  ls /files/etc/hosts/01
 
 or searched for with
 
@@ -84,7 +88,7 @@ or searched for with
 
   match /files/etc/hosts/*/ipaddr 192.168.0.1
 
-which prints ``/files/etc/hosts/10000/ipaddr``.
+which prints ``/files/etc/hosts/01/ipaddr``.
 
 Running ``(cd ${AUGEAS_ROOT} && diff -u ./etc/hosts ./etc/hosts.augsave)``
 confirms that ``/etc/hosts`` now has one additional entry at the end:
@@ -202,7 +206,7 @@ perform
 
 ::
 
-  set /files/etc/ssh/sshd_config/AcceptEnv[last()]/10000 FOO
+  set /files/etc/ssh/sshd_config/AcceptEnv[last()]/01 FOO
   save
 
 The addition of ``[last()]`` to ``AcceptEnv`` in the path tells Augeas that
@@ -213,11 +217,11 @@ the above command as
 
 ::
 
-  set /files/etc/ssh/sshd_config/AcceptEnv/10000 FOO
+  set /files/etc/ssh/sshd_config/AcceptEnv/01 FOO
 
 results in an error when there are multiple ``AcceptEnv`` entries in the
 tree. In that case, Augeas can not figure out under which of them you want
-to put the entry labelled ``10000``.
+to put the entry labelled ``01``.
 
 Again, the above commands lead to the expected diff, the addition of
 ``FOO`` to the last ``AcceptEnv`` line:
