@@ -33,7 +33,7 @@ Ruby bindings for Augeas are available:
 * RPM's for Fedora and RHEL (via `EPEL`_) are in the official repositories
 * `API documentation`_
 * The latest released tarball ``ruby-augeas-*`` is on the `download page`_
-* Check out the `Ruby bindings`_ from the mercurial repository (see
+* Check out the `Ruby bindings`_ from its git repository (see
   Contribute_ for instructions)
 
 .. _API documentation: docs/ruby/api/index.html
