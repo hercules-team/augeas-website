@@ -65,6 +65,16 @@ Haskell bindings for Augeas have `their own project`_
 * The latest released tarball from `Hackage`_
 * Check out the `Haskell bindings`_ from their Darcs repository
 
+Java bindings
+-------------
+
+Java bindings for Augeas are available:
+
+* The latest released tarball is in the `download directory`_
+* Sources are in `this git repository`_
+
+.. _download directory: http://augeas.net/download/java/
+.. _this git repository: http://git.et.redhat.com/?p=java-augeas.git;a=summary
 .. _EPEL: https://fedoraproject.org/wiki/EPEL
 .. _download page: http://augeas.net/download/
 .. _git repository: http://git.fedoraproject.org/git/?p=augeas.git;a=summary

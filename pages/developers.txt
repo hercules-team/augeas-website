@@ -115,6 +115,14 @@ Haskell
 `Haskell bindings`_ have been contributed by Jude Nagurney. Their source
 can be found at `code.haskell.org`_
 
+Java
+++++
+
+Java bindings have been written by Bryan Kearney. Sources are kept in `this
+git repository`_ and release can be downloaded from `here`_
+
+.. _this git repository: http://git.et.redhat.com/?p=java-augeas.git;a=summary
+.. _here: http://augeas.net/download/java/
 .. _git repository: http://git.fedoraproject.org/git/?p=augeas.git;a=summary
 .. _separate git repository: http://git.et.redhat.com/?p=ruby-augeas.git;a=summary
 .. _their own mercurial repository: http://hg.et.redhat.com/misc/python-augeas
