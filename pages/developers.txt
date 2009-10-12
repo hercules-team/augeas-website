@@ -77,20 +77,24 @@ Ruby bindings have been contributed by Bryan Kearney and can be found in a
 
 ::
 
-  git clone git://git.et.redhat.com/ruby-augeas.git
+  git clone git://git.fedorahosted.org/git/ruby-augeas.git
 
 To build them, you need ``rake``. Simply run ``rake build`` to compile
 them.
+
+.. _separate git repository: http://git.fedorahosted.org/git/ruby-augeas.git
 
 Python
 ++++++
 
 Python bindings have been contributed by Harald Hoyer and can be found in
-`their own mercurial repository`_. To check them out, run
+`their own git repository`_. To check them out, run
 
 ::
 
-  hg clone http://hg.et.redhat.com/misc/python-augeas
+  git clone git://git.fedorahosted.org/git/python-augeas.git
+
+.. _their own git repository: http://git.fedorahosted.org/git/python-augeas.git
 
 OCaml
 +++++
@@ -124,8 +128,6 @@ git repository`_ and release can be downloaded from `here`_
 .. _this git repository: http://git.et.redhat.com/?p=java-augeas.git;a=summary
 .. _here: http://augeas.net/download/java/
 .. _git repository: http://git.fedoraproject.org/git/?p=augeas.git;a=summary
-.. _separate git repository: http://git.et.redhat.com/?p=ruby-augeas.git;a=summary
-.. _their own mercurial repository: http://hg.et.redhat.com/misc/python-augeas
 .. _Todo: todo.html
 .. _the list page: https://www.redhat.com/mailman/listinfo/augeas-devel
 .. _autotools: http://sources.redhat.com/autobook/
