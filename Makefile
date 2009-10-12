@@ -28,10 +28,12 @@ $(BUILD)/styles/%: pages/styles/%
 	cp -a $< $@
 
 $(BUILD)/docs/%.odp: pages/docs/%.odp
-	cp -p $< $@
+	@mkdir -p $(shell dirname $@)
+	cp -up $< $@
 
 $(BUILD)/docs/%.pdf: pages/docs/%.pdf
-	cp -p $< $@
+	@mkdir -p $(shell dirname $@)
+	cp -up $< $@
 
 sync:
 	rsync -rav $(RSYNC_OPTS) $(BUILD)/ et:/var/www/sites/augeas.et.redhat.com/
