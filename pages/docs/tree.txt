@@ -60,14 +60,16 @@ Metainformation in ``/augeas``
 ******************************
 
 The ``/augeas`` hierarchy reports important metadata about Augeas' inner
-workings. All entries under ``/augeas`` are readonly |---| it is possible
+workings. Most entries under ``/augeas`` are readonly |---| it is possible
 to change them by issuing ``set`` commands, but those changes have no
 influence on how Augeas goes about its business.
 
 The entries ``/augeas/root`` and ``/augeas/save`` report the file system
 root from which files are read, and how files are saved. The save modes,
 corresponding to starting ``augtool`` with the ``-n``, the ``-b``, or
-neither of these options are ``newfile``, ``backup``, and ``overwrite``.
+neither of these options are ``newfile``, ``backup``, and
+``overwrite``. Changing ``/augeas/save`` before saving the tree changes how
+updated files are saved.
 
 For each file ``/PATH`` that was processed, some metadata is presented in
 ``/augeas/files/PATH``. That information is due to be revised soon; the
