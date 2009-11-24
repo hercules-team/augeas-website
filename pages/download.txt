@@ -73,6 +73,14 @@ Java bindings for Augeas are available:
 * The latest released tarball is in the `download directory`_
 * Sources are in `this git repository`_
 
+PHP bindings
+------------
+
+* The latest released tarball can be downloaded from the `PECL site`_
+* Sources are in `a git repository`_
+
+.. _a git repository: http://github.com/ppadron/php-augeas
+.. _PECL site: http://pecl.php.net/package/augeas
 .. _download directory: http://augeas.net/download/java/
 .. _this git repository: http://git.et.redhat.com/?p=java-augeas.git;a=summary
 .. _EPEL: https://fedoraproject.org/wiki/EPEL

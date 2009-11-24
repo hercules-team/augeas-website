@@ -126,6 +126,15 @@ Java bindings have been written by Bryan Kearney. Sources are kept in `this
 git repository`_ and release can be downloaded from `here`_
 
 .. _this git repository: http://git.et.redhat.com/?p=java-augeas.git;a=summary
+
+PHP
++++
+
+PHP bindings are maintained by Pedro Padron. Sources are kept in `a git
+repository`_ and releases can be downloaded from the `PECL site`_.
+
+.. _a git repository: http://github.com/ppadron/php-augeas
+.. _PECL site: http://pecl.php.net/package/augeas
 .. _here: http://augeas.net/download/java/
 .. _git repository: http://git.fedoraproject.org/git/?p=augeas.git;a=summary
 .. _Todo: todo.html
