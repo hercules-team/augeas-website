@@ -100,12 +100,14 @@ OCaml
 +++++
 
 `OCaml bindings`_ have been contributed by Rich Jones and can be found in
-`this mercurial repository`_. To check them out, run
+`this git repository`__. To check them out, run
 
 ::
 
-  hg clone http://hg.et.redhat.com/misc/ocaml-augeas
+  git clone git://git.annexia.org/git/ocaml-augeas.git
 
+.. _OCaml bindings: http://et.redhat.com/~rjones/augeas/
+.. __: http://git.annexia.org/?p=ocaml-augeas.git;a=summary
 
 Perl
 ++++
@@ -125,7 +127,7 @@ Java
 Java bindings have been written by Bryan Kearney. Sources are kept in `this
 git repository`_ and release can be downloaded from `here`_
 
-.. _this git repository: http://git.et.redhat.com/?p=java-augeas.git;a=summary
+.. _this git repository: http://git.fedoraproject.org/git/java-augeas.git
 
 PHP
 +++
@@ -144,8 +146,6 @@ repository`_ and releases can be downloaded from the `PECL site`_.
 .. _Flex: http://flex.sourceforge.net/
 .. _Freenode: http://freenode.net/
 .. _write a description: docs/writing-schemas.html
-.. _OCaml bindings: http://et.redhat.com/~rjones/augeas/
-.. _this mercurial repository: http://hg.et.redhat.com/misc/ocaml-augeas
 .. _Perl bindings: http://search.cpan.org/dist/Config-Augeas
 .. _repository on Sourceforge: http://config-model.svn.sourceforge.net/viewvc/config-model/trunk/config-augeas/
 .. _documented: http://search.cpan.org/~ddumont/Config-Augeas-0.200/lib/Config/Augeas.pm
