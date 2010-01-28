@@ -10,7 +10,7 @@ Download
 Augeas can be downloaded in one of the following ways:
 
 * RPM's for Fedora and RHEL (via `EPEL`_) are in the official repositories
-* The latest released tarball ``augeas-*`` is on the `download page`_
+* The `latest released tarball <http://augeas.net/download/>`__ ``augeas-*``
 * Check out Augeas from source from the `git repository`_ (see
   Contribute_ for instructions)
 
@@ -20,8 +20,8 @@ Python bindings
 Python bindings for Augeas are available:
 
 * RPM's for Fedora and RHEL (via `EPEL`_) are in the official repositories
-* The latest released tarball ``python/python-augeas-*`` is on the
-  `download page`_
+* The `latest released tarball <http://augeas.net/download/python/>`__
+  ``python/python-augeas-*``
 * Check out the `Python bindings`_ from the mercurial repository (see
   Contribute_ for instructions)
 
@@ -32,7 +32,8 @@ Ruby bindings for Augeas are available:
 
 * RPM's for Fedora and RHEL (via `EPEL`_) are in the official repositories
 * `API documentation`_
-* The latest released tarball ``ruby-augeas-*`` is on the `download page`_
+* The `latest released tarball <http://augeas.net/download/ruby/>`__
+  ``ruby-augeas-*``
 * Check out the `Ruby bindings`_ from its git repository (see
   Contribute_ for instructions)
 
@@ -44,7 +45,7 @@ OCaml bindings
 OCaml bindings for Augeas are available:
 
 * RPM's for Fedora are in the official repositories
-* The latest released tarball from the `download page`_
+* The `latest released tarball <http://augeas.net/download/ocaml/>`__
 * Check out the `OCaml bindings`_ from the git repository (see
   Contribute_ for instructions)
 
@@ -84,7 +85,6 @@ PHP bindings
 .. _download directory: http://augeas.net/download/java/
 .. _this git repository: http://git.fedoraproject.org/git/java-augeas.git
 .. _EPEL: https://fedoraproject.org/wiki/EPEL
-.. _download page: http://augeas.net/download/
 .. _git repository: http://git.fedoraproject.org/git/?p=augeas.git;a=summary
 .. _Ruby bindings: http://git.fedorahosted.org/git/ruby-augeas.git
 .. _Python bindings: http://git.fedorahosted.org/git/python-augeas.git
