@@ -52,6 +52,12 @@ Sources are in a `git repository`_. To check out the code, run
 
   git clone git://git.fedorahosted.org/augeas.git
 
+There is a `second public repository`_ on github, just as up-to-date as the
+one above. If you want to follow repository changes, you can use github's
+"Watch" feature on that repository.
+
+.. _second public repository: http://github.com/lutter/augeas
+
 To build and explore, you need to:
 
 ::
