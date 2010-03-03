@@ -9,10 +9,20 @@ Download
 
 Augeas can be downloaded in one of the following ways:
 
-* RPM's for Fedora and RHEL (via `EPEL`_) are in the official repositories
+* RPM's for `Fedora`_ and RHEL (via `EPEL`_) are in the official repositories
+* Solaris packages from `OpenCSW`_
+* `Debian`_ and `Ubuntu`_ packages
 * The `latest released tarball <http://augeas.net/download/>`__ ``augeas-*``
-* Check out Augeas from source from the `git repository`_ (see
-  Contribute_ for instructions)
+* Check out Augeas from source from the `git repository`_ or the `github
+  mirror`_ (see Contribute_ for instructions)
+
+.. _git repository: http://git.fedoraproject.org/git/?p=augeas.git;a=summary
+.. _github mirror: http://github.com/lutter/augeas
+.. _Fedora: https://admin.fedoraproject.org/updates/augeas
+.. _EPEL: https://fedoraproject.org/wiki/EPEL
+.. _OpenCSW: http://www.opencsw.org/packages/augeas
+.. _Debian: http://packages.debian.org/search?keywords=augeas
+.. _Ubuntu: https://launchpad.net/ubuntu/+source/augeas
 
 Python bindings
 ---------------
@@ -84,7 +94,6 @@ PHP bindings
 .. _PECL site: http://pecl.php.net/package/augeas
 .. _download directory: http://augeas.net/download/java/
 .. _this git repository: http://git.fedoraproject.org/git/java-augeas.git
-.. _EPEL: https://fedoraproject.org/wiki/EPEL
 .. _git repository: http://git.fedoraproject.org/git/?p=augeas.git;a=summary
 .. _Ruby bindings: http://git.fedorahosted.org/git/ruby-augeas.git
 .. _Python bindings: http://git.fedorahosted.org/git/python-augeas.git
