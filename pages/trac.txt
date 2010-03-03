@@ -1,6 +1,6 @@
 .. -*- rst -*-
    restindex
-     target: https://fedorahosted.org/augeas/report/1
+     target: fh-trac
      build: no
      page-title: Bug tracker
    /restindex
