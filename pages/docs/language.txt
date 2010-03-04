@@ -15,7 +15,8 @@ Language Overview
   * Strings_
   * `Regular Expressions`_
 
-* `Functions and Types`_
+* Types_
+* Functions_
 * Expressions_
 
   * Operators_
@@ -52,7 +53,7 @@ delimiters. Comments can be nested.
 Variables
 +++++++++
 
-Variables are declared inside a module with the keyword ``let`` [1]_:
+Variables are declared inside a module with the keyword ``let``:
 
 ::
 
@@ -97,8 +98,44 @@ Regular expressions can be concatenated with ``.`` and unioned with
 ``|``. They can also be iterated with the usual postfix operators ``*``,
 ``+``, and ``?``:
 
-Functions and Types
--------------------
+Let forms
+---------
+
+Let forms are used to give names to expressions, similar to defining
+variables in imperative languages; for example
+
+::
+
+  let hello = "Hello"
+  let greet (name:string) = hello . ", " . name
+
+defines two variables ``hello`` and ``greet``. The latter is a function
+that takes a string as an argument and returns a string resulting from
+prepending ``Hello,`` to that string. Let forms can also be used purely
+for their sideeffect: if the name after the let is ``_``, Augeas will
+evaluate the right-hand side, and immediately forget the result. This is
+useful for printing debug output:
+
+::
+
+  let _ = print_endline (greet "User")
+
+will simply print ``Hello, User``.
+
+Let forms can also be used to define local names within another let:
+
+::
+
+  let greet (name:string) =
+    let hello = "Hello" in
+    hello . ", " . name
+
+only defines a global name ``greet``. The name ``hello`` can only be used
+within the body of the definition of ``greet``, and will be forgotten
+afterwards.
+
+Types
+-----
 
 Besides the types ``string`` and ``regexp``, Augeas has a number of other
 simple types. All the builtin types in Augeas are:
@@ -108,6 +145,7 @@ simple types. All the builtin types in Augeas are:
 ============ ===============================================================
 Type         Explanation
 ============ ===============================================================
+``unit``     A type with no values, similar to ``void`` in C or Java
 ``string``   Simple strings, such as ``"Hello World"``
 ``regexp``   Regular expressions in extended POSIX notation, such as
              ``/[a-z]+/``
@@ -118,6 +156,8 @@ Type         Explanation
              ``incl "/etc/yum.repos.d/*"``
 ============ ===============================================================
 
+Functions
+---------
 
 Functions are declared similar to variables, by adding a list of parameters
 and their types to the declaration of the function name:
@@ -149,6 +189,9 @@ it to the string ``"Hello" . " "``, so that
   let hello_world2 = hello_y "World"
 
 has the same value as ``hello_world``.
+
+Augeas comes has a number of builtins_, functions that are always defined
+and that you can use anywhere.
 
 Expressions
 -----------
@@ -207,10 +250,12 @@ regular expression ``/ab/``. In the following table, ``a``, ``b``, ``f``,
 ====================== ================= =====================================
 Operator               Meaning           Types
 ====================== ================= =====================================
-``f ; g``              Composition       Functions for ``f: t1 -> t2`` and
+``f ; g``              Composition       For functions ``f: t1 -> t2`` and
                                          ``g: t2 -> t3`` produce
                                          ``h: t1 -> t3`` with
-                                         ``h x = g (f x)``
+                                         ``h x = g (f x)``. If ``t2`` is
+                                         ``unit``, ``g`` must not take any
+                                         arguments.
 ``a | b``              Union             ``regexp``, ``lens``
 ``a - b``              Subtraction       ``regexp``
 ``a . b``              Concatenation     ``string``, ``regexp``, ``lens``,
@@ -300,7 +345,5 @@ separated by a ``;``:
 Besides the command ``set PATH VALUE``, the command ``rm PATH`` can be used
 to remove parts of the tree.
 
-.. [1] The syntax for local lets ``let var in exp`` is also
-   supported. Needs to be documented better.
 .. _builtins: builtin.html
 .. _lenses: lenses.html

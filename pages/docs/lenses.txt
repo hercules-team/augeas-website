@@ -75,6 +75,8 @@ are either regular expressions, indicated by ``RE`` or strings indicated by
 ``store RE``
   Store whatever matches the regular expression ``RE`` as the value of the
   enclosing subtree.
+``value STR``
+  Store the string ``STR`` as the value of the enclosing tree node.
 ``counter STR``
   Declare a new counter with name ``STR`` and reset its value to
   1. Counters don't need to be declared, but using this statement makes it
