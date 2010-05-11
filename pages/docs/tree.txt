@@ -101,5 +101,22 @@ that is used to process the file. The value contains the path to the
 was defined. For example, ``/augeas/files/etc/hosts/lens/info`` might
 have the value ``/usr/share/augeas/lenses/hosts.aug:18.12-.34``.
 
+Features under ``/augeas/version``
+..................................
+
+The node ``/augeas/version`` contains the version number of the Augeas
+library. Underneath it are a few entries that indicate a few features of
+the API:
+
+``save``
+  The behavior of ``aug_save`` can be changed dynamically at runtime by
+  changing the entry ``/augeas/save``. The possible values that can be
+  assigned to ``/augeas/save`` are listed in ``/augeas/version/save/mode``
+``defvar``
+  Variables can be defined for later use in path expressions
+``defvar/expr``
+  The expression used to define a variable ``var`` is stored in
+  ``/augeas/variables/var``
+
 .. _XPath: http://www.w3.org/TR/xpath
 .. |---| unicode:: U+2014  .. em dash
