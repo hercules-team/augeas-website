@@ -88,6 +88,21 @@ one node. If no node exists for ``PATH``, one is created, including
 intermediate nodes, and its value is set to ``VALUE``, which may be
 ``NULL``.
 
+Set the value of multiple nodes
+-------------------------------
+
+::
+
+  int aug_setm(augeas *aug, const char *base, const char *sub, const char *value)
+
+Set the value of multiple nodes in one operation. Find or create a node
+matching ``SUB`` by interpreting ``SUB`` as a path expression relative to
+each node matching ``BASE``. ``SUB`` may be ``NULL``, in which case all the
+nodes matching ``BASE`` will be modified.
+
+Returns the number of modified nodes on success, and -1 on error.
+
+
 Inserting, Moving, Deleting and Searching Nodes
 ===============================================
 
