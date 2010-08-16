@@ -105,10 +105,11 @@ Concatenation: ``L1 . L2``
 Union: ``L1 | L2``
   The union of two lenses ``L1 | L2`` is formed with the ``|`` operator. It
   determines whether ``L1`` or ``L2`` apply at the current position, and
-  uses ``L1`` if it does, and ``L2`` if ``L1`` does not apply, but ``L2``
-  does. This means that for the union ``del /[a-z]+/ | store /[a-zA-Z]+/``,
-  the ``store`` will never be used for strings matching ``/[a-z]+/``, they
-  will always be processed by the ``del`` lens.
+  uses the one that does. The two lenses must be such that only one can
+  ever apply to a string. For example, the union ``del /[a-z]+/ | store
+  /[a-zA-Z]+/`` is not permissible since the string ``abc`` can be processed
+  with either the ``del`` or the ``store``. The typechecker will report an
+  error when it encounters such a lens.
 Repetition: ``L*``, ``L+``, ``L?``
   A lens ``L`` can be repeated by using the postfix operators ``*``, ``+``,
   and ``?``, with the same meaning as for regular expressions. For example,
