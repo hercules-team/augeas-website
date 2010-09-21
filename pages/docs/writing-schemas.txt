@@ -1,7 +1,7 @@
 .. -*- rst -*-
    restindex
      initialheaderlevel: 2
-     page-title: Schema tutotial
+     page-title: Schema tutorial
      encoding: utf8
    /restindex
 
@@ -20,7 +20,7 @@ in the source distributon, which by default is installed to
 
 When devloping schemas, it is better to use ``augparse``, a tool better
 suited to spotting problems in schemas than ``augtool``. As an example,
-run the following command 
+run the following command
 
 ::
 
@@ -52,7 +52,7 @@ To get started, let's write a simple lens that transforms lines of the form
   1: module Tutorial =
   2:   let kv = key /[a-z]+/ . del /[ \t]*=[ \t]*/ "=" . store /[a-z]+/
   3:   let lns = [ kv ]
-  
+
   4:   test lns get "key = value" = ?
 
 Running it with  ``augparse tutorial.aug`` produces
@@ -117,7 +117,7 @@ to be transformed with what lens. This is done using the ``transform``
 function which takes a lens and a *file filter*. When ``augtool`` starts,
 it applies all transforms marked for autoloading, by finding all files that
 match the file filter and applying the corresponding lens to their
-contents. 
+contents.
 
 The tree resulting form applying the lens to the contents of a file with
 absolute path ``/PATH`` is put into Augeas' tree underneath
@@ -130,13 +130,13 @@ A module set up for autoloading for ``augtool`` has the general structure
     autoload xfm
 
     let lns = ...
-   
+
     let filter = ...
 
     let xfm = transform lns filter
 
 The ``autoload`` statement must be the very first statement inside the
-module. 
+module.
 
 File filters are built by concatenating applications of the builtin
 functions ``incl`` and ``excl``, both take a shell glob as their sole
