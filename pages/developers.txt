@@ -144,7 +144,7 @@ repository`_ and releases can be downloaded from the `PECL site`_.
 .. _a git repository: http://github.com/ppadron/php-augeas
 .. _PECL site: http://pecl.php.net/package/augeas
 .. _here: http://augeas.net/download/java/
-.. _git repository: http://git.fedoraproject.org/git/?p=augeas.git;a=summary
+.. _git repository: http://git.fedorahosted.org/git/augeas.git
 .. _Todo: todo.html
 .. _the list page: https://www.redhat.com/mailman/listinfo/augeas-devel
 .. _autotools: http://sources.redhat.com/autobook/

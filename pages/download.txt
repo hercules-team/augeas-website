@@ -16,7 +16,7 @@ Augeas can be downloaded in one of the following ways:
 * Check out Augeas from source from the `git repository`_ or the `github
   mirror`_ (see Contribute_ for instructions)
 
-.. _git repository: http://git.fedoraproject.org/git/?p=augeas.git;a=summary
+.. _git repository: http://git.fedorahosted.org/git/augeas.git
 .. _github mirror: http://github.com/lutter/augeas
 .. _Fedora: https://admin.fedoraproject.org/updates/augeas
 .. _EPEL: https://fedoraproject.org/wiki/EPEL
@@ -94,7 +94,7 @@ PHP bindings
 .. _PECL site: http://pecl.php.net/package/augeas
 .. _download directory: http://augeas.net/download/java/
 .. _this git repository: http://git.fedoraproject.org/git/java-augeas.git
-.. _git repository: http://git.fedoraproject.org/git/?p=augeas.git;a=summary
+.. _git repository: http://git.fedorahosted.org/git/augeas.git
 .. _Ruby bindings: http://git.fedorahosted.org/git/ruby-augeas.git
 .. _Python bindings: http://git.fedorahosted.org/git/python-augeas.git
 .. _OCaml bindings: http://git.annexia.org/?p=ocaml-augeas.git;a=summary
