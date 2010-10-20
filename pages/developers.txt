@@ -133,7 +133,7 @@ Java
 Java bindings have been written by Bryan Kearney. Sources are kept in `this
 git repository`_ and release can be downloaded from `here`_
 
-.. _this git repository: http://git.fedoraproject.org/git/java-augeas.git
+.. _this git repository: http://git.fedorahosted.org/git/java-augeas.git
 
 PHP
 +++
