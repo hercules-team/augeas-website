@@ -166,9 +166,43 @@ Saving the Tree
   int aug_save(augeas *aug)
 
 Save the parts of the tree that have been changed into their respective
-files. Return ``0`` on success and ``-1`` on failure. Yes, error reporting
-needs to be improved. Some info can be found in the ``error`` nodes
-underneath ``/augeas/files`` in the tree.
+files. Return ``0`` on success and ``-1`` on failure. When saving fails,
+details about errors can be found in nodes matching ``/augeas//error``.
+
+Only files that have actually changed will be written - for example,
+setting a node to the same value it already had will not result in any file
+changes. In other words, there is no way to 'touch' a file with Augeas.
+
+Augeas tries to be as safe as possible when saving files; in particular, it
+will try and write the new file contents into a temporary file with
+extension ``.augnew`` and move that file into the right place after writing
+the entire file succeeded using ``rename(2)``. In some cases, for example
+when the original file is bind-mounted, that is not possible, and Augeas
+will fall back to overwriting the file in place. Note that Augeas writes
+the tree out file-by-file, so that it is still possible that writing some
+files succeeds while writing others fails.
+
+The exact behavior of ``aug_save`` can be fine-tuned by modifying the node
+``/augeas/save`` prior to calling ``aug_save``. The valid values for this
+node are
+
+``overwrite``
+  Overwrite files in place
+``backup``
+  Save the original file with the extension ``.augorig`` and write the new
+  file under the original file name
+``newfile``
+  Write the modified file into a file with extension ``.augnew`` without
+  modifying the original file
+``noop``
+  Perform all the steps necessary for a file, including generating the
+  contents of files from the tree, but do not make any changes in the
+  filesystem. This mode is very useful for making sure that all changes can
+  be saved without error, and to find out which files would actually be
+  modified.
+
+After calling ``aug_save``, the list of files that has been changed can be
+found in the nodes ``/augeas/events/saved``.
 
 Getting the span of a node related to a file
 ============================================
