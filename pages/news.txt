@@ -20,7 +20,7 @@ Releases
   bar/baz' a legal path, but parse [expr1 or expr2] and [expr1 and expr2]
   as the logical and/or of expr1 and expr2
 - path expressions: interpret escape sequences in regexps; since '.' does
-  not match newlines, it has to be possible to write '.|\n' to match any
+  not match newlines, it has to be possible to write '.|\\n' to match any
   character
 - path expressions: allow concatenating strings and regexps; add
   comparison operator '!~'; add function 'glob'; allow passing a nodeset
