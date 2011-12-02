@@ -111,6 +111,13 @@ used in `unit tests`_.
   it was initially generated from string ``STRING`` with a ``get``, and
   return the resulting string.
 
+Regular expression functions
+----------------------------
+
+``regexp_match REGEXP STRING -> STRING``
+  Match ``REGEXP`` against ``STRING`` and return the resulting match. If
+  ``REGEXP`` does not match at all, return the empty string.
+
 System functions
 ----------------
 
