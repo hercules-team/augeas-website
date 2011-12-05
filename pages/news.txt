@@ -23,9 +23,9 @@ Releases
   regexp() and glob() matches nothing, rather than the empty word
 - fix --autosave when running single command from command line, BZ 743023
 - aug_srun: support 'insert' and 'move' as aliases for 'ins' and 'mv'
-- aug_srun: allow escaping of spaces, quotes and brackets with \
+- aug_srun: allow escaping of spaces, quotes and brackets with \\
 - aug_init: accept AUG_NO_ERR_CLOSE flag; return augeas handle even when
-  intialization fails so that caller gets some details about why
+  initialization fails so that caller gets some details about why
   initialization failed
 - aug_srun: tolerate trailing white space in commands
 - much improved, expanded documentation of many lenses
@@ -708,7 +708,7 @@ New/improved lenses
 - Do not clobber symlinks, instead write new files to target of symlink
 - Fail 'put' when tree has invalid entries
 - Set exit status of augtool
-- Avoid picking special characters, in particular '\0', in examples (libfa)
+- Avoid picking special characters, in particular '\\0', in examples (libfa)
 - Store system errors, using strerror, in the tree during writing of files
 - New lenses
 
