@@ -90,6 +90,18 @@ PHP bindings
 * The latest released tarball can be downloaded from the `PECL site`_
 * Sources are in `a git repository`_
 
+Lua bindings
+------------
+
+The Lua bindings are maintained by the `lua-augeas project`__
+
+* The latest released tarball can be found in the `download section`__
+* Sources are in `this git repository`__
+
+.. __: http://code.google.com/p/lua-augeas/
+.. __: http://code.google.com/p/lua-augeas/downloads/list
+.. __: http://code.google.com/p/lua-augeas/source/checkout
+
 .. _a git repository: http://github.com/ppadron/php-augeas
 .. _PECL site: http://pecl.php.net/package/augeas
 .. _download directory: http://augeas.net/download/java/

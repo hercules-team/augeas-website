@@ -64,8 +64,8 @@ Can I use Augeas in a shell script ?
   underlying files with shell scripts. Run ``augtool help`` for a list of
   commands ``augtool`` supports.
 What language bindings are available ?
-  Bindings for Ruby, Python, OCaml, Perl, Haskell, PHP, and Java are
-  available for download_. Patches/aditions for other languages are eagerly
+  Bindings for Ruby, Python, OCaml, Perl, Haskell, PHP, Lua, and Java are
+  available for download_. Patches/additions for other languages are eagerly
   anticipated.
 Do I need to know how file formats are described ?
   No, that is only necessary if you want to change how files are mapped

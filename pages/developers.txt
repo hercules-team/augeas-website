@@ -141,6 +141,13 @@ PHP
 PHP bindings are maintained by Pedro Padron. Sources are kept in `a git
 repository`_ and releases can be downloaded from the `PECL site`_.
 
+Lua
++++
+
+Lua bindings are maintained by the `lua-augeas project`__.
+
+.. __: http://code.google.com/p/lua-augeas/
+
 .. _a git repository: http://github.com/ppadron/php-augeas
 .. _PECL site: http://pecl.php.net/package/augeas
 .. _here: http://augeas.net/download/java/
