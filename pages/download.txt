@@ -30,7 +30,7 @@ Python bindings
 Python bindings for Augeas are available:
 
 * RPM's for Fedora and RHEL (via `EPEL`_) are in the official repositories
-* The `latest released tarball <http://augeas.net/download/python/>`__
+* The `latest released tarball <https://fedorahosted.org/released/python-augeas/>`__
   ``python/python-augeas-*``
 * Check out the `Python bindings`_ from the mercurial repository (see
   Contribute_ for instructions)
