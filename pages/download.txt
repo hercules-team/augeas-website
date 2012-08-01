@@ -102,6 +102,15 @@ The Lua bindings are maintained by the `lua-augeas project`__
 .. __: http://code.google.com/p/lua-augeas/downloads/list
 .. __: http://code.google.com/p/lua-augeas/source/checkout
 
+Node.js bindings
+----------------
+
+The Node.js bindings are maintained by Igor Pashev.
+
+* Sources are in `this git repository`__
+
+.. __: https://github.com/Nexenta/node-augeas
+
 .. _a git repository: http://github.com/ppadron/php-augeas
 .. _PECL site: http://pecl.php.net/package/augeas
 .. _download directory: http://augeas.net/download/java/
