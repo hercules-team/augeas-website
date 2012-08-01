@@ -74,6 +74,10 @@ World"``.
   Print the regular expression ``RE`` and return nothing.
 ``print_endline STR -> UNIT``
   Print the string ``STR`` followed by a newline, and return nothing.
+``print_tree TREE --> TREE``
+  Print the tree ``TREE`` and return it. This function is mostly useful in
+  the list of commands in ``put`` unit tests, since it makes it possible to
+  look at the tree the test is operating on.
 
 Lens inspection
 ---------------
