@@ -87,16 +87,16 @@ together with their default includes and excludes.
 
 "
 
-  lens_max = lenses.keys.max {|a,b| a.length <=> b.length }.length+2
+  lens_max = lenses.keys.max {|a,b| a.length <=> b.length }.length+2 # 2 = ` 
   all_ref = []
   lenses.each_key { |l| all_ref << lenses[l][:ref] }
-  ref_max = all_ref.flatten.max {|a,b| a.length <=> b.length }.length+4
+  ref_max = all_ref.flatten.max {|a,b| a.length <=> b.length }.length+4 # 4 =  <>`_
   all_incl = []
   lenses.each_key { |l| all_incl << lenses[l][:incl] }
-  incl_max = all_incl.flatten.max {|a,b| a.length <=> b.length }.length+2
+  incl_max = all_incl.flatten.max {|a,b| a.length <=> b.length }.length+6 # 6 = - ````
   all_excl = []
   lenses.each_key { |l| all_excl << lenses[l][:excl] }
-  excl_max = all_excl.flatten.max {|a,b| a.length <=> b.length }.length+2
+  excl_max = all_excl.flatten.max {|a,b| a.length <=> b.length }.length+6 # 6 = - ````
 
   puts "+#{'-' * (lens_max + ref_max)}+#{'-' * 8}+#{'-' * incl_max}+#{'-' * excl_max}+\n"
   puts "|%-#{lens_max + ref_max}s|%-8s|%-#{incl_max}s|%-#{excl_max}s|\n" %
@@ -111,13 +111,13 @@ together with their default includes and excludes.
     height = [includes.length, excludes.length].max
     puts "|%-#{lens_max + ref_max}s|%-8s|%-#{incl_max}s|%-#{excl_max}s|\n" %
       [ "`#{lns} <#{ref}>`_", autoload,
-          includes[0] ? "- #{includes[0]}" : '',
-          excludes[0] ? "- #{excludes[0]}" : '' ]
+          includes[0] ? "- ``#{includes[0]}``" : '',
+          excludes[0] ? "- ``#{excludes[0]}``" : '' ]
     for i in 1..height-1
       puts "|%-#{lens_max + ref_max}s|%-8s|%-#{incl_max}s|%-#{excl_max}s|\n" %
         [ '', '', '',
-          includes[i] ? "- #{includes[i]}" : '',
-          excludes[i] ? "- #{excludes[i]}" : '' ]
+          includes[i] ? "- ``#{includes[i]}``" : '',
+          excludes[i] ? "- ``#{excludes[i]}``" : '' ]
     end
     puts "+#{'-' * (lens_max + ref_max)}+#{'-' * 8}+#{'-' * incl_max}+#{'-' * excl_max}+\n"
   end
