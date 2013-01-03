@@ -3,7 +3,7 @@ BSTY=$(BUILD)/styles
 ND_DOCSDIR=../augeas/doc/naturaldocs
 BUILD_REFS=build/html/docs/references
 
-all: rest2web $(BSTY)/default.css $(BSTY)/favicon.ico \
+all: pages/stock_lenses.txt rest2web $(BSTY)/default.css $(BSTY)/favicon.ico \
      $(BSTY)/augeas.css $(BSTY)/generic.css \
      $(BSTY)/default-debug.css $(BSTY)/debug.css \
      $(BSTY)/et_logo.png $(BSTY)/augeas-logo.png \
@@ -11,6 +11,9 @@ all: rest2web $(BSTY)/default.css $(BSTY)/favicon.ico \
      $(BUILD)/docs/augeas.odp $(BUILD)/docs/augeas.pdf \
      $(BUILD)/docs/augeas-ols-2008.odp $(BUILD)/docs/augeas-ols-2008.pdf \
      naturaldocs
+
+pages/stock_lenses.txt:
+	ruby list_lenses.rb -f rst > $@
 
 naturaldocs:
 	(if test -d $(ND_DOCSDIR); then \
@@ -37,7 +40,8 @@ $(BUILD)/docs/%.pdf: pages/docs/%.pdf
 
 sync:
 	rsync -rav $(RSYNC_OPTS) $(BUILD)/ et:/var/www/sites/augeas.et.redhat.com/
-clean:
+clean: 
+	rm -f pages/stock_lenses.txt
 	rm -rf $(BUILD)
 
 .PHONY: rest2web sync clean naturaldocs
