@@ -1,0 +1,15 @@
+.. -*- rst -*-
+   restindex
+     initialheaderlevel: 2
+   /restindex
+
+========================
+Reference documentation
+========================
+
+Augeas has auto-generated documentation for its C API and its lenses:
+
+* `Existing lenses <references/lenses/index.html>`__
+* `C API <references/c_api/index.html>`__
+
+
