@@ -1,6 +1,6 @@
 BUILD=build/html
 BSTY=$(BUILD)/styles
-ND_DOCSDIR=../doc/naturaldocs
+ND_DOCSDIR=../augeas/doc/naturaldocs
 BUILD_REFS=build/html/docs/references
 
 all: rest2web $(BSTY)/default.css $(BSTY)/favicon.ico \
@@ -21,7 +21,7 @@ naturaldocs:
 	  cp -pr $(ND_DOCSDIR)/output/* $(BUILD_REFS))
 
 rest2web:
-	PYTHONPATH=$$PWD python /homes/lutter/packages/rest2web-0.5.1/r2w.py
+	PYTHONPATH=$$PWD r2w
 
 $(BUILD)/styles/%: pages/styles/%
 	mkdir -p $(BUILD)/styles
