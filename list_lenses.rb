@@ -49,11 +49,14 @@ Dir.glob("#{lensdir}/*.aug").each do |file|
     end
   end
 
+  ref = "docs/references/lenses/files/#{File.basename(file).gsub('.','-')}.html"
+
   lenses[mod] = {
     :lens => lns,
     :autoload => autoload,
     :incl => includes,
     :excl => excludes,
+    :ref  => ref,
   }
 end
 
@@ -84,7 +87,10 @@ together with their default includes and excludes.
 
 "
 
-  lens_max = lenses.keys.max {|a,b| a.length <=> b.length }.length
+  lens_max = lenses.keys.max {|a,b| a.length <=> b.length }.length+2
+  all_ref = []
+  lenses.each_key { |l| all_ref << lenses[l][:ref] }
+  ref_max = all_ref.flatten.max {|a,b| a.length <=> b.length }.length+4
   all_incl = []
   lenses.each_key { |l| all_incl << lenses[l][:incl] }
   incl_max = all_incl.flatten.max {|a,b| a.length <=> b.length }.length+2
@@ -92,27 +98,28 @@ together with their default includes and excludes.
   lenses.each_key { |l| all_excl << lenses[l][:excl] }
   excl_max = all_excl.flatten.max {|a,b| a.length <=> b.length }.length+2
 
-  puts "+#{'-' * lens_max}+#{'-' * 8}+#{'-' * incl_max}+#{'-' * excl_max}+\n"
-  puts "|%-#{lens_max}s|%-8s|%-#{incl_max}s|%-#{excl_max}s|\n" %
+  puts "+#{'-' * (lens_max + ref_max)}+#{'-' * 8}+#{'-' * incl_max}+#{'-' * excl_max}+\n"
+  puts "|%-#{lens_max + ref_max}s|%-8s|%-#{incl_max}s|%-#{excl_max}s|\n" %
     [ 'Lens', 'Autoload', 'Includes', 'Excludes' ]
-  puts "+#{'=' * lens_max}+#{'=' * 8}+#{'=' * incl_max}+#{'=' * excl_max}+\n"
+  puts "+#{'=' * (lens_max + ref_max)}+#{'=' * 8}+#{'=' * incl_max}+#{'=' * excl_max}+\n"
 
   lenses.keys.sort.each do |lns|
     autoload = lenses[lns][:autoload]
+    ref = lenses[lns][:ref]
     includes = lenses[lns][:incl].collect { |i| i.gsub('*', '\*').gsub('_', '\_') }
     excludes = lenses[lns][:excl].collect { |i| i.gsub('*', '\*').gsub('_', '\_') }
     height = [includes.length, excludes.length].max
-    puts "|%-#{lens_max}s|%-8s|%-#{incl_max}s|%-#{excl_max}s|\n" %
-      [ lns, autoload,
+    puts "|%-#{lens_max + ref_max}s|%-8s|%-#{incl_max}s|%-#{excl_max}s|\n" %
+      [ "`#{lns} <#{ref}>`_", autoload,
           includes[0] ? "- #{includes[0]}" : '',
           excludes[0] ? "- #{excludes[0]}" : '' ]
     for i in 1..height-1
-      puts "|%-#{lens_max}s|%-8s|%-#{incl_max}s|%-#{excl_max}s|\n" %
-        [ '', '',
+      puts "|%-#{lens_max + ref_max}s|%-8s|%-#{incl_max}s|%-#{excl_max}s|\n" %
+        [ '', '', '',
           includes[i] ? "- #{includes[i]}" : '',
           excludes[i] ? "- #{excludes[i]}" : '' ]
     end
-    puts "+#{'-' * lens_max}+#{'-' * 8}+#{'-' * incl_max}+#{'-' * excl_max}+\n"
+    puts "+#{'-' * (lens_max + ref_max)}+#{'-' * 8}+#{'-' * incl_max}+#{'-' * excl_max}+\n"
   end
 elsif format == 'html'
   puts "<html><head>"
