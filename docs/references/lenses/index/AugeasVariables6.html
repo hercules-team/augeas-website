@@ -101,7 +101,8 @@ tmpfs                           /var/opt/hosting/tmp    500             defaults
     (excl &quot;*.augsave&quot;) .
     (excl &quot;*.augnew&quot;) .
     (excl &quot;*.bak&quot;) .
-    (excl &quot;*.old&quot;)</td></tr></table></blockquote>Exclusion for files that are commonly not wanted/needed</div></div><div class=CToolTip id="tt315"><div class=CAugeasVariable><blockquote><table border=0 cellspacing=0 cellpadding=0 class="Prototype"><tr><td class="prettyprint">let sto_integer = store /[0-9]+/
+    (excl &quot;*.old&quot;) .
+    (excl &quot;#*#&quot;)</td></tr></table></blockquote>Exclusion for files that are commonly not wanted/needed</div></div><div class=CToolTip id="tt315"><div class=CAugeasVariable><blockquote><table border=0 cellspacing=0 cellpadding=0 class="Prototype"><tr><td class="prettyprint">let sto_integer = store /[0-9]+/
 
 </td></tr></table></blockquote></div></div><div class=CToolTip id="tt316"><div class=CAugeasVariable><blockquote><table border=0 cellspacing=0 cellpadding=0 class="Prototype"><tr><td class="prettyprint">let sto_multiline = Sep.opt_space
          . store (to_comment_re
