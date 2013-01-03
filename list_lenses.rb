@@ -106,8 +106,8 @@ together with their default includes and excludes.
   lenses.keys.sort.each do |lns|
     autoload = lenses[lns][:autoload]
     ref = lenses[lns][:ref]
-    includes = lenses[lns][:incl].collect { |i| i.gsub('*', '\*').gsub('_', '\_') }
-    excludes = lenses[lns][:excl].collect { |i| i.gsub('*', '\*').gsub('_', '\_') }
+    includes = lenses[lns][:incl]
+    excludes = lenses[lns][:excl]
     height = [includes.length, excludes.length].max
     puts "|%-#{lens_max + ref_max}s|%-8s|%-#{incl_max}s|%-#{excl_max}s|\n" %
       [ "`#{lns} <#{ref}>`_", autoload,
