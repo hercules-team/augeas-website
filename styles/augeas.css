@@ -393,10 +393,10 @@ dd {
     padding-bottom: 1em;
 }
 
-table.simple-table {
+table.simple-table, table.docutils {
   border-collapse: collapse;
   border: solid;
   border-width: 1px;
 }
-.simple-table tr, .simple-table td { padding: 6px }
-.simple-table th { background: #c9e0a7; padding: 6px }
+.simple-table tr, .simple-table td, .docutils tr, .docutils td { padding: 6px }
+.simple-table th, .docutils th { background: #c9e0a7; padding: 6px }
