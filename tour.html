@@ -1,0 +1,332 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+
+<html>
+<head>
+  <title>Augeas &mdash; Quick Tour</title>
+
+  
+  
+
+  <meta name="keywords" content="configuration management">
+  <meta name="description" content="Configuration API for Linux">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+  <link rel="shortcut icon" href="/styles/favicon.ico" type="image/x-icon">
+
+  <link rel="StyleSheet" type="text/css" href="styles/default.css" title="Main style">
+  <link rel="Alternate StyleSheet" type="text/css" href="styles/default-debug.css" title="Debug main style">
+
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-18273001-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+</head>
+
+<body>
+
+  <div id="header">
+    <div id="headerLogo"></div>
+  </div>
+
+  <div id="body">
+    <div id="menu">
+      <ul class="l0">
+         <li><div>
+<a class='inactive' title='Main' href='index.html'>Main</a>
+<li><div>
+<a class='inactive' title='FAQ' href='faq.html'>FAQ</a>
+</div></li>
+<li><div>
+<span class='active'>Quick Tour</span>
+</div></li>
+<li><div>
+<a class='inactive' title='Bug tracker' href='https:/fedorahosted.org/augeas/report/1'>Bug tracker</a>
+</div></li>
+<li><div>
+<a class='inactive' title='Todo list' href='todo.html'>Todo list</a>
+</div></li>
+<li><div>
+<a class='inactive' title='Releases' href='news.html'>Releases</a>
+</div></li>
+<li><div>
+<a class='inactive' title='Contribute' href='developers.html'>Contribute</a>
+</div></li>
+<li><div>
+<a class='inactive' title='Wiki' href='wiki'>Wiki</a>
+</div></li>
+<li><div>
+<a class='inactive' title='Documentation' href='docs/index.html'>Documentation</a>
+</div></li>
+<li><div>
+<a class='inactive' title='libfa' href='libfa/index.html'>libfa</a>
+</div></li>
+<li><div>
+<a class='inactive' title='Download' href='download.html'>Download</a>
+</div></li>
+
+      </ul>
+    </div>
+
+    <div id="content">
+      <div class="document" id="a-quick-tour">
+<h1 class="title">A quick tour</h1>
+<p>This tutorial gives a brief overview of using Augeas, and <tt class="docutils literal">augtool</tt> in
+particular. It's highly recommended that you follow along on your own; to
+do so, first <a class="reference external" href="download.html">download and install</a> Augeas. Then, create a sandbox so that
+you can safely modify files without affecting your system. The commands
+below create the sandbox from <tt class="docutils literal">/etc</tt> on your system, but you might want to
+copy the files from <tt class="docutils literal">tests/root</tt> in the source tarball — all the
+examples below were run against those files.</p>
+<pre class="literal-block">
+export AUGEAS_ROOT=/tmp/augeas-sandbox
+mkdir $AUGEAS_ROOT
+sudo cp -pr /etc $AUGEAS_ROOT
+sudo chown -R $(id -nu):$(id -ng) $AUGEAS_ROOT
+augtool -b
+</pre>
+<p>The <tt class="docutils literal"><span class="pre">-b</span></tt> option tells <tt class="docutils literal">augtool</tt> to preserve the original file with an
+extension of <tt class="docutils literal">.augsave</tt> whenever it makes a change.</p>
+<p>In the <tt class="docutils literal">augtool</tt> shell, type <tt class="docutils literal">help</tt> to get a list of commands. The
+<tt class="docutils literal">print</tt> command is particularly useful to explore what data is present in
+the tree. The commands to run can either be typed interactively into
+<tt class="docutils literal">augtool</tt> (with TAB completion on commands and tree paths), or piped in
+from standard input.</p>
+<div class="section" id="adding-an-entry-to-etc-hosts">
+<h2>Adding an entry to <tt class="docutils literal">/etc/hosts</tt></h2>
+<p>To warm up, let's do something very simple: adding a new entry to
+<tt class="docutils literal">/etc/hosts</tt>. In the <tt class="docutils literal">augtool</tt> shell, type the following commands:</p>
+<pre class="literal-block">
+set /files/etc/hosts/01/ipaddr 192.168.0.1
+set /files/etc/hosts/01/canonical pigiron.example.com
+set /files/etc/hosts/01/alias[1] pigiron
+set /files/etc/hosts/01/alias[2] piggy
+save
+</pre>
+<p>The four <tt class="docutils literal">set</tt> commands create four nodes underneath
+<tt class="docutils literal">/files/etc/hosts/01</tt>, and assign them the values passed as the second
+argument. The data parsed from a file with full path <tt class="docutils literal">FILE</tt> in the
+filesystem is stored in the tree underneath <tt class="docutils literal">/files/FILE</tt>; with that the
+<tt class="docutils literal">set</tt> commands manipulate an entry in the file <tt class="docutils literal">/etc/hosts</tt>. A second
+hierarchy underneath <tt class="docutils literal">/augeas/files/FILE</tt> contains metadata about the
+file, such as an indication of any errors encountered when the file was
+read.</p>
+<p>The tree for <tt class="docutils literal">/etc/hosts</tt> puts each host entry into its own subtree,
+numbered sequentially from 1, so that the first host entry appears under
+<tt class="docutils literal">/files/etc/hosts/1</tt>, the second under <tt class="docutils literal">/files/etc/hosts/2</tt>, etc. We
+use the label <tt class="docutils literal">01</tt> and put the details of our new host entry underneath
+<tt class="docutils literal">/files/etc/hosts/01</tt>. This works because reading in a <tt class="docutils literal">/etc/hosts</tt>
+file will never use labels starting with 0, and tree labels are strings,
+their numeric value is irrelevant. The order in which host entries are
+written back to file is determined by the order in which they appear in the
+tree.</p>
+<p>The <tt class="docutils literal">set</tt> command creates non-existant nodes as needed. There is a second
+command, <tt class="docutils literal">ins</tt>, to create new nodes in the tree that provides more
+control over where exactly a new node shows up, in particular where in the
+list of its siblings it appears. Because files are inherently sequential,
+the order of sibling nodes in the tree matters.</p>
+<p>The notation <tt class="docutils literal">alias[1]</tt> and <tt class="docutils literal">alias[2]</tt> tells Augeas to set the value
+for the first and second child of <tt class="docutils literal">/files/etc/hosts/01</tt>. Both nodes
+are called <tt class="docutils literal">/files/etc/hosts/01/alias</tt>; the new host entry can be
+listed with</p>
+<pre class="literal-block">
+ls /files/etc/hosts/01
+</pre>
+<p>or searched for with</p>
+<pre class="literal-block">
+match /files/etc/hosts/*/ipaddr 192.168.0.1
+</pre>
+<p>which prints <tt class="docutils literal">/files/etc/hosts/01/ipaddr</tt>.</p>
+<p>Running <tt class="docutils literal">(cd ${AUGEAS_ROOT} &amp;&amp; diff <span class="pre">-u</span> ./etc/hosts ./etc/hosts.augsave)</tt>
+confirms that <tt class="docutils literal">/etc/hosts</tt> now has one additional entry at the end:</p>
+<pre class="literal-block">
+diff -up ./etc/hosts.augsave ./etc/hosts
+--- ./etc/hosts.augsave
++++ ./etc/hosts
+&#64;&#64; -4,3 +4,4 &#64;&#64;
+ #172.31.122.254   granny.watzmann.net granny puppet
+ #172.31.122.1     galia.watzmann.net galia
+ 172.31.122.14   orange.watzmann.net orange
++192.168.0.1    pigiron.example.com pigiron piggy
+</pre>
+</div>
+<div class="section" id="changing-etc-grub-conf">
+<h2>Changing <tt class="docutils literal">/etc/grub.conf</tt></h2>
+<p>Modifying a slightly more complex file, <tt class="docutils literal">/etc/grub.conf</tt> <a class="footnote-reference" href="#grub-conf" id="id1">[1]</a>,
+follows the same lines as modifying <tt class="docutils literal">/etc/hosts</tt>. One of the big
+advantages of Augeas is that configuration data is manipulated in the same
+way, regardless of how it is stored in the native config files.</p>
+<p>While the above change to <tt class="docutils literal">/etc/hosts</tt> can be easily achieved with
+standard shell tools (<tt class="docutils literal">cat</tt> comes to mind), and <tt class="docutils literal">/etc/hosts</tt> in general
+can be manipulated relatively easily with <tt class="docutils literal">sed</tt>, <tt class="docutils literal">grep</tt>, <tt class="docutils literal">awk</tt>, or
+tools readily available in most scripting languages, manipulating
+<tt class="docutils literal">/etc/grub.conf</tt> with those tools is quite a bit harder.</p>
+<p>We want to change <tt class="docutils literal">/etc/grub.conf</tt> so that <tt class="docutils literal">grub</tt> boots the second boot
+entry by default, and remove the third boot record completely. The
+following two commands do that — you should look at the tree before and
+after the change using <tt class="docutils literal">print /files/etc/grub.conf</tt>:</p>
+<pre class="literal-block">
+set /files/etc/grub.conf/default 1
+rm /files/etc/grub.conf/title[3]
+save
+</pre>
+<p>The diff between the old and new file confirms that Augeas changed what was
+intended:</p>
+<pre class="literal-block">
+diff -up ./etc/grub.conf.augsave ./etc/grub.conf
+--- ./etc/grub.conf.augsave     2008-04-09 16:14:06.000000000 -0700
++++ ./etc/grub.conf     2008-04-15 15:32:09.000000000 -0700
+&#64;&#64; -7,7 +7,7 &#64;&#64;
+ #          kernel /vmlinuz-version ro root=/dev/vg00/lv00
+ #          initrd /initrd-version.img
+ #boot=/dev/sda
+-default=0
++default=1
+ timeout=5
+ splashimage=(hd0,0)/grub/splash.xpm.gz
+ hiddenmenu
+&#64;&#64; -19,11 +19,6 &#64;&#64; title Fedora (2.6.24.3-50.fc8)
+        root (hd0,0)
+        kernel /vmlinuz-2.6.24.3-50.fc8 ro root=/dev/vg00/lv00
+        initrd /initrd-2.6.24.3-50.fc8.img
+-title Fedora (2.6.21.7-3.fc8xen)
+-       root (hd0,0)
+-       kernel /xen.gz-2.6.21.7-3.fc8
+-       module /vmlinuz-2.6.21.7-3.fc8xen ro root=/dev/vg00/lv00
+-       module /initrd-2.6.21.7-3.fc8xen.img
+ title Fedora (2.6.24.3-34.fc8)
+        root (hd0,0)
+        kernel /vmlinuz-2.6.24.3-34.fc8 ro root=/dev/vg00/lv00
+</pre>
+</div>
+<div class="section" id="making-sshd-accept-an-additional-environment-variable">
+<h2>Making <tt class="docutils literal">sshd</tt> accept an additional environment variable</h2>
+<p>The config file for <tt class="docutils literal">sshd</tt> is deceptively simple, but has some subtle
+intricacies. One of them are <tt class="docutils literal">Match</tt> blocks at the end of the file,
+another is the fact that some settings can be repeated in the file, and
+values are accumulated, and that their values are best viewed as arrays.</p>
+<p>To illustrate this, we will add a new environment variable <tt class="docutils literal">FOO</tt> to the
+<tt class="docutils literal">AcceptEnv</tt> setting in <tt class="docutils literal">/etc/ssh/sshd_config</tt>. The schema that Augeas
+uses for <tt class="docutils literal">sshd_config</tt> <a class="footnote-reference" href="#sshd-config" id="id2">[2]</a> by default maps multiple
+<tt class="docutils literal">AcceptEnv</tt> lines into multiple tree nodes with the name <tt class="docutils literal">AcceptEnv</tt>,
+similar to how multiple aliases in <tt class="docutils literal">/etc/hosts</tt> are handled. Since each
+line contains a list of environment variables, the schema splits that list
+into separate tree nodes numbered starting at one.  The following lines in
+<tt class="docutils literal">sshd_config</tt></p>
+<pre class="literal-block">
+AcceptEnv LANG LC_CTYPE
+AcceptEnv LC_IDENTIFICATION LC_ALL
+</pre>
+<p>are mapped into a tree</p>
+<pre class="literal-block">
+AcceptEnv[1]/1 = &quot;LANG&quot;
+AcceptEnv[1]/2 = &quot;LC_CTYPE&quot;
+AcceptEnv[2]/1 = &quot;LC_IDENTIFICATION&quot;
+AcceptEnv[2]/2 = &quot;LC_ALL&quot;
+</pre>
+<p>This allows for very fine-grained access to individual value in the
+<tt class="docutils literal">sshd_config</tt> file, and preserves enough information so that Augeas can
+decide which entries go on the same line. To see all <tt class="docutils literal">AcceptEnv</tt> entries,
+run</p>
+<pre class="literal-block">
+print /files/etc/ssh/sshd_config/AcceptEnv/*
+</pre>
+<p>To add a new variable <tt class="docutils literal">FOO</tt> at the end of the last <tt class="docutils literal">AcceptEnv</tt> line, we
+perform</p>
+<pre class="literal-block">
+set /files/etc/ssh/sshd_config/AcceptEnv[last()]/01 FOO
+save
+</pre>
+<p>The addition of <tt class="docutils literal"><span class="pre">[last()]</span></tt> to <tt class="docutils literal">AcceptEnv</tt> in the path tells Augeas that
+we are talking about the last node named <tt class="docutils literal">AcceptEnv</tt>. Augeas requires
+that for a <tt class="docutils literal">set</tt> the path expression corresponds either to an existing
+node, or to no node at all (in which case a new node is created). Writing
+the above command as</p>
+<pre class="literal-block">
+set /files/etc/ssh/sshd_config/AcceptEnv/01 FOO
+</pre>
+<p>results in an error when there are multiple <tt class="docutils literal">AcceptEnv</tt> entries in the
+tree. In that case, Augeas can not figure out under which of them you want
+to put the entry labelled <tt class="docutils literal">01</tt>.</p>
+<p>Again, the above commands lead to the expected diff, the addition of
+<tt class="docutils literal">FOO</tt> to the last <tt class="docutils literal">AcceptEnv</tt> line:</p>
+<pre class="literal-block">
+diff -up ./etc/ssh/sshd_config.augsave ./etc/ssh/sshd_config
+--- ./etc/ssh/sshd_config.augsave
++++ ./etc/ssh/sshd_config
+&#64;&#64; -93,7 +93,7 &#64;&#64; UsePAM yes
+ # Accept locale-related environment variables
+ AcceptEnv LANG LC_CTYPE LC_NUMERIC LC_TIME LC_COLLATE LC_MONETARY LC_MESSAGES
+ AcceptEnv LC_PAPER LC_NAME LC_ADDRESS LC_TELEPHONE LC_MEASUREMENT
+-AcceptEnv LC_IDENTIFICATION LC_ALL
++AcceptEnv LC_IDENTIFICATION LC_ALL FOO
+ #AllowTcpForwarding yes
+ #GatewayPorts no
+ #X11Forwarding no
+</pre>
+<table class="docutils footnote" frame="void" id="grub-conf" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>some distributions do not have a <tt class="docutils literal">/etc/grub.conf</tt>, but
+only a <tt class="docutils literal">/boot/grub/menu.lst</tt> or similar. The simplest way to follow
+these examples is to create a symbolic link
+<tt class="docutils literal">$AUGEAS_ROOT/etc/grub.conf</tt> that points to the real grub config in
+your sandbox. In real life, you would change paths like
+<tt class="docutils literal"><span class="pre">/files/etc/grub.conf/...</span></tt> to <tt class="docutils literal"><span class="pre">/files/boot/grub/menu.lst/...</span></tt> when
+interacting with Augeas</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="sshd-config" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>all schemas can be found in the <tt class="docutils literal">lenses/</tt> subdirectory
+in the source tarball, which by default is installed into
+<tt class="docutils literal">/usr/share/augeas/lenses</tt></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+    </div>
+  </div>
+
+  <div id="footer">
+    <div id="projects">
+      <dl id="p1">
+        <dt><a href="http://augeas.net/">Augeas</a></dt>
+        <dd><span>A configuration editing tool and API</span></dd>
+        <dt><a href="http://libvirt.org/">libvirt</a></dt>
+        <dd><span>The open source virtualization API</span></dd>
+<!--        <dt><a href="http://thincrust.et.redhat.com/">Thin Crust</a></dt>
+        <dd><span>Tools for building virtual appliances</span></dd>-->
+      </dl>
+      <dl id="p2">
+        <dt><a href="http://cobbler.et.redhat.com/">Cobbler</a></dt>
+        <dd><span>OS provisioning and profile management</span></dd>
+        <dt><a href="http://ovirt.org/">oVirt</a></dt>
+        <dd><span>Virtualization management across the data center</span></dd>
+<!--        <dt><a href="http://et.redhat.com/~rjones/virt-p2v/">p-2-v</a></dt>
+        <dd><span>Virtualize existing deployed servers</span></dd>-->
+      </dl>
+      <dl id="p3">
+        <dt><a href="http://freeipa.org/">FreeIPA</a></dt>
+        <dd><span>Identity, policy and audit management</span></dd>
+        <dt><a href="http://virt-manager.org/">Virtual Machine Manager</a></dt>
+        <dd><span>Virtualization management from the desktop</span></dd>
+<!--        <dt><a href="http://virt-manager.org/">Virtual Tools</a></dt>
+        <dd><span>Virtualization management from the command line</span></dd>-->
+      </dl>
+    </div>
+    <p id="et">
+      <a href="http://et.redhat.com/"><img src="styles/et_logo.png" alt="A Red Hat Emerging Technology Project"></a>
+    </p>
+  </div>
+</body>
+</html>

@@ -1,0 +1,253 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+
+<html>
+<head>
+  <title>Augeas &mdash; Schema tutorial</title>
+
+  
+  
+
+  <meta name="keywords" content="configuration management">
+  <meta name="description" content="Configuration API for Linux">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+  <link rel="shortcut icon" href="..//styles/favicon.ico" type="image/x-icon">
+
+  <link rel="StyleSheet" type="text/css" href="../styles/default.css" title="Main style">
+  <link rel="Alternate StyleSheet" type="text/css" href="../styles/default-debug.css" title="Debug main style">
+
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-18273001-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+</head>
+
+<body>
+
+  <div id="header">
+    <div id="headerLogo"></div>
+  </div>
+
+  <div id="body">
+    <div id="menu">
+      <ul class="l0">
+         <li><div>
+<a class='inactive' title='Main' href='../index.html'>Main</a>
+<li><div>
+<a class='inactive' title='FAQ' href='../faq.html'>FAQ</a>
+</div></li>
+<li><div>
+<a class='inactive' title='Quick Tour' href='../tour.html'>Quick Tour</a>
+</div></li>
+<li><div>
+<a class='inactive' title='Bug tracker' href='https:/fedorahosted.org/augeas/report/1'>Bug tracker</a>
+</div></li>
+<li><div>
+<a class='inactive' title='Todo list' href='../todo.html'>Todo list</a>
+</div></li>
+<li><div>
+<a class='inactive' title='Releases' href='../news.html'>Releases</a>
+</div></li>
+<li><div>
+<a class='inactive' title='Contribute' href='../developers.html'>Contribute</a>
+</div></li>
+<li><div>
+<a class='inactive' title='Wiki' href='../wiki'>Wiki</a>
+</div></li>
+<li><div>
+<a class='active' title='Documentation' href='index.html'>Documentation</a>
+<ul class='l1'>
+<li>
+<a class='inactive' title='Public API' href='api.html'>Public API</a>
+</li>
+<li>
+<a class='inactive' title='Tree' href='tree.html'>Tree</a>
+</li>
+<li>
+<a class='inactive' title='Lenses' href='lenses.html'>Lenses</a>
+</li>
+<li>
+<a class='inactive' title='Builtin functions' href='builtins.html'>Builtin functions</a>
+</li>
+<li>
+<a class='inactive' title='Language' href='language.html'>Language</a>
+</li>
+<li>
+<span class='active'>Schema tutorial</span>
+</li>
+</ul>
+</div></li>
+<li><div>
+<a class='inactive' title='libfa' href='../libfa/index.html'>libfa</a>
+</div></li>
+<li><div>
+<a class='inactive' title='Download' href='../download.html'>Download</a>
+</div></li>
+
+      </ul>
+    </div>
+
+    <div id="content">
+      <div class="document" id="writing-schemas">
+<h1 class="title">Writing Schemas</h1>
+<p>The mapping of files into the tree and back is governed by schemas written
+in Augeas' domain specific language; the language implements a very small
+subset of ML, a popular functional language. The subset is in fact so
+small, that writing schemas only requires knowing three or four
+constructs.</p>
+<p>The schemas shipping with Augeas can be found in the <tt class="docutils literal">lenses/</tt> directory
+in the source distributon, which by default is installed to
+<tt class="docutils literal">/usr/share/augeas/lenses</tt>.</p>
+<p>When devloping schemas, it is better to use <tt class="docutils literal">augparse</tt>, a tool better
+suited to spotting problems in schemas than <tt class="docutils literal">augtool</tt>. As an example,
+run the following command</p>
+<pre class="literal-block">
+augparse -I $P/lenses $P/lenses/tests/test_hosts.aug
+</pre>
+<p>where <tt class="docutils literal">$P</tt> is the toplevel dir of the source distribution or
+<tt class="docutils literal">/usr/share/augeas</tt> for binary distributions. The command will run the
+tests for the <tt class="docutils literal">/etc/hosts</tt> schema, and if they pass exit without printing
+anything.</p>
+<p>More detailed information on the language construct can be found in the
+<a class="reference external" href="language.html">language overview</a> and the description of <a class="reference external" href="lenses.html">lenses</a>.</p>
+<p>When writing schema, it is best to start with lenses that process parts of
+the file and using unit tests for them. Generally, it is best to split the
+lenses and tests into two separate files, <tt class="docutils literal">module.aug</tt> and
+<tt class="docutils literal">tests/module.aug</tt>, though for the sake of simplicity, we just do
+everything in one file here.</p>
+<div class="section" id="simple-schemas">
+<h2>Simple schemas</h2>
+<p>To get started, let's write a simple lens that transforms lines of the form
+<tt class="docutils literal">key = value</tt> to a tree <tt class="docutils literal">{ &quot;key&quot; = &quot;value&quot; }</tt>. Save the following
+(without the line numbers) in a file <tt class="docutils literal">tutorial.aug</tt>:</p>
+<pre class="literal-block">
+1: module Tutorial =
+2:   let kv = key /[a-z]+/ . del /[ \t]*=[ \t]*/ &quot;=&quot; . store /[a-z]+/
+3:   let lns = [ kv ]
+
+4:   test lns get &quot;key = value&quot; = ?
+</pre>
+<p>Running it with  <tt class="docutils literal">augparse tutorial.aug</tt> produces</p>
+<pre class="literal-block">
+Test result: tutorial.aug:4.4-.34:
+/key = &quot;value&quot;
+</pre>
+<p>Line 2 creates a lens <tt class="docutils literal">kv</tt> by concatenating the three lenses <tt class="docutils literal">key</tt>,
+<tt class="docutils literal">del</tt>, and <tt class="docutils literal">store</tt>. The first of these, <tt class="docutils literal">key <span class="pre">/[a-z]+/</span></tt> takes whatever
+matches the regular expression <tt class="docutils literal"><span class="pre">/[a-z]+/</span></tt> and marks it as the label as a
+new tree node; the <tt class="docutils literal">del</tt> lens matches an equal sign, surrounded by
+optional whitespace, and remembers it; the match is used when transforming
+the tree back into a string. The second argument to <tt class="docutils literal">del</tt> is used as the
+default when a (part of a) tree is transformed into a string that was not
+present when the tree was initially constructed from a string. The last
+lens, <tt class="docutils literal">store</tt>, again matches a sequence of lower-case characters, and
+marks them to be stored as the value of a tree node.</p>
+<p>The <tt class="docutils literal">kv</tt> lens on line 2 does not construct any trees yet, it only marks
+various pieces of the input string for how they should be mapped to the
+tree. The tree is constructed on line 3 by the <tt class="docutils literal">lns</tt> lens: the <tt class="docutils literal">[
+L ]</tt> subtree operator applies the lens <tt class="docutils literal">L</tt> to the input string and
+creates a tree from what <tt class="docutils literal">L</tt> marked as a label and value.</p>
+<p>The given lens <tt class="docutils literal">lns</tt> only processes one key/value pair. If we had files
+with many key value pairs, we need to modify the definition of <tt class="docutils literal">lns</tt> to</p>
+<pre class="literal-block">
+let lns = [ kv . del &quot;\n&quot; &quot;\n&quot; ] *
+</pre>
+<p>A new test, appended to <tt class="docutils literal">tutorial.aug</tt> confirms that that now does what
+we want: appending the following test to <tt class="docutils literal">tutorial.aug</tt></p>
+<pre class="literal-block">
+test lns get &quot;ka=va\nkb=vb\n&quot; = ?
+</pre>
+<p>and running it through <tt class="docutils literal">augparse</tt> gives us</p>
+<pre class="literal-block">
+Test result: tutorial.aug:7.4-.37:
+/ka = &quot;va&quot;
+/kb = &quot;vb&quot;
+</pre>
+<p>The first test we wrote should have also failed, because the input string
+did not end with a <tt class="docutils literal">&quot;\n&quot;</tt>.</p>
+<p>More information can be found <a class="reference external" href="../wiki">on the Wiki</a> and in the existing lenses.</p>
+</div>
+<div class="section" id="transformations-and-autoload">
+<h2>Transformations and Autoload</h2>
+<p>So far, we have seen how we can construct lenses and test them using fixed
+input strings. For <tt class="docutils literal">augtool</tt>, we also need to indicate which files need
+to be transformed with what lens. This is done using the <tt class="docutils literal">transform</tt>
+function which takes a lens and a <em>file filter</em>. When <tt class="docutils literal">augtool</tt> starts,
+it applies all transforms marked for autoloading, by finding all files that
+match the file filter and applying the corresponding lens to their
+contents.</p>
+<p>The tree resulting form applying the lens to the contents of a file with
+absolute path <tt class="docutils literal">/PATH</tt> is put into Augeas' tree underneath
+<tt class="docutils literal">/files/PATH</tt>.</p>
+<p>A module set up for autoloading for <tt class="docutils literal">augtool</tt> has the general structure</p>
+<pre class="literal-block">
+module Tutorial
+  autoload xfm
+
+  let lns = ...
+
+  let filter = ...
+
+  let xfm = transform lns filter
+</pre>
+<p>The <tt class="docutils literal">autoload</tt> statement must be the very first statement inside the
+module.</p>
+<p>File filters are built by concatenating applications of the builtin
+functions <tt class="docutils literal">incl</tt> and <tt class="docutils literal">excl</tt>, both take a shell glob as their sole
+argument:</p>
+<pre class="literal-block">
+let filter = (incl &quot;/etc/pam.d/*&quot;) . (excl &quot;*.rpmsave&quot;)
+</pre>
+<p>This filter matches all files in <tt class="docutils literal">/etc/pam.d</tt> that do not end in
+<tt class="docutils literal">.rpmsave</tt>. The order of <tt class="docutils literal">incl</tt> and <tt class="docutils literal">excl</tt> in the filter does not
+matter — a file is included if it is matched by at least one <tt class="docutils literal">incl</tt>
+glob, and by none of the <tt class="docutils literal">excl</tt> globs. Globs that do not contain any
+<tt class="docutils literal">/</tt> are matched against the basename of a file, otherwise, they are
+matched against the full path name of the file.</p>
+</div>
+</div>
+
+    </div>
+  </div>
+
+  <div id="footer">
+    <div id="projects">
+      <dl id="p1">
+        <dt><a href="http://augeas.net/">Augeas</a></dt>
+        <dd><span>A configuration editing tool and API</span></dd>
+        <dt><a href="http://libvirt.org/">libvirt</a></dt>
+        <dd><span>The open source virtualization API</span></dd>
+<!--        <dt><a href="http://thincrust.et.redhat.com/">Thin Crust</a></dt>
+        <dd><span>Tools for building virtual appliances</span></dd>-->
+      </dl>
+      <dl id="p2">
+        <dt><a href="http://cobbler.et.redhat.com/">Cobbler</a></dt>
+        <dd><span>OS provisioning and profile management</span></dd>
+        <dt><a href="http://ovirt.org/">oVirt</a></dt>
+        <dd><span>Virtualization management across the data center</span></dd>
+<!--        <dt><a href="http://et.redhat.com/~rjones/virt-p2v/">p-2-v</a></dt>
+        <dd><span>Virtualize existing deployed servers</span></dd>-->
+      </dl>
+      <dl id="p3">
+        <dt><a href="http://freeipa.org/">FreeIPA</a></dt>
+        <dd><span>Identity, policy and audit management</span></dd>
+        <dt><a href="http://virt-manager.org/">Virtual Machine Manager</a></dt>
+        <dd><span>Virtualization management from the desktop</span></dd>
+<!--        <dt><a href="http://virt-manager.org/">Virtual Tools</a></dt>
+        <dd><span>Virtualization management from the command line</span></dd>-->
+      </dl>
+    </div>
+    <p id="et">
+      <a href="http://et.redhat.com/"><img src="../styles/et_logo.png" alt="A Red Hat Emerging Technology Project"></a>
+    </p>
+  </div>
+</body>
+</html>

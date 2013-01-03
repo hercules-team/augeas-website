@@ -1,0 +1,266 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+
+<html>
+<head>
+  <title>Augeas &mdash; Lenses</title>
+
+  
+  
+
+  <meta name="keywords" content="configuration management">
+  <meta name="description" content="Configuration API for Linux">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+  <link rel="shortcut icon" href="..//styles/favicon.ico" type="image/x-icon">
+
+  <link rel="StyleSheet" type="text/css" href="../styles/default.css" title="Main style">
+  <link rel="Alternate StyleSheet" type="text/css" href="../styles/default-debug.css" title="Debug main style">
+
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-18273001-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+</head>
+
+<body>
+
+  <div id="header">
+    <div id="headerLogo"></div>
+  </div>
+
+  <div id="body">
+    <div id="menu">
+      <ul class="l0">
+         <li><div>
+<a class='inactive' title='Main' href='../index.html'>Main</a>
+<li><div>
+<a class='inactive' title='FAQ' href='../faq.html'>FAQ</a>
+</div></li>
+<li><div>
+<a class='inactive' title='Quick Tour' href='../tour.html'>Quick Tour</a>
+</div></li>
+<li><div>
+<a class='inactive' title='Bug tracker' href='https:/fedorahosted.org/augeas/report/1'>Bug tracker</a>
+</div></li>
+<li><div>
+<a class='inactive' title='Todo list' href='../todo.html'>Todo list</a>
+</div></li>
+<li><div>
+<a class='inactive' title='Releases' href='../news.html'>Releases</a>
+</div></li>
+<li><div>
+<a class='inactive' title='Contribute' href='../developers.html'>Contribute</a>
+</div></li>
+<li><div>
+<a class='inactive' title='Wiki' href='../wiki'>Wiki</a>
+</div></li>
+<li><div>
+<a class='active' title='Documentation' href='index.html'>Documentation</a>
+<ul class='l1'>
+<li>
+<a class='inactive' title='Public API' href='api.html'>Public API</a>
+</li>
+<li>
+<a class='inactive' title='Tree' href='tree.html'>Tree</a>
+</li>
+<li>
+<span class='active'>Lenses</span>
+</li>
+<li>
+<a class='inactive' title='Builtin functions' href='builtins.html'>Builtin functions</a>
+</li>
+<li>
+<a class='inactive' title='Language' href='language.html'>Language</a>
+</li>
+<li>
+<a class='inactive' title='Schema tutorial' href='writing-schemas.html'>Schema tutorial</a>
+</li>
+</ul>
+</div></li>
+<li><div>
+<a class='inactive' title='libfa' href='../libfa/index.html'>libfa</a>
+</div></li>
+<li><div>
+<a class='inactive' title='Download' href='../download.html'>Download</a>
+</div></li>
+
+      </ul>
+    </div>
+
+    <div id="content">
+      <div class="document" id="lenses">
+<h1 class="title">Lenses</h1>
+<p><em>Lenses</em> <a class="footnote-reference" href="#id2" id="id1">[1]</a> are the basic building blocks for establishing the mapping
+from files into the Augeas tree and back. You can think of a lens as a
+record of three functions <em>get</em>, <em>put</em> and <em>create</em>, where the <em>get</em>
+function takes the contents of a text file, parses it and produces part of
+Augeas' tree. The <em>put</em> and <em>create</em> functions take a tree and transforms
+it back into a text file. The difference is that <em>put</em> is used when the
+part of the tree being transformed into the file corresponds to something
+in the input file, and the <em>create</em> function is used when it does not.</p>
+<p>Structuring the transformation this way has some importnat consequences:</p>
+<ol class="arabic simple">
+<li>There is no need to think about the text -&gt; tree direction and the tree
+-&gt; text direction separately, and it therefore becomes impossible for
+those two transformations to become out of sync.</li>
+<li>Usually, it is enough to focus on the text -&gt; tree transformation when
+describing a config file format; the tree -&gt; text direction comes
+(almost) for free</li>
+<li>Augeas expects the tree to have a certain structure, implicitly defined
+by the lens for each file. If the tree does not have that structure, for
+example, because there is no <tt class="docutils literal">canonical</tt> entry for a host in
+<tt class="docutils literal">/files/etc/hosts</tt>, Augeas will refuse to transform such a tree back
+into the corresponding file.</li>
+</ol>
+<p>Lenses come in two flavors: <em>lens primitives</em> and <em>lens combinators</em>. The
+former take some piece of the file and process it in some way, the latter
+combine smaller lenses to form one large lens.</p>
+<div class="section" id="strings-and-regular-expressions">
+<h2>Strings and regular expressions</h2>
+<p>Two basic types in the schema language are strings and regular
+expressions. String literals are enclosed in double quotes, and can contain
+escape sequences, similar to the escape sequences in C strings. In
+particular, the sequences <tt class="docutils literal">\n</tt>,  and <tt class="docutils literal">\t</tt> are translated to the
+new line and tab characters respectively. Therefore, the string literal
+<tt class="docutils literal">&quot;\t\n&quot;</tt> denotes a two character string consisting of a tab and a newline
+character.</p>
+<p>Regular expression literals are enclosed in slashes (<tt class="docutils literal"><span class="pre">/.../</span></tt>). The regular
+expression syntax is that of extended POSIX regular expressions, with the
+small difference that <tt class="docutils literal">.</tt> does <em>not</em> match newlines. To put a literal
+<tt class="docutils literal">/</tt> into a regular expression, escape it as <tt class="docutils literal">\/</tt>. The same escape
+sequences as for string literals are recognized, so that the regular
+expresion literal <tt class="docutils literal"><span class="pre">/(\t|\n)/</span></tt> matches either a tab or a newline
+character.</p>
+<p>In a context where a regular expression is expected, but a string is
+provided, the string is automatically coerced to a regular expression
+matching that string exactly. Characters that have a special meaning inside
+regular expressions are escaped, so that the string <tt class="docutils literal"><span class="pre">&quot;()&quot;</span></tt> is coerced to
+the regular expression <tt class="docutils literal"><span class="pre">/\(\)/</span></tt>.</p>
+</div>
+<div class="section" id="lens-primitives">
+<h2>Lens primitives</h2>
+<p>The following lens primitives are built into Augeas; the arguments to them
+are either regular expressions, indicated by <tt class="docutils literal">RE</tt>, strings indicated by
+<tt class="docutils literal">STR</tt> or another lens, indicated by <tt class="docutils literal">LENS</tt>.</p>
+<dl class="docutils">
+<dt><tt class="docutils literal">del RE STR</tt></dt>
+<dd>Match the regular expression <tt class="docutils literal">RE</tt> in the <em>get</em> direction. The result
+of the match does not appear anywhere in the tree, but Augeas remembers
+the exact value it saw during parsing and restores it in the <em>put</em>
+direction. The <em>create</em> function produces the default <tt class="docutils literal">STR</tt> value.</dd>
+<dt><tt class="docutils literal">store RE</tt></dt>
+<dd>Store whatever matches the regular expression <tt class="docutils literal">RE</tt> as the value of the
+enclosing subtree.</dd>
+<dt><tt class="docutils literal">value STR</tt></dt>
+<dd>Store the string <tt class="docutils literal">STR</tt> as the value of the enclosing tree node.</dd>
+<dt><tt class="docutils literal">counter STR</tt></dt>
+<dd>Declare a new counter with name <tt class="docutils literal">STR</tt> and reset its value to
+1. Counters don't need to be declared, but using this statement makes it
+possible to reset counters.</dd>
+<dt><tt class="docutils literal">seq STR</tt></dt>
+<dd>Take the next value from the counter with name <tt class="docutils literal">STR</tt> and use it as the
+label of the enclosing subtree.</dd>
+<dt><tt class="docutils literal">key RE</tt></dt>
+<dd>Match the reguler expression <tt class="docutils literal">RE</tt> against the current position in the
+input, and use the result of the match as the label of the enclosing
+subtree.</dd>
+<dt><tt class="docutils literal">label STR</tt></dt>
+<dd>Use the string <tt class="docutils literal">STR</tt> as the label of the enclosing subtree.</dd>
+</dl>
+</div>
+<div class="section" id="lens-combinators">
+<h2>Lens combinators</h2>
+<p>In the following, <tt class="docutils literal">L</tt>, <tt class="docutils literal">L1</tt> and <tt class="docutils literal">L2</tt> are lenses.</p>
+<dl class="docutils">
+<dt>Concatenation: <tt class="docutils literal">L1 . L2</tt></dt>
+<dd>The <tt class="docutils literal">.</tt> operator concatenates two lenses <tt class="docutils literal">L1 . L2</tt>, by applying
+<tt class="docutils literal">L1</tt> and then <tt class="docutils literal">L2</tt>. Concatenation requires that any string (for the
+<em>get</em> direction) or any tree (for the <em>put</em>/<em>create</em> direction) that
+matches <tt class="docutils literal">L1 . L2</tt> can be split in exactly one way into one part matching
+<tt class="docutils literal">L1</tt> and one part matching <tt class="docutils literal">L2</tt>.</dd>
+<dt>Union: <tt class="docutils literal">L1 | L2</tt></dt>
+<dd>The union of two lenses <tt class="docutils literal">L1 | L2</tt> is formed with the <tt class="docutils literal">|</tt> operator. It
+determines whether <tt class="docutils literal">L1</tt> or <tt class="docutils literal">L2</tt> apply at the current position, and
+uses the one that does. The two lenses must be such that only one can
+ever apply to a string. For example, the union <tt class="docutils literal">del <span class="pre">/[a-z]+/</span> | store
+<span class="pre">/[a-zA-Z]+/</span></tt> is not permissible since the string <tt class="docutils literal">abc</tt> can be processed
+with either the <tt class="docutils literal">del</tt> or the <tt class="docutils literal">store</tt>. The typechecker will report an
+error when it encounters such a lens.</dd>
+<dt>Repetition: <tt class="docutils literal">L*</tt>, <tt class="docutils literal">L+</tt>, <tt class="docutils literal">L?</tt></dt>
+<dd>A lens <tt class="docutils literal">L</tt> can be repeated by using the postfix operators <tt class="docutils literal">*</tt>, <tt class="docutils literal">+</tt>,
+and <tt class="docutils literal">?</tt>, with the same meaning as for regular expressions. For example,
+<tt class="docutils literal">(L)+</tt> matches one or more occurences of <tt class="docutils literal">L</tt>.</dd>
+<dt>Subtree: <tt class="docutils literal">[ L ]</tt></dt>
+<dd>For a lens <tt class="docutils literal">L</tt>, the subtree lens <tt class="docutils literal">[ L ]</tt> constructs a new tree
+node. The label of the node is determined by a <tt class="docutils literal">key</tt>, <tt class="docutils literal">label</tt> or
+<tt class="docutils literal">seq</tt> lens inside <tt class="docutils literal">L</tt>, and the value by a <tt class="docutils literal">store</tt> lens inside
+<tt class="docutils literal">L</tt>; either of these may be missing in which case the label or value
+are set to <tt class="docutils literal">NULL</tt>. The children of the new node are the tree(s)
+constructed by <tt class="docutils literal">L</tt>. <tt class="docutils literal">L</tt> can contain at most one <tt class="docutils literal">key</tt>, <tt class="docutils literal">label</tt> or
+<tt class="docutils literal">seq</tt> lens and at most one <tt class="docutils literal">store</tt> lens. The typechecker will reject
+violations.</dd>
+<dt>Square: <tt class="docutils literal">square RE LENS</tt></dt>
+<dd>Produce the same effect as <tt class="docutils literal">key RE . LENS . del STR STR</tt> with the
+constraint that <tt class="docutils literal">STR</tt> is the string matched by <tt class="docutils literal">key RE</tt>. This lens
+makes it possible to process (generalized) squares, words of the form
+<cite>uvu</cite>; a matching square lens would transform <cite>uvu</cite> into a tree with a
+root labelled with <cite>u</cite> and children produced by processing <cite>v</cite> with
+<tt class="docutils literal">LENS</tt>. This lens makes it possible to process SGML-style languages
+like XML in a very general fashion; in particular, it is possible to
+write lenses that accept an infinte number of different tags.</dd>
+</dl>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>The term <em>lens</em> was coined by <a class="reference external" href="http://alliance.seas.upenn.edu/~harmony/">Harmony and Boomerang</a>, systems for
+constructing bidirectional maps between trees and between strings,
+respectively.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+    </div>
+  </div>
+
+  <div id="footer">
+    <div id="projects">
+      <dl id="p1">
+        <dt><a href="http://augeas.net/">Augeas</a></dt>
+        <dd><span>A configuration editing tool and API</span></dd>
+        <dt><a href="http://libvirt.org/">libvirt</a></dt>
+        <dd><span>The open source virtualization API</span></dd>
+<!--        <dt><a href="http://thincrust.et.redhat.com/">Thin Crust</a></dt>
+        <dd><span>Tools for building virtual appliances</span></dd>-->
+      </dl>
+      <dl id="p2">
+        <dt><a href="http://cobbler.et.redhat.com/">Cobbler</a></dt>
+        <dd><span>OS provisioning and profile management</span></dd>
+        <dt><a href="http://ovirt.org/">oVirt</a></dt>
+        <dd><span>Virtualization management across the data center</span></dd>
+<!--        <dt><a href="http://et.redhat.com/~rjones/virt-p2v/">p-2-v</a></dt>
+        <dd><span>Virtualize existing deployed servers</span></dd>-->
+      </dl>
+      <dl id="p3">
+        <dt><a href="http://freeipa.org/">FreeIPA</a></dt>
+        <dd><span>Identity, policy and audit management</span></dd>
+        <dt><a href="http://virt-manager.org/">Virtual Machine Manager</a></dt>
+        <dd><span>Virtualization management from the desktop</span></dd>
+<!--        <dt><a href="http://virt-manager.org/">Virtual Tools</a></dt>
+        <dd><span>Virtualization management from the command line</span></dd>-->
+      </dl>
+    </div>
+    <p id="et">
+      <a href="http://et.redhat.com/"><img src="../styles/et_logo.png" alt="A Red Hat Emerging Technology Project"></a>
+    </p>
+  </div>
+</body>
+</html>

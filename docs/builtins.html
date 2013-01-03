@@ -1,0 +1,261 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+
+<html>
+<head>
+  <title>Augeas &mdash; Builtin functions</title>
+
+  
+  
+
+  <meta name="keywords" content="configuration management">
+  <meta name="description" content="Configuration API for Linux">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+  <link rel="shortcut icon" href="..//styles/favicon.ico" type="image/x-icon">
+
+  <link rel="StyleSheet" type="text/css" href="../styles/default.css" title="Main style">
+  <link rel="Alternate StyleSheet" type="text/css" href="../styles/default-debug.css" title="Debug main style">
+
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-18273001-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+</head>
+
+<body>
+
+  <div id="header">
+    <div id="headerLogo"></div>
+  </div>
+
+  <div id="body">
+    <div id="menu">
+      <ul class="l0">
+         <li><div>
+<a class='inactive' title='Main' href='../index.html'>Main</a>
+<li><div>
+<a class='inactive' title='FAQ' href='../faq.html'>FAQ</a>
+</div></li>
+<li><div>
+<a class='inactive' title='Quick Tour' href='../tour.html'>Quick Tour</a>
+</div></li>
+<li><div>
+<a class='inactive' title='Bug tracker' href='https:/fedorahosted.org/augeas/report/1'>Bug tracker</a>
+</div></li>
+<li><div>
+<a class='inactive' title='Todo list' href='../todo.html'>Todo list</a>
+</div></li>
+<li><div>
+<a class='inactive' title='Releases' href='../news.html'>Releases</a>
+</div></li>
+<li><div>
+<a class='inactive' title='Contribute' href='../developers.html'>Contribute</a>
+</div></li>
+<li><div>
+<a class='inactive' title='Wiki' href='../wiki'>Wiki</a>
+</div></li>
+<li><div>
+<a class='active' title='Documentation' href='index.html'>Documentation</a>
+<ul class='l1'>
+<li>
+<a class='inactive' title='Public API' href='api.html'>Public API</a>
+</li>
+<li>
+<a class='inactive' title='Tree' href='tree.html'>Tree</a>
+</li>
+<li>
+<a class='inactive' title='Lenses' href='lenses.html'>Lenses</a>
+</li>
+<li>
+<span class='active'>Builtin functions</span>
+</li>
+<li>
+<a class='inactive' title='Language' href='language.html'>Language</a>
+</li>
+<li>
+<a class='inactive' title='Schema tutorial' href='writing-schemas.html'>Schema tutorial</a>
+</li>
+</ul>
+</div></li>
+<li><div>
+<a class='inactive' title='libfa' href='../libfa/index.html'>libfa</a>
+</div></li>
+<li><div>
+<a class='inactive' title='Download' href='../download.html'>Download</a>
+</div></li>
+
+      </ul>
+    </div>
+
+    <div id="content">
+      <div class="document" id="builtin-functions">
+<h1 class="title">Builtin Functions</h1>
+<p>Augeas comes with a number of builtin functions. They can be used anywhere,
+without qualifying them with a module name.</p>
+<div class="section" id="lens-functions">
+<h2>Lens functions</h2>
+<p>These functions construct lenses. They are described on the <a class="reference external" href="lenses.html">lenses page</a></p>
+</div>
+<div class="section" id="tree-manipulation">
+<h2>Tree manipulation</h2>
+<p>These functions are mostly useful for making changes to a tree during a
+<a class="reference external" href="language.html#unit-tests">put test</a></p>
+<dl class="docutils">
+<dt><tt class="docutils literal">set PATH VALUE TREE <span class="pre">-&gt;</span> TREE</tt></dt>
+<dd>Set the value of the node <tt class="docutils literal">PATH</tt> to <tt class="docutils literal">VALUE</tt> in the input tree
+<tt class="docutils literal">TREE</tt>, and return the modified tree. Both <tt class="docutils literal">PATH</tt> and <tt class="docutils literal">VALUE</tt> must
+be strings, and <tt class="docutils literal">PATH</tt> must be a path expression that matches one
+node.</dd>
+<dt><tt class="docutils literal">clear PATH TREE <span class="pre">-&gt;</span> TREE</tt></dt>
+<dd>Set the value of the node <tt class="docutils literal">PATH</tt> to <tt class="docutils literal">NULL</tt> in the input tree
+<tt class="docutils literal">TREE</tt>, and return the modified tree. <tt class="docutils literal">PATH</tt> must be a string,
+denoting a path expression that matches on node.</dd>
+<dt><tt class="docutils literal">rm PATH TREE <span class="pre">-&gt;</span> TREE</tt></dt>
+<dd>Remove the subtree at <tt class="docutils literal">PATH</tt> in the input tree <tt class="docutils literal">TREE</tt> and return the
+resulting tree. <tt class="docutils literal">PATH</tt> must be a string, denoting a path expression.</dd>
+<dt><tt class="docutils literal">insa LABEL PATH TREE <span class="pre">-&gt;</span> TREE</tt></dt>
+<dd>Insert a new tree node with label <tt class="docutils literal">LABEL</tt> into the tree. Inserts the
+new node after the existing node at <tt class="docutils literal">PATH</tt> in the
+input tree <tt class="docutils literal">TREE</tt> and returns the modified tree. <tt class="docutils literal">LABEL</tt> must be a
+string not containing <tt class="docutils literal">/</tt>, and <tt class="docutils literal">PATH</tt> must be a string containing a
+path expression that matches exactly one node in <tt class="docutils literal">TREE</tt>.</dd>
+<dt><tt class="docutils literal">insb LABEL PATH TREE <span class="pre">-&gt;</span> TREE</tt></dt>
+<dd>Same as <tt class="docutils literal">insa</tt>, but inserts the new node before the existing node at
+<tt class="docutils literal">PATH</tt>.</dd>
+</dl>
+</div>
+<div class="section" id="filters-and-transforms">
+<h2>Filters and transforms</h2>
+<p>Filters can be built up from simpler filters through concatenation, for
+example, <tt class="docutils literal">(incl <span class="pre">&quot;/dir/*&quot;)</span> . (excl <span class="pre">&quot;/dir/*.bak&quot;)</span></tt> lists all files in
+<tt class="docutils literal">/dir</tt> that do not have the extension <tt class="docutils literal">.bak</tt>. A file is included by a
+filter if it matches at least one <tt class="docutils literal">incl</tt> filter and no <tt class="docutils literal">excl</tt> filter.</p>
+<dl class="docutils">
+<dt><tt class="docutils literal">incl GLOB <span class="pre">-&gt;</span> FILTER</tt></dt>
+<dd>Produce a new filter that includes files that match the shell glob
+<tt class="docutils literal">GLOB</tt>. <tt class="docutils literal">GLOB</tt> must be a string.</dd>
+<dt><tt class="docutils literal">excl GLOB <span class="pre">-&gt;</span> FILTER</tt></dt>
+<dd>Produce a new filter that excludes files that match the shell glob
+<tt class="docutils literal">GLOB</tt>. <tt class="docutils literal">GLOB</tt> must be a string.</dd>
+<dt><tt class="docutils literal">transform LENS FILTER <span class="pre">-&gt;</span> TRANSFORM</tt></dt>
+<dd>Create a new transform that applies the lens <tt class="docutils literal">LENS</tt> to all files that
+are included by the filter <tt class="docutils literal">FILTER</tt>.</dd>
+</dl>
+</div>
+<div class="section" id="printing">
+<h2>Printing</h2>
+<p>Printing functions are useful for debugging lenses. They are generally used
+with an anonymous let, for example <tt class="docutils literal">let _ = print_endline &quot;Hello,
+World&quot;</tt>.</p>
+<dl class="docutils">
+<dt><tt class="docutils literal">print_string STRING <span class="pre">-&gt;</span> UNIT</tt></dt>
+<dd>Print the string <tt class="docutils literal">STRING</tt> and return nothing.</dd>
+<dt><tt class="docutils literal">print_regexp RE <span class="pre">-&gt;</span> UNIT</tt></dt>
+<dd>Print the regular expression <tt class="docutils literal">RE</tt> and return nothing.</dd>
+<dt><tt class="docutils literal">print_endline STR <span class="pre">-&gt;</span> UNIT</tt></dt>
+<dd>Print the string <tt class="docutils literal">STR</tt> followed by a newline, and return nothing.</dd>
+</dl>
+</div>
+<div class="section" id="lens-inspection">
+<h2>Lens inspection</h2>
+<p>These functions pick apart a lens, and are sometimes useful in debugging.</p>
+<dl class="docutils">
+<dt><tt class="docutils literal">lens_ctype LNS <span class="pre">-&gt;</span> REGEXP</tt></dt>
+<dd>Return the <em>concrete</em> type of a lens, the regular expression that is
+matched against an input string to produce the tree.</dd>
+<dt><tt class="docutils literal">lens_atype LNS <span class="pre">-&gt;</span> REGEXP</tt></dt>
+<dd>Return the <em>abstract</em> type of a lens, the regular expression that is
+matched against one level in the tree to turn the tree back into a
+string.</dd>
+<dt><tt class="docutils literal">lens_ktype LNS <span class="pre">-&gt;</span> REGEXP</tt></dt>
+<dd>Return the regular expression that matches the key/label of the tree node
+produced by the lens.</dd>
+<dt><tt class="docutils literal">lens_vtype LNS <span class="pre">-&gt;</span> REGEXP</tt></dt>
+<dd>Return the regular expression that matches the value of the tree node
+produced by the lens.</dd>
+<dt><tt class="docutils literal">lens_format_atype LNS <span class="pre">-&gt;</span> STRING</tt></dt>
+<dd>Return a human-readable representation of the <em>abstract</em> type of the
+lens.</dd>
+</dl>
+</div>
+<div class="section" id="tree-transformation">
+<h2>Tree transformation</h2>
+<p>These functions are not all that useful by themselves, they are usually
+used in <a class="reference external" href="language.html#unit-tests">unit tests</a>.</p>
+<dl class="docutils">
+<dt><tt class="docutils literal">get LENS STRING <span class="pre">-&gt;</span> TREE</tt></dt>
+<dd>Apply the get direction of lens <tt class="docutils literal">LENS</tt> to the string <tt class="docutils literal">STRING</tt> and
+return the resulting tree.</dd>
+<dt><tt class="docutils literal">put LENS TREE STRING <span class="pre">-&gt;</span> STRING</tt></dt>
+<dd>Apply the put direction of lens <tt class="docutils literal">LENS</tt> to the tree <tt class="docutils literal">TREE</tt>, assuming
+it was initially generated from string <tt class="docutils literal">STRING</tt> with a <tt class="docutils literal">get</tt>, and
+return the resulting string.</dd>
+</dl>
+</div>
+<div class="section" id="regular-expression-functions">
+<h2>Regular expression functions</h2>
+<dl class="docutils">
+<dt><tt class="docutils literal">regexp_match REGEXP STRING <span class="pre">-&gt;</span> STRING</tt></dt>
+<dd>Match <tt class="docutils literal">REGEXP</tt> against <tt class="docutils literal">STRING</tt> and return the resulting match. If
+<tt class="docutils literal">REGEXP</tt> does not match at all, return the empty string.</dd>
+</dl>
+</div>
+<div class="section" id="system-functions">
+<h2>System functions</h2>
+<p>These functions are in the <tt class="docutils literal">Sys</tt> module, and therefore need to be
+prefixed with <tt class="docutils literal">Sys.</tt> when they are used</p>
+<dl class="docutils">
+<dt><tt class="docutils literal">getenv VAR <span class="pre">-&gt;</span> STRING</tt></dt>
+<dd>Return the value of the environment variable <tt class="docutils literal">VAR</tt>, or the empty string
+if <tt class="docutils literal">VAR</tt> is not defined. <tt class="docutils literal">VAR</tt> must be a string.</dd>
+<dt><tt class="docutils literal">read_file FILE <span class="pre">-&gt;</span> STRING</tt></dt>
+<dd>Return the contents of file <tt class="docutils literal">FILE</tt> as a string. <tt class="docutils literal">FILE</tt> must be a
+string containing the absolute path to a file.</dd>
+</dl>
+</div>
+</div>
+
+    </div>
+  </div>
+
+  <div id="footer">
+    <div id="projects">
+      <dl id="p1">
+        <dt><a href="http://augeas.net/">Augeas</a></dt>
+        <dd><span>A configuration editing tool and API</span></dd>
+        <dt><a href="http://libvirt.org/">libvirt</a></dt>
+        <dd><span>The open source virtualization API</span></dd>
+<!--        <dt><a href="http://thincrust.et.redhat.com/">Thin Crust</a></dt>
+        <dd><span>Tools for building virtual appliances</span></dd>-->
+      </dl>
+      <dl id="p2">
+        <dt><a href="http://cobbler.et.redhat.com/">Cobbler</a></dt>
+        <dd><span>OS provisioning and profile management</span></dd>
+        <dt><a href="http://ovirt.org/">oVirt</a></dt>
+        <dd><span>Virtualization management across the data center</span></dd>
+<!--        <dt><a href="http://et.redhat.com/~rjones/virt-p2v/">p-2-v</a></dt>
+        <dd><span>Virtualize existing deployed servers</span></dd>-->
+      </dl>
+      <dl id="p3">
+        <dt><a href="http://freeipa.org/">FreeIPA</a></dt>
+        <dd><span>Identity, policy and audit management</span></dd>
+        <dt><a href="http://virt-manager.org/">Virtual Machine Manager</a></dt>
+        <dd><span>Virtualization management from the desktop</span></dd>
+<!--        <dt><a href="http://virt-manager.org/">Virtual Tools</a></dt>
+        <dd><span>Virtualization management from the command line</span></dd>-->
+      </dl>
+    </div>
+    <p id="et">
+      <a href="http://et.redhat.com/"><img src="../styles/et_logo.png" alt="A Red Hat Emerging Technology Project"></a>
+    </p>
+  </div>
+</body>
+</html>

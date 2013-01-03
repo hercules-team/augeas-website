@@ -1,0 +1,228 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+
+<html>
+<head>
+  <title>Augeas &mdash; Contribute</title>
+
+  
+  
+
+  <meta name="keywords" content="configuration management">
+  <meta name="description" content="Configuration API for Linux">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+  <link rel="shortcut icon" href="/styles/favicon.ico" type="image/x-icon">
+
+  <link rel="StyleSheet" type="text/css" href="styles/default.css" title="Main style">
+  <link rel="Alternate StyleSheet" type="text/css" href="styles/default-debug.css" title="Debug main style">
+
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-18273001-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+</head>
+
+<body>
+
+  <div id="header">
+    <div id="headerLogo"></div>
+  </div>
+
+  <div id="body">
+    <div id="menu">
+      <ul class="l0">
+         <li><div>
+<a class='inactive' title='Main' href='index.html'>Main</a>
+<li><div>
+<a class='inactive' title='FAQ' href='faq.html'>FAQ</a>
+</div></li>
+<li><div>
+<a class='inactive' title='Quick Tour' href='tour.html'>Quick Tour</a>
+</div></li>
+<li><div>
+<a class='inactive' title='Bug tracker' href='https:/fedorahosted.org/augeas/report/1'>Bug tracker</a>
+</div></li>
+<li><div>
+<a class='inactive' title='Todo list' href='todo.html'>Todo list</a>
+</div></li>
+<li><div>
+<a class='inactive' title='Releases' href='news.html'>Releases</a>
+</div></li>
+<li><div>
+<span class='active'>Contribute</span>
+</div></li>
+<li><div>
+<a class='inactive' title='Wiki' href='wiki'>Wiki</a>
+</div></li>
+<li><div>
+<a class='inactive' title='Documentation' href='docs/index.html'>Documentation</a>
+</div></li>
+<li><div>
+<a class='inactive' title='libfa' href='libfa/index.html'>libfa</a>
+</div></li>
+<li><div>
+<a class='inactive' title='Download' href='download.html'>Download</a>
+</div></li>
+
+      </ul>
+    </div>
+
+    <div id="content">
+      <div class="document" id="contribute">
+<h1 class="title">Contribute</h1>
+<div class="section" id="how-can-i-help">
+<h2>How can I help ?</h2>
+<p>One easy way to help is to <a class="reference external" href="docs/writing-schemas.html">write a description</a> for your favorite config
+file; you don't need to be a developer to do that.</p>
+<p>If you want to roll up your sleeves and help, the <a class="reference external" href="todo.html">Todo</a> list has some items
+that desparately need somebody to look at, including some items that only
+take a few minutes but would be enormously useful to us to make sure Augeas
+correctly processes as many files as possible.</p>
+</div>
+<div class="section" id="where-is-the-mailing-list">
+<h2>Where is the mailing list ?</h2>
+<p>The mailing list is <tt class="docutils literal"><span class="pre">augeas-devel&#64;redhat.com</span></tt>. Subscribe by going to <a class="reference external" href="https://www.redhat.com/mailman/listinfo/augeas-devel">the
+list page</a>.</p>
+<p>The list is for any discussion around Augeas, be it bug reports, feature
+requests, trouble writing file format descriptions etc.</p>
+</div>
+<div class="section" id="where-is-the-irc-channel">
+<h2>Where is the IRC channel ?</h2>
+<p>The best place to find somebody connected to Augeas on IRC is <tt class="docutils literal">#augeas</tt>
+on <a class="reference external" href="http://freenode.net/">Freenode</a>. Use the following settings in your IRC client:</p>
+<ul class="simple">
+<li>Server: <tt class="docutils literal">chat.freenode.net</tt></li>
+<li>Port: <tt class="docutils literal">6667</tt> (the default IRC port)</li>
+<li>Channel: <tt class="docutils literal">#augeas</tt></li>
+</ul>
+</div>
+<div class="section" id="where-is-the-bugtracker">
+<h2>Where is the Bugtracker ?</h2>
+<p>Bugs are kept in a <a class="reference external" href="https://fedorahosted.org/augeas/report/1">Trac instance</a> on fedorahosted.org. You need to have
+an account in the <a class="reference external" href="https://admin.fedoraproject.org/accounts/">Fedora Account System</a> to log into it.</p>
+</div>
+<div class="section" id="where-is-the-source">
+<h2>Where is the source ?</h2>
+<p>Sources are in a <a class="reference external" href="http://git.fedorahosted.org/git/augeas.git">git repository</a>. To check out the code, run</p>
+<pre class="literal-block">
+git clone git://git.fedorahosted.org/augeas.git
+</pre>
+<p>There is a <a class="reference external" href="http://github.com/lutter/augeas">second public repository</a> on github, just as up-to-date as the
+one above. If you want to follow repository changes, you can use github's
+&quot;Watch&quot; feature on that repository.</p>
+<p>To build and explore, you need to:</p>
+<pre class="literal-block">
+cd augeas
+./autogen.sh &amp;&amp; make
+# Start a session with augtool that reads lens descriptions from ./lenses
+# and runs with AUGEAS_ROOT=./build/try, populated from ./tests/root/
+./src/try cli
+</pre>
+<p>Besides <a class="reference external" href="http://sources.redhat.com/autobook/">autotools</a> (in particular, <tt class="docutils literal">autoconf</tt>, <tt class="docutils literal">automake</tt>, and
+<tt class="docutils literal">libtool</tt>), you will need to have <tt class="docutils literal"><span class="pre">readline-devel</span></tt>, <a class="reference external" href="http://www.gnu.org/software/bison/">Bison</a> and <a class="reference external" href="http://flex.sourceforge.net/">Flex</a>
+installed to build Augeas successfully.</p>
+</div>
+<div class="section" id="what-language-bindings-are-available">
+<h2>What language bindings are available ?</h2>
+<div class="section" id="ruby">
+<h3>Ruby</h3>
+<p>Ruby bindings have been contributed by Bryan Kearney and can be found in a
+<a class="reference external" href="http://git.fedorahosted.org/git/ruby-augeas.git">separate git repository</a>. To check them out, run</p>
+<pre class="literal-block">
+git clone git://git.fedorahosted.org/git/ruby-augeas.git
+</pre>
+<p>To build them, you need <tt class="docutils literal">rake</tt>. Simply run <tt class="docutils literal">rake build</tt> to compile
+them.</p>
+</div>
+<div class="section" id="python">
+<h3>Python</h3>
+<p>Python bindings have been contributed by Harald Hoyer and can be found in
+<a class="reference external" href="http://git.fedorahosted.org/git/python-augeas.git">their own git repository</a>. To check them out, run</p>
+<pre class="literal-block">
+git clone git://git.fedorahosted.org/git/python-augeas.git
+</pre>
+</div>
+<div class="section" id="ocaml">
+<h3>OCaml</h3>
+<p><a class="reference external" href="http://et.redhat.com/~rjones/augeas/">OCaml bindings</a> have been contributed by Rich Jones and can be found in
+<a class="reference external" href="http://git.annexia.org/?p=ocaml-augeas.git;a=summary">this git repository</a>. To check them out, run</p>
+<pre class="literal-block">
+git clone git://git.annexia.org/git/ocaml-augeas.git
+</pre>
+</div>
+<div class="section" id="perl">
+<h3>Perl</h3>
+<p><a class="reference external" href="http://search.cpan.org/dist/Config-Augeas">Perl bindings</a> have been contributed by Dominique Dumont. Their source
+can be found in a <a class="reference external" href="http://config-model.svn.sourceforge.net/viewvc/config-model/trunk/config-augeas/">repository on Sourceforge</a> and is also <a class="reference external" href="http://search.cpan.org/~ddumont/Config-Augeas-0.200/lib/Config/Augeas.pm">documented</a>.</p>
+</div>
+<div class="section" id="haskell">
+<h3>Haskell</h3>
+<p><a class="reference external" href="http://trac.haskell.org/augeas/">Haskell bindings</a> have been contributed by Jude Nagurney. Their source
+can be found at <a class="reference external" href="http://code.haskell.org/augeas/">code.haskell.org</a></p>
+</div>
+<div class="section" id="java">
+<h3>Java</h3>
+<p>Java bindings have been written by Bryan Kearney. Sources are kept in <a class="reference external" href="http://git.fedorahosted.org/git/java-augeas.git">this
+git repository</a> and release can be downloaded from <a class="reference external" href="http://augeas.net/download/java/">here</a></p>
+</div>
+<div class="section" id="php">
+<h3>PHP</h3>
+<p>PHP bindings are maintained by Pedro Padron. Sources are kept in <a class="reference external" href="http://github.com/ppadron/php-augeas">a git
+repository</a> and releases can be downloaded from the <a class="reference external" href="http://pecl.php.net/package/augeas">PECL site</a>.</p>
+</div>
+<div class="section" id="lua">
+<h3>Lua</h3>
+<p>Lua bindings are maintained by the <a class="reference external" href="http://code.google.com/p/lua-augeas/">lua-augeas project</a>.</p>
+</div>
+<div class="section" id="node-js">
+<h3>Node.js</h3>
+<p>Node.js bindings are maintained by Igor Pashev. Sources are kept in <a class="reference external" href="https://github.com/Nexenta/node-augeas">this
+git repository</a>.</p>
+</div>
+</div>
+</div>
+
+    </div>
+  </div>
+
+  <div id="footer">
+    <div id="projects">
+      <dl id="p1">
+        <dt><a href="http://augeas.net/">Augeas</a></dt>
+        <dd><span>A configuration editing tool and API</span></dd>
+        <dt><a href="http://libvirt.org/">libvirt</a></dt>
+        <dd><span>The open source virtualization API</span></dd>
+<!--        <dt><a href="http://thincrust.et.redhat.com/">Thin Crust</a></dt>
+        <dd><span>Tools for building virtual appliances</span></dd>-->
+      </dl>
+      <dl id="p2">
+        <dt><a href="http://cobbler.et.redhat.com/">Cobbler</a></dt>
+        <dd><span>OS provisioning and profile management</span></dd>
+        <dt><a href="http://ovirt.org/">oVirt</a></dt>
+        <dd><span>Virtualization management across the data center</span></dd>
+<!--        <dt><a href="http://et.redhat.com/~rjones/virt-p2v/">p-2-v</a></dt>
+        <dd><span>Virtualize existing deployed servers</span></dd>-->
+      </dl>
+      <dl id="p3">
+        <dt><a href="http://freeipa.org/">FreeIPA</a></dt>
+        <dd><span>Identity, policy and audit management</span></dd>
+        <dt><a href="http://virt-manager.org/">Virtual Machine Manager</a></dt>
+        <dd><span>Virtualization management from the desktop</span></dd>
+<!--        <dt><a href="http://virt-manager.org/">Virtual Tools</a></dt>
+        <dd><span>Virtualization management from the command line</span></dd>-->
+      </dl>
+    </div>
+    <p id="et">
+      <a href="http://et.redhat.com/"><img src="styles/et_logo.png" alt="A Red Hat Emerging Technology Project"></a>
+    </p>
+  </div>
+</body>
+</html>

@@ -1,0 +1,402 @@
+
+/*
+  Color scheme:
+    dark green:  #65a703     Active menu entry
+    light green: #c9e0a7     Inactive menu entries
+    pale green:  #ebf8d5     Callout background
+    brown:       #8d4a2c     Headings
+*/
+
+h1, h2 { font-weight: bold; color: #8d4a2c; }
+
+h1.title { margin-top: 0px; margin-bottom: 14px }
+
+h3, h4, h5, h6 { font-weight: normal; color: #8d4a2c; }
+
+
+body {
+    background: white;
+    color: black;
+}
+
+#header {
+    margin: 0px;
+    height: 106px;
+    width: 100%;
+    border: 0px;
+}
+
+#body {
+    float: left;
+    border: 0px;
+    left: 0px;
+    margin: 0px;
+    padding-top: 0px;
+    width: 100%;
+}
+
+#content {
+    padding: 0px;
+    margin-top: 0px;
+    margin-left: 210px;
+    margin-right: 5px;
+    margin-bottom: 20px;
+}
+
+
+#intro {
+    float: left;
+    top: 0px;
+    width: 351px;
+}
+
+#bullets {
+    margin-left: 355px;
+}
+
+
+#frontpage h1 {
+    padding: 0px;
+    margin: 0px;
+    color: #82aa32;
+}
+
+#frontpage h2 {
+    border-bottom: 1px solid #ccc;
+    padding: 0px;
+    margin: 0px;
+}
+
+#bullets {
+    padding-top: 0.3em;
+    padding-left: 1em;
+}
+
+#bullets h2 {
+    padding-bottom: 0.2em;
+}
+
+#bullets li {
+    margin-bottom: 0.5em;
+}
+
+#graphic {
+    padding-top: 1em;
+}
+
+#menu {
+    float: left;
+    padding-top: 0px;
+    left: 0px;
+    width: 200px;
+    margin-bottom: 1em;
+}
+
+#menu ul {
+    background: white;
+    margin: 0px;
+    padding: 0px;
+    margin-left: 10px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+
+#menu li ul {
+    margin-left: 0px;
+    padding: 0px;
+}
+
+#menu ul li {
+    list-style: none;
+    color: black;
+    padding: 0px;
+    font-weight: bold;
+}
+
+/*
+#menu li ul li {
+    font-size: 1em;
+}
+*/
+
+#menu ul li a, #menu ul li span {
+    text-decoration: inherit;
+    color: inherit;
+    display: block;
+    padding: 6px;
+    margin: 1px;
+}
+
+#menu ul li .active {
+    background: #65a703;
+}
+
+#menu ul.l0 li .inactive {
+    background: #c9e0a7;
+}
+
+
+#menu ul.l1 li .inactive {
+    background: #c9e0a7;
+    border-left: 6px solid #65a703;
+}
+
+#menu ul.l1 li .inactive,
+#menu ul.l1 li .active {
+    padding-left: 1em;
+}
+
+#menu ul.l1 li .active {
+    border-left: 6px solid #65a703;
+}
+
+#headerLogo {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    height: 90px;
+    width: 260px;
+    background: url(augeas-logo.png);
+    background-repeat: no-repeat;
+    background-position: top left;
+}
+#headerSearch {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    padding: 2em;
+}
+
+#headerSearch input {
+    border: 1px solid #999999;
+    color: #999999;
+    background: white;
+    padding: 3px;
+    font-size: 1em;
+}
+
+#headerSearch #submit {
+    border: 1px solid #999999;
+    background: #eeeeee;
+    color: black;
+    padding: 3px;
+    font-size: 1em;
+}
+
+#sitemap ul li {
+    list-style: none;
+}
+
+#sitemap ul {
+    margin: 1em;
+    padding: 0em;
+}
+
+#sitemap ul ul {
+    padding-left: 2em;
+}
+
+#sitemap li {
+    margin: 0.5em;
+}
+
+#sitemap a {
+    color: inherit;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+pre {
+  border: 1px solid #65a703;
+  background: #ebf8d5;
+  padding: 5px;
+  margin-right: 10px;
+}
+
+.callout {
+  border: 0px;
+  background: #ebf8d5;
+  padding: 5px;
+  margin-right: 10px;
+}
+
+a {
+    color: inherit;
+}
+
+
+h1 a, h2 a, h3 a, h4 a, h5 a {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+#changelog .author {
+    color: #3c857c;
+    font-weight: bold;
+}
+
+p.image {
+    text-align: center;
+}
+
+
+#footer {
+    clear: both;
+    position: relative;
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    width: 100%;
+    background: #757575;
+    height: 120px;
+}
+/* This is hidden from IE <= 6 because it can't do transparency */
+body > #footer {
+    background: #757575 url(footer_pattern.png) repeat-x;
+}
+
+#footer p {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    margin: 0px;
+    border: 0px;
+    width: 220px;
+    text-align: center;
+}
+
+#footer p a img {
+    border: 0px;
+}
+
+#projects {
+    margin: 0px;
+    border: 0px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+}
+
+
+#projects dl {
+    margin: 0px;
+    border: 0px solid white;
+    height: 120px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+/* This is hidden from IE <= 6 because it can't do transparency */
+head:first-child+body #projects dl {
+    background: url(footer_corner.png) no-repeat;
+}
+
+
+#projects #p1 {
+    margin-left: 25%;
+    width: 75%;
+}
+
+#projects #p2 {
+    margin-left: 50%;
+    width: 50%;
+}
+
+#projects #p3 {
+    margin-left: 75%;
+    width: 25%;
+}
+
+#projects dt, #projects dd {
+    padding: 0px;
+    margin: 0px;
+}
+
+#projects #p1 dt, #projects #p1 dd {
+    width: 33%;
+    }
+#projects #p2 dt, #projects #p2 dd {
+    width: 50%;
+}
+#projects #p3 dt, #projects #p3 dd {
+    width: 99%;
+}
+
+#projects {
+}
+
+#projects span {
+    font-size: 0.8em;
+    display: block;
+    padding-left: 1em;
+    padding-top: 0.5em;
+}
+
+#projects a {
+    font-size: 0.8em;
+    display: block;
+    padding-left: 0.8em;
+    padding-top: 1em;
+}
+
+#projects a {
+    color: white;
+    text-decoration: inherit;
+}
+
+#projects span {
+    color: #ccc;
+}
+
+
+.screenshot1 img,
+.screenshot2 img {
+    border: 0px;
+}
+
+.screenshot1,
+.screenshot2 {
+    padding: 1em;
+    background: #6a7178;
+    color: #dddddd;
+    text-align: center;
+    width: 45%;
+    margin-top: 1em;
+    margin-bottom: 3em;
+}
+
+.screenshot1 {
+    position: relative;
+    float: left;
+    margin-left: auto ! important;
+    margin-right: auto ! important;
+    clear: both;
+}
+.screenshot2 {
+    position: relative;
+    float: right;
+    margin-left: auto ! important;
+    margin-right: auto ! important;
+    clear: right;
+}
+
+.screenshot1 a,
+.screenshot2 a {
+    color: inherit;
+}
+
+dt {
+  color: #8d4a2c;
+}
+dd {
+    padding-bottom: 1em;
+}
+
+table.simple-table {
+  border-collapse: collapse;
+  border: solid;
+  border-width: 1px;
+}
+.simple-table tr, .simple-table td { padding: 6px }
+.simple-table th { background: #c9e0a7; padding: 6px }

@@ -1,0 +1,319 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+
+<html>
+<head>
+  <title>Augeas &mdash; Public API</title>
+
+  
+  
+
+  <meta name="keywords" content="configuration management">
+  <meta name="description" content="Configuration API for Linux">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+  <link rel="shortcut icon" href="..//styles/favicon.ico" type="image/x-icon">
+
+  <link rel="StyleSheet" type="text/css" href="../styles/default.css" title="Main style">
+  <link rel="Alternate StyleSheet" type="text/css" href="../styles/default-debug.css" title="Debug main style">
+
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-18273001-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+</head>
+
+<body>
+
+  <div id="header">
+    <div id="headerLogo"></div>
+  </div>
+
+  <div id="body">
+    <div id="menu">
+      <ul class="l0">
+         <li><div>
+<a class='inactive' title='Main' href='../index.html'>Main</a>
+<li><div>
+<a class='inactive' title='FAQ' href='../faq.html'>FAQ</a>
+</div></li>
+<li><div>
+<a class='inactive' title='Quick Tour' href='../tour.html'>Quick Tour</a>
+</div></li>
+<li><div>
+<a class='inactive' title='Bug tracker' href='https:/fedorahosted.org/augeas/report/1'>Bug tracker</a>
+</div></li>
+<li><div>
+<a class='inactive' title='Todo list' href='../todo.html'>Todo list</a>
+</div></li>
+<li><div>
+<a class='inactive' title='Releases' href='../news.html'>Releases</a>
+</div></li>
+<li><div>
+<a class='inactive' title='Contribute' href='../developers.html'>Contribute</a>
+</div></li>
+<li><div>
+<a class='inactive' title='Wiki' href='../wiki'>Wiki</a>
+</div></li>
+<li><div>
+<a class='active' title='Documentation' href='index.html'>Documentation</a>
+<ul class='l1'>
+<li>
+<span class='active'>Public API</span>
+</li>
+<li>
+<a class='inactive' title='Tree' href='tree.html'>Tree</a>
+</li>
+<li>
+<a class='inactive' title='Lenses' href='lenses.html'>Lenses</a>
+</li>
+<li>
+<a class='inactive' title='Builtin functions' href='builtins.html'>Builtin functions</a>
+</li>
+<li>
+<a class='inactive' title='Language' href='language.html'>Language</a>
+</li>
+<li>
+<a class='inactive' title='Schema tutorial' href='writing-schemas.html'>Schema tutorial</a>
+</li>
+</ul>
+</div></li>
+<li><div>
+<a class='inactive' title='libfa' href='../libfa/index.html'>libfa</a>
+</div></li>
+<li><div>
+<a class='inactive' title='Download' href='../download.html'>Download</a>
+</div></li>
+
+      </ul>
+    </div>
+
+    <div id="content">
+      <div class="document" id="public-api">
+<h1 class="title">Public API</h1>
+<p>This page gives a brief overview of the public API. More documentation can
+be found in the (yet to be written) man pages and in the include file
+<tt class="docutils literal">augeas.h</tt>. That file declares the entire public API of Augeas.</p>
+<ul class="simple">
+<li><a class="reference internal" href="#initializing-and-closing-augeas">Initializing and Closing Augeas</a></li>
+<li><a class="reference internal" href="#reading-and-writing-values">Reading and Writing Values</a></li>
+<li><a class="reference internal" href="#inserting-moving-deleting-and-searching-nodes">Inserting, Moving, Deleting and Searching Nodes</a></li>
+<li><a class="reference internal" href="#saving-the-tree">Saving the Tree</a></li>
+</ul>
+<div class="section" id="initializing-and-closing-augeas">
+<h2>Initializing and Closing Augeas</h2>
+<p>Before calling any other Augeas function, you must obtain a handle from</p>
+<pre class="literal-block">
+augeas *aug_init(const char *root, const char *loadpath, unsigned int flags)
+</pre>
+<p>with arguments</p>
+<dl class="docutils">
+<dt><tt class="docutils literal">ROOT</tt></dt>
+<dd>a file system path; all files loaded by Augeas are loaded underneath
+<tt class="docutils literal">ROOT</tt></dd>
+<dt><tt class="docutils literal">LOADPATH</tt></dt>
+<dd>a colon separated list of directories; these directories are searched for
+schema definitions</dd>
+<dt><tt class="docutils literal">FLAGS</tt></dt>
+<dd>a bitmask of <tt class="docutils literal">AUG_FLAGS</tt> to control how Augeas saves modified files and
+whether the slower operations of the type checker should be performed</dd>
+</dl>
+<p>The call returns a pointer to a new <tt class="docutils literal">AUGEAS</tt> structure on success; that
+structure must be passed to any other calls in the API. If initialization
+fails, the call returns <tt class="docutils literal">NULL</tt>.</p>
+<p>To free up resources associated with an <tt class="docutils literal">AUGEAS</tt> structure, call</p>
+<pre class="literal-block">
+void aug_close(augeas *aug);
+</pre>
+</div>
+<div class="section" id="reading-and-writing-values">
+<h2>Reading and Writing Values</h2>
+<div class="section" id="get-node-value-and-node-existance">
+<h3>Get node value and node existance</h3>
+<pre class="literal-block">
+int aug_get(augeas *aug, const char *path, const char **value)
+</pre>
+<p>Lookup the value associated with PATH. VALUE can be NULL, in which case
+it is ignored. If VALUE is not NULL, it is used to return a pointer to
+the value associated with PATH if PATH matches exactly one node. If PATH
+matches no nodes or more than one node, *VALUE is set to NULL. Note that
+it is perfectly legal for nodes to  have a NULL value, and that that by
+itself does not indicate an error.</p>
+<p>The string *VALUE must not be freed by the caller, and is valid as long as
+its node remains unchanged.</p>
+<p>Return 1 if there is exactly one node matching PATH, 0 if there is none,
+and a negative value if there is more than one node matching PATH, or if
+PATH is not a legal path expression.</p>
+</div>
+<div class="section" id="set-node-value">
+<h3>Set node value</h3>
+<pre class="literal-block">
+int aug_set(augeas *aug, const char *path, const char *value)
+</pre>
+<p>Set the value associated with PATH to VALUE. VALUE is copied into the
+internal data structure, and the caller is responsible for freeing
+it. Intermediate entries are created if they don't exist.</p>
+<p>Fails and returns <tt class="docutils literal"><span class="pre">-1</span></tt> if <a class="reference external" href="tree.html">path expression</a> <tt class="docutils literal">PATH</tt> matches more than
+one node. If no node exists for <tt class="docutils literal">PATH</tt>, one is created, including
+intermediate nodes, and its value is set to <tt class="docutils literal">VALUE</tt>, which may be
+<tt class="docutils literal">NULL</tt>.</p>
+</div>
+<div class="section" id="set-the-value-of-multiple-nodes">
+<h3>Set the value of multiple nodes</h3>
+<pre class="literal-block">
+int aug_setm(augeas *aug, const char *base, const char *sub, const char *value)
+</pre>
+<p>Set the value of multiple nodes in one operation. Find or create a node
+matching <tt class="docutils literal">SUB</tt> by interpreting <tt class="docutils literal">SUB</tt> as a path expression relative to
+each node matching <tt class="docutils literal">BASE</tt>. <tt class="docutils literal">SUB</tt> may be <tt class="docutils literal">NULL</tt>, in which case all the
+nodes matching <tt class="docutils literal">BASE</tt> will be modified.</p>
+<p>Returns the number of modified nodes on success, and -1 on error.</p>
+</div>
+</div>
+<div class="section" id="inserting-moving-deleting-and-searching-nodes">
+<h2>Inserting, Moving, Deleting and Searching Nodes</h2>
+<div class="section" id="inserting-a-node">
+<h3>Inserting a node</h3>
+<pre class="literal-block">
+int aug_insert(augeas *aug, const char *path, const char *label, int  before)
+</pre>
+<p>Insert a new sibling of <a class="reference external" href="tree.html">path expression</a> <tt class="docutils literal">PATH</tt> with label <tt class="docutils literal">LABEL</tt>
+before or after <tt class="docutils literal">PATH</tt>, depending on <tt class="docutils literal">BEFORE</tt>. <tt class="docutils literal">PATH</tt> must match
+exactly one node in the tree.</p>
+</div>
+<div class="section" id="moving-a-subtree">
+<h3>Moving a subtree</h3>
+<pre class="literal-block">
+int aug_mv(augeas *aug, const char *src, const char *dst)
+</pre>
+<p>Move the node <tt class="docutils literal">SRC</tt> to <tt class="docutils literal">DST</tt>. <tt class="docutils literal">SRC</tt> must match exactly one node in
+the tree. <tt class="docutils literal">DST</tt> must either match exactly one node in the tree, or may
+not exist yet. If <tt class="docutils literal">DST</tt> exists already, it and all its descendants are
+deleted before moving <tt class="docutils literal">SRC</tt> there. If <tt class="docutils literal">DST</tt> does not exist yet, it and
+all its missing ancestors are created.</p>
+<p>Note that the node <tt class="docutils literal">SRC</tt> always becomes the node <tt class="docutils literal">DST</tt>: when you move
+<tt class="docutils literal">/a/b</tt> to <tt class="docutils literal">/x</tt>, the node <tt class="docutils literal">/a/b</tt> is now called <tt class="docutils literal">/x</tt>, no matter whether <tt class="docutils literal">/x</tt> existed initially or not.</p>
+<p>Return 0 on success and -1 on failure.</p>
+</div>
+<div class="section" id="deleting-nodes">
+<h3>Deleting nodes</h3>
+<pre class="literal-block">
+int aug_rm(augeas *aug, const char *path)
+</pre>
+<p>Remove all nodes matching <a class="reference external" href="tree.html">path expression</a> <tt class="docutils literal">PATH</tt> and all their
+children. Returns total number of nodes removed, or <tt class="docutils literal"><span class="pre">-1</span></tt> if <tt class="docutils literal">PATH</tt> is
+an invalid path expression.</p>
+</div>
+<div class="section" id="searching-nodes">
+<h3>Searching Nodes</h3>
+<pre class="literal-block">
+int aug_match(augeas *aug, const char *path, char ***matches)
+</pre>
+<p>Find all nodes matching <a class="reference external" href="tree.html">path expression</a> <tt class="docutils literal">PATH</tt> and return the number
+of matching nodes. If <tt class="docutils literal">CHILDREN</tt> is not <tt class="docutils literal">NULL</tt>, allocate a new array of
+strings and return it as <tt class="docutils literal">*CHILDREN</tt>. The array is filled with path
+expressions matching exactly one of the nodes matched by <tt class="docutils literal">PATH</tt>.</p>
+</div>
+</div>
+<div class="section" id="saving-the-tree">
+<h2>Saving the Tree</h2>
+<pre class="literal-block">
+int aug_save(augeas *aug)
+</pre>
+<p>Save the parts of the tree that have been changed into their respective
+files. Return <tt class="docutils literal">0</tt> on success and <tt class="docutils literal"><span class="pre">-1</span></tt> on failure. When saving fails,
+details about errors can be found in nodes matching <tt class="docutils literal"><span class="pre">/augeas//error</span></tt>.</p>
+<p>Only files that have actually changed will be written - for example,
+setting a node to the same value it already had will not result in any file
+changes. In other words, there is no way to 'touch' a file with Augeas.</p>
+<p>Augeas tries to be as safe as possible when saving files; in particular, it
+will try and write the new file contents into a temporary file with
+extension <tt class="docutils literal">.augnew</tt> and move that file into the right place after writing
+the entire file succeeded using <tt class="docutils literal">rename(2)</tt>. In some cases, for example
+when the original file is bind-mounted, that is not possible, and Augeas
+will fall back to overwriting the file in place. Note that Augeas writes
+the tree out file-by-file, so that it is still possible that writing some
+files succeeds while writing others fails.</p>
+<p>The exact behavior of <tt class="docutils literal">aug_save</tt> can be fine-tuned by modifying the node
+<tt class="docutils literal">/augeas/save</tt> prior to calling <tt class="docutils literal">aug_save</tt>. The valid values for this
+node are</p>
+<dl class="docutils">
+<dt><tt class="docutils literal">overwrite</tt></dt>
+<dd>Overwrite files in place</dd>
+<dt><tt class="docutils literal">backup</tt></dt>
+<dd>Save the original file with the extension <tt class="docutils literal">.augorig</tt> and write the new
+file under the original file name</dd>
+<dt><tt class="docutils literal">newfile</tt></dt>
+<dd>Write the modified file into a file with extension <tt class="docutils literal">.augnew</tt> without
+modifying the original file</dd>
+<dt><tt class="docutils literal">noop</tt></dt>
+<dd>Perform all the steps necessary for a file, including generating the
+contents of files from the tree, but do not make any changes in the
+filesystem. This mode is very useful for making sure that all changes can
+be saved without error, and to find out which files would actually be
+modified.</dd>
+</dl>
+<p>After calling <tt class="docutils literal">aug_save</tt>, the list of files that has been changed can be
+found in the nodes <tt class="docutils literal">/augeas/events/saved</tt>.</p>
+</div>
+<div class="section" id="getting-the-span-of-a-node-related-to-a-file">
+<h2>Getting the span of a node related to a file</h2>
+<pre class="literal-block">
+int aug_span(augeas *aug, const char *path, char **filename,
+      unsigned int *label_start, unsigned int *label_end,
+      unsigned int *value_start, unsigned int *value_end,
+      unsigned int *span_start, unsigned int *span_end)
+</pre>
+<p>Get the span according to input file of the node associated with <tt class="docutils literal">PATH</tt>. If
+the node is associated with a file, the filename, label and value start and
+end positions are set, and return value is <tt class="docutils literal">0</tt>. The caller is responsible for
+freeing returned filename. If an argument for return value is NULL, then the
+corresponding value is not set. If the node associated with <tt class="docutils literal">PATH</tt> doesn't
+belong to a file or is doesn't exists, filename and span are not set and
+return value is <tt class="docutils literal"><span class="pre">-1</span></tt>.</p>
+</div>
+</div>
+
+    </div>
+  </div>
+
+  <div id="footer">
+    <div id="projects">
+      <dl id="p1">
+        <dt><a href="http://augeas.net/">Augeas</a></dt>
+        <dd><span>A configuration editing tool and API</span></dd>
+        <dt><a href="http://libvirt.org/">libvirt</a></dt>
+        <dd><span>The open source virtualization API</span></dd>
+<!--        <dt><a href="http://thincrust.et.redhat.com/">Thin Crust</a></dt>
+        <dd><span>Tools for building virtual appliances</span></dd>-->
+      </dl>
+      <dl id="p2">
+        <dt><a href="http://cobbler.et.redhat.com/">Cobbler</a></dt>
+        <dd><span>OS provisioning and profile management</span></dd>
+        <dt><a href="http://ovirt.org/">oVirt</a></dt>
+        <dd><span>Virtualization management across the data center</span></dd>
+<!--        <dt><a href="http://et.redhat.com/~rjones/virt-p2v/">p-2-v</a></dt>
+        <dd><span>Virtualize existing deployed servers</span></dd>-->
+      </dl>
+      <dl id="p3">
+        <dt><a href="http://freeipa.org/">FreeIPA</a></dt>
+        <dd><span>Identity, policy and audit management</span></dd>
+        <dt><a href="http://virt-manager.org/">Virtual Machine Manager</a></dt>
+        <dd><span>Virtualization management from the desktop</span></dd>
+<!--        <dt><a href="http://virt-manager.org/">Virtual Tools</a></dt>
+        <dd><span>Virtualization management from the command line</span></dd>-->
+      </dl>
+    </div>
+    <p id="et">
+      <a href="http://et.redhat.com/"><img src="../styles/et_logo.png" alt="A Red Hat Emerging Technology Project"></a>
+    </p>
+  </div>
+</body>
+</html>

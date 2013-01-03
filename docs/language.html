@@ -1,0 +1,462 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+
+<html>
+<head>
+  <title>Augeas &mdash; Language</title>
+
+  
+  
+
+  <meta name="keywords" content="configuration management">
+  <meta name="description" content="Configuration API for Linux">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+  <link rel="shortcut icon" href="..//styles/favicon.ico" type="image/x-icon">
+
+  <link rel="StyleSheet" type="text/css" href="../styles/default.css" title="Main style">
+  <link rel="Alternate StyleSheet" type="text/css" href="../styles/default-debug.css" title="Debug main style">
+
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-18273001-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+</head>
+
+<body>
+
+  <div id="header">
+    <div id="headerLogo"></div>
+  </div>
+
+  <div id="body">
+    <div id="menu">
+      <ul class="l0">
+         <li><div>
+<a class='inactive' title='Main' href='../index.html'>Main</a>
+<li><div>
+<a class='inactive' title='FAQ' href='../faq.html'>FAQ</a>
+</div></li>
+<li><div>
+<a class='inactive' title='Quick Tour' href='../tour.html'>Quick Tour</a>
+</div></li>
+<li><div>
+<a class='inactive' title='Bug tracker' href='https:/fedorahosted.org/augeas/report/1'>Bug tracker</a>
+</div></li>
+<li><div>
+<a class='inactive' title='Todo list' href='../todo.html'>Todo list</a>
+</div></li>
+<li><div>
+<a class='inactive' title='Releases' href='../news.html'>Releases</a>
+</div></li>
+<li><div>
+<a class='inactive' title='Contribute' href='../developers.html'>Contribute</a>
+</div></li>
+<li><div>
+<a class='inactive' title='Wiki' href='../wiki'>Wiki</a>
+</div></li>
+<li><div>
+<a class='active' title='Documentation' href='index.html'>Documentation</a>
+<ul class='l1'>
+<li>
+<a class='inactive' title='Public API' href='api.html'>Public API</a>
+</li>
+<li>
+<a class='inactive' title='Tree' href='tree.html'>Tree</a>
+</li>
+<li>
+<a class='inactive' title='Lenses' href='lenses.html'>Lenses</a>
+</li>
+<li>
+<a class='inactive' title='Builtin functions' href='builtins.html'>Builtin functions</a>
+</li>
+<li>
+<span class='active'>Language</span>
+</li>
+<li>
+<a class='inactive' title='Schema tutorial' href='writing-schemas.html'>Schema tutorial</a>
+</li>
+</ul>
+</div></li>
+<li><div>
+<a class='inactive' title='libfa' href='../libfa/index.html'>libfa</a>
+</div></li>
+<li><div>
+<a class='inactive' title='Download' href='../download.html'>Download</a>
+</div></li>
+
+      </ul>
+    </div>
+
+    <div id="content">
+      <div class="document" id="language-overview">
+<h1 class="title">Language Overview</h1>
+<ul class="simple">
+<li><a class="reference internal" href="#files-and-modules">Files and Modules</a></li>
+<li><a class="reference internal" href="#lexical-conventions">Lexical Conventions</a><ul>
+<li><a class="reference internal" href="#comments">Comments</a></li>
+<li><a class="reference internal" href="#variables">Variables</a></li>
+<li><a class="reference internal" href="#strings">Strings</a></li>
+<li><a class="reference internal" href="#regular-expressions">Regular Expressions</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#types">Types</a></li>
+<li><a class="reference internal" href="#functions">Functions</a></li>
+<li><a class="reference internal" href="#expressions">Expressions</a><ul>
+<li><a class="reference internal" href="#operators">Operators</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#unit-tests">Unit Tests</a></li>
+</ul>
+<div class="section" id="files-and-modules">
+<h2>Files and modules</h2>
+<p>All the code that Augeas executes must be contained in a module. A file
+<tt class="docutils literal">file.aug</tt> must start with a line</p>
+<pre class="literal-block">
+module File =
+</pre>
+<p>Both <tt class="docutils literal">augparse</tt> and <tt class="docutils literal">augtool</tt> search for <tt class="docutils literal">.aug</tt> files in the
+directories listed in the <tt class="docutils literal">AUGEAS_LENS_LIB</tt> environment variable,
+followed by the directories given with <tt class="docutils literal"><span class="pre">-I</span></tt> command line arguments, and
+finally in the default directory <tt class="docutils literal">/usr/share/augeas/lenses</tt>.</p>
+<p>Notice that the name of the module must be the capitalized name of the file
+it is in without the <tt class="docutils literal">.aug</tt> extension.</p>
+</div>
+<div class="section" id="lexical-conventions">
+<h2>Lexical conventions</h2>
+<div class="section" id="comments">
+<h3>Comments</h3>
+<p>Comments are anything enclosed in matching pairs of <tt class="docutils literal">(*</tt> and <tt class="docutils literal">*)</tt>
+delimiters. Comments can be nested.</p>
+</div>
+<div class="section" id="variables">
+<h3>Variables</h3>
+<p>Variables are declared inside a module with the keyword <tt class="docutils literal">let</tt>:</p>
+<pre class="literal-block">
+let hello = &quot;Hello&quot;
+</pre>
+<p>In expressions, variables from the current module and <a class="reference external" href="builtin.html">builtins</a> can be
+referenced without any qualification; variables from other modules must be
+prefixed with the module name as in <tt class="docutils literal">Module.var</tt> for a variable <tt class="docutils literal">var</tt>
+declared in the module <tt class="docutils literal">Module</tt> (which must be in a file called
+<tt class="docutils literal">module.aug</tt>).</p>
+<p>Variable names must match the regular expression <tt class="docutils literal"><span class="pre">/[a-z][A-Za-z0-9_]*/</span></tt>.</p>
+</div>
+<div class="section" id="strings">
+<h3>Strings</h3>
+<p>Two basic types in the schema language are strings and regular
+expressions. String literals are enclosed in double quotes, and can contain
+escape sequences, similar to the escape sequences in C strings. In
+particular, the sequences <tt class="docutils literal">\n</tt>,  and <tt class="docutils literal">\t</tt> are translated to the
+new line and tab characters respectively. Therefore, the string literal
+<tt class="docutils literal">&quot;\t\n&quot;</tt> denotes a two character string consisting of a tab and a newline
+character.</p>
+<p>Variables must be declared before they can be used. Variables aren't
+declared until after the <tt class="docutils literal">let var = exp</tt> statement has been processed;
+that implies that Augeas does not support recursion, since <tt class="docutils literal">var</tt> can not
+be used in <tt class="docutils literal">exp</tt>.</p>
+</div>
+<div class="section" id="regular-expressions">
+<h3>Regular expressions</h3>
+<p>Regular expression literals are enclosed in slashes (<tt class="docutils literal"><span class="pre">/.../</span></tt>). The regular
+expression syntax is that of extended POSIX regular expressions, with the
+small difference that <tt class="docutils literal">.</tt> does <em>not</em> match newlines. To put a literal
+<tt class="docutils literal">/</tt> into a regular expression, escape it as <tt class="docutils literal">\/</tt>. The same escape
+sequences as for string literals are recognized, so that the regular
+expresion literal <tt class="docutils literal"><span class="pre">/(\t|\n)/</span></tt> matches either a tab or a newline
+character.</p>
+<p>Regular expressions can be concatenated with <tt class="docutils literal">.</tt> and unioned with
+<tt class="docutils literal">|</tt>. They can also be iterated with the usual postfix operators <tt class="docutils literal">*</tt>,
+<tt class="docutils literal">+</tt>, and <tt class="docutils literal">?</tt>:</p>
+</div>
+</div>
+<div class="section" id="let-forms">
+<h2>Let forms</h2>
+<p>Let forms are used to give names to expressions, similar to defining
+variables in imperative languages; for example</p>
+<pre class="literal-block">
+let hello = &quot;Hello&quot;
+let greet (name:string) = hello . &quot;, &quot; . name
+</pre>
+<p>defines two variables <tt class="docutils literal">hello</tt> and <tt class="docutils literal">greet</tt>. The latter is a function
+that takes a string as an argument and returns a string resulting from
+prepending <tt class="docutils literal">Hello,</tt> to that string. Let forms can also be used purely
+for their sideeffect: if the name after the let is <tt class="docutils literal">_</tt>, Augeas will
+evaluate the right-hand side, and immediately forget the result. This is
+useful for printing debug output:</p>
+<pre class="literal-block">
+let _ = print_endline (greet &quot;User&quot;)
+</pre>
+<p>will simply print <tt class="docutils literal">Hello, User</tt>.</p>
+<p>Let forms can also be used to define local names within another let:</p>
+<pre class="literal-block">
+let greet (name:string) =
+  let hello = &quot;Hello&quot; in
+  hello . &quot;, &quot; . name
+</pre>
+<p>only defines a global name <tt class="docutils literal">greet</tt>. The name <tt class="docutils literal">hello</tt> can only be used
+within the body of the definition of <tt class="docutils literal">greet</tt>, and will be forgotten
+afterwards.</p>
+</div>
+<div class="section" id="types">
+<h2>Types</h2>
+<p>Besides the types <tt class="docutils literal">string</tt> and <tt class="docutils literal">regexp</tt>, Augeas has a number of other
+simple types. All the builtin types in Augeas are:</p>
+<table border="1" class="simple-table docutils">
+<colgroup>
+<col width="16%" />
+<col width="84%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Type</th>
+<th class="head">Explanation</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><tt class="docutils literal">unit</tt></td>
+<td>A type with no values, similar to <tt class="docutils literal">void</tt> in C or Java</td>
+</tr>
+<tr><td><tt class="docutils literal">string</tt></td>
+<td>Simple strings, such as <tt class="docutils literal">&quot;Hello World&quot;</tt></td>
+</tr>
+<tr><td><tt class="docutils literal">regexp</tt></td>
+<td>Regular expressions in extended POSIX notation, such as
+<tt class="docutils literal"><span class="pre">/[a-z]+/</span></tt></td>
+</tr>
+<tr><td><tt class="docutils literal">lens</tt></td>
+<td><a class="reference external" href="lenses.html">Lenses</a>, such as <tt class="docutils literal">key <span class="pre">/[a-z]+/</span></tt></td>
+</tr>
+<tr><td><tt class="docutils literal">tree</tt></td>
+<td>Tree objects, generated by <tt class="docutils literal">test .. get ..</tt>; they are only
+useful in <a class="reference internal" href="#unit-tests">Unit tests</a></td>
+</tr>
+<tr><td><tt class="docutils literal">filter</tt></td>
+<td>File name filters, generated by <tt class="docutils literal">incl</tt> and <tt class="docutils literal">excl</tt>, such as
+<tt class="docutils literal">incl <span class="pre">&quot;/etc/yum.repos.d/*&quot;</span></tt></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="functions">
+<h2>Functions</h2>
+<p>Functions are declared similar to variables, by adding a list of parameters
+and their types to the declaration of the function name:</p>
+<pre class="literal-block">
+let x_space_y (x:string) (y:string) = x . &quot; &quot; . y
+</pre>
+<p>declares a function of two arguments <tt class="docutils literal">x</tt> and <tt class="docutils literal">y</tt>, which must both be
+strings. Types are statically checked by the interpreter.</p>
+<p>To evaluate a function, simply write</p>
+<pre class="literal-block">
+let hello_world = x_space_y &quot;Hello&quot; &quot;World&quot;
+</pre>
+<p>You can also create new functions by currying:</p>
+<pre class="literal-block">
+let hello_y = x_space_y &quot;Hello&quot;
+</pre>
+<p>Now, <tt class="docutils literal">hello_y</tt> is a function that takes one string argument and appends
+it to the string <tt class="docutils literal">&quot;Hello&quot; . &quot; &quot;</tt>, so that</p>
+<pre class="literal-block">
+let hello_world2 = hello_y &quot;World&quot;
+</pre>
+<p>has the same value as <tt class="docutils literal">hello_world</tt>.</p>
+<p>Augeas comes has a number of <a class="reference external" href="builtin.html">builtins</a>, functions that are always defined
+and that you can use anywhere.</p>
+</div>
+<div class="section" id="expressions">
+<h2>Expressions</h2>
+<p>Augeas has a few standard operators: binary operators <tt class="docutils literal">.</tt> for
+concatenation and <tt class="docutils literal">|</tt> for union, and unary postfix operators <tt class="docutils literal">*</tt>,
+<tt class="docutils literal">+</tt>, and <tt class="docutils literal">?</tt> for repetition. In addition, the subtree operator <tt class="docutils literal">[ exp
+]</tt> builds a subtree lens. All these operators can be applied to lenses;
+for lenses they are described in detail on the <a class="reference external" href="lenses.html">lenses</a> page.</p>
+<p>In addition, the concatenation operator can be used to concatenate strings
+and regular expressions, and the union operator and the repetition
+operators can be used for regular expressions:</p>
+<pre class="literal-block">
+let hello = &quot;Hello&quot;
+let world = &quot;World&quot;
+let hello_world = hello . &quot; &quot; . world . &quot;\n&quot;
+
+let a = /a/
+let b = /b/
+let a_b = /a/ . /b/         (* Same as /ab/    *)
+let a_or_b = /a/ | /b/      (* Same as /(a|b)/ *)
+let a_plus = /a/+           (* Same as /a+/    *)
+</pre>
+<!-- * Make Emacs calm down -->
+<p>Strings are automatically coerced to a regular expression matching that
+string exactly, whenever needed. Characters that have a special meaning
+inside regular expressions are escaped, so that the string <tt class="docutils literal"><span class="pre">&quot;()&quot;</span></tt> is
+coerced to the regular expression <tt class="docutils literal"><span class="pre">/\(\)/</span></tt>. The following are legal:</p>
+<pre class="literal-block">
+let hello_world_re = &quot;Hello&quot; . /[\t ]/ . &quot;World&quot;
+let letter_or_bracks = /[a-z]/ | &quot;[]&quot;
+</pre>
+<div class="section" id="operators">
+<h3>Operators</h3>
+<p>Here are all the operators supported, with a quick indication of the
+permissible types for the operands. The operators are listed in order of
+increasing precedence, i.e. <tt class="docutils literal">a . b | c</tt> is parsed as <tt class="docutils literal">(a . b) |
+c</tt>. Parentheses can be used to change order of evaluation as in <tt class="docutils literal">a . (b |
+c)</tt>.</p>
+<p>All operators take arguments of the same type, and return a new object of
+that same type. Since strings can automatically be coerced to regular
+expressions, the expression <tt class="docutils literal">/a/ . &quot;b&quot;</tt> is legal, resulting in the
+regular expression <tt class="docutils literal">/ab/</tt>. In the following table, <tt class="docutils literal">a</tt>, <tt class="docutils literal">b</tt>, <tt class="docutils literal">f</tt>,
+<tt class="docutils literal">g</tt>, and <tt class="docutils literal">l</tt> are all variables of a type suitable for the operator:</p>
+<table border="1" class="simple-table docutils">
+<colgroup>
+<col width="29%" />
+<col width="22%" />
+<col width="49%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Operator</th>
+<th class="head">Meaning</th>
+<th class="head">Types</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><tt class="docutils literal">f ; g</tt></td>
+<td>Composition</td>
+<td>For functions <tt class="docutils literal">f: t1 <span class="pre">-&gt;</span> t2</tt> and
+<tt class="docutils literal">g: t2 <span class="pre">-&gt;</span> t3</tt> produce
+<tt class="docutils literal">h: t1 <span class="pre">-&gt;</span> t3</tt> with
+<tt class="docutils literal">h x = g (f x)</tt>. If <tt class="docutils literal">t2</tt> is
+<tt class="docutils literal">unit</tt>, <tt class="docutils literal">g</tt> must not take any
+arguments.</td>
+</tr>
+<tr><td><tt class="docutils literal">a | b</tt></td>
+<td>Union</td>
+<td><tt class="docutils literal">regexp</tt>, <tt class="docutils literal">lens</tt></td>
+</tr>
+<tr><td><tt class="docutils literal">a - b</tt></td>
+<td>Subtraction</td>
+<td><tt class="docutils literal">regexp</tt></td>
+</tr>
+<tr><td><tt class="docutils literal">a . b</tt></td>
+<td>Concatenation</td>
+<td><tt class="docutils literal">string</tt>, <tt class="docutils literal">regexp</tt>, <tt class="docutils literal">lens</tt>,
+<tt class="docutils literal">filter</tt></td>
+</tr>
+<tr><td><tt class="docutils literal">a*</tt>, <tt class="docutils literal">a+</tt>, <tt class="docutils literal">a?</tt></td>
+<td>Repetition</td>
+<td><tt class="docutils literal">regexp</tt>, <tt class="docutils literal">lens</tt></td>
+</tr>
+<tr><td><tt class="docutils literal">[ l ]</tt></td>
+<td>Subtree</td>
+<td><tt class="docutils literal">lens</tt></td>
+</tr>
+</tbody>
+</table>
+<!-- * Calm Emacs down -->
+</div>
+</div>
+<div class="section" id="unit-tests">
+<h2>Unit Tests</h2>
+<p>The Augeas language has a builtin facility for unit testing lenses. Let's
+first declare a simple lens</p>
+<pre class="literal-block">
+let lns = [ key /[a-z]+/ . del /[ \t]*:[ \t]*/ &quot;: &quot; . store /[a-z]+/ . del &quot;\n&quot; &quot;\n&quot;]*
+</pre>
+<p>This lens transforms a line like <tt class="docutils literal">var :&nbsp; value</tt> into a tree <tt class="docutils literal">{ &quot;var&quot; =
+&quot;value&quot; }</tt>. The notation we use for trees is</p>
+<pre class="literal-block">
+TREE ::= '{' LABEL '=' VALUE TREE '}' TREE
+</pre>
+<p>For example, <tt class="docutils literal">{ &quot;k1&quot; = &quot;v1&quot; } { &quot;k2&quot; = &quot;v2&quot; { &quot;k2.1&quot; } }</tt> is a tree with
+two nodes at the root level, labeled <tt class="docutils literal">k1</tt> and <tt class="docutils literal">k2</tt> with values <tt class="docutils literal">v1</tt>
+and <tt class="docutils literal">v2</tt>, and <tt class="docutils literal">k2</tt> has one child labeled <tt class="docutils literal">k2.1</tt> with no associated
+value.</p>
+<div class="section" id="get-tests">
+<h3><em>get</em> tests</h3>
+<p>The <em>get</em> direction of <tt class="docutils literal">lns</tt> can be tested with</p>
+<pre class="literal-block">
+test lns get &quot;var : value\n&quot; = { &quot;var&quot; = &quot;value&quot; }
+</pre>
+<p>The test transforms the string <tt class="docutils literal">&quot;var : value&quot;</tt> using <tt class="docutils literal">lns</tt> and checks
+that it produces a tree with one node labeled <tt class="docutils literal">var</tt> with value
+<tt class="docutils literal">value</tt>. The test result after the <tt class="docutils literal">=</tt> can also be a <tt class="docutils literal">?</tt>, which
+prints the result of the transformation, and a <tt class="docutils literal">*</tt>, which expects that
+the test fails with an exception:</p>
+<pre class="literal-block">
+test lns get &quot;var : value\n&quot; = ?   (* Prints the tree *)
+test lns get &quot;var1 : value\n&quot; = *
+</pre>
+<p>The latter test succeeds, because applying the <em>get</em> of <tt class="docutils literal">lns</tt> to <tt class="docutils literal">var1 :
+value</tt> fails: the regular expression <tt class="docutils literal"><span class="pre">/[a-z]+/</span></tt> in the <tt class="docutils literal">key</tt> lens for
+<tt class="docutils literal">lns</tt> does not match <tt class="docutils literal">var1</tt>, so that the <em>get</em> of <tt class="docutils literal">lns</tt> does not
+process the entire input string, which is flagged as an error.</p>
+</div>
+<div class="section" id="put-tests">
+<h3><em>put</em> tests</h3>
+<p>Testing the <em>put</em> direction involves a roundtrip from string to tree back
+to string, with possible modifications of the tree:</p>
+<pre class="literal-block">
+test lns put &quot;var : value\n&quot; after set &quot;/var&quot; &quot;othervalue&quot; = &quot;var : othervalue\n&quot;
+</pre>
+<p>The test first transforms <tt class="docutils literal">&quot;var : value&quot;</tt> into a tree, then modifies the
+tree with the commands listed after the <tt class="docutils literal">after</tt> keyword, and transforms
+the modified tree back to a string. That string is then compared to the
+right hand side of the test statement. The right handside can either be a
+string, in which case the test must produce that exact same string, or
+<tt class="docutils literal">?</tt> to print the test result, or <tt class="docutils literal">*</tt> to indicate that the transform
+must fail.</p>
+<p>The <tt class="docutils literal">after</tt> commands can make multiple changes to the tree; commands are
+separated by a <tt class="docutils literal">;</tt>:</p>
+<pre class="literal-block">
+test lns put &quot;var : value&quot; after
+   set &quot;/var&quot; &quot;othervalue&quot;;
+   set &quot;/newvar&quot; &quot;newvalue&quot;
+ = &quot;var : othervalue\nnewvar: newvalue&quot;
+</pre>
+<p>Besides the command <tt class="docutils literal">set PATH VALUE</tt>, the command <tt class="docutils literal">rm PATH</tt> can be used
+to remove parts of the tree.</p>
+</div>
+</div>
+</div>
+
+    </div>
+  </div>
+
+  <div id="footer">
+    <div id="projects">
+      <dl id="p1">
+        <dt><a href="http://augeas.net/">Augeas</a></dt>
+        <dd><span>A configuration editing tool and API</span></dd>
+        <dt><a href="http://libvirt.org/">libvirt</a></dt>
+        <dd><span>The open source virtualization API</span></dd>
+<!--        <dt><a href="http://thincrust.et.redhat.com/">Thin Crust</a></dt>
+        <dd><span>Tools for building virtual appliances</span></dd>-->
+      </dl>
+      <dl id="p2">
+        <dt><a href="http://cobbler.et.redhat.com/">Cobbler</a></dt>
+        <dd><span>OS provisioning and profile management</span></dd>
+        <dt><a href="http://ovirt.org/">oVirt</a></dt>
+        <dd><span>Virtualization management across the data center</span></dd>
+<!--        <dt><a href="http://et.redhat.com/~rjones/virt-p2v/">p-2-v</a></dt>
+        <dd><span>Virtualize existing deployed servers</span></dd>-->
+      </dl>
+      <dl id="p3">
+        <dt><a href="http://freeipa.org/">FreeIPA</a></dt>
+        <dd><span>Identity, policy and audit management</span></dd>
+        <dt><a href="http://virt-manager.org/">Virtual Machine Manager</a></dt>
+        <dd><span>Virtualization management from the desktop</span></dd>
+<!--        <dt><a href="http://virt-manager.org/">Virtual Tools</a></dt>
+        <dd><span>Virtualization management from the command line</span></dd>-->
+      </dl>
+    </div>
+    <p id="et">
+      <a href="http://et.redhat.com/"><img src="../styles/et_logo.png" alt="A Red Hat Emerging Technology Project"></a>
+    </p>
+  </div>
+</body>
+</html>

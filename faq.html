@@ -1,0 +1,288 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+
+<html>
+<head>
+  <title>Augeas &mdash; Frequently Asked Questions</title>
+
+  
+  
+
+  <meta name="keywords" content="configuration management">
+  <meta name="description" content="Configuration API for Linux">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+  <link rel="shortcut icon" href="/styles/favicon.ico" type="image/x-icon">
+
+  <link rel="StyleSheet" type="text/css" href="styles/default.css" title="Main style">
+  <link rel="Alternate StyleSheet" type="text/css" href="styles/default-debug.css" title="Debug main style">
+
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-18273001-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+</head>
+
+<body>
+
+  <div id="header">
+    <div id="headerLogo"></div>
+  </div>
+
+  <div id="body">
+    <div id="menu">
+      <ul class="l0">
+         <li><div>
+<a class='inactive' title='Main' href='index.html'>Main</a>
+<li><div>
+<span class='active'>FAQ</span>
+</div></li>
+<li><div>
+<a class='inactive' title='Quick Tour' href='tour.html'>Quick Tour</a>
+</div></li>
+<li><div>
+<a class='inactive' title='Bug tracker' href='https:/fedorahosted.org/augeas/report/1'>Bug tracker</a>
+</div></li>
+<li><div>
+<a class='inactive' title='Todo list' href='todo.html'>Todo list</a>
+</div></li>
+<li><div>
+<a class='inactive' title='Releases' href='news.html'>Releases</a>
+</div></li>
+<li><div>
+<a class='inactive' title='Contribute' href='developers.html'>Contribute</a>
+</div></li>
+<li><div>
+<a class='inactive' title='Wiki' href='wiki'>Wiki</a>
+</div></li>
+<li><div>
+<a class='inactive' title='Documentation' href='docs/index.html'>Documentation</a>
+</div></li>
+<li><div>
+<a class='inactive' title='libfa' href='libfa/index.html'>libfa</a>
+</div></li>
+<li><div>
+<a class='inactive' title='Download' href='download.html'>Download</a>
+</div></li>
+
+      </ul>
+    </div>
+
+    <div id="content">
+      <div class="document" id="frequently-asked-questions">
+<h1 class="title">Frequently Asked Questions</h1>
+<ol class="arabic simple">
+<li><a class="reference internal" href="#basic-questions">Basic Questions</a></li>
+<li><a class="reference internal" href="#using-augeas">Using Augeas</a></li>
+<li><a class="reference internal" href="#describing-file-formats">Describing file formats</a></li>
+</ol>
+<div class="section" id="basic-questions">
+<h2>Basic Questions</h2>
+<dl class="docutils">
+<dt>What license is Augeas ditributed under ?</dt>
+<dd>Augeas is distributed under the GNU Lesser General Public License (<a class="reference external" href="http://www.gnu.org/licenses/lgpl.html">LGPL</a>)
+A copy of the license is included in the file <tt class="docutils literal">COPYING</tt> in the source
+distribution.</dd>
+<dt>Can I use Augeas from a proprietary application ?</dt>
+<dd>Yes. The LGPL allows you to use Augeas from a proprietary application. It
+would be very helpful to both you and the community if you send bug fixes
+and improvements as patches for possible incorporation in the main
+development tree. It will decrease your maintenance costs anyway if you
+do so.</dd>
+<dt>How do I get Augeas ?</dt>
+<dd>The <a class="reference external" href="download.html">download</a> page explains where you can find released RPM's and
+tarballs and how you can check the latest development version out from
+Mercurial</dd>
+<dt>What's with that name ?</dt>
+<dd>To quote <a class="reference external" href="http://en.wikipedia.org/wiki/Augeas">Wikipedia</a>: &quot;<em>In Greek mythology, Augeas ... was King of Elis ... He is best known ... for his stables, which housed the single greatest number of cattle in the country and had never been cleaned.</em>&quot;</dd>
+<dt>How do I contribute to Augeas ?</dt>
+<dd>The main means of communication is the <a class="reference external" href="https://www.redhat.com/mailman/listinfo/augeas-devel">Augeas mailing list</a>
+<tt class="docutils literal"><span class="pre">augeas-devel&#64;redhat.com</span></tt>. For more information on contributing, see
+<a class="reference external" href="developers.html">the contribute page</a></dd>
+<dt>I don't know any C — can I still help ?</dt>
+<dd>Of course. Besides writing code, there are <a class="reference external" href="developers.html">many more areas</a> where Augeas
+needs help: evaluating existing tree representations of configuration
+files, writing descriptions for new file formats, and documenting Augeas'
+tree structure are all areas where help is sorely needed.</dd>
+<dt>Can I use Augeas for other text files ?</dt>
+<dd>Yes, there is actually nothing specific to configuration files in
+Augeas. If you have some other unstructured text file that you'd like to
+transform into a tree, all you need to do is write a file format
+description for it.</dd>
+<dt>Can I change a file with Augeas and still edit it by other means ?</dt>
+<dd>Yes. One of the main design goals of Augeas is to not interfere with any
+other ways in which you might change your configuration files. Augeas
+works very hard to preserve comments and formatting details such as the
+number of spaces used to separate fields etc. It also does not depend on
+any additional information embedded in comments — you can always
+alternate between changing a configuration file with your favorite editor
+or custom script, and changing it with Augeas.</dd>
+</dl>
+</div>
+<div class="section" id="using-augeas">
+<h2>Using Augeas</h2>
+<dl class="docutils">
+<dt>Can I use Augeas in a shell script ?</dt>
+<dd>Yes, the <tt class="docutils literal">augtool</tt> command can be used to manipulate the tree and the
+underlying files with shell scripts. Run <tt class="docutils literal">augtool help</tt> for a list of
+commands <tt class="docutils literal">augtool</tt> supports.</dd>
+<dt>What language bindings are available ?</dt>
+<dd>Bindings for Ruby, Python, OCaml, Perl, Haskell, PHP, Lua, and Java are
+available for <a class="reference external" href="download.html">download</a>. Patches/additions for other languages are eagerly
+anticipated.</dd>
+<dt>Do I need to know how file formats are described ?</dt>
+<dd>No, that is only necessary if you want to change how files are mapped
+into the tree or map new files. For using Augeas, it is enough to
+understand the functionality provided by <tt class="docutils literal">augtool</tt>, or the equivalent
+calls in C or the language bindings.</dd>
+<dt>How is the Augeas tree structured ?</dt>
+<dd>Each node in the Augeas tree consists of three pieces of data: a <em>label</em>
+and a <em>value</em>, both strings, and a list of <em>child</em> nodes. The label and
+value are both strings. The label is used in the path to the node and
+child nodes, much as file names are used in the paths to files in a file
+system. The label must not contain the characters <tt class="docutils literal">/</tt> or <tt class="docutils literal">*</tt> or end
+with <tt class="docutils literal">[N]</tt> where N is a positive number.</dd>
+<dt>Can a node have multiple children with the same label ?</dt>
+<dd>Yes, that is the biggest difference between the Augeas tree and files in
+a filesystem (and makes it similar to DOM's for XML documents). A node
+can have any number of children called <tt class="docutils literal">foo</tt>; in paths, a specific
+child can be picked out with <tt class="docutils literal">foo[N]</tt> where <tt class="docutils literal">N</tt> is a positive number
+– the first child with label <tt class="docutils literal">foo</tt> is picked with <tt class="docutils literal">foo[1]</tt>, and
+the last can be picked with <tt class="docutils literal"><span class="pre">foo[last()]</span></tt>. Just <tt class="docutils literal">foo</tt> in a path picks
+<em>all</em> the children with that label. This convention follows <a class="reference external" href="http://www.w3.org/TR/xpath">XPath</a></dd>
+<dt>What kind of data can be stored in the tree ?</dt>
+<dd>Augeas only stores strings in the tree. So far, there hasn't been a
+compelling reason to support other data types.</dd>
+<dt>Where do a find the contents of a file ?</dt>
+<dd>The contents of a file <tt class="docutils literal">/some/path</tt> are mapped into the tree as
+<tt class="docutils literal">/files/some/path</tt>, which is usually a fine-grained tree view of that
+file; additional (meta-)information about each file is available in
+<tt class="docutils literal">/augeas/files/some/path</tt>.</dd>
+</dl>
+</div>
+<div class="section" id="describing-file-formats">
+<h2>Describing file formats</h2>
+<dl class="docutils">
+<dt>What are <em>lenses</em> ?</dt>
+<dd><em>Lenses</em> are the building blocks of the file &lt;-&gt; tree transformation;
+they combine parsing a file and building the tree, the <em>get</em>
+transformation, with turning the tree back into an (updated) file, the
+<em>put</em> transformation.</dd>
+<dt>Why are they called <em>lenses</em> ?</dt>
+<dd>The name comes from the <a class="reference external" href="http://alliance.seas.upenn.edu/~harmony/">Harmony project</a>. In Harmony's lingo, Augeas
+maps back and forth between a <em>concrete view</em> (the configuration file) and
+an <em>abstract view</em> (the tree representation). And calling something that
+goes back and forth between two views a 'lens' seems only natural, doesn't
+it ?</dd>
+<dt>What is a <em>bidirectional language</em> ?</dt>
+<dd>A bidirectional language is one where the program expresses a
+transformation from input to output, and from (possibly modified) output
+back to the corresponding input. They are called <em>bidirectional</em> rather
+than <em>bijective</em> because there are generally many inputs for the same
+output and vice versa. In Augeas case, many input files (e.g.,
+<tt class="docutils literal">/etc/hosts</tt> with varying amounts of whitespace between fields) map to
+the same tree, and there are many ways to map the same tree back to a
+file. Other examples of bidirectional languages are <tt class="docutils literal">Harmony</tt> (mapping
+trees to trees) and <tt class="docutils literal">Boomerang</tt> (mapping strings to strings), both from
+the <a class="reference external" href="http://alliance.seas.upenn.edu/~harmony/">Harmony project</a>.</dd>
+<dt>How is a file parsed ?</dt>
+<dd>The <em>lenses</em> match regular expressions, different lenses do different
+things with the strings that match (create a new tree node with a certain
+label, store a value in a tree node, combine tree nodes into a larger
+tree); writing the regular expressions is the main task when describing a
+file format.</dd>
+<dt>What is the regular expression syntax ?</dt>
+<dd>Augeas uses <a class="reference external" href="http://www.regular-expressions.info/posix.html">extended POSIX regexps</a>. There are a few more esoteric
+features of extended POSIX regexps that are not supported, the most
+notable of them being POSIX named character classes, collating elements
+and back references. Named character classes should be supported soon
+(patches welcome).</dd>
+<dt>What is the language in which file format descriptions are written ?</dt>
+<dd>The file format descriptions are written in a small subset of ML (a
+popular functional language.) If you don't know ML, don't despair: there
+are only two or three constructs that you need to know to write file
+format descriptions. The Augeas language is statically typed; besides the
+'usual' checks of a type checker, checks also make sure that the
+transformations described by lenses are safe.</dd>
+<dt>How do I test my file format description ?</dt>
+<dd>The Augeas language has a built-in <tt class="docutils literal">test</tt> construct for running unit
+tests; additional round-trip tests can be found in the <tt class="docutils literal">tests/</tt>
+directory in the source distribution. They are run by the <tt class="docutils literal">augtest</tt>
+command in the same directory.</dd>
+<dt>Where do I find existing file format descriptions ?</dt>
+<dd>File format descriptions are contained in files with the extension
+<tt class="docutils literal">.aug</tt>. In the source distribution, they are in the <tt class="docutils literal">lenses</tt>
+directory, which, by default, is installed into
+<tt class="docutils literal">/usr/share/augeas/lenses</tt>.</dd>
+<dt>Can I send you my file format description ?</dt>
+<dd>Yes, please. One of Augeas' goals is to collect file format descriptions,
+and build a library of them, so that eventually there will be a
+'canonical' tree representation of configuration data.</dd>
+</dl>
+</div>
+<div class="section" id="libfa-finita-automata">
+<h2><tt class="docutils literal">libfa</tt> — Finita Automata</h2>
+<dl class="docutils">
+<dt>What is <tt class="docutils literal">libfa</tt> ?</dt>
+<dd><a class="reference external" href="libfa/">Libfa</a> is a library for manipulating finite automata. A finite automaton
+is a representation of all strings matching a regular expression. Augeas
+uses it for typechecking lenses and ensuring they don't contain
+ambiguities.</dd>
+<dt>Can I use <tt class="docutils literal">libfa</tt> outside of Augeas ?</dt>
+<dd>Yes. <tt class="docutils literal">Libfa</tt> is also licensed under the <a class="reference external" href="http://www.gnu.org/licenses/lgpl.html">LGPL</a>, and has no dependencies
+on Augeas.</dd>
+<dt>What operations does <tt class="docutils literal">libfa</tt> support ?</dt>
+<dd>A list of operations can be found <a class="reference external" href="libfa/operations.html">here</a>.</dd>
+<dt>What regular expression syntax does <tt class="docutils literal">libfa</tt> support ?</dt>
+<dd>It supports extended POSIX regular expressions, exactly the same as Augeas.</dd>
+<dt>Why is there no operation to match a regular expression against a string ?</dt>
+<dd>The GNU C library (and <a class="reference external" href="http://www.delorie.com/gnu/docs/regex/regex.html">GNU Regex</a>) contains a much better matcher than I
+would ever hope to write for <tt class="docutils literal">libfa</tt> — being able to use that
+matcher is the main reason for using extended POSIX syntax.</dd>
+</dl>
+</div>
+</div>
+
+    </div>
+  </div>
+
+  <div id="footer">
+    <div id="projects">
+      <dl id="p1">
+        <dt><a href="http://augeas.net/">Augeas</a></dt>
+        <dd><span>A configuration editing tool and API</span></dd>
+        <dt><a href="http://libvirt.org/">libvirt</a></dt>
+        <dd><span>The open source virtualization API</span></dd>
+<!--        <dt><a href="http://thincrust.et.redhat.com/">Thin Crust</a></dt>
+        <dd><span>Tools for building virtual appliances</span></dd>-->
+      </dl>
+      <dl id="p2">
+        <dt><a href="http://cobbler.et.redhat.com/">Cobbler</a></dt>
+        <dd><span>OS provisioning and profile management</span></dd>
+        <dt><a href="http://ovirt.org/">oVirt</a></dt>
+        <dd><span>Virtualization management across the data center</span></dd>
+<!--        <dt><a href="http://et.redhat.com/~rjones/virt-p2v/">p-2-v</a></dt>
+        <dd><span>Virtualize existing deployed servers</span></dd>-->
+      </dl>
+      <dl id="p3">
+        <dt><a href="http://freeipa.org/">FreeIPA</a></dt>
+        <dd><span>Identity, policy and audit management</span></dd>
+        <dt><a href="http://virt-manager.org/">Virtual Machine Manager</a></dt>
+        <dd><span>Virtualization management from the desktop</span></dd>
+<!--        <dt><a href="http://virt-manager.org/">Virtual Tools</a></dt>
+        <dd><span>Virtualization management from the command line</span></dd>-->
+      </dl>
+    </div>
+    <p id="et">
+      <a href="http://et.redhat.com/"><img src="styles/et_logo.png" alt="A Red Hat Emerging Technology Project"></a>
+    </p>
+  </div>
+</body>
+</html>

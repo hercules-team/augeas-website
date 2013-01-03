@@ -1,0 +1,151 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+
+<html>
+<head>
+  <title>Augeas &mdash; Todo list</title>
+
+  
+  
+
+  <meta name="keywords" content="configuration management">
+  <meta name="description" content="Configuration API for Linux">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+  <link rel="shortcut icon" href="/styles/favicon.ico" type="image/x-icon">
+
+  <link rel="StyleSheet" type="text/css" href="styles/default.css" title="Main style">
+  <link rel="Alternate StyleSheet" type="text/css" href="styles/default-debug.css" title="Debug main style">
+
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-18273001-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+</head>
+
+<body>
+
+  <div id="header">
+    <div id="headerLogo"></div>
+  </div>
+
+  <div id="body">
+    <div id="menu">
+      <ul class="l0">
+         <li><div>
+<a class='inactive' title='Main' href='index.html'>Main</a>
+<li><div>
+<a class='inactive' title='FAQ' href='faq.html'>FAQ</a>
+</div></li>
+<li><div>
+<a class='inactive' title='Quick Tour' href='tour.html'>Quick Tour</a>
+</div></li>
+<li><div>
+<a class='inactive' title='Bug tracker' href='https:/fedorahosted.org/augeas/report/1'>Bug tracker</a>
+</div></li>
+<li><div>
+<span class='active'>Todo list</span>
+</div></li>
+<li><div>
+<a class='inactive' title='Releases' href='news.html'>Releases</a>
+</div></li>
+<li><div>
+<a class='inactive' title='Contribute' href='developers.html'>Contribute</a>
+</div></li>
+<li><div>
+<a class='inactive' title='Wiki' href='wiki'>Wiki</a>
+</div></li>
+<li><div>
+<a class='inactive' title='Documentation' href='docs/index.html'>Documentation</a>
+</div></li>
+<li><div>
+<a class='inactive' title='libfa' href='libfa/index.html'>libfa</a>
+</div></li>
+<li><div>
+<a class='inactive' title='Download' href='download.html'>Download</a>
+</div></li>
+
+      </ul>
+    </div>
+
+    <div id="content">
+      <div class="document" id="todo-list">
+<h1 class="title">Todo list</h1>
+<p>If you are interested in helping out, there are some general things that
+always need attention:</p>
+<ul class="simple">
+<li>Write descriptors for more files. Eventually, Augeas should cover <em>all</em>
+commonly used configuration files</li>
+<li>Convince upstream projects to ship their own Augeas lenses. Currently, we
+ship a lot of lenses as part of Augeas, but they should really be shipped
+and maintained by the same people whose config files the lens
+processes. All that upstream needs to do is ship one text file, and keep
+that up to date whenever they change their config file format.</li>
+<li>Better documentation. Of anything. We need more reference docs, howtos,
+tips &amp; tricks on usage etc.</li>
+</ul>
+<p>Specific todo items, i.e. things that are clear enough that they can be
+implemented, are kept as <a class="reference external" href="https://fedorahosted.org/augeas/report/9">tickets in the bugtracker</a>.</p>
+<p>If you want to work on any of those items, please get in touch first, to
+avoid duplicate work. If you want to add to the list of todo items, file a
+new ticket with milestone 'wishlist'.</p>
+<div class="section" id="quick-janitorial-tasks">
+<h2>Quick janitorial tasks</h2>
+<p>If you want to help but aren't very familiar with Augeas and/or don't have
+much time, here are some very quick things that would help us tremendously:</p>
+<ul class="simple">
+<li>Install the latest Augeas release on your machine and run <tt class="docutils literal">augtool print
+<span class="pre">/augeas//error</span></tt> - if that produces any output, file a <a class="reference external" href="https://fedorahosted.org/augeas/report">ticket in the
+bugtracker</a>. Please include the output from <tt class="docutils literal">augtool</tt> in the ticket, and
+attach the files for which <tt class="docutils literal">augtool</tt> reports a failure.</li>
+<li>Launch <tt class="docutils literal">augtool</tt> and look at the entries in <tt class="docutils literal">/files</tt> and compare that
+with the configuration files on your system. If there are files you think
+augeas should parse, you can report a bug as a wishlist, or comment on
+one that is already open about this file.</li>
+</ul>
+</div>
+</div>
+
+    </div>
+  </div>
+
+  <div id="footer">
+    <div id="projects">
+      <dl id="p1">
+        <dt><a href="http://augeas.net/">Augeas</a></dt>
+        <dd><span>A configuration editing tool and API</span></dd>
+        <dt><a href="http://libvirt.org/">libvirt</a></dt>
+        <dd><span>The open source virtualization API</span></dd>
+<!--        <dt><a href="http://thincrust.et.redhat.com/">Thin Crust</a></dt>
+        <dd><span>Tools for building virtual appliances</span></dd>-->
+      </dl>
+      <dl id="p2">
+        <dt><a href="http://cobbler.et.redhat.com/">Cobbler</a></dt>
+        <dd><span>OS provisioning and profile management</span></dd>
+        <dt><a href="http://ovirt.org/">oVirt</a></dt>
+        <dd><span>Virtualization management across the data center</span></dd>
+<!--        <dt><a href="http://et.redhat.com/~rjones/virt-p2v/">p-2-v</a></dt>
+        <dd><span>Virtualize existing deployed servers</span></dd>-->
+      </dl>
+      <dl id="p3">
+        <dt><a href="http://freeipa.org/">FreeIPA</a></dt>
+        <dd><span>Identity, policy and audit management</span></dd>
+        <dt><a href="http://virt-manager.org/">Virtual Machine Manager</a></dt>
+        <dd><span>Virtualization management from the desktop</span></dd>
+<!--        <dt><a href="http://virt-manager.org/">Virtual Tools</a></dt>
+        <dd><span>Virtualization management from the command line</span></dd>-->
+      </dl>
+    </div>
+    <p id="et">
+      <a href="http://et.redhat.com/"><img src="styles/et_logo.png" alt="A Red Hat Emerging Technology Project"></a>
+    </p>
+  </div>
+</body>
+</html>
