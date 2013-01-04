@@ -82,6 +82,297 @@
       <div class="document" id="releases">
 <h1 class="title">Releases</h1>
 <div class="section" id="id1">
+<h2>1.0.0 - 2012-12-21</h2>
+<blockquote>
+<ul class="simple">
+<li>General changes/additions<ul>
+<li>fix missing requirement on libxml2 in pkg-config</li>
+<li>do not replace pathin with '/*' unless the length is 0
+or pathin is '/', bug #239</li>
+<li>create context path if it doesn't exist</li>
+<li>add missing argument to escape() to fix build on solaris, bug #242</li>
+<li>fix fatest linking with libfa</li>
+<li>don't use variables uninitialized upon error (Jim Meyering)</li>
+<li>bootstrap: add strchrnul gnulib module (for Solaris)</li>
+<li>remove Linux-isms so tests can run on Solaris</li>
+<li>re-open rl_outstream/stdout only when stdout isn't a tty
+(fixes -e -i); use /dev/tty instead of /dev/stdout when re-opening
+to prevent permission errors, bug #241</li>
+<li>take root into account for excludes, bug #252</li>
+<li>fix different errors for parse and put failure</li>
+<li>fix various memory leaks</li>
+<li>add leak test</li>
+<li>allocate exception instead of static const value</li>
+<li>improve aug_srun quoting to permit concatenation and better detect
+bad quoting</li>
+<li>rename echo to echo_commands to fix differing types reported
+with Solaris linker (Tim Mooney), bug #262</li>
+<li>fix excl filters that only specify a filename or wildcard</li>
+<li>make sure reloading discards changes after save with mode 'newfile'</li>
+<li>remove loop that added a second iteration around children of /files,
+causing multiple saves in newfile and noop modes when editing under
+/files/boot, bug #264</li>
+<li>support t and n in aug_srun tokens, bug #265</li>
+<li>compile_exp: don't return an uninitialized pointer upon failure
+(Jim Meyering)</li>
+<li>include 'extern &quot;C&quot;' wrapper for C++, bug #272 (Igor Pashev)</li>
+<li>src/try: don't overwrite gdbcmds.txt if it exists</li>
+<li>fix behavior of set with empty strings</li>
+<li>allow running individual tests with test-run</li>
+<li>test-augtool.sh: escape all possible regular expressions before
+they are sent to sed (Micah Anderson)</li>
+<li>add new print_tree primitive</li>
+<li>fix bad memory access in regexp.c</li>
+<li>case-insensitive regexps: fix a problem with number of groups</li>
+<li>prevent symlink attacks via .augnew during saving,
+RedHat bug #772257, CVE-2012-0786</li>
+<li>prevent cross-mountpoint attacks via .augsave during saving,
+RedHat bug #772261, CVE-2012-0787</li>
+<li>add bundled (gnulib) provides in augeas.spec.in, RedHat bug #821745</li>
+<li>make Travis CI builds</li>
+<li>src/transform.c (xread_file): catch failed fopen, e.g. EACCES</li>
+<li>src/augrun.c (cmd_retrieve_help): tidy line wrapping</li>
+<li>make get_square case insensitive on the ending key</li>
+<li>escape double quotes when dumping regexp</li>
+<li>use constants for &quot;lens&quot;, &quot;incl&quot; and &quot;excl&quot;</li>
+<li>src/transform.c (filter_generate): remove duplicate variable assignment</li>
+<li>src/jmt.c (parse_add_item): ensure return is defined on goto error</li>
+<li>src/transform.c (transform_save): chmod after creating new files to
+permissions implied by the umask</li>
+<li>ignore eclipse settings directory</li>
+<li>fix memory leak in dbg_visit</li>
+<li>build AST while visiting the parse v2</li>
+<li>rewrite square lens to be more generic, allowing e.g. square quoting</li>
+<li>tests/modules/fail_shadow_union.aug: fix unintended test failure</li>
+<li>src/syntax.c (compile_test): print which test failed when missing
+exception</li>
+<li>libfa (fa_enumerate): new function</li>
+<li>use precise ctype of a square lens if it is indeed regula</li>
+<li>square: properly handle first lens matching empty string</li>
+<li>square lens: correctly process skeletons during put</li>
+<li>src/pathx.c: disallow ',' in names in path expressions</li>
+<li>src/pathx.c: match functions by name and arity</li>
+<li>src/pathx.c: pass the number of actual arguments to the func
+implementation</li>
+<li>correctly parse escaped string literals in vim syntax file (Domen Ko¿ar)</li>
+</ul>
+</li>
+<li>API changes/additions<ul>
+<li>add aug_text_store to write string to tree</li>
+<li>add aug_text_retrieve to turn tree into text</li>
+<li>add aug_rename to rename node labels without moving them in the tree</li>
+<li>add aug_transform to allow specifying transforms</li>
+<li>add aug_label to retrieve the label from a path</li>
+</ul>
+</li>
+<li>Augtool/aug_srun changes/additions<ul>
+<li>add &quot;touch&quot; command to create node if it doesn't exist, bug #276</li>
+<li>make &lt;VALUE&gt; argument to &quot;set&quot; and &quot;setm&quot; optional, bug #276</li>
+<li>add &quot;text_store&quot; and &quot;text_retrieve&quot; commands</li>
+<li>add &quot;rename&quot; command</li>
+<li>add &quot;transform&quot; command and &quot;-t|--transform&quot; option</li>
+<li>add &quot;label&quot; command</li>
+<li>arrange commands in groups for better help</li>
+<li>man/augtool.pod: update mentions of default load path</li>
+<li>fix exit code when using autosave</li>
+<li>output errors when sending a command as argument</li>
+<li>honor --echo when sending a command as argument</li>
+</ul>
+</li>
+<li>XPath changes/additions<ul>
+<li>add support for an 'i' flag in regexp builtin function</li>
+</ul>
+</li>
+<li>Lens changes/additions<ul>
+<li>Aliases: commands can be fully enclosed in quotes, bug #229</li>
+<li>Anacron: new lens for /etc/anacrontab</li>
+<li>Apt_Update_Manager: new lens for /etc/update-manager</li>
+<li>AptPreferences: #comments are accepted within entries</li>
+<li>AuthorizedKeys: new lens for SSH's authorized_keys</li>
+<li>AutoMaster: new lens for auto.master files</li>
+<li>AutoMounter: new lens for automounter maps (/etc/auto.*)</li>
+<li>Avahi: new lens for /etc/avahi/avahi-daemon.conf (Athir Nuaimi)</li>
+<li>Build: add blocks</li>
+<li>Cachefilesd: new lens for /etc/cachefilesd.conf (Pat Riehecky)</li>
+<li>Carbon: new lens for /etc/carbon files (Marc Fournier)</li>
+<li>Cgconfig: add space between group and id (Filip Andres)</li>
+<li>Channels: new lens for channels.conf</li>
+<li>Collectd: new lens for /etc/collectd.conf</li>
+<li>Cron: exclude cron allow/deny files;
+optimize typechecking;
+records can be prefixed by '-' (Michal Filka)</li>
+<li>CronAllow: new lens for cron/at allow/deny files</li>
+<li>Cups: new lens for Cups files</li>
+<li>Cyrus_Imapd: new lens for /etc/imapd.conf, bug #296 (Jeroen van Meeuwen)</li>
+<li>Debctrl: fixed package paragraph keywords, allow variables
+for version numbers in dependency lists,
+allow DM-Upload-Allowed keyword, Debian bug #650887;
+allow control extensions for Python packages, bug #267</li>
+<li>Dhcpd: fix primary statement arguments, bug #293;
+use the Quote module to manage quoted values;
+force double quotes for filename attribute, bug #311</li>
+<li>Dput: use Sys.getenv(&quot;HOME&quot;)</li>
+<li>Erlang: new generic lens to build Erlang config lenses</li>
+<li>Fonts: new lens for /etc/fonts files</li>
+<li>Fstab: handle options with empty values (&quot;password=&quot;);
+make options field optional;
+allow end-of-line comment</li>
+<li>Fuse: new lens for fuse.conf</li>
+<li>Gdm: include /etc/gdm/custom.conf</li>
+<li>Grub: parse &quot;password --encrypted&quot; properly, bug #250;
+optimize typechecking;
+add /boot/grub/grub.conf to transform (Josh Kayse)</li>
+<li>GtkBookmarks: new lens for $HOME/.gtk-bookmarks</li>
+<li>Hosts_Access: add netmask;
+permit more client list formats
+(whitespace separated lists, &#64;netgroups,
+IPv6 hosts, inc. zone indices,
+paths to lists of clients, wildcards,
+hosts_options), bug #256</li>
+<li>Htpasswd: new lens for htpasswd/rsyncd.secret files (Marc Fournier)</li>
+<li>Httpd: support DOS eol</li>
+<li>IniFile: allow # and ; in quoted values, bug #243;
+add entry_list and entry_list_nocomment</li>
+<li>Inputrc: new lens for /etc/inputrc</li>
+<li>Iptables: test that blank lines are accepted (Terence Haddock)</li>
+<li>Json: allow JSON number literals to be followed by whitespace;
+correctly parse empty object and arrays (Lubomir Rintel)</li>
+<li>Keepalived: various improvements, optimize typechecking</li>
+<li>Krb5: handle host{} sections in v4_name_convert;
+support ticket_lifetime;
+handle multiple arguments to *_enctypes (Pat Riehecky);
+better whitespace and semicolon comment support</li>
+<li>Ldif: new lens to read LDIF files per RFC2849</li>
+<li>Ldso: new lens for ld.so.conf files</li>
+<li>Lightdm: new lens for /etc/lightdm/*.conf, bug #302 (David Salmen)</li>
+<li>Logrotate: rewrite with Build, Rx, and Sep;
+add su logrotate.conf option (Luc Didry);
+accept integers prefixed by a sign (Michal Filka)</li>
+<li>Logwatch: new lens for /etc/logwatch/conf/logwatch.conf (Francois Lebel)</li>
+<li>Mcollective: new lens for Mcollective files (Marc Fournier)</li>
+<li>Memcached: new lens for /etc/memcached.conf (Marc Fournier)</li>
+<li>Mdadm_conf: include /etc/mdadm/mdadm.conf</li>
+<li>Mke2fs: add support for default_mntopts, enable_periodic_fsck,
+and auto_64-bit_support</li>
+<li>Modprobe: support softdep command, Debian bug #641813;
+allow spaces around '=' in option, RedHat bug #826752;
+support multiline split commands, Ubuntu bug #1054306;
+revert inner lens name change, fixes Modules_conf</li>
+<li>Modules: define own entry regexp as referenced Modprobe inner lens
+doesn't match file format</li>
+<li>Multipath: allow devices to override defaults, bug #278 (Jacob M. McCann)</li>
+<li>NagiosCfg: support syntax for commands.cfg and resource.cfg</li>
+<li>Netmask: new lens for /etc/inet/netmasks on Solaris</li>
+<li>NetworkManager: new lens for NetworkManager files</li>
+<li>Networks: handle multiple missing network octets,
+fix sequencing of aliases</li>
+<li>Nginx: new lens for /etc/nginx/nginx.conf (Ian Berry)</li>
+<li>Nsswitch: add passwd_compat, group_compat and shadow_compat
+GNU extensions (Travis Groth);
+remove long list of databases, match by regexp</li>
+<li>Ntp: allow deprecated 'authenticate' setting;
+add tos directive, bug #297 (Jacob M. McCann)</li>
+<li>OpenVPN: use the Quote module to manage quoted values</li>
+<li>Pam: allow uppercase chars in 'types', remove /etc/pam.conf from filter;
+ignore allow.pamlist;
+exclude /etc/pam.d/README, bug #255</li>
+<li>PamConf: new lens for /etc/pam.conf</li>
+<li>Passwd: allow asterisk in password field, bug #255</li>
+<li>Pg_Hba: support multiple options, bug #313;
+add a path to pg_hba.aug, bug #281 (Marc Fournier)</li>
+<li>Php: support include() statements</li>
+<li>Phpvars: map arrays with &#64;arraykey subnodes to make working paths;
+support classes and public/var values, bug #299 (aheahe)</li>
+<li>Postfix_Transport: new lens for Postfix transport files;
+allow host:port and [host]:port syntaxes, bug #303</li>
+<li>Postfix_Virtual: new lens for Postfix virtual files</li>
+<li>Postgresql: new lens for postgresql.conf;
+properly support quotes, bug #317</li>
+<li>Properties: improve handling of whitespace, empty props, and underscores
+in keys (Brett Porter, Carlos Sanchez)</li>
+<li>Protocols: new lens for /etc/protocols</li>
+<li>Puppet: add /usr/local/etc/puppet paths (Tim Bishop)</li>
+<li>Puppet_Auth: new lens for /etc/puppet/auth.conf</li>
+<li>PuppetFileserver: add /usr/local/etc/puppet paths (Tim Bishop)</li>
+<li>PythonPaste: new lens for Python Paste configs (Dan Prince)</li>
+<li>Qpid: new lens to read Apache Qpid daemon/client configs (Andrew Replogle)</li>
+<li>Quote: new generic lens to manage quoted values using square lenses</li>
+<li>Rabbitmq: new lens for /etc/rabbitmq/rabbitmq.config</li>
+<li>Redis: new lens for /etc/redis/redis.conf (Marc Fournier)</li>
+<li>Resolv: add in single-request-reopen (Erinn Looney-Triggs)</li>
+<li>Rsyslog: new lens for rsyslog files</li>
+<li>Rx: add continous lines (cl, cl_or_space, cl_or_opt_space)</li>
+<li>Sep: add space_equal;
+add continous lines (cl_or_space, cl_or_opt_space)</li>
+<li>Shellvars: support &#64;return;
+allow multiple elif statements;
+parse functions;
+add more includes;
+autoload some SuSe and RHN specific files (Duncan Mac-Vicar P);
+add BSD's /etc/rc.conf, bug #255;
+remove non-shell files, up2date now has a lens,
+move updatedb.conf to Simplevars;
+include /etc/{default,sysconfig}/* and /etc/selinux/config;
+add systemd's /etc/os-release file;
+exclude bootloader from shellvars (Duncan Mac-Vicar P);
+handle bash's implicit concatenation of quoted strings
+(Michal Filka);
+exclude /etc/default/whoopsie;
+fix ambiguity by making semi-colons illegal in bquot
+and arrays;
+add lns_norec to check for ambiguities;
+allow newlines in quoted values;
+allow semi-colons in bquot and dollar_assign;
+make end-of-line comments begin with a space;
+allow double backquoted values;
+support matching keys in var_action, bug #290;
+fix empty lines after comments;
+add shift and exit builtins, with optional args;
+allow double quotes around variables in case statements;
+fix empty comments;
+add locale.conf, vconsole.conf systemd configs,
+RedHat bug #881841</li>
+<li>Shells: permit same-line comments</li>
+<li>Simplelines: new lens for simple lines files</li>
+<li>Simplevars: new lens for simple key/value, non shellvars files</li>
+<li>Smbusers: new lens for Samba's smbusers</li>
+<li>Sssd: new lens for sssd.conf (Erinn Looney-Triggs)</li>
+<li>Ssh: use Sys.getenv('HOME') in filter instead of ~ since it's not
+expanded (Luc Didry)</li>
+<li>Sshd: permit hyphens in subsystem names</li>
+<li>Subversion: new lens for /etc/subversion files</li>
+<li>Sudoers: optimize typechecking;
+allow = in commands (but force ! or / as first character
+if not an alias);
+allow commands without full path if they begin with a lowcase
+letter;
+allow &quot;!&quot; as a type of Defaults entry, Debian bug #650079;
+allow quoted strings in Defaults parameters, bug #263</li>
+<li>Sysconfig: handle end of line comments and semicolons; strip quotes,
+RedHat bug #761246</li>
+<li>Sysctl: include /etc/sysctl.d files</li>
+<li>Syslog: allow capital letters in tokens</li>
+<li>Systemd: new lens to parse systemd unit files</li>
+<li>Thttpd: new lens for /etc/thttpd/thttpd.conf (Marc Fournier)</li>
+<li>Up2date: new lens for /etc/sysconfig/rhn/up2date</li>
+<li>Util: add comment_noindent; add delim; add doseol;
+support DOS eols in various places;
+add *.bak and *.old to stdexcl, to match files in /etc/sysconfig</li>
+<li>Vfstab: new lens for /etc/vfstab config on Solaris</li>
+<li>Vmware_Config: new lens for /etc/vmware/config</li>
+<li>Vsftpd: add require_ssl_reuse option (Danny Yates)</li>
+<li>Xinetd: rewrite with Build, Sep, and Rx;
+make attribute names case-insensitive (Michal Filka)</li>
+<li>Xml: support single _and_ double quoted attribute values,
+RedHat bug #799885, bug #258</li>
+<li>Xymon: new lens for Xymon config files, bug #266 (Jason Kincl)</li>
+<li>Yum: rebase on IniFile, support for comments, bug #217</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+</div>
+<div class="section" id="id2">
 <h2>0.10.0 - 2011-12-02</h2>
 <ul class="simple">
 <li>support relative paths by taking them relative to the value
@@ -171,7 +462,7 @@ and select; load /etc/blkid.conf by default</li>
 </li>
 </ul>
 </div>
-<div class="section" id="id2">
+<div class="section" id="id3">
 <h2>0.9.0 - 2011-07-25</h2>
 <ul class="simple">
 <li>augtool: keep history in ~/.augeas/history</li>
@@ -210,7 +501,7 @@ bug #197</li>
 </li>
 </ul>
 </div>
-<div class="section" id="id3">
+<div class="section" id="id4">
 <h2>0.8.1 - 2011-04-15</h2>
 <ul class="simple">
 <li>augtool: respect autosave flag in oneshot mode, bug #193; fix segfault
@@ -240,7 +531,7 @@ lines anywhere</li>
 </li>
 </ul>
 </div>
-<div class="section" id="id4">
+<div class="section" id="id5">
 <h2>0.8.0 - 2011-02-22</h2>
 <ul class="simple">
 <li>add new 'square' lens combinator</li>
@@ -283,7 +574,7 @@ section; bug #175 (omzkk)</li>
 </li>
 </ul>
 </div>
-<div class="section" id="id5">
+<div class="section" id="id6">
 <h2>0.7.4 - 2010-11-19</h2>
 <ul class="simple">
 <li>augtool: new clearm command to parallel setm</li>
@@ -333,7 +624,7 @@ Debian; bug #154 (Marc Fournier)</li>
 </li>
 </ul>
 </div>
-<div class="section" id="id6">
+<div class="section" id="id7">
 <h2>0.7.3 - 2010-08-06</h2>
 <ul class="simple">
 <li>aug_load: only reparse files that have actually changed; greatly speeds
@@ -364,7 +655,7 @@ strips quotes automatically</li>
 </li>
 </ul>
 </div>
-<div class="section" id="id7">
+<div class="section" id="id8">
 <h2>0.7.2 - 2010-06-22</h2>
 <ul class="simple">
 <li>new API call aug_setm to set/create multiple nodes simultaneously</li>
@@ -383,7 +674,7 @@ space-separated words as lists (Frederik Wagner)</li>
 </li>
 </ul>
 </div>
-<div class="section" id="id8">
+<div class="section" id="id9">
 <h2>0.7.1 - 2010-04-21</h2>
 <ul class="simple">
 <li><a class="reference external" href="http://augeas.net/docs/lenses.html">new primitive lens 'value'</a> to set value of a node to a constant,
@@ -443,7 +734,7 @@ Wagner); allow spaces after/before opening/closing parens for array</li>
 </li>
 </ul>
 </div>
-<div class="section" id="id9">
+<div class="section" id="id10">
 <h2>0.7.0 - 2010-01-14</h2>
 <ul class="simple">
 <li>Support for context-free lenses via the 'let rec' keyword. The syntax
@@ -480,7 +771,7 @@ syntaxes</li>
 </li>
 </ul>
 </div>
-<div class="section" id="id10">
+<div class="section" id="id11">
 <h2>0.6.0 - 2009-11-30</h2>
 <ul class="simple">
 <li>Add error reporting API (<cite>aug_error</cite> and related calls); use to report
@@ -515,7 +806,7 @@ Palmer)</li>
 </li>
 </ul>
 </div>
-<div class="section" id="id11">
+<div class="section" id="id12">
 <h2>0.5.3 - 2009-09-14</h2>
 <ul class="simple">
 <li>Match trees on label and value, not just label; see
@@ -545,7 +836,7 @@ and move lens/info to lens</li>
 </li>
 </ul>
 </div>
-<div class="section" id="id12">
+<div class="section" id="id13">
 <h2>0.5.2 - 2009-07-13</h2>
 <p>The schema for <cite>/etc/inittab</cite> has changed (see below)</p>
 <ul class="simple">
@@ -566,7 +857,7 @@ filenames to be indented</li>
 </li>
 </ul>
 </div>
-<div class="section" id="id13">
+<div class="section" id="id14">
 <h2>0.5.1 - 2009-06-09</h2>
 <ul class="simple">
 <li>augeas.h: flag AUG_NO_MODL_AUTOLOAD suppresses initial loading
@@ -604,7 +895,7 @@ vsftpd.conf on Fedora/RHEL</li>
 </li>
 </ul>
 </div>
-<div class="section" id="id14">
+<div class="section" id="id15">
 <h2>0.5.0 - 2009-03-27</h2>
 <ul class="simple">
 <li>Clean up interface for libfa; the interface is now considered stable</li>
@@ -640,7 +931,7 @@ parts of a tree being saved when multiple files were modified</li>
 </li>
 </ul>
 </div>
-<div class="section" id="id15">
+<div class="section" id="id16">
 <h2>0.4.2 - 2009-03-09</h2>
 <ul class="simple">
 <li>Do not delete files that had an error upon parsing</li>
@@ -659,7 +950,7 @@ the latter reads a the contents of a file into a string</li>
 </li>
 </ul>
 </div>
-<div class="section" id="id16">
+<div class="section" id="id17">
 <h2>0.4.1 - 2009-03-02</h2>
 <ul class="simple">
 <li>Remove files when their entire subtree under /files is deleted</li>
@@ -683,7 +974,7 @@ that builds on platforms with broken headers will work out of the box</li>
 </li>
 </ul>
 </div>
-<div class="section" id="id17">
+<div class="section" id="id18">
 <h2>0.4.0 - 2009-02-06</h2>
 <ul class="simple">
 <li>Much improved and expanded support for path expressions in the public
@@ -696,7 +987,7 @@ API. See doc/xpath.txt and tests/xpath.tests for details.</li>
 </li>
 </ul>
 </div>
-<div class="section" id="id18">
+<div class="section" id="id19">
 <h2>0.3.6 - 2009-01-26</h2>
 <ul class="simple">
 <li>report version in /augeas/version, report legal save modes in
@@ -719,7 +1010,7 @@ expand filter for Php config files (Robin Lee Powell)</li>
 </li>
 </ul>
 </div>
-<div class="section" id="id19">
+<div class="section" id="id20">
 <h2>0.3.5 - 2008-12-23</h2>
 <ul class="simple">
 <li>add an option to rewrite files by overwriting their contents instead of
@@ -749,21 +1040,21 @@ spurious errors from the typechecker</li>
 </li>
 </ul>
 </div>
-<div class="section" id="id20">
+<div class="section" id="id21">
 <h2>0.3.4 - 2008-11-05</h2>
 <ul class="simple">
 <li>fix saving of backup files; in 0.3.3, when AUG_SAVE_BACKUP was passed
 to aug_init, aug_save would always fail</li>
 </ul>
 </div>
-<div class="section" id="id21">
+<div class="section" id="id22">
 <h2>0.3.3 - 2008-10-24</h2>
 <ul class="simple">
 <li>restore the behavior of aug_save; in 0.3.2, aug_save broke API by
 returning the number of files changed on success instead of 0</li>
 </ul>
 </div>
-<div class="section" id="id22">
+<div class="section" id="id23">
 <h2>0.3.2 - 2008-10-21</h2>
 <ul class="simple">
 <li><cite>aug_save</cite> now reports which files were actually changed in
@@ -791,7 +1082,7 @@ on the Auegas website (Raphael Pinson)</li>
 </li>
 </ul>
 </div>
-<div class="section" id="id23">
+<div class="section" id="id24">
 <h2>0.3.1 - 2008-09-04</h2>
 <ul class="simple">
 <li>Major performance improvement when processing huge files, reducing some
@@ -831,7 +1122,7 @@ deleting them</li>
 </ul>
 </div>
 </div>
-<div class="section" id="id24">
+<div class="section" id="id25">
 <h2>0.3.0 - 2008-08-07</h2>
 <ul class="simple">
 <li>Add aug_mv call to public API</li>
@@ -851,7 +1142,7 @@ deleting them</li>
 </li>
 </ul>
 </div>
-<div class="section" id="id25">
+<div class="section" id="id26">
 <h2>0.2.2 - 2008-07-18</h2>
 <ul class="simple">
 <li>Fix segfault in store.put on NULL values</li>
@@ -869,7 +1160,7 @@ put unit tests</li>
 </li>
 </ul>
 </div>
-<div class="section" id="id26">
+<div class="section" id="id27">
 <h2>0.2.1 - 2008-07-01</h2>
 <ul class="simple">
 <li>Address some compilation issues found on Ubuntu/Debian unstable</li>
@@ -878,7 +1169,7 @@ put unit tests</li>
 <li>New lens for <cite>/etc/sysconfig/selinux</cite>, bugfixes for <cite>grub.conf</cite></li>
 </ul>
 </div>
-<div class="section" id="id27">
+<div class="section" id="id28">
 <h2>0.2.0 - 2008-06-05</h2>
 <ul class="simple">
 <li>Augeas is now much more portable<ul>
@@ -894,7 +1185,7 @@ put unit tests</li>
 </li>
 </ul>
 </div>
-<div class="section" id="id28">
+<div class="section" id="id29">
 <h2>0.1.1 - 2008-05-16</h2>
 <ul class="simple">
 <li>Add subtraction of regexps to the language, for example <tt class="docutils literal">let re =
@@ -914,7 +1205,7 @@ put unit tests</li>
 <li>New lenses for <tt class="docutils literal">/etc/fstab</tt>, <tt class="docutils literal">/etc/xinetd.conf</tt> and <tt class="docutils literal">/etc/xinetd.d/*</tt></li>
 </ul>
 </div>
-<div class="section" id="id29">
+<div class="section" id="id30">
 <h2>0.1.0 - 2008-05-01</h2>
 <ul class="simple">
 <li>Various changes to public API:<ul>
@@ -939,13 +1230,13 @@ shell variables)</li>
 <li>Man page for augtool (Dean Wilson)</li>
 </ul>
 </div>
-<div class="section" id="id30">
+<div class="section" id="id31">
 <h2>0.0.8 - 2008-04-16</h2>
 <ul class="simple">
 <li>Complete rewrite of the language for schema descriptions</li>
 </ul>
 </div>
-<div class="section" id="id31">
+<div class="section" id="id32">
 <h2>0.0.7 - 2008-03-14</h2>
 <ul class="simple">
 <li>Typecheck lenses; in particular, discover and complain about ambiguous
@@ -959,7 +1250,7 @@ fast. Typechecking cmfm.aug went from more than two hours to under two
 seconds</li>
 </ul>
 </div>
-<div class="section" id="id32">
+<div class="section" id="id33">
 <h2>0.0.6 - 2008-03-05</h2>
 <ul class="simple">
 <li>Make it possible to overwrite files when saving with and without
@@ -968,7 +1259,7 @@ backups</li>
 <li>Expose these two things as command line options in augtool</li>
 </ul>
 </div>
-<div class="section" id="id33">
+<div class="section" id="id34">
 <h2>0.0.5 - 2008-03-05</h2>
 <ul class="simple">
 <li>Changed public API to contain explicit reference to augeas_t
@@ -977,13 +1268,13 @@ structure. This makes it easier to write threadsafe code using Augeas</li>
 Augeas</li>
 </ul>
 </div>
-<div class="section" id="id34">
+<div class="section" id="id35">
 <h2>0.0.4 - 2008-02-25</h2>
 <ul class="simple">
 <li>package as RPM and make sure Augeas can be build on Fedora/RHEL</li>
 </ul>
 </div>
-<div class="section" id="id35">
+<div class="section" id="id36">
 <h2>0.0.3 - 2008-02-25</h2>
 <ul class="simple">
 <li>further rework; file processing now resembles Boomerang lenses much
@@ -994,7 +1285,7 @@ multiple children can have the same label, including NULL labels)</li>
 enable much better ahead-of-time checks (which are not implemented yet)</li>
 </ul>
 </div>
-<div class="section" id="id36">
+<div class="section" id="id37">
 <h2>0.0.2 - 2008-01-29:</h2>
 <ul class="simple">
 <li>completely reworked</li>
@@ -1002,7 +1293,7 @@ enable much better ahead-of-time checks (which are not implemented yet)</li>
 structure of the files (basically a LL(1) grammar)</li>
 </ul>
 </div>
-<div class="section" id="id37">
+<div class="section" id="id38">
 <h2>0.0.1 - 2007-12-01:</h2>
 <ul class="simple">
 <li>First release.</li>
