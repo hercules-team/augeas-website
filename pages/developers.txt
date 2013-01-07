@@ -118,8 +118,12 @@ OCaml
 Perl
 ++++
 
-`Perl bindings`_ have been contributed by Dominique Dumont. Their source
-can be found in a `repository on Sourceforge`_ and is also `documented`_.
+`Perl bindings`_ have been contributed by Dominique Dumont
+and are currently maintained by Raphaël Pinson. Their source
+can be found `on github`__ and is also `documented`_.
+
+.. __: https://github.com/hercules-team/perl-augeas
+.. _documented: http://search.cpan.org/~raphink/Config-Augeas-0.903/lib/Config/Augeas.pm
 
 Haskell
 +++++++
@@ -176,8 +180,6 @@ git repository`__.
 .. _Freenode: http://freenode.net/
 .. _write a description: docs/writing-schemas.html
 .. _Perl bindings: http://search.cpan.org/dist/Config-Augeas
-.. _repository on Sourceforge: http://config-model.svn.sourceforge.net/viewvc/config-model/trunk/config-augeas/
-.. _documented: http://search.cpan.org/~ddumont/Config-Augeas-0.200/lib/Config/Augeas.pm
 .. _Trac instance: https://fedorahosted.org/augeas/report/1
 .. _Fedora Account System: https://admin.fedoraproject.org/accounts/
 .. _Haskell bindings: http://trac.haskell.org/augeas/
