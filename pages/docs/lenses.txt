@@ -17,7 +17,7 @@ it back into a text file. The difference is that *put* is used when the
 part of the tree being transformed into the file corresponds to something
 in the input file, and the *create* function is used when it does not.
 
-Structuring the transformation this way has some importnat consequences:
+Structuring the transformation this way has some important consequences:
 
 1. There is no need to think about the text -> tree direction and the tree
    -> text direction separately, and it therefore becomes impossible for
