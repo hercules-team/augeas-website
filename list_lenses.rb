@@ -17,6 +17,12 @@ OptionParser.new do |opts|
   end
 end.parse!
 
+class String
+  def cleanpath
+    gsub(/^#{ENV["HOME"]}/, "~")
+  end
+end
+
 aug = Augeas.open()
 
 lenses = Hash.new
@@ -42,10 +48,10 @@ Dir.glob("#{lensdir}/*.aug").each do |file|
     autoload = true
     lns = aug.get("#{path}/lens").sub!(/^@/,"")
     aug.match("#{path}/incl").each do |incl|
-      includes << aug.get(incl)
+      includes << aug.get(incl).cleanpath
     end
     aug.match("#{path}/excl").each do |excl|
-      excludes << aug.get(excl)
+      excludes << aug.get(excl).cleanpath
     end
   end
 
