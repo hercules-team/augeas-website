@@ -87,7 +87,7 @@ together with their default includes and excludes.
 
 "
 
-  lens_max = lenses.keys.max {|a,b| a.length <=> b.length }.length+2 # 2 = ` 
+  lens_max = lenses.keys.max {|a,b| a.length <=> b.length }.length+2 # 2 = `
   all_ref = []
   lenses.each_key { |l| all_ref << lenses[l][:ref] }
   ref_max = all_ref.flatten.max {|a,b| a.length <=> b.length }.length+4 # 4 =  <>`_
@@ -159,4 +159,3 @@ elsif format == 'html'
   puts "</tbody></table>"
   puts "</body></html>"
 end
-
