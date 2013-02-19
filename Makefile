@@ -39,8 +39,12 @@ $(BUILD)/docs/%.pdf: pages/docs/%.pdf
 	cp -up $< $@
 
 sync:
-	rsync -rav $(RSYNC_OPTS) $(BUILD)/ et:/var/www/sites/augeas.et.redhat.com/
-clean: 
+	git checkout gh-pages
+	rsync -av build/html/ .
+	git status
+	git commit -a && git checkout master
+
+clean:
 	rm -f pages/stock_lenses.txt
 	rm -rf $(BUILD)
 
