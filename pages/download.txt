@@ -12,7 +12,7 @@ Augeas can be downloaded in one of the following ways:
 * RPM's for `Fedora`_ and RHEL (via `EPEL`_) are in the official repositories
 * Solaris packages from `OpenCSW`_
 * `Debian`_ and `Ubuntu`_ packages
-* The `latest released tarball <http://augeas.net/download/>`__ ``augeas-*``
+* The `latest released tarball <http://download.augeas.net/>`__ ``augeas-*``
 * Check out Augeas from source from the `git repository`_ or the `github
   mirror`_ (see Contribute_ for instructions)
 
@@ -42,7 +42,7 @@ Ruby bindings for Augeas are available:
 
 * RPM's for Fedora and RHEL (via `EPEL`_) are in the official repositories
 * `API documentation`_
-* The `latest released tarball <http://augeas.net/download/ruby/>`__
+* The `latest released tarball <http://download.augeas.net/ruby/>`__
   ``ruby-augeas-*``
 * Check out the `Ruby bindings`_ from its git repository (see
   Contribute_ for instructions)
@@ -55,7 +55,7 @@ OCaml bindings
 OCaml bindings for Augeas are available:
 
 * RPM's for Fedora are in the official repositories
-* The `latest released tarball <http://augeas.net/download/ocaml/>`__
+* The `latest released tarball <http://download.augeas.net/ocaml/>`__
 * Check out the `OCaml bindings`_ from the git repository (see
   Contribute_ for instructions)
 
@@ -113,7 +113,7 @@ The Node.js bindings are maintained by Igor Pashev.
 
 .. _a git repository: http://github.com/ppadron/php-augeas
 .. _PECL site: http://pecl.php.net/package/augeas
-.. _download directory: http://augeas.net/download/java/
+.. _download directory: http://download.augeas.net/java/
 .. _this git repository: http://git.fedorahosted.org/git/java-augeas.git
 .. _git repository: http://git.fedorahosted.org/git/augeas.git
 .. _Ruby bindings: http://git.fedorahosted.org/git/ruby-augeas.git
