@@ -111,6 +111,15 @@ The Node.js bindings are maintained by Igor Pashev.
 
 .. __: https://github.com/Nexenta/node-augeas
 
+Go bindings
+-----------
+
+The Go bindings are maintained by Dominik Honnef.
+
+* Sources are in `this git repository`__
+
+.. __: https://github.com/dominikh/go-augeas
+
 .. _a git repository: http://github.com/ppadron/php-augeas
 .. _PECL site: http://pecl.php.net/package/augeas
 .. _download directory: http://download.augeas.net/java/
