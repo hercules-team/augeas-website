@@ -166,7 +166,7 @@ Go language
 Bindings for the Go language have been contributed by Dominik Honnef. Sources are kept in `this
 git repository`__.
 
-.. __: https://github.com/dominikh/augeas
+.. __: https://github.com/dominikh/go-augeas
 
 .. _a git repository: http://github.com/ppadron/php-augeas
 .. _PECL site: http://pecl.php.net/package/augeas
