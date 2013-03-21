@@ -1,6 +1,6 @@
 .. -*- rst -*-
    restindex
-     target: https://github.com/hercules-team/augeas/wiki
+     target: gh-wiki
      build: no
      page-title: Wiki
    /restindex
