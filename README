@@ -2,9 +2,24 @@ The files for the Augeas website.
 
 You need python-docutils since all the content is in restructured text[1]
 
-You also need rest2web[2], that is used as the template engine. I am afraid the Makefile has the path to it in my home directory hardcoded :(
+You also need rest2web[2], that is used as the template engine.  This can be
+untarred anywhere and the r2w.py script linked into PATH as `r2w`.
+
+The website is stored in two branches:
+  * master contains the source files read by rest2web
+  * gh-pages contains the generated r2w output, which is published via GitHub
+    pages
+
+To publish, run `make` to generate the website under build/.  Switch branches
+to gh-pages and copy the contents of build/html/ to the root of the repo.
+Commit the changes on both branches.  A `make sync` target is also available to
+automate this process.
+
+When the gh-pages branch is pushed to GitHub, the public-facing website will
+update immediately.
 
 [1] http://docutils.sourceforge.net/rst.html
 
 [2] http://www.voidspace.org.uk/python/rest2web/
+    http://sourceforge.net/projects/rest2web/
 
