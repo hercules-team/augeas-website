@@ -13,11 +13,10 @@ Augeas can be downloaded in one of the following ways:
 * Solaris packages from `OpenCSW`_
 * `Debian`_ and `Ubuntu`_ packages
 * The `latest released tarball <http://download.augeas.net/>`__ ``augeas-*``
-* Check out Augeas from source from the `git repository`_ or the `github
-  mirror`_ (see Contribute_ for instructions)
+* Check out Augeas from source from the `GitHub repository`_ (see
+  Contribute_ for instructions)
 
-.. _git repository: http://git.fedorahosted.org/git/augeas.git
-.. _github mirror: http://github.com/lutter/augeas
+.. _GitHub repository: https://github.com/hercules-team/augeas
 .. _Fedora: https://admin.fedoraproject.org/updates/augeas
 .. _EPEL: https://fedoraproject.org/wiki/EPEL
 .. _OpenCSW: http://www.opencsw.org/packages/augeas
@@ -82,7 +81,7 @@ Java bindings
 Java bindings for Augeas are available:
 
 * The latest released tarball is in the `download directory`_
-* Sources are in `this git repository`_
+* Sources are in `this GitHub repository`_
 
 PHP bindings
 ------------
@@ -123,10 +122,10 @@ The Go bindings are maintained by Dominik Honnef.
 .. _a git repository: http://github.com/ppadron/php-augeas
 .. _PECL site: http://pecl.php.net/package/augeas
 .. _download directory: http://download.augeas.net/java/
-.. _this git repository: http://git.fedorahosted.org/git/java-augeas.git
-.. _git repository: http://git.fedorahosted.org/git/augeas.git
-.. _Ruby bindings: http://git.fedorahosted.org/git/ruby-augeas.git
-.. _Python bindings: http://git.fedorahosted.org/git/python-augeas.git
+.. _this GitHub repository: https://github.com/hercules-team/java-augeas
+.. _GitHub repository: https://github.com/hercules-team/augeas
+.. _Ruby bindings: https://github.com/hercules-team/ruby-augeas
+.. _Python bindings: https://github.com/hercules-team/python-augeas
 .. _OCaml bindings: http://git.annexia.org/?p=ocaml-augeas.git;a=summary
 .. _Contribute: developers.html
 .. _CPAN: http://search.cpan.org/dist/Config-Augeas/

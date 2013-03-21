@@ -46,17 +46,16 @@ an account in the `Fedora Account System`_ to log into it.
 Where is the source ?
 ---------------------
 
-Sources are in a `git repository`_. To check out the code, run
+Sources are in a `GitHub repository`_. To check out the code, run
 
 ::
 
-  git clone git://git.fedorahosted.org/augeas.git
+  git clone https://github.com/hercules-team/augeas.git
 
-There is a `second public repository`_ on github, just as up-to-date as the
-one above. If you want to follow repository changes, you can use github's
-"Watch" feature on that repository.
+If you want to follow repository changes, you can use GitHub's "Watch" feature
+on that repository.
 
-.. _second public repository: http://github.com/lutter/augeas
+.. _GitHub repository: https://github.com/hercules-team/augeas
 
 To build and explore, you need to:
 
@@ -79,28 +78,28 @@ Ruby
 ++++
 
 Ruby bindings have been contributed by Bryan Kearney and can be found in a
-`separate git repository`_. To check them out, run
+`separate GitHub repository`_. To check them out, run
 
 ::
 
-  git clone git://git.fedorahosted.org/git/ruby-augeas.git
+  git clone https://github.com/hercules-team/ruby-augeas.git
 
 To build them, you need ``rake``. Simply run ``rake build`` to compile
 them.
 
-.. _separate git repository: http://git.fedorahosted.org/git/ruby-augeas.git
+.. _separate GitHub repository: https://github.com/hercules-team/ruby-augeas
 
 Python
 ++++++
 
 Python bindings have been contributed by Harald Hoyer and can be found in
-`their own git repository`_. To check them out, run
+`their own GitHub repository`_. To check them out, run
 
 ::
 
-  git clone git://git.fedorahosted.org/git/python-augeas.git
+  git clone https://github.com/hercules-team/python-augeas.git
 
-.. _their own git repository: http://git.fedorahosted.org/git/python-augeas.git
+.. _their own GitHub repository: https://github.com/hercules-team/python-augeas
 
 OCaml
 +++++
@@ -135,9 +134,9 @@ Java
 ++++
 
 Java bindings have been written by Bryan Kearney. Sources are kept in `this
-git repository`_ and release can be downloaded from `here`_
+GitHub repository`_ and release can be downloaded from `here`_
 
-.. _this git repository: http://git.fedorahosted.org/git/java-augeas.git
+.. _this GitHub repository: https://github.com/hercules-team/java-augeas
 
 PHP
 +++
@@ -171,7 +170,6 @@ git repository`__.
 .. _a git repository: http://github.com/ppadron/php-augeas
 .. _PECL site: http://pecl.php.net/package/augeas
 .. _here: http://download.augeas.net/java/
-.. _git repository: http://git.fedorahosted.org/git/augeas.git
 .. _Todo: todo.html
 .. _the list page: https://www.redhat.com/mailman/listinfo/augeas-devel
 .. _autotools: http://sources.redhat.com/autobook/
