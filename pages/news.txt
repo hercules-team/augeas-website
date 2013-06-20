@@ -35,57 +35,54 @@ Releases
     * Fai_Diskconfig: Optimize some regexps
     * Fonts: exclude all README files (Jasper Adriaanse)
     * Inetd: support IPv6 addresses, bug #320
-    * IniFile: Add lns_loose and lns_loose_multiline definitions
-               Support smart quotes
+    * IniFile: Add lns_loose and lns_loose_multiline definitions;
+      Support smart quotes;
       Warning: Smart quotes support means users should not add
-               escaped double quotes themselves. Tests need to be fixed
-               also.
-               Use standard Util.comment_generic and Util.empty_generic
+      escaped double quotes themselves. Tests need to be fixed
+      also.
+      Use standard Util.comment_generic and Util.empty_generic;
       Warning: Existing lens tests must be adapted to use standard
-               comments and empty lines
-               Allow spaces in entry_multiline* values
-               Add entry_generic and entry_multiline_generic
-               Add empty_generic and empty_noindent
-               Let multiline values begin with a single newline
-               Support dos eol
-      Warning: Support for dos eol means existing lenses usually
-               need to be adapted to exclude \r as well as \n.
+      comments and empty lines;
+      Allow spaces in entry_multiline* values;
+      Add entry_generic and entry_multiline_generic;
+      Add empty_generic and empty_noindent;
+      Let multiline values begin with a single newline;
+      Support dos eol;
+      Warning: Support for dos eol means existing lenses usually;
+      need to be adapted to exclude \r as well as \n.
     * IPRoute2: Support for iproute2 files (Davide Guerri)
-    * JaaS: lens for the Java Authentication and Authorization Service
-            (Simon Vocella)
+    * JaaS: lens for the Java Authentication and Authorization Service (Simon Vocella)
     * JettyRealm: new lens for jetty-realm.properties (Brian Harrington)
-    * JMXAccess, JMXPassword: new lenses for ActiveMQ's JMX files
-      (Brian Harrington)
-    * Krb5: Use standard comments and empty lines
-            Support dos eol
-            Improve performance
-            Accept pkinit_anchors (Andrew Anderson)
+    * JMXAccess, JMXPassword: new lenses for ActiveMQ's JMX files (Brian Harrington)
+    * Krb5: Use standard comments and empty lines;
+      Support dos eol;
+      Improve performance;
+      Accept pkinit_anchors (Andrew Anderson).
     * Lightdm: Use standard comments and empty lines
     * LVM: New lens for LVM metadata (Gabriel)
     * Mdadm_conf: optimize some regexps
     * MongoDBServer: new lens (Brian Harrington)
     * Monit: also load /etc/monitrc (Jasper Adriaanse)
-    * MySQL: Use standard comments and empty lines
-             Support dos eol
+    * MySQL: Use standard comments and empty lines;
+      Support dos eol
     * NagiosCfg: handle Icinga and resources.cfg (Jasper Adriaanse)
     * Nrpe: accept any config option rather than predefined list (Gonzalo
-            Servat); optimize some regexps
+      Servat); optimize some regexps
     * Ntpd: new lense for OpenNTPD config (Jasper Adriaanse)
     * Odbc: Use standard comments and empty lines
     * Openshift_*: new lenses for Openshift support (Brian Harrington)
     * Quote: allow multiple spaces in quote_spaces; improve docs
     * Passwd: allow period in user names in spec, bug #337; allow overrides
-              in nisentry
-    * PHP: Support smart quotes
-           Use standard comments and empty lines
-           Load /etc/php*/fpm/pool.d/\*.conf (Enrico Stahn)
+      in nisentry
+    * PHP: Support smart quotes;
+      Use standard comments and empty lines
+      Load /etc/php*/fpm/pool.d/\*.conf (Enrico Stahn)
     * Postfix_master: allow [] in words, bug #345
-    * Resolv: support 'lookup' and 'family' key words, bug #320
-              (Jasper Adriaanse))
+    * Resolv: support 'lookup' and 'family' key words, bug #320 (Jasper Adriaanse))
     * Rsyslog: support :omusrmsg: list of users in actions
     * RX: add CR to RX.space_in
-    * Samba: Use standard comments and empty lines
-             Support dos eol
+    * Samba: Use standard comments and empty lines;
+      Support dos eol.
     * Schroot: Support smart quotes
     * Services: support port ranges (Branan Purvine-Riley)
     * Shellvars: optimize some regexps; reinstate /etc/sysconfig/network,
@@ -93,11 +90,11 @@ Releases
       from OpenBSD
     * Sip_Conf: New lens for sip.conf configurations (Rob Tucker)
     * Splunk: new lens (Tim Brigham)
-    * Subversion: Support smart quotes
-                  Use standard comments and empty lines
-                  Use IniFile.entry_multiline_generic
-                  Use IniFile.empty_noindent
-                  Support dos eol
+    * Subversion: Support smart quotes;
+      Use standard comments and empty lines;
+      Use IniFile.entry_multiline_generic;
+      Use IniFile.empty_noindent;
+      Support dos eol.
     * Sudoers: allow user aliases in specs
     * Sysctl: exclude README file
     * Systemd: Support smart quotes; allow backslashes in values
