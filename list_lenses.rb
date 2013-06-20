@@ -93,39 +93,51 @@ together with their default includes and excludes.
 
 "
 
-  lens_max = lenses.keys.max {|a,b| a.length <=> b.length }.length+2 # 2 = `
-  all_ref = []
-  lenses.each_key { |l| all_ref << lenses[l][:ref] }
-  ref_max = all_ref.flatten.max {|a,b| a.length <=> b.length }.length+4 # 4 =  <>`_
-  all_incl = []
-  lenses.each_key { |l| all_incl << lenses[l][:incl] }
-  incl_max = all_incl.flatten.max {|a,b| a.length <=> b.length }.length+6 # 6 = - ````
-  all_excl = []
-  lenses.each_key { |l| all_excl << lenses[l][:excl] }
-  excl_max = all_excl.flatten.max {|a,b| a.length <=> b.length }.length+6 # 6 = - ````
-
-  puts "+#{'-' * (lens_max + ref_max)}+#{'-' * 8}+#{'-' * incl_max}+#{'-' * excl_max}+\n"
-  puts "|%-#{lens_max + ref_max}s|%-8s|%-#{incl_max}s|%-#{excl_max}s|\n" %
-    [ 'Lens', 'Autoload', 'Includes', 'Excludes' ]
-  puts "+#{'=' * (lens_max + ref_max)}+#{'=' * 8}+#{'=' * incl_max}+#{'=' * excl_max}+\n"
-
-  lenses.keys.sort.each do |lns|
-    autoload = lenses[lns][:autoload]
-    ref = lenses[lns][:ref]
-    includes = lenses[lns][:incl]
-    excludes = lenses[lns][:excl]
-    height = [includes.length, excludes.length].max
-    puts "|%-#{lens_max + ref_max}s|%-8s|%-#{incl_max}s|%-#{excl_max}s|\n" %
-      [ "`#{lns} <#{ref}>`_", autoload,
-          includes[0] ? "- ``#{includes[0]}``" : '',
-          excludes[0] ? "- ``#{excludes[0]}``" : '' ]
-    for i in 1..height-1
-      puts "|%-#{lens_max + ref_max}s|%-8s|%-#{incl_max}s|%-#{excl_max}s|\n" %
-        [ '', '', '',
-          includes[i] ? "- ``#{includes[i]}``" : '',
-          excludes[i] ? "- ``#{excludes[i]}``" : '' ]
+  if lenses.empty?
+    puts "No lenses found in this release"
+  else
+    lens_max = lenses.keys.max {|a,b| a.length <=> b.length }.length+2 # 2 = `
+    all_ref = []
+    lenses.each_key { |l| all_ref << lenses[l][:ref] }
+    ref_max = all_ref.flatten.max {|a,b| a.length <=> b.length }.length+4 # 4 =  <>`_
+    all_incl = []
+    lenses.each_key { |l| all_incl << lenses[l][:incl] }
+    if all_incl.flatten.max
+      incl_max = all_incl.flatten.max {|a,b| a.length <=> b.length }.length+6 # 6 = - ````
+    else
+      incl_max = 0
     end
+    all_excl = []
+    lenses.each_key { |l| all_excl << lenses[l][:excl] }
+    if all_excl.flatten.max
+      excl_max = all_excl.flatten.max {|a,b| a.length <=> b.length }.length+6 # 6 = - ````
+    else
+      excl_max = 0
+    end
+
     puts "+#{'-' * (lens_max + ref_max)}+#{'-' * 8}+#{'-' * incl_max}+#{'-' * excl_max}+\n"
+    puts "|%-#{lens_max + ref_max}s|%-8s|%-#{incl_max}s|%-#{excl_max}s|\n" %
+      [ 'Lens', 'Autoload', 'Includes', 'Excludes' ]
+    puts "+#{'=' * (lens_max + ref_max)}+#{'=' * 8}+#{'=' * incl_max}+#{'=' * excl_max}+\n"
+
+    lenses.keys.sort.each do |lns|
+      autoload = lenses[lns][:autoload]
+      ref = lenses[lns][:ref]
+      includes = lenses[lns][:incl]
+      excludes = lenses[lns][:excl]
+      height = [includes.length, excludes.length].max
+      puts "|%-#{lens_max + ref_max}s|%-8s|%-#{incl_max}s|%-#{excl_max}s|\n" %
+        [ "`#{lns} <#{ref}>`_", autoload,
+            includes[0] ? "- ``#{includes[0]}``" : '',
+            excludes[0] ? "- ``#{excludes[0]}``" : '' ]
+      for i in 1..height-1
+        puts "|%-#{lens_max + ref_max}s|%-8s|%-#{incl_max}s|%-#{excl_max}s|\n" %
+          [ '', '', '',
+            includes[i] ? "- ``#{includes[i]}``" : '',
+            excludes[i] ? "- ``#{excludes[i]}``" : '' ]
+      end
+      puts "+#{'-' * (lens_max + ref_max)}+#{'-' * 8}+#{'-' * incl_max}+#{'-' * excl_max}+\n"
+    end
   end
 elsif format == 'html'
   puts "<html><head>"

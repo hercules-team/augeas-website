@@ -1,0 +1,25 @@
+.. -*- rst -*-
+   restindex
+     initialheaderlevel: 2
+     page-title: Stock Lenses
+     encoding: utf8
+   /restindex
+
+
+
+=============
+Stock lenses
+=============
+
+This is the list of all current stock lenses shipped with Augeas,
+together with their default includes and excludes.
+
++--------------------------------------------------------------+--------+++
+|Lens                                                          |Autoload|Includes|Excludes|
++==============================================================+========+++
+|`Cyrus <docs/references/lenses/files/cyrus-aug.html>`_        |false   |||
++--------------------------------------------------------------+--------+++
+|`KVF <docs/references/lenses/files/kvf-aug.html>`_            |false   |||
++--------------------------------------------------------------+--------+++
+|`Migration <docs/references/lenses/files/migration-aug.html>`_|false   |||
++--------------------------------------------------------------+--------+++
