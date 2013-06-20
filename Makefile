@@ -5,7 +5,7 @@ BUILD_REFS=build/html/docs/references
 LENS_DIR=../augeas/lenses
 RELEASES=$(shell cd ../augeas && git tag | sed -n 's/release-\(.*\)/\1/p')
 STOCK_LENSES_RELEASES=$(foreach release,$(RELEASES),pages/stock_lenses/$(release)/index.txt)
-ND_RELEASES=$(foreach release,$(RELEASES),build/html/docs/references/$(release))
+ND_RELEASES=$(foreach release,$(RELEASES),$(BUILD_REFS)/$(release))
 
 all: pages/stock_lenses.txt $(STOCK_LENSES_RELEASES) \
      rest2web $(BSTY)/default.css $(BSTY)/favicon.ico \
@@ -15,7 +15,7 @@ all: pages/stock_lenses.txt $(STOCK_LENSES_RELEASES) \
      $(BSTY)/footer_corner.png $(BSTY)/footer_pattern.png \
      $(BUILD)/docs/augeas.odp $(BUILD)/docs/augeas.pdf \
      $(BUILD)/docs/augeas-ols-2008.odp $(BUILD)/docs/augeas-ols-2008.pdf \
-     naturaldocs
+     naturaldocs $(ND_RELEASES)
 
 pages/stock_lenses.txt:
 	ruby list_lenses.rb -f rst -l $(LENS_DIR) > $@
@@ -23,21 +23,31 @@ pages/stock_lenses.txt:
 pages/stock_lenses/%/index.txt:
 	mkdir -p pages/stock_lenses/$*
 	cd ../augeas && \
-	  git checkout . && \
-	  git checkout release-$* && \
+	  git checkout -f release-$* && \
 	  ruby $(CURDIR)/list_lenses.rb -f rst -l $(LENS_DIR) \
 	    -r '../../' -v '$*' > \
 	    $(CURDIR)/$@
 	git add $@
 
 naturaldocs:
+	cd ../augeas && git checkout -f master
 	(if test -d $(ND_DOCSDIR); then \
-	   cd ../augeas && git checkout -f master && \
 	   $(MAKE) -C $(ND_DOCSDIR); \
           fi; \
 	  rm -rf $(BUILD_REFS); \
           mkdir -p $(BUILD_REFS); \
 	  cp -pr $(ND_DOCSDIR)/output/* $(BUILD_REFS))
+
+$(BUILD_REFS)/%:
+	cd ../augeas && git checkout -f release-$*
+	if ! test -d $@; then \
+	  (if test -d $(ND_DOCSDIR); then \
+	    $(MAKE) -C $(ND_DOCSDIR); \
+            fi; \
+	    mkdir -p $@; \
+	    cp -pr $(ND_DOCSDIR)/output/* $@); \
+	fi
+
 
 rest2web:
 	PYTHONPATH=$$PWD r2w
