@@ -2,6 +2,7 @@ BUILD=build/html
 BSTY=$(BUILD)/styles
 ND_DOCSDIR=../augeas/doc/naturaldocs
 BUILD_REFS=build/html/docs/references
+LENS_DIR=../augeas/lenses
 
 all: pages/stock_lenses.txt rest2web $(BSTY)/default.css $(BSTY)/favicon.ico \
      $(BSTY)/augeas.css $(BSTY)/generic.css \
@@ -13,7 +14,7 @@ all: pages/stock_lenses.txt rest2web $(BSTY)/default.css $(BSTY)/favicon.ico \
      naturaldocs
 
 pages/stock_lenses.txt:
-	ruby list_lenses.rb -f rst > $@
+	ruby list_lenses.rb -f rst -l $(LENS_DIR) > $@
 
 naturaldocs:
 	(if test -d $(ND_DOCSDIR); then \
