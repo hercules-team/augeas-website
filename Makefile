@@ -43,6 +43,8 @@ sync:
 	git checkout gh-pages
 	rsync -av build/html/ .
 	git status
+	# Add new doc
+	find . -type f -name '*.html' -exec git add {} \;
 	git commit -a && git checkout master
 
 clean:
