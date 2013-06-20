@@ -44,7 +44,8 @@ sync:
 	rsync -av build/html/ .
 	git status
 	# Add new doc
-	find . -type f -name '*.html' -exec git add {} \;
+	find . -not -path './build/html/*' -type f \
+	  -name '*.html' -exec git add {} \;
 	git commit -a && git checkout master
 
 clean:
