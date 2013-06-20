@@ -2,6 +2,7 @@ BUILD=build/html
 BSTY=$(BUILD)/styles
 ND_DOCSDIR=../augeas/doc/naturaldocs
 BUILD_REFS=build/html/docs/references
+BUILD_REFS_CACHE=build_cache/html/docs/references
 LENS_DIR=../augeas/lenses
 RELEASES=$(shell cd ../augeas && git tag | sed -n 's/release-\(.*\)/\1/p')
 STOCK_LENSES_RELEASES=$(foreach release,$(RELEASES),pages/stock_lenses/$(release)/index.txt)
@@ -36,6 +37,7 @@ naturaldocs:
           fi; \
 	  rm -rf $(BUILD_REFS); \
           mkdir -p $(BUILD_REFS); \
+	  rsync -a $(BUILD_REFS_CACHE)/ $(BUILD_REFS); \
 	  cp -pr $(ND_DOCSDIR)/output/* $(BUILD_REFS))
 
 $(BUILD_REFS)/%:
