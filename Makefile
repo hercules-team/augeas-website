@@ -70,7 +70,8 @@ sync:
 	git status
 	# Add new doc
 	find . -not -path './build/html/*' -type f \
-	  -name '*.html' -exec git add {} \;
+	  -name '*.html' -or -name '*.js' -or -name '*.css' \
+	  -exec git add {} \;
 	git commit -a && git checkout master
 
 clean:
