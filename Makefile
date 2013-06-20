@@ -49,7 +49,7 @@ $(BUILD_REFS)/%:
 	    mkdir -p $@; \
 	    cp -pr $(ND_DOCSDIR)/output/* $@; \
 	    mkdir -p $(BUILD_REFS_CACHE)/$*; \
-	    rsync -a $(BUILD_REFS_CACHE)/$*; \
+	    rsync -a $@/ $(BUILD_REFS_CACHE)/$*; \
 	    git add $(BUILD_REFS_CACHE)/$*); \
 	fi
 
