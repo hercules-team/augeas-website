@@ -3,8 +3,11 @@ BSTY=$(BUILD)/styles
 ND_DOCSDIR=../augeas/doc/naturaldocs
 BUILD_REFS=build/html/docs/references
 LENS_DIR=../augeas/lenses
+RELEASES=$(shell cd ../augeas && git tag | sed -n 's/release-\(.*\)/\1/p')
+STOCK_LENSES_RELEASES=$(foreach release,$(RELEASES),pages/stock_lenses/$(release)/index.txt)
 
-all: pages/stock_lenses.txt rest2web $(BSTY)/default.css $(BSTY)/favicon.ico \
+all: pages/stock_lenses.txt $(STOCK_LENSES_RELEASES) \
+     rest2web $(BSTY)/default.css $(BSTY)/favicon.ico \
      $(BSTY)/augeas.css $(BSTY)/generic.css \
      $(BSTY)/default-debug.css $(BSTY)/debug.css \
      $(BSTY)/et_logo.png $(BSTY)/augeas-logo.png \
@@ -15,6 +18,15 @@ all: pages/stock_lenses.txt rest2web $(BSTY)/default.css $(BSTY)/favicon.ico \
 
 pages/stock_lenses.txt:
 	ruby list_lenses.rb -f rst -l $(LENS_DIR) > $@
+
+pages/stock_lenses/%/index.txt:
+	mkdir -p pages/stock_lenses/$*
+	cd ../augeas && \
+	  git checkout . && \
+	  git checkout release-$* && \
+	  ruby $(CURDIR)/list_lenses.rb -f rst -l $(LENS_DIR) > \
+	    $(CURDIR)/$@
+	git add $@
 
 naturaldocs:
 	(if test -d $(ND_DOCSDIR); then \
