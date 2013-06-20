@@ -5,6 +5,7 @@ BUILD_REFS=build/html/docs/references
 LENS_DIR=../augeas/lenses
 RELEASES=$(shell cd ../augeas && git tag | sed -n 's/release-\(.*\)/\1/p')
 STOCK_LENSES_RELEASES=$(foreach release,$(RELEASES),pages/stock_lenses/$(release)/index.txt)
+ND_RELEASES=$(foreach release,$(RELEASES),build/html/docs/references/$(release))
 
 all: pages/stock_lenses.txt $(STOCK_LENSES_RELEASES) \
      rest2web $(BSTY)/default.css $(BSTY)/favicon.ico \
@@ -24,7 +25,8 @@ pages/stock_lenses/%/index.txt:
 	cd ../augeas && \
 	  git checkout . && \
 	  git checkout release-$* && \
-	  ruby $(CURDIR)/list_lenses.rb -f rst -l $(LENS_DIR) > \
+	  ruby $(CURDIR)/list_lenses.rb -f rst -l $(LENS_DIR) \
+	    -r '../../' -v '$*' > \
 	    $(CURDIR)/$@
 	git add $@
 

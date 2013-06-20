@@ -5,6 +5,8 @@ require 'optparse'
 
 format = 'shell'
 lensdir = '/usr/share/augeas/lenses/dist'
+rootdir = ''
+version = nil
 
 OptionParser.new do |opts|
   opts.banner = "Usage: example.rb [options]"
@@ -14,6 +16,12 @@ OptionParser.new do |opts|
   end
   opts.on("-l", "--lensdir DIR", "Specify lens directory") do |d|
     lensdir = d
+  end
+  opts.on("-r", "--rootdir DIR", "Root directory for the website") do |r|
+    rootdir = r
+  end
+  opts.on("-v", "--version VERSION", "Augeas release to link to") do |v|
+    version = v
   end
 end.parse!
 
@@ -55,7 +63,8 @@ Dir.glob("#{lensdir}/*.aug").each do |file|
     end
   end
 
-  ref = "docs/references/lenses/files/#{File.basename(file).gsub('.','-')}.html"
+  versiondir = version.nil? ? '' : "#{version}/"
+  ref = "#{rootdir}docs/references/#{versiondir}lenses/files/#{File.basename(file).gsub('.','-')}.html"
 
   lenses[mod] = {
     :lens => lns,
