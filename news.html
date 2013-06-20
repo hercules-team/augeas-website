@@ -84,9 +84,8 @@
 <div class="section" id="id1">
 <h2>1.1.0 - 2013-06-14</h2>
 <blockquote>
-<ul>
-<li><p class="first">General changes/additions</p>
 <ul class="simple">
+<li>General changes/additions<ul>
 <li>Handle files with special characters in their name, bug #343</li>
 <li>Fix type error in composition ('f; g') of functions, bug #328</li>
 <li>Improve detection of version script; make build work on Illumos with
@@ -96,170 +95,85 @@ loaded</li>
 <li>Various lens documentation improvements (Jasper Lievisse Adriaanse)</li>
 </ul>
 </li>
-<li><p class="first">Lens changes/additions</p>
-<ul>
-<li><p class="first">ActiveMQ_*: new lens for ActiveMQ/JBoss A-MQ (Brian Harrington)</p>
-</li>
-<li><p class="first">AptCacherNGSecurity: new lens for /etc/apt-cacher-ng/security.conf
-(Erik Anderson)</p>
-</li>
-<li><p class="first">Automaster: accept spaces between options</p>
-</li>
-<li><p class="first">BBHosts: support more flags and downtime feature (Mathieu Alorent)</p>
-</li>
-<li><p class="first">Bootconf: new lens for OpenBSD's /etc/boot.conf (Jasper Adriaanse)</p>
-</li>
-<li><p class="first">Desktop: Support dos eol</p>
-</li>
-<li><p class="first">Dhclient: read /etc/dhclient.conf used in OpenBSD (Jasper Adriaanse)</p>
-</li>
-<li><p class="first">Dovecot: New lens for dovecot configurations (Serge Smetana)</p>
-</li>
-<li><p class="first">Fai_Diskconfig: Optimize some regexps</p>
-</li>
-<li><p class="first">Fonts: exclude all README files (Jasper Adriaanse)</p>
-</li>
-<li><p class="first">Inetd: support IPv6 addresses, bug #320</p>
-</li>
-<li><dl class="first docutils">
-<dt>IniFile: Add lns_loose and lns_loose_multiline definitions</dt>
-<dd><p class="first last">Support smart quotes</p>
-</dd>
-<dt>Warning: Smart quotes support means users should not add</dt>
-<dd><p class="first last">escaped double quotes themselves. Tests need to be fixed
+<li>Lens changes/additions<ul>
+<li>ActiveMQ_*: new lens for ActiveMQ/JBoss A-MQ (Brian Harrington)</li>
+<li>AptCacherNGSecurity: new lens for /etc/apt-cacher-ng/security.conf
+(Erik Anderson)</li>
+<li>Automaster: accept spaces between options</li>
+<li>BBHosts: support more flags and downtime feature (Mathieu Alorent)</li>
+<li>Bootconf: new lens for OpenBSD's /etc/boot.conf (Jasper Adriaanse)</li>
+<li>Desktop: Support dos eol</li>
+<li>Dhclient: read /etc/dhclient.conf used in OpenBSD (Jasper Adriaanse)</li>
+<li>Dovecot: New lens for dovecot configurations (Serge Smetana)</li>
+<li>Fai_Diskconfig: Optimize some regexps</li>
+<li>Fonts: exclude all README files (Jasper Adriaanse)</li>
+<li>Inetd: support IPv6 addresses, bug #320</li>
+<li>IniFile: Add lns_loose and lns_loose_multiline definitions;
+Support smart quotes;
+Warning: Smart quotes support means users should not add
+escaped double quotes themselves. Tests need to be fixed
 also.
-Use standard Util.comment_generic and Util.empty_generic</p>
-</dd>
-<dt>Warning: Existing lens tests must be adapted to use standard</dt>
-<dd><p class="first last">comments and empty lines
-Allow spaces in entry_multiline* values
-Add entry_generic and entry_multiline_generic
-Add empty_generic and empty_noindent
-Let multiline values begin with a single newline
-Support dos eol</p>
-</dd>
-<dt>Warning: Support for dos eol means existing lenses usually</dt>
-<dd><p class="first last">need to be adapted to exclude r as well as n.</p>
-</dd>
-</dl>
-</li>
-<li><p class="first">IPRoute2: Support for iproute2 files (Davide Guerri)</p>
-</li>
-<li><dl class="first docutils">
-<dt>JaaS: lens for the Java Authentication and Authorization Service</dt>
-<dd><p class="first last">(Simon Vocella)</p>
-</dd>
-</dl>
-</li>
-<li><p class="first">JettyRealm: new lens for jetty-realm.properties (Brian Harrington)</p>
-</li>
-<li><p class="first">JMXAccess, JMXPassword: new lenses for ActiveMQ's JMX files
-(Brian Harrington)</p>
-</li>
-<li><dl class="first docutils">
-<dt>Krb5: Use standard comments and empty lines</dt>
-<dd><p class="first last">Support dos eol
-Improve performance
-Accept pkinit_anchors (Andrew Anderson)</p>
-</dd>
-</dl>
-</li>
-<li><p class="first">Lightdm: Use standard comments and empty lines</p>
-</li>
-<li><p class="first">LVM: New lens for LVM metadata (Gabriel)</p>
-</li>
-<li><p class="first">Mdadm_conf: optimize some regexps</p>
-</li>
-<li><p class="first">MongoDBServer: new lens (Brian Harrington)</p>
-</li>
-<li><p class="first">Monit: also load /etc/monitrc (Jasper Adriaanse)</p>
-</li>
-<li><dl class="first docutils">
-<dt>MySQL: Use standard comments and empty lines</dt>
-<dd><p class="first last">Support dos eol</p>
-</dd>
-</dl>
-</li>
-<li><p class="first">NagiosCfg: handle Icinga and resources.cfg (Jasper Adriaanse)</p>
-</li>
-<li><dl class="first docutils">
-<dt>Nrpe: accept any config option rather than predefined list (Gonzalo</dt>
-<dd><p class="first last">Servat); optimize some regexps</p>
-</dd>
-</dl>
-</li>
-<li><p class="first">Ntpd: new lense for OpenNTPD config (Jasper Adriaanse)</p>
-</li>
-<li><p class="first">Odbc: Use standard comments and empty lines</p>
-</li>
-<li><p class="first">Openshift_*: new lenses for Openshift support (Brian Harrington)</p>
-</li>
-<li><p class="first">Quote: allow multiple spaces in quote_spaces; improve docs</p>
-</li>
-<li><dl class="first docutils">
-<dt>Passwd: allow period in user names in spec, bug #337; allow overrides</dt>
-<dd><p class="first last">in nisentry</p>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>PHP: Support smart quotes</dt>
-<dd><p class="first last">Use standard comments and empty lines
-Load /etc/php*/fpm/pool.d/*.conf (Enrico Stahn)</p>
-</dd>
-</dl>
-</li>
-<li><p class="first">Postfix_master: allow [] in words, bug #345</p>
-</li>
-<li><dl class="first docutils">
-<dt>Resolv: support 'lookup' and 'family' key words, bug #320</dt>
-<dd><p class="first last">(Jasper Adriaanse))</p>
-</dd>
-</dl>
-</li>
-<li><p class="first">Rsyslog: support :omusrmsg: list of users in actions</p>
-</li>
-<li><p class="first">RX: add CR to RX.space_in</p>
-</li>
-<li><dl class="first docutils">
-<dt>Samba: Use standard comments and empty lines</dt>
-<dd><p class="first last">Support dos eol</p>
-</dd>
-</dl>
-</li>
-<li><p class="first">Schroot: Support smart quotes</p>
-</li>
-<li><p class="first">Services: support port ranges (Branan Purvine-Riley)</p>
-</li>
-<li><p class="first">Shellvars: optimize some regexps; reinstate /etc/sysconfig/network,
+Use standard Util.comment_generic and Util.empty_generic;
+Warning: Existing lens tests must be adapted to use standard
+comments and empty lines;
+Allow spaces in entry_multiline* values;
+Add entry_generic and entry_multiline_generic;
+Add empty_generic and empty_noindent;
+Let multiline values begin with a single newline;
+Support dos eol;
+Warning: Support for dos eol means existing lenses usually;
+need to be adapted to exclude r as well as n.</li>
+<li>IPRoute2: Support for iproute2 files (Davide Guerri)</li>
+<li>JaaS: lens for the Java Authentication and Authorization Service (Simon Vocella)</li>
+<li>JettyRealm: new lens for jetty-realm.properties (Brian Harrington)</li>
+<li>JMXAccess, JMXPassword: new lenses for ActiveMQ's JMX files (Brian Harrington)</li>
+<li>Krb5: Use standard comments and empty lines;
+Support dos eol;
+Improve performance;
+Accept pkinit_anchors (Andrew Anderson).</li>
+<li>Lightdm: Use standard comments and empty lines</li>
+<li>LVM: New lens for LVM metadata (Gabriel)</li>
+<li>Mdadm_conf: optimize some regexps</li>
+<li>MongoDBServer: new lens (Brian Harrington)</li>
+<li>Monit: also load /etc/monitrc (Jasper Adriaanse)</li>
+<li>MySQL: Use standard comments and empty lines;
+Support dos eol</li>
+<li>NagiosCfg: handle Icinga and resources.cfg (Jasper Adriaanse)</li>
+<li>Nrpe: accept any config option rather than predefined list (Gonzalo
+Servat); optimize some regexps</li>
+<li>Ntpd: new lense for OpenNTPD config (Jasper Adriaanse)</li>
+<li>Odbc: Use standard comments and empty lines</li>
+<li>Openshift_*: new lenses for Openshift support (Brian Harrington)</li>
+<li>Quote: allow multiple spaces in quote_spaces; improve docs</li>
+<li>Passwd: allow period in user names in spec, bug #337; allow overrides
+in nisentry</li>
+<li>PHP: Support smart quotes;
+Use standard comments and empty lines
+Load /etc/php*/fpm/pool.d/*.conf (Enrico Stahn)</li>
+<li>Postfix_master: allow [] in words, bug #345</li>
+<li>Resolv: support 'lookup' and 'family' key words, bug #320 (Jasper Adriaanse))</li>
+<li>Rsyslog: support :omusrmsg: list of users in actions</li>
+<li>RX: add CR to RX.space_in</li>
+<li>Samba: Use standard comments and empty lines;
+Support dos eol.</li>
+<li>Schroot: Support smart quotes</li>
+<li>Services: support port ranges (Branan Purvine-Riley)</li>
+<li>Shellvars: optimize some regexps; reinstate /etc/sysconfig/network,
 fixes bug #330, RHBZ#904222, RHBZ#920609; parse /etc/rc.conf.local
-from OpenBSD</p>
-</li>
-<li><p class="first">Sip_Conf: New lens for sip.conf configurations (Rob Tucker)</p>
-</li>
-<li><p class="first">Splunk: new lens (Tim Brigham)</p>
-</li>
-<li><dl class="first docutils">
-<dt>Subversion: Support smart quotes</dt>
-<dd><p class="first last">Use standard comments and empty lines
-Use IniFile.entry_multiline_generic
-Use IniFile.empty_noindent
-Support dos eol</p>
-</dd>
-</dl>
-</li>
-<li><p class="first">Sudoers: allow user aliases in specs</p>
-</li>
-<li><p class="first">Sysctl: exclude README file</p>
-</li>
-<li><p class="first">Systemd: Support smart quotes; allow backslashes in values</p>
-</li>
-<li><p class="first">Xinetd: handle missing values in list, bug #307</p>
-</li>
-<li><p class="first">Xorg: allow 'Screen' in Device section, bug #344</p>
-</li>
-<li><p class="first">Yum: Support dos eol, optimize some regexps</p>
-</li>
+from OpenBSD</li>
+<li>Sip_Conf: New lens for sip.conf configurations (Rob Tucker)</li>
+<li>Splunk: new lens (Tim Brigham)</li>
+<li>Subversion: Support smart quotes;
+Use standard comments and empty lines;
+Use IniFile.entry_multiline_generic;
+Use IniFile.empty_noindent;
+Support dos eol.</li>
+<li>Sudoers: allow user aliases in specs</li>
+<li>Sysctl: exclude README file</li>
+<li>Systemd: Support smart quotes; allow backslashes in values</li>
+<li>Xinetd: handle missing values in list, bug #307</li>
+<li>Xorg: allow 'Screen' in Device section, bug #344</li>
+<li>Yum: Support dos eol, optimize some regexps</li>
 </ul>
 </li>
 </ul>
