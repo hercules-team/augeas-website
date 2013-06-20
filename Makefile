@@ -22,7 +22,8 @@ pages/stock_lenses.txt:
 pages/stock_lenses/%/index.txt:
 	mkdir -p pages/stock_lenses/$*
 	cd ../augeas && \
-	  git checkout -f release-$* && \
+	  git checkout . && \
+	  git checkout release-$* && \
 	  ruby $(CURDIR)/list_lenses.rb -f rst -l $(LENS_DIR) > \
 	    $(CURDIR)/$@
 	git add $@

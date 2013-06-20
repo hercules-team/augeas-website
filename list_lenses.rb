@@ -103,16 +103,16 @@ together with their default includes and excludes.
     all_incl = []
     lenses.each_key { |l| all_incl << lenses[l][:incl] }
     if all_incl.flatten.max
-      incl_max = all_incl.flatten.max {|a,b| a.length <=> b.length }.length+6 # 6 = - ````
+      incl_max = all_incl.flatten.max {|a,b| a.length <=> b.length }.length+8 # 8 = Includes
     else
-      incl_max = 0
+      incl_max = 8
     end
     all_excl = []
     lenses.each_key { |l| all_excl << lenses[l][:excl] }
     if all_excl.flatten.max
-      excl_max = all_excl.flatten.max {|a,b| a.length <=> b.length }.length+6 # 6 = - ````
+      excl_max = all_excl.flatten.max {|a,b| a.length <=> b.length }.length+8 # 8 = Excludes
     else
-      excl_max = 0
+      excl_max = 8
     end
 
     puts "+#{'-' * (lens_max + ref_max)}+#{'-' * 8}+#{'-' * incl_max}+#{'-' * excl_max}+\n"
