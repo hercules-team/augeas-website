@@ -47,7 +47,10 @@ $(BUILD_REFS)/%:
 	    $(MAKE) -C $(ND_DOCSDIR); \
             fi; \
 	    mkdir -p $@; \
-	    cp -pr $(ND_DOCSDIR)/output/* $@); \
+	    cp -pr $(ND_DOCSDIR)/output/* $@; \
+	    mkdir -p $(BUILD_REFS_CACHE)/$*; \
+	    rsync -a $(BUILD_REFS_CACHE)/$*; \
+	    git add $(BUILD_REFS_CACHE)/$*); \
 	fi
 
 
