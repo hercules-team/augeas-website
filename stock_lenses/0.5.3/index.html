@@ -1,0 +1,807 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+
+<html>
+<head>
+  <title>Augeas &mdash; Stock Lenses</title>
+
+  
+  
+
+  <meta name="keywords" content="configuration management">
+  <meta name="description" content="Configuration API for Linux">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+  <link rel="shortcut icon" href="../..//styles/favicon.ico" type="image/x-icon">
+
+  <link rel="StyleSheet" type="text/css" href="../../styles/default.css" title="Main style">
+  <link rel="Alternate StyleSheet" type="text/css" href="../../styles/default-debug.css" title="Debug main style">
+
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-18273001-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+</head>
+
+<body>
+
+  <div id="header">
+    <div id="headerLogo"></div>
+  </div>
+
+  <div id="body">
+    <div id="menu">
+      <ul class="l0">
+         <li><div>
+<a class='inactive' title='Main' href='../../index.html'>Main</a>
+<li><div>
+<a class='inactive' title='FAQ' href='../../faq.html'>FAQ</a>
+</div></li>
+<li><div>
+<a class='inactive' title='Quick Tour' href='../../tour.html'>Quick Tour</a>
+</div></li>
+<li><div>
+<a class='inactive' title='Documentation' href='../../docs/index.html'>Documentation</a>
+</div></li>
+<li><div>
+<a class='inactive' title='Download' href='../../download.html'>Download</a>
+</div></li>
+<li><div>
+<a class='inactive' title='Releases' href='../../news.html'>Releases</a>
+</div></li>
+<li><div>
+<a class='inactive' title='Stock Lenses' href='../../stock_lenses.html'>Stock Lenses</a>
+</div></li>
+<li><div>
+<a class='inactive' title='Wiki' href='https://github.com/hercules-team/augeas/wiki'>Wiki</a>
+</div></li>
+<li><div>
+<a class='inactive' title='Bug tracker' href='https://fedorahosted.org/augeas/report/1'>Bug tracker</a>
+</div></li>
+<li><div>
+<a class='inactive' title='Todo list' href='../../todo.html'>Todo list</a>
+</div></li>
+<li><div>
+<a class='inactive' title='Contribute' href='../../developers.html'>Contribute</a>
+</div></li>
+<li><div>
+<a class='inactive' title='libfa' href='../../libfa/index.html'>libfa</a>
+</div></li>
+<li><div>
+<span class='active'>Stock Lenses</span>
+<ul class='l1'>
+</ul>
+</div></li>
+
+      </ul>
+    </div>
+
+    <div id="content">
+      <div class="document" id="stock-lenses">
+<h1 class="title">Stock lenses</h1>
+<p>This is the list of all current stock lenses shipped with Augeas,
+together with their default includes and excludes.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="45%" />
+<col width="4%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Lens</th>
+<th class="head">Autoload</th>
+<th class="head">Includes</th>
+<th class="head">Excludes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><a class="reference external" href="../../docs/references/0.5.3/lenses/files/aliases-aug.html">Aliases</a></td>
+<td>true</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal">/etc/aliases</tt></li>
+</ul>
+</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td><a class="reference external" href="../../docs/references/0.5.3/lenses/files/aptpreferences-aug.html">AptPreferences</a></td>
+<td>true</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal">/etc/apt/preferences</tt></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
+</ul>
+</td>
+</tr>
+<tr><td><a class="reference external" href="../../docs/references/0.5.3/lenses/files/aptsources-aug.html">Aptsources</a></td>
+<td>true</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal">/etc/apt/sources.list.d/*</tt></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
+<li><tt class="docutils literal">/etc/apt/sources.list</tt></li>
+</ul>
+</td>
+</tr>
+<tr><td><a class="reference external" href="../../docs/references/0.5.3/lenses/files/bbhosts-aug.html">BBhosts</a></td>
+<td>true</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">/etc/bb/bb-hosts</span></tt></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
+</ul>
+</td>
+</tr>
+<tr><td><a class="reference external" href="../../docs/references/0.5.3/lenses/files/build-aug.html">Build</a></td>
+<td>false</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td><a class="reference external" href="../../docs/references/0.5.3/lenses/files/cron-aug.html">Cron</a></td>
+<td>true</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal">/etc/crontab</tt></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
+<li><tt class="docutils literal">/etc/cron.d/*</tt></li>
+</ul>
+</td>
+</tr>
+<tr><td><a class="reference external" href="../../docs/references/0.5.3/lenses/files/cyrus-aug.html">Cyrus</a></td>
+<td>false</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td><a class="reference external" href="../../docs/references/0.5.3/lenses/files/darkice-aug.html">Darkice</a></td>
+<td>true</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal">/etc/darkice.cfg</tt></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
+</ul>
+</td>
+</tr>
+<tr><td><a class="reference external" href="../../docs/references/0.5.3/lenses/files/dhclient-aug.html">Dhclient</a></td>
+<td>true</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal">/etc/dhcp3/dhclient.conf</tt></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
+</ul>
+</td>
+</tr>
+<tr><td><a class="reference external" href="../../docs/references/0.5.3/lenses/files/dnsmasq-aug.html">Dnsmasq</a></td>
+<td>true</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal">/etc/dnsmasq.d/*</tt></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal">/.*</tt></li>
+<li><tt class="docutils literal">/etc/dnsmasq.conf</tt></li>
+</ul>
+</td>
+</tr>
+<tr><td><a class="reference external" href="../../docs/references/0.5.3/lenses/files/dpkg-aug.html">Dpkg</a></td>
+<td>true</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal">/etc/dpkg/dpkg.cfg</tt></li>
+</ul>
+</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td><a class="reference external" href="../../docs/references/0.5.3/lenses/files/dput-aug.html">Dput</a></td>
+<td>true</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">/~/.dput.cf</span></tt></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
+<li><tt class="docutils literal">/etc/dput.cf</tt></li>
+</ul>
+</td>
+</tr>
+<tr><td><a class="reference external" href="../../docs/references/0.5.3/lenses/files/exports-aug.html">Exports</a></td>
+<td>true</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal">/etc/exports</tt></li>
+</ul>
+</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td><a class="reference external" href="../../docs/references/0.5.3/lenses/files/fstab-aug.html">Fstab</a></td>
+<td>true</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal">/etc/mtab</tt></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal">/etc/fstab</tt></li>
+</ul>
+</td>
+</tr>
+<tr><td><a class="reference external" href="../../docs/references/0.5.3/lenses/files/gdm-aug.html">Gdm</a></td>
+<td>true</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal">/etc/gdm/gdm.conf*</tt></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
+</ul>
+</td>
+</tr>
+<tr><td><a class="reference external" href="../../docs/references/0.5.3/lenses/files/group-aug.html">Group</a></td>
+<td>true</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal">/etc/group</tt></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
+</ul>
+</td>
+</tr>
+<tr><td><a class="reference external" href="../../docs/references/0.5.3/lenses/files/grub-aug.html">Grub</a></td>
+<td>true</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal">/etc/grub.conf</tt></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal">/boot/grub/menu.lst</tt></li>
+</ul>
+</td>
+</tr>
+<tr><td><a class="reference external" href="../../docs/references/0.5.3/lenses/files/hosts-aug.html">Hosts</a></td>
+<td>true</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal">/etc/hosts</tt></li>
+</ul>
+</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td><a class="reference external" href="../../docs/references/0.5.3/lenses/files/inetd-aug.html">Inetd</a></td>
+<td>true</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal">/etc/inetd.conf</tt></li>
+</ul>
+</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td><a class="reference external" href="../../docs/references/0.5.3/lenses/files/inifile-aug.html">IniFile</a></td>
+<td>false</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td><a class="reference external" href="../../docs/references/0.5.3/lenses/files/inittab-aug.html">Inittab</a></td>
+<td>true</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal">/etc/inittab</tt></li>
+</ul>
+</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td><a class="reference external" href="../../docs/references/0.5.3/lenses/files/interfaces-aug.html">Interfaces</a></td>
+<td>true</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal">/etc/network/interfaces</tt></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
+</ul>
+</td>
+</tr>
+<tr><td><a class="reference external" href="../../docs/references/0.5.3/lenses/files/iptables-aug.html">Iptables</a></td>
+<td>true</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">/etc/iptables-save</span></tt></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal">/etc/sysconfig/iptables</tt></li>
+</ul>
+</td>
+</tr>
+<tr><td><a class="reference external" href="../../docs/references/0.5.3/lenses/files/kvf-aug.html">KVF</a></td>
+<td>false</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td><a class="reference external" href="../../docs/references/0.5.3/lenses/files/krb5-aug.html">Krb5</a></td>
+<td>true</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal">/etc/krb5.conf</tt></li>
+</ul>
+</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td><a class="reference external" href="../../docs/references/0.5.3/lenses/files/limits-aug.html">Limits</a></td>
+<td>true</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">/etc/security/limits.d/*.conf</span></tt></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal">/etc/security/limits.conf</tt></li>
+</ul>
+</td>
+</tr>
+<tr><td><a class="reference external" href="../../docs/references/0.5.3/lenses/files/logrotate-aug.html">Logrotate</a></td>
+<td>true</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal">/etc/logrotate.conf</tt></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
+<li><tt class="docutils literal">/etc/logrotate.d/*</tt></li>
+</ul>
+</td>
+</tr>
+<tr><td><a class="reference external" href="../../docs/references/0.5.3/lenses/files/lokkit-aug.html">Lokkit</a></td>
+<td>true</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">/etc/sysconfig/system-config-firewall</span></tt></li>
+</ul>
+</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td><a class="reference external" href="../../docs/references/0.5.3/lenses/files/migration-aug.html">Migration</a></td>
+<td>false</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td><a class="reference external" href="../../docs/references/0.5.3/lenses/files/modprobe-aug.html">Modprobe</a></td>
+<td>true</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal">/etc/modprobe.conf.local</tt></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
+<li><tt class="docutils literal">/etc/modprobe.d/*</tt></li>
+<li><tt class="docutils literal">/etc/modprobe.conf</tt></li>
+</ul>
+</td>
+</tr>
+<tr><td><a class="reference external" href="../../docs/references/0.5.3/lenses/files/monit-aug.html">Monit</a></td>
+<td>true</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal">/etc/monit/monitrc</tt></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
+</ul>
+</td>
+</tr>
+<tr><td><a class="reference external" href="../../docs/references/0.5.3/lenses/files/multipath-aug.html">Multipath</a></td>
+<td>true</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal">/etc/multipath.conf</tt></li>
+</ul>
+</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td><a class="reference external" href="../../docs/references/0.5.3/lenses/files/ntp-aug.html">Ntp</a></td>
+<td>true</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal">/etc/ntp.conf</tt></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
+</ul>
+</td>
+</tr>
+<tr><td><a class="reference external" href="../../docs/references/0.5.3/lenses/files/openvpn-aug.html">OpenVPN</a></td>
+<td>true</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal">/etc/openvpn/server.conf</tt></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal">/etc/openvpn/client.conf</tt></li>
+</ul>
+</td>
+</tr>
+<tr><td><a class="reference external" href="../../docs/references/0.5.3/lenses/files/php-aug.html">PHP</a></td>
+<td>true</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">/usr/local/zend/etc/conf.d/*.ini</span></tt></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
+<li><tt class="docutils literal">/usr/local/zend/etc/php.ini</tt></li>
+<li><tt class="docutils literal"><span class="pre">/etc/php.d/*.ini</span></tt></li>
+<li><tt class="docutils literal">/etc/php.ini</tt></li>
+<li><tt class="docutils literal"><span class="pre">/etc/php*/*/*.ini</span></tt></li>
+</ul>
+</td>
+</tr>
+<tr><td><a class="reference external" href="../../docs/references/0.5.3/lenses/files/pam-aug.html">Pam</a></td>
+<td>true</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal">/etc/pam.d/*</tt></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
+<li><tt class="docutils literal">/etc/pam.conf</tt></li>
+</ul>
+</td>
+</tr>
+<tr><td><a class="reference external" href="../../docs/references/0.5.3/lenses/files/passwd-aug.html">Passwd</a></td>
+<td>true</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal">/etc/passwd</tt></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
+</ul>
+</td>
+</tr>
+<tr><td><a class="reference external" href="../../docs/references/0.5.3/lenses/files/pbuilder-aug.html">Pbuilder</a></td>
+<td>true</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal">/etc/pbuilderrc</tt></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal">/etc/pbuilder/pbuilderrc</tt></li>
+</ul>
+</td>
+</tr>
+<tr><td><a class="reference external" href="../../docs/references/0.5.3/lenses/files/phpvars-aug.html">Phpvars</a></td>
+<td>true</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal">/etc/squirrelmail/config.php</tt></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
+</ul>
+</td>
+</tr>
+<tr><td><a class="reference external" href="../../docs/references/0.5.3/lenses/files/postfix_main-aug.html">Postfix_Main</a></td>
+<td>true</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal">/etc/postfix/main.cf</tt></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
+</ul>
+</td>
+</tr>
+<tr><td><a class="reference external" href="../../docs/references/0.5.3/lenses/files/postfix_master-aug.html">Postfix_Master</a></td>
+<td>true</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal">/etc/postfix/master.cf</tt></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
+</ul>
+</td>
+</tr>
+<tr><td><a class="reference external" href="../../docs/references/0.5.3/lenses/files/puppet-aug.html">Puppet</a></td>
+<td>true</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal">/etc/puppet/puppet.conf</tt></li>
+</ul>
+</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td><a class="reference external" href="../../docs/references/0.5.3/lenses/files/rsyncd-aug.html">Rsyncd</a></td>
+<td>true</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal">/etc/rsyncd.conf</tt></li>
+</ul>
+</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td><a class="reference external" href="../../docs/references/0.5.3/lenses/files/rx-aug.html">Rx</a></td>
+<td>false</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td><a class="reference external" href="../../docs/references/0.5.3/lenses/files/samba-aug.html">Samba</a></td>
+<td>true</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal">/etc/samba/smb.conf</tt></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
+</ul>
+</td>
+</tr>
+<tr><td><a class="reference external" href="../../docs/references/0.5.3/lenses/files/sep-aug.html">Sep</a></td>
+<td>false</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td><a class="reference external" href="../../docs/references/0.5.3/lenses/files/services-aug.html">Services</a></td>
+<td>true</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal">/etc/services</tt></li>
+</ul>
+</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td><a class="reference external" href="../../docs/references/0.5.3/lenses/files/shellvars-aug.html">Shellvars</a></td>
+<td>true</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal">/etc/sysconfig/xendomains</tt></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
+<li><tt class="docutils literal">/etc/sysconfig/xend</tt></li>
+<li><tt class="docutils literal">/etc/sysconfig/wpa_supplicant</tt></li>
+<li><tt class="docutils literal">/etc/sysconfig/vncservers</tt></li>
+<li><tt class="docutils literal"><span class="pre">/etc/sysconfig/system-config-users</span></tt></li>
+<li><tt class="docutils literal">/etc/sysconfig/sysstat</tt></li>
+<li><tt class="docutils literal">/etc/sysconfig/suseconfig</tt></li>
+<li><tt class="docutils literal">/etc/sysconfig/spamassassin</tt></li>
+<li><tt class="docutils literal">/etc/sysconfig/snmptrapd.options</tt></li>
+<li><tt class="docutils literal">/etc/sysconfig/snmptrapd</tt></li>
+<li><tt class="docutils literal">/etc/sysconfig/snmpd.options</tt></li>
+<li><tt class="docutils literal">/etc/sysconfig/snmpd</tt></li>
+<li><tt class="docutils literal">/etc/sysconfig/smartmontools</tt></li>
+<li><tt class="docutils literal">/etc/sysconfig/sendmail</tt></li>
+<li><tt class="docutils literal">/etc/sysconfig/selinux</tt></li>
+<li><tt class="docutils literal">/etc/sysconfig/saslauthd</tt></li>
+<li><tt class="docutils literal">/etc/sysconfig/samba</tt></li>
+<li><tt class="docutils literal">/etc/sysconfig/rsyslog</tt></li>
+<li><tt class="docutils literal"><span class="pre">/etc/sysconfig/readonly-root</span></tt></li>
+<li><tt class="docutils literal">/etc/sysconfig/puppetmaster</tt></li>
+<li><tt class="docutils literal">/etc/sysconfig/puppet</tt></li>
+<li><tt class="docutils literal">/etc/sysconfig/prelink</tt></li>
+<li><tt class="docutils literal">/etc/sysconfig/ntpd</tt></li>
+<li><tt class="docutils literal">/etc/sysconfig/nfs</tt></li>
+<li><tt class="docutils literal">/etc/sysconfig/network</tt></li>
+<li><tt class="docutils literal">/etc/sysconfig/netconsole</tt></li>
+<li><tt class="docutils literal">/etc/sysconfig/nasd</tt></li>
+<li><tt class="docutils literal">/etc/sysconfig/lircd</tt></li>
+<li><tt class="docutils literal">/etc/sysconfig/libvirtd</tt></li>
+<li><tt class="docutils literal">/etc/sysconfig/kudzu</tt></li>
+<li><tt class="docutils literal">/etc/sysconfig/keyboard</tt></li>
+<li><tt class="docutils literal">/etc/sysconfig/kdump</tt></li>
+<li><tt class="docutils literal">/etc/sysconfig/irqbalance</tt></li>
+<li><tt class="docutils literal">/etc/sysconfig/irda</tt></li>
+<li><tt class="docutils literal"><span class="pre">/etc/sysconfig/iptables-config</span></tt></li>
+<li><tt class="docutils literal">/etc/sysconfig/init</tt></li>
+<li><tt class="docutils literal">/etc/sysconfig/i18n</tt></li>
+<li><tt class="docutils literal">/etc/sysconfig/httpd</tt></li>
+<li><tt class="docutils literal">/etc/sysconfig/hsqldb</tt></li>
+<li><tt class="docutils literal">/etc/sysconfig/grub</tt></li>
+<li><tt class="docutils literal">/etc/sysconfig/firstboot</tt></li>
+<li><tt class="docutils literal">/etc/sysconfig/desktop</tt></li>
+<li><tt class="docutils literal">/etc/sysconfig/crontab</tt></li>
+<li><tt class="docutils literal">/etc/sysconfig/crond</tt></li>
+<li><tt class="docutils literal">/etc/sysconfig/cpuspeed</tt></li>
+<li><tt class="docutils literal">/etc/sysconfig/clock</tt></li>
+<li><tt class="docutils literal">/etc/sysconfig/autofs</tt></li>
+<li><tt class="docutils literal">/etc/sysconfig/authconfig</tt></li>
+<li><tt class="docutils literal">/etc/sysconfig/atd</tt></li>
+<li><tt class="docutils literal"><span class="pre">/etc/sysconfig/network/ifcfg-*</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">/etc/sysconfig/network-scripts/ifcfg-*</span></tt></li>
+<li><tt class="docutils literal">/etc/default/*</tt></li>
+<li><tt class="docutils literal">/etc/blkid.conf</tt></li>
+<li><tt class="docutils literal">/etc/environment</tt></li>
+<li><tt class="docutils literal"><span class="pre">/etc/cron-apt/config</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">/etc/arno-iptables-firewall/debconf.cfg</span></tt></li>
+</ul>
+</td>
+</tr>
+<tr><td><a class="reference external" href="../../docs/references/0.5.3/lenses/files/slapd-aug.html">Slapd</a></td>
+<td>true</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal">/etc/openldap/slapd.conf</tt></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal">/etc/ldap/slapd.conf</tt></li>
+</ul>
+</td>
+</tr>
+<tr><td><a class="reference external" href="../../docs/references/0.5.3/lenses/files/soma-aug.html">Soma</a></td>
+<td>true</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal">/etc/somad/soma.cfg</tt></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
+</ul>
+</td>
+</tr>
+<tr><td><a class="reference external" href="../../docs/references/0.5.3/lenses/files/spacevars-aug.html">Spacevars</a></td>
+<td>true</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal">/etc/pam_ldap.conf</tt></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">/etc/libnss-ldap.conf</span></tt></li>
+<li><tt class="docutils literal">/etc/ldap/ldap.conf</tt></li>
+<li><tt class="docutils literal">/etc/ldap.conf</tt></li>
+<li><tt class="docutils literal">/etc/havp/havp.config</tt></li>
+</ul>
+</td>
+</tr>
+<tr><td><a class="reference external" href="../../docs/references/0.5.3/lenses/files/squid-aug.html">Squid</a></td>
+<td>true</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal">/etc/squid/squid.conf</tt></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
+</ul>
+</td>
+</tr>
+<tr><td><a class="reference external" href="../../docs/references/0.5.3/lenses/files/sshd-aug.html">Sshd</a></td>
+<td>true</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal">/etc/ssh/sshd_config</tt></li>
+</ul>
+</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td><a class="reference external" href="../../docs/references/0.5.3/lenses/files/sudoers-aug.html">Sudoers</a></td>
+<td>true</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal">/etc/opt/csw/sudoers</tt></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
+<li><tt class="docutils literal">/opt/csw/etc/sudoers</tt></li>
+<li><tt class="docutils literal">/usr/local/etc/sudoers.d/*</tt></li>
+<li><tt class="docutils literal">/etc/sudoers.d/*</tt></li>
+<li><tt class="docutils literal">/usr/local/etc/sudoers</tt></li>
+<li><tt class="docutils literal">/etc/sudoers</tt></li>
+</ul>
+</td>
+</tr>
+<tr><td><a class="reference external" href="../../docs/references/0.5.3/lenses/files/sysctl-aug.html">Sysctl</a></td>
+<td>true</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal">/etc/sysctl.conf</tt></li>
+</ul>
+</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td><a class="reference external" href="../../docs/references/0.5.3/lenses/files/util-aug.html">Util</a></td>
+<td>false</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td><a class="reference external" href="../../docs/references/0.5.3/lenses/files/vsftpd-aug.html">Vsftpd</a></td>
+<td>true</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal">/etc/vsftpd/vsftpd.conf</tt></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal">/etc/vsftpd.conf</tt></li>
+</ul>
+</td>
+</tr>
+<tr><td><a class="reference external" href="../../docs/references/0.5.3/lenses/files/webmin-aug.html">Webmin</a></td>
+<td>true</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">/etc/webmin/ldap-useradmin/config</span></tt></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
+<li><tt class="docutils literal">/etc/webmin/miniserv.conf</tt></li>
+</ul>
+</td>
+</tr>
+<tr><td><a class="reference external" href="../../docs/references/0.5.3/lenses/files/xinetd-aug.html">Xinetd</a></td>
+<td>true</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal">/etc/xinetd.conf</tt></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
+<li><tt class="docutils literal">/etc/xinetd.d/*</tt></li>
+</ul>
+</td>
+</tr>
+<tr><td><a class="reference external" href="../../docs/references/0.5.3/lenses/files/xorg-aug.html">Xorg</a></td>
+<td>true</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">/etc/X11/xorg.conf.d/*.conf</span></tt></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
+<li><tt class="docutils literal">/etc/X11/xorg.conf</tt></li>
+</ul>
+</td>
+</tr>
+<tr><td><a class="reference external" href="../../docs/references/0.5.3/lenses/files/yum-aug.html">Yum</a></td>
+<td>true</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal">/etc/yum/pluginconf.d/*</tt></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal">/etc/yum/pluginconf.d/versionlock.list</tt></li>
+<li><tt class="docutils literal">/etc/yum.repos.d/*</tt></li>
+<li><tt class="docutils literal">/etc/yum.conf</tt></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+    </div>
+  </div>
+
+  <div id="footer">
+    <div id="projects">
+      <dl id="p1">
+        <dt><a href="http://augeas.net/">Augeas</a></dt>
+        <dd><span>A configuration editing tool and API</span></dd>
+        <dt><a href="http://libvirt.org/">libvirt</a></dt>
+        <dd><span>The open source virtualization API</span></dd>
+<!--        <dt><a href="http://thincrust.et.redhat.com/">Thin Crust</a></dt>
+        <dd><span>Tools for building virtual appliances</span></dd>-->
+      </dl>
+      <dl id="p2">
+        <dt><a href="http://cobbler.et.redhat.com/">Cobbler</a></dt>
+        <dd><span>OS provisioning and profile management</span></dd>
+        <dt><a href="http://ovirt.org/">oVirt</a></dt>
+        <dd><span>Virtualization management across the data center</span></dd>
+<!--        <dt><a href="http://et.redhat.com/~rjones/virt-p2v/">p-2-v</a></dt>
+        <dd><span>Virtualize existing deployed servers</span></dd>-->
+      </dl>
+      <dl id="p3">
+        <dt><a href="http://freeipa.org/">FreeIPA</a></dt>
+        <dd><span>Identity, policy and audit management</span></dd>
+        <dt><a href="http://virt-manager.org/">Virtual Machine Manager</a></dt>
+        <dd><span>Virtualization management from the desktop</span></dd>
+<!--        <dt><a href="http://virt-manager.org/">Virtual Tools</a></dt>
+        <dd><span>Virtualization management from the command line</span></dd>-->
+      </dl>
+    </div>
+    <p id="et">
+      <a href="http://et.redhat.com/"><img src="../../styles/et_logo.png" alt="A Red Hat Emerging Technology Project"></a>
+    </p>
+  </div>
+</body>
+</html>
