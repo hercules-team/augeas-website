@@ -32,6 +32,7 @@ pages/stock_lenses/%/index.txt:
 
 naturaldocs:
 	(if test -d $(ND_DOCSDIR); then \
+	   cd ../augeas && git checkout -f master && \
 	   $(MAKE) -C $(ND_DOCSDIR); \
           fi; \
 	  rm -rf $(BUILD_REFS); \

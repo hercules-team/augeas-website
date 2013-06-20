@@ -14,133 +14,133 @@ Stock lenses
 This is the list of all current stock lenses shipped with Augeas,
 together with their default includes and excludes.
 
-+----------------------------------------------------------------+--------+-----------------------------------------------+----------------------------------------------+
-|Lens                                                            |Autoload|Includes                                       |Excludes                                      |
-+================================================================+========+===============================================+==============================================+
-|`Aliases <docs/references/lenses/files/aliases-aug.html>`_      |true    |- ``/etc/aliases``                             |                                              |
-+----------------------------------------------------------------+--------+-----------------------------------------------+----------------------------------------------+
-|`Aptsources <docs/references/lenses/files/aptsources-aug.html>`_|true    |- ``/etc/apt/sources.list.d/*``                |- ``/*.augnew``                               |
-|                                                                |        |                                               |- ``/etc/apt/sources.list``                   |
-|                                                                |        |                                               |                                              |
-|                                                                |        |                                               |                                              |
-|                                                                |        |                                               |                                              |
-|                                                                |        |                                               |                                              |
-|                                                                |        |                                               |                                              |
-|                                                                |        |                                               |                                              |
-|                                                                |        |                                               |                                              |
-+----------------------------------------------------------------+--------+-----------------------------------------------+----------------------------------------------+
-|`Cyrus <docs/references/lenses/files/cyrus-aug.html>`_          |false   |                                               |                                              |
-+----------------------------------------------------------------+--------+-----------------------------------------------+----------------------------------------------+
-|`Fstab <docs/references/lenses/files/fstab-aug.html>`_          |true    |- ``/etc/mtab``                                |                                              |
-|                                                                |        |                                               |- ``/etc/fstab``                              |
-+----------------------------------------------------------------+--------+-----------------------------------------------+----------------------------------------------+
-|`Grub <docs/references/lenses/files/grub-aug.html>`_            |true    |- ``/etc/grub.conf``                           |                                              |
-|                                                                |        |                                               |- ``/boot/grub/menu.lst``                     |
-+----------------------------------------------------------------+--------+-----------------------------------------------+----------------------------------------------+
-|`Hosts <docs/references/lenses/files/hosts-aug.html>`_          |true    |- ``/etc/hosts``                               |                                              |
-+----------------------------------------------------------------+--------+-----------------------------------------------+----------------------------------------------+
-|`Ifcfg <docs/references/lenses/files/ifcfg-aug.html>`_          |false   |                                               |                                              |
-+----------------------------------------------------------------+--------+-----------------------------------------------+----------------------------------------------+
-|`Inittab <docs/references/lenses/files/inittab-aug.html>`_      |true    |- ``/etc/inittab``                             |                                              |
-+----------------------------------------------------------------+--------+-----------------------------------------------+----------------------------------------------+
-|`KVF <docs/references/lenses/files/kvf-aug.html>`_              |false   |                                               |                                              |
-+----------------------------------------------------------------+--------+-----------------------------------------------+----------------------------------------------+
-|`Migration <docs/references/lenses/files/migration-aug.html>`_  |false   |                                               |                                              |
-+----------------------------------------------------------------+--------+-----------------------------------------------+----------------------------------------------+
-|`Pam <docs/references/lenses/files/pam-aug.html>`_              |true    |- ``/etc/pam.d/*``                             |- ``/*.augnew``                               |
-|                                                                |        |                                               |- ``/etc/pam.conf``                           |
-|                                                                |        |                                               |                                              |
-|                                                                |        |                                               |                                              |
-|                                                                |        |                                               |                                              |
-|                                                                |        |                                               |                                              |
-|                                                                |        |                                               |                                              |
-|                                                                |        |                                               |                                              |
-|                                                                |        |                                               |                                              |
-+----------------------------------------------------------------+--------+-----------------------------------------------+----------------------------------------------+
-|`Shellvars <docs/references/lenses/files/shellvars-aug.html>`_  |true    |- ``/etc/sysconfig/xendomains``                |- ``/*.augnew``                               |
-|                                                                |        |                                               |- ``/etc/sysconfig/xend``                     |
-|                                                                |        |                                               |- ``/etc/sysconfig/wpa_supplicant``           |
-|                                                                |        |                                               |- ``/etc/sysconfig/vncservers``               |
-|                                                                |        |                                               |- ``/etc/sysconfig/system-config-users``      |
-|                                                                |        |                                               |- ``/etc/sysconfig/sysstat``                  |
-|                                                                |        |                                               |- ``/etc/sysconfig/suseconfig``               |
-|                                                                |        |                                               |- ``/etc/sysconfig/spamassassin``             |
-|                                                                |        |                                               |- ``/etc/sysconfig/snmptrapd.options``        |
-|                                                                |        |                                               |- ``/etc/sysconfig/snmptrapd``                |
-|                                                                |        |                                               |- ``/etc/sysconfig/snmpd.options``            |
-|                                                                |        |                                               |- ``/etc/sysconfig/snmpd``                    |
-|                                                                |        |                                               |- ``/etc/sysconfig/smartmontools``            |
-|                                                                |        |                                               |- ``/etc/sysconfig/sendmail``                 |
-|                                                                |        |                                               |- ``/etc/sysconfig/selinux``                  |
-|                                                                |        |                                               |- ``/etc/sysconfig/saslauthd``                |
-|                                                                |        |                                               |- ``/etc/sysconfig/samba``                    |
-|                                                                |        |                                               |- ``/etc/sysconfig/rsyslog``                  |
-|                                                                |        |                                               |- ``/etc/sysconfig/readonly-root``            |
-|                                                                |        |                                               |- ``/etc/sysconfig/puppetmaster``             |
-|                                                                |        |                                               |- ``/etc/sysconfig/puppet``                   |
-|                                                                |        |                                               |- ``/etc/sysconfig/prelink``                  |
-|                                                                |        |                                               |- ``/etc/sysconfig/ntpd``                     |
-|                                                                |        |                                               |- ``/etc/sysconfig/nfs``                      |
-|                                                                |        |                                               |- ``/etc/sysconfig/network``                  |
-|                                                                |        |                                               |- ``/etc/sysconfig/netconsole``               |
-|                                                                |        |                                               |- ``/etc/sysconfig/nasd``                     |
-|                                                                |        |                                               |- ``/etc/sysconfig/lircd``                    |
-|                                                                |        |                                               |- ``/etc/sysconfig/libvirtd``                 |
-|                                                                |        |                                               |- ``/etc/sysconfig/kudzu``                    |
-|                                                                |        |                                               |- ``/etc/sysconfig/keyboard``                 |
-|                                                                |        |                                               |- ``/etc/sysconfig/kdump``                    |
-|                                                                |        |                                               |- ``/etc/sysconfig/irqbalance``               |
-|                                                                |        |                                               |- ``/etc/sysconfig/irda``                     |
-|                                                                |        |                                               |- ``/etc/sysconfig/iptables-config``          |
-|                                                                |        |                                               |- ``/etc/sysconfig/init``                     |
-|                                                                |        |                                               |- ``/etc/sysconfig/i18n``                     |
-|                                                                |        |                                               |- ``/etc/sysconfig/httpd``                    |
-|                                                                |        |                                               |- ``/etc/sysconfig/hsqldb``                   |
-|                                                                |        |                                               |- ``/etc/sysconfig/grub``                     |
-|                                                                |        |                                               |- ``/etc/sysconfig/firstboot``                |
-|                                                                |        |                                               |- ``/etc/sysconfig/desktop``                  |
-|                                                                |        |                                               |- ``/etc/sysconfig/crontab``                  |
-|                                                                |        |                                               |- ``/etc/sysconfig/crond``                    |
-|                                                                |        |                                               |- ``/etc/sysconfig/cpuspeed``                 |
-|                                                                |        |                                               |- ``/etc/sysconfig/clock``                    |
-|                                                                |        |                                               |- ``/etc/sysconfig/autofs``                   |
-|                                                                |        |                                               |- ``/etc/sysconfig/authconfig``               |
-|                                                                |        |                                               |- ``/etc/sysconfig/atd``                      |
-|                                                                |        |                                               |- ``/etc/sysconfig/network/ifcfg-*``          |
-|                                                                |        |                                               |- ``/etc/sysconfig/network-scripts/ifcfg-*``  |
-|                                                                |        |                                               |- ``/etc/default/*``                          |
-|                                                                |        |                                               |- ``/etc/blkid.conf``                         |
-|                                                                |        |                                               |- ``/etc/environment``                        |
-|                                                                |        |                                               |- ``/etc/cron-apt/config``                    |
-|                                                                |        |                                               |- ``/etc/arno-iptables-firewall/debconf.cfg`` |
-+----------------------------------------------------------------+--------+-----------------------------------------------+----------------------------------------------+
-|`Sshd <docs/references/lenses/files/sshd-aug.html>`_            |true    |- ``/etc/ssh/sshd_config``                     |                                              |
-+----------------------------------------------------------------+--------+-----------------------------------------------+----------------------------------------------+
-|`Sysconfig <docs/references/lenses/files/sysconfig-aug.html>`_  |false   |                                               |                                              |
-+----------------------------------------------------------------+--------+-----------------------------------------------+----------------------------------------------+
-|`Util <docs/references/lenses/files/util-aug.html>`_            |false   |                                               |                                              |
-+----------------------------------------------------------------+--------+-----------------------------------------------+----------------------------------------------+
-|`Vsftpd <docs/references/lenses/files/vsftpd-aug.html>`_        |true    |- ``/etc/vsftpd/vsftpd.conf``                  |                                              |
-|                                                                |        |                                               |- ``/etc/vsftpd.conf``                        |
-+----------------------------------------------------------------+--------+-----------------------------------------------+----------------------------------------------+
-|`Xinetd <docs/references/lenses/files/xinetd-aug.html>`_        |true    |- ``/etc/xinetd.conf``                         |- ``/*.augnew``                               |
-|                                                                |        |                                               |- ``/etc/xinetd.d/*``                         |
-|                                                                |        |                                               |                                              |
-|                                                                |        |                                               |                                              |
-|                                                                |        |                                               |                                              |
-|                                                                |        |                                               |                                              |
-|                                                                |        |                                               |                                              |
-|                                                                |        |                                               |                                              |
-|                                                                |        |                                               |                                              |
-+----------------------------------------------------------------+--------+-----------------------------------------------+----------------------------------------------+
-|`Yum <docs/references/lenses/files/yum-aug.html>`_              |true    |- ``/etc/yum/pluginconf.d/*``                  |- ``/etc/yum/pluginconf.d/versionlock.list``  |
-|                                                                |        |                                               |- ``/etc/yum.repos.d/*``                      |
-|                                                                |        |                                               |- ``/etc/yum.conf``                           |
-|                                                                |        |                                               |                                              |
-|                                                                |        |                                               |                                              |
-|                                                                |        |                                               |                                              |
-|                                                                |        |                                               |                                              |
-|                                                                |        |                                               |                                              |
-|                                                                |        |                                               |                                              |
-|                                                                |        |                                               |                                              |
-+----------------------------------------------------------------+--------+-----------------------------------------------+----------------------------------------------+
++----------------------------------------------------------------------------+--------+-----------------------------------------------+----------------------------------------------+
+|Lens                                                                        |Autoload|Includes                                       |Excludes                                      |
++============================================================================+========+===============================================+==============================================+
+|`Aliases <../../docs/references/0.2.1/lenses/files/aliases-aug.html>`_      |true    |- ``/etc/aliases``                             |                                              |
++----------------------------------------------------------------------------+--------+-----------------------------------------------+----------------------------------------------+
+|`Aptsources <../../docs/references/0.2.1/lenses/files/aptsources-aug.html>`_|true    |- ``/etc/apt/sources.list.d/*``                |- ``/*.augnew``                               |
+|                                                                            |        |                                               |- ``/etc/apt/sources.list``                   |
+|                                                                            |        |                                               |                                              |
+|                                                                            |        |                                               |                                              |
+|                                                                            |        |                                               |                                              |
+|                                                                            |        |                                               |                                              |
+|                                                                            |        |                                               |                                              |
+|                                                                            |        |                                               |                                              |
+|                                                                            |        |                                               |                                              |
++----------------------------------------------------------------------------+--------+-----------------------------------------------+----------------------------------------------+
+|`Cyrus <../../docs/references/0.2.1/lenses/files/cyrus-aug.html>`_          |false   |                                               |                                              |
++----------------------------------------------------------------------------+--------+-----------------------------------------------+----------------------------------------------+
+|`Fstab <../../docs/references/0.2.1/lenses/files/fstab-aug.html>`_          |true    |- ``/etc/mtab``                                |                                              |
+|                                                                            |        |                                               |- ``/etc/fstab``                              |
++----------------------------------------------------------------------------+--------+-----------------------------------------------+----------------------------------------------+
+|`Grub <../../docs/references/0.2.1/lenses/files/grub-aug.html>`_            |true    |- ``/etc/grub.conf``                           |                                              |
+|                                                                            |        |                                               |- ``/boot/grub/menu.lst``                     |
++----------------------------------------------------------------------------+--------+-----------------------------------------------+----------------------------------------------+
+|`Hosts <../../docs/references/0.2.1/lenses/files/hosts-aug.html>`_          |true    |- ``/etc/hosts``                               |                                              |
++----------------------------------------------------------------------------+--------+-----------------------------------------------+----------------------------------------------+
+|`Ifcfg <../../docs/references/0.2.1/lenses/files/ifcfg-aug.html>`_          |false   |                                               |                                              |
++----------------------------------------------------------------------------+--------+-----------------------------------------------+----------------------------------------------+
+|`Inittab <../../docs/references/0.2.1/lenses/files/inittab-aug.html>`_      |true    |- ``/etc/inittab``                             |                                              |
++----------------------------------------------------------------------------+--------+-----------------------------------------------+----------------------------------------------+
+|`KVF <../../docs/references/0.2.1/lenses/files/kvf-aug.html>`_              |false   |                                               |                                              |
++----------------------------------------------------------------------------+--------+-----------------------------------------------+----------------------------------------------+
+|`Migration <../../docs/references/0.2.1/lenses/files/migration-aug.html>`_  |false   |                                               |                                              |
++----------------------------------------------------------------------------+--------+-----------------------------------------------+----------------------------------------------+
+|`Pam <../../docs/references/0.2.1/lenses/files/pam-aug.html>`_              |true    |- ``/etc/pam.d/*``                             |- ``/*.augnew``                               |
+|                                                                            |        |                                               |- ``/etc/pam.conf``                           |
+|                                                                            |        |                                               |                                              |
+|                                                                            |        |                                               |                                              |
+|                                                                            |        |                                               |                                              |
+|                                                                            |        |                                               |                                              |
+|                                                                            |        |                                               |                                              |
+|                                                                            |        |                                               |                                              |
+|                                                                            |        |                                               |                                              |
++----------------------------------------------------------------------------+--------+-----------------------------------------------+----------------------------------------------+
+|`Shellvars <../../docs/references/0.2.1/lenses/files/shellvars-aug.html>`_  |true    |- ``/etc/sysconfig/xendomains``                |- ``/*.augnew``                               |
+|                                                                            |        |                                               |- ``/etc/sysconfig/xend``                     |
+|                                                                            |        |                                               |- ``/etc/sysconfig/wpa_supplicant``           |
+|                                                                            |        |                                               |- ``/etc/sysconfig/vncservers``               |
+|                                                                            |        |                                               |- ``/etc/sysconfig/system-config-users``      |
+|                                                                            |        |                                               |- ``/etc/sysconfig/sysstat``                  |
+|                                                                            |        |                                               |- ``/etc/sysconfig/suseconfig``               |
+|                                                                            |        |                                               |- ``/etc/sysconfig/spamassassin``             |
+|                                                                            |        |                                               |- ``/etc/sysconfig/snmptrapd.options``        |
+|                                                                            |        |                                               |- ``/etc/sysconfig/snmptrapd``                |
+|                                                                            |        |                                               |- ``/etc/sysconfig/snmpd.options``            |
+|                                                                            |        |                                               |- ``/etc/sysconfig/snmpd``                    |
+|                                                                            |        |                                               |- ``/etc/sysconfig/smartmontools``            |
+|                                                                            |        |                                               |- ``/etc/sysconfig/sendmail``                 |
+|                                                                            |        |                                               |- ``/etc/sysconfig/selinux``                  |
+|                                                                            |        |                                               |- ``/etc/sysconfig/saslauthd``                |
+|                                                                            |        |                                               |- ``/etc/sysconfig/samba``                    |
+|                                                                            |        |                                               |- ``/etc/sysconfig/rsyslog``                  |
+|                                                                            |        |                                               |- ``/etc/sysconfig/readonly-root``            |
+|                                                                            |        |                                               |- ``/etc/sysconfig/puppetmaster``             |
+|                                                                            |        |                                               |- ``/etc/sysconfig/puppet``                   |
+|                                                                            |        |                                               |- ``/etc/sysconfig/prelink``                  |
+|                                                                            |        |                                               |- ``/etc/sysconfig/ntpd``                     |
+|                                                                            |        |                                               |- ``/etc/sysconfig/nfs``                      |
+|                                                                            |        |                                               |- ``/etc/sysconfig/network``                  |
+|                                                                            |        |                                               |- ``/etc/sysconfig/netconsole``               |
+|                                                                            |        |                                               |- ``/etc/sysconfig/nasd``                     |
+|                                                                            |        |                                               |- ``/etc/sysconfig/lircd``                    |
+|                                                                            |        |                                               |- ``/etc/sysconfig/libvirtd``                 |
+|                                                                            |        |                                               |- ``/etc/sysconfig/kudzu``                    |
+|                                                                            |        |                                               |- ``/etc/sysconfig/keyboard``                 |
+|                                                                            |        |                                               |- ``/etc/sysconfig/kdump``                    |
+|                                                                            |        |                                               |- ``/etc/sysconfig/irqbalance``               |
+|                                                                            |        |                                               |- ``/etc/sysconfig/irda``                     |
+|                                                                            |        |                                               |- ``/etc/sysconfig/iptables-config``          |
+|                                                                            |        |                                               |- ``/etc/sysconfig/init``                     |
+|                                                                            |        |                                               |- ``/etc/sysconfig/i18n``                     |
+|                                                                            |        |                                               |- ``/etc/sysconfig/httpd``                    |
+|                                                                            |        |                                               |- ``/etc/sysconfig/hsqldb``                   |
+|                                                                            |        |                                               |- ``/etc/sysconfig/grub``                     |
+|                                                                            |        |                                               |- ``/etc/sysconfig/firstboot``                |
+|                                                                            |        |                                               |- ``/etc/sysconfig/desktop``                  |
+|                                                                            |        |                                               |- ``/etc/sysconfig/crontab``                  |
+|                                                                            |        |                                               |- ``/etc/sysconfig/crond``                    |
+|                                                                            |        |                                               |- ``/etc/sysconfig/cpuspeed``                 |
+|                                                                            |        |                                               |- ``/etc/sysconfig/clock``                    |
+|                                                                            |        |                                               |- ``/etc/sysconfig/autofs``                   |
+|                                                                            |        |                                               |- ``/etc/sysconfig/authconfig``               |
+|                                                                            |        |                                               |- ``/etc/sysconfig/atd``                      |
+|                                                                            |        |                                               |- ``/etc/sysconfig/network/ifcfg-*``          |
+|                                                                            |        |                                               |- ``/etc/sysconfig/network-scripts/ifcfg-*``  |
+|                                                                            |        |                                               |- ``/etc/default/*``                          |
+|                                                                            |        |                                               |- ``/etc/blkid.conf``                         |
+|                                                                            |        |                                               |- ``/etc/environment``                        |
+|                                                                            |        |                                               |- ``/etc/cron-apt/config``                    |
+|                                                                            |        |                                               |- ``/etc/arno-iptables-firewall/debconf.cfg`` |
++----------------------------------------------------------------------------+--------+-----------------------------------------------+----------------------------------------------+
+|`Sshd <../../docs/references/0.2.1/lenses/files/sshd-aug.html>`_            |true    |- ``/etc/ssh/sshd_config``                     |                                              |
++----------------------------------------------------------------------------+--------+-----------------------------------------------+----------------------------------------------+
+|`Sysconfig <../../docs/references/0.2.1/lenses/files/sysconfig-aug.html>`_  |false   |                                               |                                              |
++----------------------------------------------------------------------------+--------+-----------------------------------------------+----------------------------------------------+
+|`Util <../../docs/references/0.2.1/lenses/files/util-aug.html>`_            |false   |                                               |                                              |
++----------------------------------------------------------------------------+--------+-----------------------------------------------+----------------------------------------------+
+|`Vsftpd <../../docs/references/0.2.1/lenses/files/vsftpd-aug.html>`_        |true    |- ``/etc/vsftpd/vsftpd.conf``                  |                                              |
+|                                                                            |        |                                               |- ``/etc/vsftpd.conf``                        |
++----------------------------------------------------------------------------+--------+-----------------------------------------------+----------------------------------------------+
+|`Xinetd <../../docs/references/0.2.1/lenses/files/xinetd-aug.html>`_        |true    |- ``/etc/xinetd.conf``                         |- ``/*.augnew``                               |
+|                                                                            |        |                                               |- ``/etc/xinetd.d/*``                         |
+|                                                                            |        |                                               |                                              |
+|                                                                            |        |                                               |                                              |
+|                                                                            |        |                                               |                                              |
+|                                                                            |        |                                               |                                              |
+|                                                                            |        |                                               |                                              |
+|                                                                            |        |                                               |                                              |
+|                                                                            |        |                                               |                                              |
++----------------------------------------------------------------------------+--------+-----------------------------------------------+----------------------------------------------+
+|`Yum <../../docs/references/0.2.1/lenses/files/yum-aug.html>`_              |true    |- ``/etc/yum/pluginconf.d/*``                  |- ``/etc/yum/pluginconf.d/versionlock.list``  |
+|                                                                            |        |                                               |- ``/etc/yum.repos.d/*``                      |
+|                                                                            |        |                                               |- ``/etc/yum.conf``                           |
+|                                                                            |        |                                               |                                              |
+|                                                                            |        |                                               |                                              |
+|                                                                            |        |                                               |                                              |
+|                                                                            |        |                                               |                                              |
+|                                                                            |        |                                               |                                              |
+|                                                                            |        |                                               |                                              |
+|                                                                            |        |                                               |                                              |
++----------------------------------------------------------------------------+--------+-----------------------------------------------+----------------------------------------------+
