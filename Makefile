@@ -44,14 +44,16 @@ naturaldocs:
 $(BUILD_REFS)/%:
 	cd ../augeas && git checkout -f release-$*
 	if ! test -d $@; then \
-	  (if test -d $(ND_DOCSDIR); then \
-	    $(MAKE) -C $(ND_DOCSDIR); \
-            fi; \
-	    mkdir -p $@; \
-	    cp -pr $(ND_DOCSDIR)/output/* $@; \
-	    mkdir -p $(BUILD_REFS_CACHE)/$*; \
-	    rsync -a $@/ $(BUILD_REFS_CACHE)/$*; \
-	    git add $(BUILD_REFS_CACHE)/$*); \
+	  if [ x${test} = x0* ]; then \
+	    (if test -d $(ND_DOCSDIR); then \
+	      $(MAKE) -C $(ND_DOCSDIR); \
+              fi; \
+	      mkdir -p $@; \
+	      cp -pr $(ND_DOCSDIR)/output/* $@; \
+	      mkdir -p $(BUILD_REFS_CACHE)/$*; \
+	        rsync -a $@/ $(BUILD_REFS_CACHE)/$*; \
+	      git add $(BUILD_REFS_CACHE)/$*); \
+	    fi; \
 	fi
 
 
