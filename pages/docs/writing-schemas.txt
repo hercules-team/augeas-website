@@ -106,7 +106,7 @@ did not end with a ``"\n"``.
 
 More information can be found `on the Wiki`_ and in the existing lenses.
 
-.. _on the Wiki: ../wiki
+.. _on the Wiki: https://github.com/hercules-team/augeas/wiki
 
 Transformations and Autoload
 ----------------------------
