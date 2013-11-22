@@ -141,7 +141,7 @@ together with their default includes and excludes.
             excludes[0] ? "- ``#{excludes[0]}``" : '' ]
       for i in 1..height-1
         puts "|%-#{lens_max + ref_max}s|%-8s|%-#{incl_max}s|%-#{excl_max}s|\n" %
-          [ '', '', '',
+          [ '', '',
             includes[i] ? "- ``#{includes[i]}``" : '',
             excludes[i] ? "- ``#{excludes[i]}``" : '' ]
       end
