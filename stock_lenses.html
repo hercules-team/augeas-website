@@ -85,10 +85,10 @@
 together with their default includes and excludes.</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="38%" />
+<col width="39%" />
 <col width="4%" />
-<col width="33%" />
-<col width="25%" />
+<col width="27%" />
+<col width="30%" />
 </colgroup>
 <thead valign="bottom">
 <tr><th class="head">Lens</th>
@@ -98,14 +98,6 @@ together with their default includes and excludes.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr><td><a class="reference external" href="docs/references/lenses/files/access-aug.html">Access</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/security/access.conf</tt></li>
-</ul>
-</td>
-<td>&nbsp;</td>
-</tr>
 <tr><td><a class="reference external" href="docs/references/lenses/files/aliases-aug.html">Aliases</a></td>
 <td>true</td>
 <td><ul class="first last simple">
@@ -113,37 +105,6 @@ together with their default includes and excludes.</p>
 </ul>
 </td>
 <td>&nbsp;</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/anacron-aug.html">Anacron</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/anacrontab</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">*.old</tt></li>
-</ul>
-</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/approx-aug.html">Approx</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/approx/approx.conf</tt></li>
-</ul>
-</td>
-<td>&nbsp;</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/aptconf-aug.html">AptConf</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/apt/apt.conf.d/*</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">*.old</tt></li>
-<li><tt class="docutils literal">/etc/apt/apt.conf</tt></li>
-</ul>
-</td>
 </tr>
 <tr><td><a class="reference external" href="docs/references/lenses/files/aptpreferences-aug.html">AptPreferences</a></td>
 <td>true</td>
@@ -153,19 +114,16 @@ together with their default includes and excludes.</p>
 </td>
 <td><ul class="first last simple">
 <li><tt class="docutils literal">*.old</tt></li>
-</ul>
-</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/apt_update_manager-aug.html">Apt_Update_Manager</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/etc/update-manager/release-upgrades.d/*</span></tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">*.old</tt></li>
-<li><tt class="docutils literal"><span class="pre">/etc/update-manager/release-upgrades</span></tt></li>
-<li><tt class="docutils literal"><span class="pre">/etc/update-manager/meta-release</span></tt></li>
+<li><tt class="docutils literal">*.bak</tt></li>
+<li><tt class="docutils literal">*.augnew</tt></li>
+<li><tt class="docutils literal">*.augsave</tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-dist</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-bak</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-new</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-old</span></tt></li>
+<li><tt class="docutils literal">*.rpmsave</tt></li>
+<li><tt class="docutils literal">*.rpmnew</tt></li>
+<li><tt class="docutils literal">*~</tt></li>
 </ul>
 </td>
 </tr>
@@ -173,54 +131,23 @@ together with their default includes and excludes.</p>
 <td>true</td>
 <td><ul class="first last simple">
 <li><tt class="docutils literal">/etc/apt/sources.list.d/*</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">*.old</tt></li>
 <li><tt class="docutils literal">/etc/apt/sources.list</tt></li>
 </ul>
 </td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/authorized_keys-aug.html">Authorized_Keys</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">~/.ssh/authorized_keys</span></tt></li>
-</ul>
-</td>
-<td>&nbsp;</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/automaster-aug.html">Automaster</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/auto.master.d/*</tt></li>
-</ul>
-</td>
 <td><ul class="first last simple">
 <li><tt class="docutils literal">*.old</tt></li>
-<li><tt class="docutils literal">/etc/auto_master</tt></li>
-<li><tt class="docutils literal">/etc/auto.master</tt></li>
+<li><tt class="docutils literal">*.bak</tt></li>
+<li><tt class="docutils literal">*.augnew</tt></li>
+<li><tt class="docutils literal">*.augsave</tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-dist</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-bak</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-new</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-old</span></tt></li>
+<li><tt class="docutils literal">*.rpmsave</tt></li>
+<li><tt class="docutils literal">*.rpmnew</tt></li>
+<li><tt class="docutils literal">*~</tt></li>
 </ul>
 </td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/automounter-aug.html">Automounter</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/auto_*</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/auto.smb</tt></li>
-<li><tt class="docutils literal">/etc/auto.*</tt></li>
-</ul>
-</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/avahi-aug.html">Avahi</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/etc/avahi/avahi-daemon.conf</span></tt></li>
-</ul>
-</td>
-<td>&nbsp;</td>
 </tr>
 <tr><td><a class="reference external" href="docs/references/lenses/files/bbhosts-aug.html">BBhosts</a></td>
 <td>true</td>
@@ -230,167 +157,18 @@ together with their default includes and excludes.</p>
 </td>
 <td><ul class="first last simple">
 <li><tt class="docutils literal">*.old</tt></li>
+<li><tt class="docutils literal">*.bak</tt></li>
+<li><tt class="docutils literal">*.augnew</tt></li>
+<li><tt class="docutils literal">*.augsave</tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-dist</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-bak</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-new</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-old</span></tt></li>
+<li><tt class="docutils literal">*.rpmsave</tt></li>
+<li><tt class="docutils literal">*.rpmnew</tt></li>
+<li><tt class="docutils literal">*~</tt></li>
 </ul>
 </td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/backuppchosts-aug.html">BackupPCHosts</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/backuppc/hosts</tt></li>
-</ul>
-</td>
-<td>&nbsp;</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/build-aug.html">Build</a></td>
-<td>false</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/cachefilesd-aug.html">Cachefilesd</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/cachefilesd.conf</tt></li>
-</ul>
-</td>
-<td>&nbsp;</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/carbon-aug.html">Carbon</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/etc/carbon/storage-schemas.conf</span></tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/etc/carbon/storage-aggregation.conf</span></tt></li>
-<li><tt class="docutils literal"><span class="pre">/etc/carbon/rewrite-rules.conf</span></tt></li>
-<li><tt class="docutils literal"><span class="pre">/etc/carbon/relay-rules.conf</span></tt></li>
-<li><tt class="docutils literal">/etc/carbon/carbon.conf</tt></li>
-</ul>
-</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/cgconfig-aug.html">Cgconfig</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/cgconfig.conf</tt></li>
-</ul>
-</td>
-<td>&nbsp;</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/cgrules-aug.html">Cgrules</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/cgrules.conf</tt></li>
-</ul>
-</td>
-<td>&nbsp;</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/channels-aug.html">Channels</a></td>
-<td>false</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/cobblermodules-aug.html">CobblerModules</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/cobbler/modules.conf</tt></li>
-</ul>
-</td>
-<td>&nbsp;</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/cobblersettings-aug.html">CobblerSettings</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/cobbler/settings</tt></li>
-</ul>
-</td>
-<td>&nbsp;</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/collectd-aug.html">Collectd</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/usr/share/doc/collectd/examples/collection3/etc/collection.conf</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/etc/collectd/*.conf</span></tt></li>
-<li><tt class="docutils literal">/etc/collectd.conf</tt></li>
-</ul>
-</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/cron-aug.html">Cron</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/crontab</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/cron.d/cron.deny</tt></li>
-<li><tt class="docutils literal">/etc/cron.d/*</tt></li>
-</ul>
-</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/crypttab-aug.html">Crypttab</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/crypttab</tt></li>
-</ul>
-</td>
-<td>&nbsp;</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/cups-aug.html">Cups</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/etc/cups/*.conf</span></tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">*.old</tt></li>
-</ul>
-</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/cyrus_imapd-aug.html">Cyrus_Imapd</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/etc/imap/*.conf</span></tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">*.old</tt></li>
-<li><tt class="docutils literal">/etc/imapd.conf</tt></li>
-</ul>
-</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/darkice-aug.html">Darkice</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/darkice.cfg</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">*.old</tt></li>
-</ul>
-</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/debctrl-aug.html">Debctrl</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/control</tt></li>
-</ul>
-</td>
-<td>&nbsp;</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/desktop-aug.html">Desktop</a></td>
-<td>false</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/device_map-aug.html">Device_map</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/boot/grub/device.map</tt></li>
-</ul>
-</td>
-<td>&nbsp;</td>
 </tr>
 <tr><td><a class="reference external" href="docs/references/lenses/files/dhclient-aug.html">Dhclient</a></td>
 <td>true</td>
@@ -400,19 +178,16 @@ together with their default includes and excludes.</p>
 </td>
 <td><ul class="first last simple">
 <li><tt class="docutils literal">*.old</tt></li>
-</ul>
-</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/dhcpd-aug.html">Dhcpd</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/dhcpd.conf</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">*.old</tt></li>
-<li><tt class="docutils literal">/etc/dhcp/dhcpd.conf</tt></li>
-<li><tt class="docutils literal">/etc/dhcp3/dhcpd.conf</tt></li>
+<li><tt class="docutils literal">*.bak</tt></li>
+<li><tt class="docutils literal">*.augnew</tt></li>
+<li><tt class="docutils literal">*.augsave</tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-dist</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-bak</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-new</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-old</span></tt></li>
+<li><tt class="docutils literal">*.rpmsave</tt></li>
+<li><tt class="docutils literal">*.rpmnew</tt></li>
+<li><tt class="docutils literal">*~</tt></li>
 </ul>
 </td>
 </tr>
@@ -420,46 +195,47 @@ together with their default includes and excludes.</p>
 <td>true</td>
 <td><ul class="first last simple">
 <li><tt class="docutils literal">/etc/dnsmasq.d/*</tt></li>
+<li><tt class="docutils literal">/etc/dnsmasq.conf</tt></li>
 </ul>
 </td>
 <td><ul class="first last simple">
 <li><tt class="docutils literal">.*</tt></li>
-<li><tt class="docutils literal">/etc/dnsmasq.conf</tt></li>
+<li><tt class="docutils literal">#*#</tt></li>
+<li><tt class="docutils literal">*.old</tt></li>
+<li><tt class="docutils literal">*.bak</tt></li>
+<li><tt class="docutils literal">*.augnew</tt></li>
+<li><tt class="docutils literal">*.augsave</tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-dist</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-bak</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-new</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-old</span></tt></li>
+<li><tt class="docutils literal">*.rpmsave</tt></li>
+<li><tt class="docutils literal">*.rpmnew</tt></li>
+<li><tt class="docutils literal">*~</tt></li>
 </ul>
 </td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/dpkg-aug.html">Dpkg</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/dpkg/dpkg.cfg</tt></li>
-</ul>
-</td>
-<td>&nbsp;</td>
 </tr>
 <tr><td><a class="reference external" href="docs/references/lenses/files/dput-aug.html">Dput</a></td>
 <td>true</td>
 <td><ul class="first last simple">
 <li><tt class="docutils literal"><span class="pre">~/.dput.cf</span></tt></li>
+<li><tt class="docutils literal">/etc/dput.cf</tt></li>
 </ul>
 </td>
 <td><ul class="first last simple">
 <li><tt class="docutils literal">*.old</tt></li>
-<li><tt class="docutils literal">/etc/dput.cf</tt></li>
+<li><tt class="docutils literal">*.bak</tt></li>
+<li><tt class="docutils literal">*.augnew</tt></li>
+<li><tt class="docutils literal">*.augsave</tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-dist</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-bak</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-new</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-old</span></tt></li>
+<li><tt class="docutils literal">*.rpmsave</tt></li>
+<li><tt class="docutils literal">*.rpmnew</tt></li>
+<li><tt class="docutils literal">*~</tt></li>
 </ul>
 </td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/erlang-aug.html">Erlang</a></td>
-<td>false</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/ethers-aug.html">Ethers</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/ethers</tt></li>
-</ul>
-</td>
-<td>&nbsp;</td>
 </tr>
 <tr><td><a class="reference external" href="docs/references/lenses/files/exports-aug.html">Exports</a></td>
 <td>true</td>
@@ -469,107 +245,24 @@ together with their default includes and excludes.</p>
 </td>
 <td>&nbsp;</td>
 </tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/fai_diskconfig-aug.html">FAI_DiskConfig</a></td>
-<td>false</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/fonts-aug.html">Fonts</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/fonts/conf.d/*</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/fonts/conf.d/README</tt></li>
-<li><tt class="docutils literal">/etc/fonts/conf.avail/*</tt></li>
-<li><tt class="docutils literal">/etc/fonts/fonts.conf</tt></li>
-</ul>
-</td>
-</tr>
 <tr><td><a class="reference external" href="docs/references/lenses/files/fstab-aug.html">Fstab</a></td>
 <td>true</td>
 <td><ul class="first last simple">
 <li><tt class="docutils literal">/etc/mtab</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
 <li><tt class="docutils literal">/etc/fstab</tt></li>
 </ul>
 </td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/fuse-aug.html">Fuse</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/fuse.conf</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">*.old</tt></li>
-</ul>
-</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/gdm-aug.html">Gdm</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/gdm/custom.conf</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">*.old</tt></li>
-<li><tt class="docutils literal">/etc/gdm/gdm.conf*</tt></li>
-</ul>
-</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/group-aug.html">Group</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/group</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">*.old</tt></li>
-</ul>
-</td>
+<td>&nbsp;</td>
 </tr>
 <tr><td><a class="reference external" href="docs/references/lenses/files/grub-aug.html">Grub</a></td>
 <td>true</td>
 <td><ul class="first last simple">
 <li><tt class="docutils literal">/etc/grub.conf</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
 <li><tt class="docutils literal">/boot/grub/menu.lst</tt></li>
 <li><tt class="docutils literal">/boot/grub/grub.conf</tt></li>
 </ul>
 </td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/gtkbookmarks-aug.html">GtkBookmarks</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">~/.gtk-bookmarks</span></tt></li>
-</ul>
-</td>
 <td>&nbsp;</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/host_conf-aug.html">Host_Conf</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/host.conf</tt></li>
-</ul>
-</td>
-<td>&nbsp;</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/hostname-aug.html">Hostname</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/mailname</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/hostname</tt></li>
-</ul>
-</td>
 </tr>
 <tr><td><a class="reference external" href="docs/references/lenses/files/hosts-aug.html">Hosts</a></td>
 <td>true</td>
@@ -579,54 +272,9 @@ together with their default includes and excludes.</p>
 </td>
 <td>&nbsp;</td>
 </tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/hosts_access-aug.html">Hosts_Access</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/hosts.deny</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/hosts.allow</tt></li>
-</ul>
-</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/htpasswd-aug.html">Htpasswd</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/rsyncd.secrets</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/apache2/htpasswd</tt></li>
-<li><tt class="docutils literal">/etc/httpd/htpasswd</tt></li>
-</ul>
-</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/httpd-aug.html">Httpd</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/httpd/conf/httpd.conf</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">*.old</tt></li>
-<li><tt class="docutils literal">/etc/httpd/httpd.conf</tt></li>
-<li><tt class="docutils literal"><span class="pre">/etc/httpd/conf.d/*.conf</span></tt></li>
-<li><tt class="docutils literal"><span class="pre">/etc/apache2/sites-available/*</span></tt></li>
-<li><tt class="docutils literal"><span class="pre">/etc/apache2/mods-available/*</span></tt></li>
-<li><tt class="docutils literal">/etc/apache2/conf.d/*</tt></li>
-<li><tt class="docutils literal">/etc/apache2/ports.conf</tt></li>
-<li><tt class="docutils literal">/etc/apache2/httpd.conf</tt></li>
-<li><tt class="docutils literal">/etc/apache2/apache2.conf</tt></li>
-</ul>
-</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/inetd-aug.html">Inetd</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/inetd.conf</tt></li>
-</ul>
-</td>
+<tr><td><a class="reference external" href="docs/references/lenses/files/ifcfg-aug.html">Ifcfg</a></td>
+<td>false</td>
+<td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
 <tr><td><a class="reference external" href="docs/references/lenses/files/inifile-aug.html">IniFile</a></td>
@@ -642,14 +290,6 @@ together with their default includes and excludes.</p>
 </td>
 <td>&nbsp;</td>
 </tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/inputrc-aug.html">Inputrc</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/inputrc</tt></li>
-</ul>
-</td>
-<td>&nbsp;</td>
-</tr>
 <tr><td><a class="reference external" href="docs/references/lenses/files/interfaces-aug.html">Interfaces</a></td>
 <td>true</td>
 <td><ul class="first last simple">
@@ -658,326 +298,43 @@ together with their default includes and excludes.</p>
 </td>
 <td><ul class="first last simple">
 <li><tt class="docutils literal">*.old</tt></li>
+<li><tt class="docutils literal">*.bak</tt></li>
+<li><tt class="docutils literal">*.augnew</tt></li>
+<li><tt class="docutils literal">*.augsave</tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-dist</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-bak</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-new</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-old</span></tt></li>
+<li><tt class="docutils literal">*.rpmsave</tt></li>
+<li><tt class="docutils literal">*.rpmnew</tt></li>
+<li><tt class="docutils literal">*~</tt></li>
 </ul>
 </td>
 </tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/iptables-aug.html">Iptables</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/etc/iptables-save</span></tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/sysconfig/iptables</tt></li>
-</ul>
-</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/json-aug.html">Json</a></td>
+<tr><td><a class="reference external" href="docs/references/lenses/files/ldap-aug.html">Ldap</a></td>
 <td>false</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/kdump-aug.html">Kdump</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/kdump.conf</tt></li>
-</ul>
-</td>
-<td>&nbsp;</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/keepalived-aug.html">Keepalived</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/keepalived/keepalived.conf</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">*.old</tt></li>
-</ul>
-</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/krb5-aug.html">Krb5</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/krb5.conf</tt></li>
-</ul>
-</td>
-<td>&nbsp;</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/ldso-aug.html">LdSo</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/ld.so.conf.d/*</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">*.old</tt></li>
-<li><tt class="docutils literal">/etc/ld.so.conf</tt></li>
-</ul>
-</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/ldif-aug.html">Ldif</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/etc/openldap/schema/*.ldif</span></tt></li>
-</ul>
-</td>
-<td>&nbsp;</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/lightdm-aug.html">Lightdm</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/etc/lightdm/*.conf</span></tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">*.old</tt></li>
-</ul>
-</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/limits-aug.html">Limits</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/etc/security/limits.d/*.conf</span></tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/security/limits.conf</tt></li>
-</ul>
-</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/login_defs-aug.html">Login_defs</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/login.defs</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">*.old</tt></li>
-</ul>
-</td>
 </tr>
 <tr><td><a class="reference external" href="docs/references/lenses/files/logrotate-aug.html">Logrotate</a></td>
 <td>true</td>
 <td><ul class="first last simple">
 <li><tt class="docutils literal">/etc/logrotate.conf</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">*.old</tt></li>
 <li><tt class="docutils literal">/etc/logrotate.d/*</tt></li>
 </ul>
 </td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/logwatch-aug.html">Logwatch</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/logwatch/conf/logwatch.conf</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">.*</tt></li>
-</ul>
-</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/lokkit-aug.html">Lokkit</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/etc/sysconfig/system-config-firewall</span></tt></li>
-</ul>
-</td>
-<td>&nbsp;</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/mcollective-aug.html">MCollective</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/mcollective/server.cfg</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/mcollective/client.cfg</tt></li>
-</ul>
-</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/mdadm_conf-aug.html">Mdadm_conf</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/mdadm/mdadm.conf</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/mdadm.conf</tt></li>
-</ul>
-</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/memcached-aug.html">Memcached</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/memcachedb.conf</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/memcached.conf</tt></li>
-</ul>
-</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/mke2fs-aug.html">Mke2fs</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/mke2fs.conf</tt></li>
-</ul>
-</td>
 <td><ul class="first last simple">
 <li><tt class="docutils literal">*.old</tt></li>
-</ul>
-</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/modprobe-aug.html">Modprobe</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/modprobe.conf.local</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">*.old</tt></li>
-<li><tt class="docutils literal">/etc/modprobe.d/*</tt></li>
-<li><tt class="docutils literal">/etc/modprobe.conf</tt></li>
-</ul>
-</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/modules-aug.html">Modules</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/modules</tt></li>
-</ul>
-</td>
-<td>&nbsp;</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/modules_conf-aug.html">Modules_conf</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/conf.modules</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">*.old</tt></li>
-<li><tt class="docutils literal">/etc/modules.conf</tt></li>
-</ul>
-</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/monit-aug.html">Monit</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/monit/monitrc</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">*.old</tt></li>
-</ul>
-</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/multipath-aug.html">Multipath</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/multipath.conf</tt></li>
-</ul>
-</td>
-<td>&nbsp;</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/mysql-aug.html">MySQL</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/my.cnf</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">*.old</tt></li>
-<li><tt class="docutils literal"><span class="pre">/etc/mysql/conf.d/*.cnf</span></tt></li>
-<li><tt class="docutils literal">/etc/mysql/my.cnf</tt></li>
-</ul>
-</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/nagioscfg-aug.html">NagiosCfg</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/etc/nagios3/*.cfg</span></tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/nagios3/resource.cfg</tt></li>
-</ul>
-</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/nagiosobjects-aug.html">NagiosObjects</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/etc/nagios3/objects/*.cfg</span></tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">*.old</tt></li>
-</ul>
-</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/netmasks-aug.html">Netmasks</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/inet/netmasks</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">*.old</tt></li>
-<li><tt class="docutils literal">/etc/netmasks</tt></li>
-</ul>
-</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/networkmanager-aug.html">NetworkManager</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/etc/NetworkManager/system-connections/*</span></tt></li>
-</ul>
-</td>
-<td>&nbsp;</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/networks-aug.html">Networks</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/networks</tt></li>
-</ul>
-</td>
-<td>&nbsp;</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/nginx-aug.html">Nginx</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/usr/portage/www-servers/nginx/files/nginx.conf</span></tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/nginx/nginx.conf</tt></li>
-</ul>
-</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/nrpe-aug.html">Nrpe</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/nagios/nrpe.cfg</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">*.old</tt></li>
-<li><tt class="docutils literal">/etc/nrpe.cfg</tt></li>
-</ul>
-</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/nsswitch-aug.html">Nsswitch</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/nsswitch.conf</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">*.old</tt></li>
+<li><tt class="docutils literal">*.bak</tt></li>
+<li><tt class="docutils literal">*.augnew</tt></li>
+<li><tt class="docutils literal">*.augsave</tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-dist</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-bak</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-new</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-old</span></tt></li>
+<li><tt class="docutils literal">*.rpmsave</tt></li>
+<li><tt class="docutils literal">*.rpmnew</tt></li>
+<li><tt class="docutils literal">*~</tt></li>
 </ul>
 </td>
 </tr>
@@ -989,17 +346,16 @@ together with their default includes and excludes.</p>
 </td>
 <td><ul class="first last simple">
 <li><tt class="docutils literal">*.old</tt></li>
-</ul>
-</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/odbc-aug.html">Odbc</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/odbcinst.ini</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/odbc.ini</tt></li>
+<li><tt class="docutils literal">*.bak</tt></li>
+<li><tt class="docutils literal">*.augnew</tt></li>
+<li><tt class="docutils literal">*.augsave</tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-dist</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-bak</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-new</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-old</span></tt></li>
+<li><tt class="docutils literal">*.rpmsave</tt></li>
+<li><tt class="docutils literal">*.rpmnew</tt></li>
+<li><tt class="docutils literal">*~</tt></li>
 </ul>
 </td>
 </tr>
@@ -1007,25 +363,33 @@ together with their default includes and excludes.</p>
 <td>true</td>
 <td><ul class="first last simple">
 <li><tt class="docutils literal">/etc/openvpn/server.conf</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
 <li><tt class="docutils literal">/etc/openvpn/client.conf</tt></li>
 </ul>
 </td>
+<td>&nbsp;</td>
 </tr>
 <tr><td><a class="reference external" href="docs/references/lenses/files/php-aug.html">PHP</a></td>
 <td>true</td>
 <td><ul class="first last simple">
 <li><tt class="docutils literal"><span class="pre">/usr/local/zend/etc/conf.d/*.ini</span></tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">*.old</tt></li>
 <li><tt class="docutils literal">/usr/local/zend/etc/php.ini</tt></li>
 <li><tt class="docutils literal"><span class="pre">/etc/php.d/*.ini</span></tt></li>
 <li><tt class="docutils literal">/etc/php.ini</tt></li>
 <li><tt class="docutils literal"><span class="pre">/etc/php*/*/*.ini</span></tt></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal">*.old</tt></li>
+<li><tt class="docutils literal">*.bak</tt></li>
+<li><tt class="docutils literal">*.augnew</tt></li>
+<li><tt class="docutils literal">*.augsave</tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-dist</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-bak</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-new</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-old</span></tt></li>
+<li><tt class="docutils literal">*.rpmsave</tt></li>
+<li><tt class="docutils literal">*.rpmnew</tt></li>
+<li><tt class="docutils literal">*~</tt></li>
 </ul>
 </td>
 </tr>
@@ -1037,252 +401,29 @@ together with their default includes and excludes.</p>
 </td>
 <td><ul class="first last simple">
 <li><tt class="docutils literal">/etc/pam.d/README</tt></li>
-</ul>
-</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/pamconf-aug.html">PamConf</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/pam.conf</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
+<li><tt class="docutils literal">/etc/pam.d/allow.pamlist</tt></li>
 <li><tt class="docutils literal">*.old</tt></li>
+<li><tt class="docutils literal">*.bak</tt></li>
+<li><tt class="docutils literal">*.augnew</tt></li>
+<li><tt class="docutils literal">*.augsave</tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-dist</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-bak</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-new</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-old</span></tt></li>
+<li><tt class="docutils literal">*.rpmsave</tt></li>
+<li><tt class="docutils literal">*.rpmnew</tt></li>
+<li><tt class="docutils literal">*~</tt></li>
 </ul>
 </td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/passwd-aug.html">Passwd</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/passwd</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">*.old</tt></li>
-</ul>
-</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/pbuilder-aug.html">Pbuilder</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/pbuilderrc</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/pbuilder/pbuilderrc</tt></li>
-</ul>
-</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/pg_hba-aug.html">Pg_Hba</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/etc/postgresql/*/*/pg_hba.conf</span></tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/var/lib/pgsql/*/data/pg_hba.conf</span></tt></li>
-<li><tt class="docutils literal">/var/lib/pgsql/data/pg_hba.conf</tt></li>
-</ul>
-</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/phpvars-aug.html">Phpvars</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/squirrelmail/config.php</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">*.old</tt></li>
-</ul>
-</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/postfix_access-aug.html">Postfix_Access</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/postfix/access</tt></li>
-</ul>
-</td>
-<td>&nbsp;</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/postfix_main-aug.html">Postfix_Main</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/postfix/main.cf</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">*.old</tt></li>
-</ul>
-</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/postfix_master-aug.html">Postfix_Master</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/postfix/master.cf</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">*.old</tt></li>
-</ul>
-</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/postfix_transport-aug.html">Postfix_Transport</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/postfix/transport</tt></li>
-</ul>
-</td>
-<td>&nbsp;</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/postfix_virtual-aug.html">Postfix_Virtual</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/postfix/virtual</tt></li>
-</ul>
-</td>
-<td>&nbsp;</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/postgresql-aug.html">Postgresql</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/etc/postgresql/*/*/postgresql.conf</span></tt></li>
-</ul>
-</td>
-<td>&nbsp;</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/properties-aug.html">Properties</a></td>
-<td>false</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/protocols-aug.html">Protocols</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/protocols</tt></li>
-</ul>
-</td>
-<td>&nbsp;</td>
 </tr>
 <tr><td><a class="reference external" href="docs/references/lenses/files/puppet-aug.html">Puppet</a></td>
 <td>true</td>
 <td><ul class="first last simple">
 <li><tt class="docutils literal">/etc/puppetlabs/puppet/puppet.conf</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
 <li><tt class="docutils literal">/usr/local/etc/puppet/puppet.conf</tt></li>
 <li><tt class="docutils literal">/etc/puppet/puppet.conf</tt></li>
 </ul>
 </td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/puppetfileserver-aug.html">PuppetFileserver</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/puppetlabs/puppet/fileserver.conf</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/usr/local/etc/puppet/fileserver.conf</tt></li>
-<li><tt class="docutils literal">/etc/puppet/fileserver.conf</tt></li>
-</ul>
-</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/puppet_auth-aug.html">Puppet_Auth</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/puppetlabs/puppet/auth.conf</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/usr/local/etc/puppet/auth.conf</tt></li>
-<li><tt class="docutils literal">/etc/puppet/auth.conf</tt></li>
-</ul>
-</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/pythonpaste-aug.html">PythonPaste</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/etc/swift/object-server/*.conf</span></tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/etc/swift/container-server/*.conf</span></tt></li>
-<li><tt class="docutils literal"><span class="pre">/etc/swift/account-server/*.conf</span></tt></li>
-<li><tt class="docutils literal"><span class="pre">/etc/swift/proxy-server.conf</span></tt></li>
-<li><tt class="docutils literal">/etc/swift/swift.conf</tt></li>
-<li><tt class="docutils literal"><span class="pre">/etc/nova/api-paste.ini</span></tt></li>
-<li><tt class="docutils literal">/etc/keystone/keystone.conf</tt></li>
-<li><tt class="docutils literal"><span class="pre">/etc/glance/*.ini</span></tt></li>
-</ul>
-</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/qpid-aug.html">Qpid</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/qpid/qpidc.conf</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/qpidd.conf</tt></li>
-</ul>
-</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/quote-aug.html">Quote</a></td>
-<td>false</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/rabbitmq-aug.html">Rabbitmq</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/rabbitmq/rabbitmq.config</tt></li>
-</ul>
-</td>
-<td>&nbsp;</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/redis-aug.html">Redis</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/redis/redis.conf</tt></li>
-</ul>
-</td>
-<td>&nbsp;</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/reprepro_uploaders-aug.html">Reprepro_Uploaders</a></td>
-<td>false</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/resolv-aug.html">Resolv</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/resolv.conf</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">*.old</tt></li>
-</ul>
-</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/rsyncd-aug.html">Rsyncd</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/rsyncd.conf</tt></li>
-</ul>
-</td>
-<td>&nbsp;</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/rsyslog-aug.html">Rsyslog</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/rsyslog.conf</tt></li>
-</ul>
-</td>
-<td>&nbsp;</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/rx-aug.html">Rx</a></td>
-<td>false</td>
-<td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
 <tr><td><a class="reference external" href="docs/references/lenses/files/samba-aug.html">Samba</a></td>
@@ -1293,49 +434,16 @@ together with their default includes and excludes.</p>
 </td>
 <td><ul class="first last simple">
 <li><tt class="docutils literal">*.old</tt></li>
-</ul>
-</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/schroot-aug.html">Schroot</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/schroot/schroot.conf</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">*.old</tt></li>
-</ul>
-</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/securetty-aug.html">Securetty</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/securetty</tt></li>
-</ul>
-</td>
-<td>&nbsp;</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/sep-aug.html">Sep</a></td>
-<td>false</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/services-aug.html">Services</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/services</tt></li>
-</ul>
-</td>
-<td>&nbsp;</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/shells-aug.html">Shells</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/shells</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">*.old</tt></li>
+<li><tt class="docutils literal">*.bak</tt></li>
+<li><tt class="docutils literal">*.augnew</tt></li>
+<li><tt class="docutils literal">*.augsave</tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-dist</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-bak</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-new</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-old</span></tt></li>
+<li><tt class="docutils literal">*.rpmsave</tt></li>
+<li><tt class="docutils literal">*.rpmnew</tt></li>
+<li><tt class="docutils literal">*~</tt></li>
 </ul>
 </td>
 </tr>
@@ -1343,10 +451,6 @@ together with their default includes and excludes.</p>
 <td>true</td>
 <td><ul class="first last simple">
 <li><tt class="docutils literal">/etc/sysconfig/SuSEfirewall2.d/services/*</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/sysconfig/SuSEfirewall2.d/services/TEMPLATE</tt></li>
 <li><tt class="docutils literal">/etc/sysconfig/SuSEfirewall2.d/cobbler</tt></li>
 <li><tt class="docutils literal">/etc/sysconfig/rhn/rhnsd</tt></li>
 <li><tt class="docutils literal"><span class="pre">/etc/sysconfig/rhn/allowed-actions/script/*</span></tt></li>
@@ -1383,50 +487,35 @@ together with their default includes and excludes.</p>
 <li><tt class="docutils literal"><span class="pre">/etc/arno-iptables-firewall/debconf.cfg</span></tt></li>
 </ul>
 </td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/shellvars_list-aug.html">Shellvars_list</a></td>
-<td>true</td>
 <td><ul class="first last simple">
+<li><tt class="docutils literal">/etc/sysconfig/SuSEfirewall2.d/services/TEMPLATE</tt></li>
+<li><tt class="docutils literal">/etc/sysconfig/SuSEfirewall2.d</tt></li>
+<li><tt class="docutils literal"><span class="pre">/etc/sysconfig/rhn/allowed-actions/script</span></tt></li>
+<li><tt class="docutils literal">/etc/sysconfig/rhn</tt></li>
+<li><tt class="docutils literal"><span class="pre">/etc/sysconfig/network-scripts</span></tt></li>
+<li><tt class="docutils literal">/etc/sysconfig/network</tt></li>
+<li><tt class="docutils literal"><span class="pre">/etc/sysconfig/system-config-securitylevel</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">/etc/sysconfig/system-config-firewall</span></tt></li>
+<li><tt class="docutils literal">/etc/sysconfig/sysstat.ioconf</tt></li>
+<li><tt class="docutils literal"><span class="pre">/etc/sysconfig/*.pub</span></tt></li>
 <li><tt class="docutils literal">/etc/sysconfig/kernel</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">*.old</tt></li>
+<li><tt class="docutils literal">/etc/sysconfig/ip*tables</tt></li>
+<li><tt class="docutils literal">/etc/sysconfig/hwconf</tt></li>
+<li><tt class="docutils literal"><span class="pre">/etc/sysconfig/hw-uuid</span></tt></li>
 <li><tt class="docutils literal">/etc/sysconfig/bootloader</tt></li>
-</ul>
-</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/simplelines-aug.html">Simplelines</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/pam.d/allow.pamlist</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/default/grub_installdevice</tt></li>
-<li><tt class="docutils literal">/etc/cron.d/cron.deny</tt></li>
-<li><tt class="docutils literal">/etc/cron.d/cron.allow</tt></li>
-<li><tt class="docutils literal">/etc/cron.d/at.deny</tt></li>
-<li><tt class="docutils literal">/etc/cron.d/at.allow</tt></li>
-<li><tt class="docutils literal">/etc/cron.deny</tt></li>
-<li><tt class="docutils literal">/etc/cron.allow</tt></li>
-<li><tt class="docutils literal">/etc/at.deny</tt></li>
-<li><tt class="docutils literal">/etc/at.allow</tt></li>
-</ul>
-</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/simplevars-aug.html">Simplevars</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/audit/auditd.conf</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/etc/zabbix/*.conf</span></tt></li>
-<li><tt class="docutils literal">/etc/wgetrc</tt></li>
-<li><tt class="docutils literal">/etc/updatedb.conf</tt></li>
-<li><tt class="docutils literal">/etc/kerneloops.conf</tt></li>
-<li><tt class="docutils literal"><span class="pre">/etc/kernel-img.conf</span></tt></li>
+<li><tt class="docutils literal">/etc/default/whoopsie</tt></li>
+<li><tt class="docutils literal">/etc/default/grub_installdevice*</tt></li>
+<li><tt class="docutils literal">*.old</tt></li>
+<li><tt class="docutils literal">*.bak</tt></li>
+<li><tt class="docutils literal">*.augnew</tt></li>
+<li><tt class="docutils literal">*.augsave</tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-dist</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-bak</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-new</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-old</span></tt></li>
+<li><tt class="docutils literal">*.rpmsave</tt></li>
+<li><tt class="docutils literal">*.rpmnew</tt></li>
+<li><tt class="docutils literal">*~</tt></li>
 </ul>
 </td>
 </tr>
@@ -1434,80 +523,33 @@ together with their default includes and excludes.</p>
 <td>true</td>
 <td><ul class="first last simple">
 <li><tt class="docutils literal">/etc/openldap/slapd.conf</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
 <li><tt class="docutils literal">/etc/ldap/slapd.conf</tt></li>
 </ul>
 </td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/smbusers-aug.html">SmbUsers</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/samba/usermap.txt</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/samba/smbusers</tt></li>
-</ul>
-</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/solaris_system-aug.html">Solaris_System</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/system</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">*.old</tt></li>
-</ul>
-</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/soma-aug.html">Soma</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/somad/soma.cfg</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">*.old</tt></li>
-</ul>
-</td>
+<td>&nbsp;</td>
 </tr>
 <tr><td><a class="reference external" href="docs/references/lenses/files/spacevars-aug.html">Spacevars</a></td>
 <td>true</td>
 <td><ul class="first last simple">
 <li><tt class="docutils literal">/etc/pam_ldap.conf</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">*.old</tt></li>
 <li><tt class="docutils literal"><span class="pre">/etc/libnss-ldap.conf</span></tt></li>
 <li><tt class="docutils literal">/etc/ldap/ldap.conf</tt></li>
 <li><tt class="docutils literal">/etc/ldap.conf</tt></li>
 <li><tt class="docutils literal">/etc/havp/havp.config</tt></li>
 </ul>
 </td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/squid-aug.html">Squid</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/squid/squid.conf</tt></li>
-</ul>
-</td>
 <td><ul class="first last simple">
 <li><tt class="docutils literal">*.old</tt></li>
-</ul>
-</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/ssh-aug.html">Ssh</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">~/.ssh/config</span></tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/ssh/ssh_config</tt></li>
+<li><tt class="docutils literal">*.bak</tt></li>
+<li><tt class="docutils literal">*.augnew</tt></li>
+<li><tt class="docutils literal">*.augsave</tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-dist</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-bak</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-new</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-old</span></tt></li>
+<li><tt class="docutils literal">*.rpmsave</tt></li>
+<li><tt class="docutils literal">*.rpmnew</tt></li>
+<li><tt class="docutils literal">*~</tt></li>
 </ul>
 </td>
 </tr>
@@ -1519,49 +561,29 @@ together with their default includes and excludes.</p>
 </td>
 <td>&nbsp;</td>
 </tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/sssd-aug.html">Sssd</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/sssd/sssd.conf</tt></li>
-</ul>
-</td>
-<td>&nbsp;</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/stunnel-aug.html">Stunnel</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/stunnel/stunnel.conf</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">*.old</tt></li>
-</ul>
-</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/subversion-aug.html">Subversion</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/subversion/servers</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/subversion/config</tt></li>
-</ul>
-</td>
-</tr>
 <tr><td><a class="reference external" href="docs/references/lenses/files/sudoers-aug.html">Sudoers</a></td>
 <td>true</td>
 <td><ul class="first last simple">
 <li><tt class="docutils literal">/etc/opt/csw/sudoers</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">*.old</tt></li>
 <li><tt class="docutils literal">/opt/csw/etc/sudoers</tt></li>
 <li><tt class="docutils literal">/usr/local/etc/sudoers.d/*</tt></li>
 <li><tt class="docutils literal">/etc/sudoers.d/*</tt></li>
 <li><tt class="docutils literal">/usr/local/etc/sudoers</tt></li>
 <li><tt class="docutils literal">/etc/sudoers</tt></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal">*.old</tt></li>
+<li><tt class="docutils literal">*.bak</tt></li>
+<li><tt class="docutils literal">*.augnew</tt></li>
+<li><tt class="docutils literal">*.augsave</tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-dist</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-bak</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-new</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-old</span></tt></li>
+<li><tt class="docutils literal">*.rpmsave</tt></li>
+<li><tt class="docutils literal">*.rpmnew</tt></li>
+<li><tt class="docutils literal">*~</tt></li>
 </ul>
 </td>
 </tr>
@@ -1574,160 +596,58 @@ together with their default includes and excludes.</p>
 <td>true</td>
 <td><ul class="first last simple">
 <li><tt class="docutils literal">/etc/sysctl.d/*</tt></li>
+<li><tt class="docutils literal">/etc/sysctl.conf</tt></li>
 </ul>
 </td>
 <td><ul class="first last simple">
 <li><tt class="docutils literal">/etc/sysctl.d/README</tt></li>
-<li><tt class="docutils literal">/etc/sysctl.conf</tt></li>
-</ul>
-</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/syslog-aug.html">Syslog</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/syslog.conf</tt></li>
-</ul>
-</td>
-<td>&nbsp;</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/systemd-aug.html">Systemd</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/etc/systemd/system/*/*</span></tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
 <li><tt class="docutils literal">*.old</tt></li>
-<li><tt class="docutils literal">/etc/systemd/system/*</tt></li>
-<li><tt class="docutils literal"><span class="pre">/lib/systemd/system/*/*</span></tt></li>
-<li><tt class="docutils literal">/lib/systemd/system/*</tt></li>
+<li><tt class="docutils literal">*.bak</tt></li>
+<li><tt class="docutils literal">*.augnew</tt></li>
+<li><tt class="docutils literal">*.augsave</tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-dist</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-bak</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-new</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-old</span></tt></li>
+<li><tt class="docutils literal">*.rpmsave</tt></li>
+<li><tt class="docutils literal">*.rpmnew</tt></li>
+<li><tt class="docutils literal">*~</tt></li>
 </ul>
 </td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/thttpd-aug.html">Thttpd</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/thttpd/thttpd.conf</tt></li>
-</ul>
-</td>
-<td>&nbsp;</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/up2date-aug.html">Up2date</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/sysconfig/rhn/up2date</tt></li>
-</ul>
-</td>
-<td>&nbsp;</td>
 </tr>
 <tr><td><a class="reference external" href="docs/references/lenses/files/util-aug.html">Util</a></td>
 <td>false</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/vmware_config-aug.html">VMware_Config</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/vmware/config</tt></li>
-</ul>
-</td>
-<td>&nbsp;</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/vfstab-aug.html">Vfstab</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/vfstab</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">*.old</tt></li>
-</ul>
-</td>
-</tr>
 <tr><td><a class="reference external" href="docs/references/lenses/files/vsftpd-aug.html">Vsftpd</a></td>
 <td>true</td>
 <td><ul class="first last simple">
 <li><tt class="docutils literal">/etc/vsftpd/vsftpd.conf</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
 <li><tt class="docutils literal">/etc/vsftpd.conf</tt></li>
 </ul>
 </td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/webmin-aug.html">Webmin</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/etc/webmin/ldap-useradmin/config</span></tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">*.old</tt></li>
-<li><tt class="docutils literal">/etc/webmin/miniserv.conf</tt></li>
-</ul>
-</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/wine-aug.html">Wine</a></td>
-<td>false</td>
 <td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/xendconfsxp-aug.html">Xendconfsxp</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/xend-config.sxp</span></tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">*.old</tt></li>
-</ul>
-</td>
 </tr>
 <tr><td><a class="reference external" href="docs/references/lenses/files/xinetd-aug.html">Xinetd</a></td>
 <td>true</td>
 <td><ul class="first last simple">
 <li><tt class="docutils literal">/etc/xinetd.conf</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">*.old</tt></li>
 <li><tt class="docutils literal">/etc/xinetd.d/*</tt></li>
 </ul>
 </td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/xml-aug.html">Xml</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/xml/catalog</tt></li>
-</ul>
-</td>
 <td><ul class="first last simple">
 <li><tt class="docutils literal">*.old</tt></li>
-<li><tt class="docutils literal"><span class="pre">/etc/xml/*.xml</span></tt></li>
-</ul>
-</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/xorg-aug.html">Xorg</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/etc/X11/xorg.conf.d/*.conf</span></tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">*.old</tt></li>
-<li><tt class="docutils literal">/etc/X11/xorg.conf</tt></li>
-</ul>
-</td>
-</tr>
-<tr><td><a class="reference external" href="docs/references/lenses/files/xymon-aug.html">Xymon</a></td>
-<td>true</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/xymon/pages.cfg</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal">*.old</tt></li>
-<li><tt class="docutils literal">/etc/xymon/hosts.cfg</tt></li>
+<li><tt class="docutils literal">*.bak</tt></li>
+<li><tt class="docutils literal">*.augnew</tt></li>
+<li><tt class="docutils literal">*.augsave</tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-dist</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-bak</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-new</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-old</span></tt></li>
+<li><tt class="docutils literal">*.rpmsave</tt></li>
+<li><tt class="docutils literal">*.rpmnew</tt></li>
+<li><tt class="docutils literal">*~</tt></li>
 </ul>
 </td>
 </tr>
@@ -1735,12 +655,23 @@ together with their default includes and excludes.</p>
 <td>true</td>
 <td><ul class="first last simple">
 <li><tt class="docutils literal">/etc/yum/pluginconf.d/*</tt></li>
+<li><tt class="docutils literal">/etc/yum.repos.d/*</tt></li>
+<li><tt class="docutils literal">/etc/yum.conf</tt></li>
 </ul>
 </td>
 <td><ul class="first last simple">
 <li><tt class="docutils literal">/etc/yum/pluginconf.d/versionlock.list</tt></li>
-<li><tt class="docutils literal">/etc/yum.repos.d/*</tt></li>
-<li><tt class="docutils literal">/etc/yum.conf</tt></li>
+<li><tt class="docutils literal">*.old</tt></li>
+<li><tt class="docutils literal">*.bak</tt></li>
+<li><tt class="docutils literal">*.augnew</tt></li>
+<li><tt class="docutils literal">*.augsave</tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-dist</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-bak</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-new</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-old</span></tt></li>
+<li><tt class="docutils literal">*.rpmsave</tt></li>
+<li><tt class="docutils literal">*.rpmnew</tt></li>
+<li><tt class="docutils literal">*~</tt></li>
 </ul>
 </td>
 </tr>
