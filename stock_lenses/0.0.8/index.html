@@ -90,10 +90,10 @@
 together with their default includes and excludes.</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="47%" />
+<col width="45%" />
 <col width="5%" />
-<col width="19%" />
-<col width="29%" />
+<col width="20%" />
+<col width="30%" />
 </colgroup>
 <thead valign="bottom">
 <tr><th class="head">Lens</th>
@@ -111,21 +111,15 @@ together with their default includes and excludes.</p>
 </td>
 <td>&nbsp;</td>
 </tr>
-<tr><td><a class="reference external" href="../../docs/references/0.0.8/lenses/files/cyrus-aug.html">Cyrus</a></td>
-<td>false</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
 <tr><td><a class="reference external" href="../../docs/references/0.0.8/lenses/files/grub-aug.html">Grub</a></td>
 <td>true</td>
 <td><ul class="first last simple">
 <li><tt class="docutils literal">/etc/grub.conf</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
 <li><tt class="docutils literal">/boot/grub/menu.lst</tt></li>
+<li><tt class="docutils literal">/boot/grub/grub.conf</tt></li>
 </ul>
 </td>
+<td>&nbsp;</td>
 </tr>
 <tr><td><a class="reference external" href="../../docs/references/0.0.8/lenses/files/hosts-aug.html">Hosts</a></td>
 <td>true</td>
@@ -143,16 +137,6 @@ together with their default includes and excludes.</p>
 </td>
 <td>&nbsp;</td>
 </tr>
-<tr><td><a class="reference external" href="../../docs/references/0.0.8/lenses/files/kvf-aug.html">KVF</a></td>
-<td>false</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<tr><td><a class="reference external" href="../../docs/references/0.0.8/lenses/files/migration-aug.html">Migration</a></td>
-<td>false</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
 <tr><td><a class="reference external" href="../../docs/references/0.0.8/lenses/files/pam-aug.html">Pam</a></td>
 <td>true</td>
 <td><ul class="first last simple">
@@ -160,8 +144,19 @@ together with their default includes and excludes.</p>
 </ul>
 </td>
 <td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
-<li><tt class="docutils literal">/etc/pam.conf</tt></li>
+<li><tt class="docutils literal">/etc/pam.d/README</tt></li>
+<li><tt class="docutils literal">/etc/pam.d/allow.pamlist</tt></li>
+<li><tt class="docutils literal">*.old</tt></li>
+<li><tt class="docutils literal">*.bak</tt></li>
+<li><tt class="docutils literal">*.augnew</tt></li>
+<li><tt class="docutils literal">*.augsave</tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-dist</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-bak</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-new</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-old</span></tt></li>
+<li><tt class="docutils literal">*.rpmsave</tt></li>
+<li><tt class="docutils literal">*.rpmnew</tt></li>
+<li><tt class="docutils literal">*~</tt></li>
 </ul>
 </td>
 </tr>
@@ -182,12 +177,23 @@ together with their default includes and excludes.</p>
 <td>true</td>
 <td><ul class="first last simple">
 <li><tt class="docutils literal">/etc/yum/pluginconf.d/*</tt></li>
+<li><tt class="docutils literal">/etc/yum.repos.d/*</tt></li>
+<li><tt class="docutils literal">/etc/yum.conf</tt></li>
 </ul>
 </td>
 <td><ul class="first last simple">
 <li><tt class="docutils literal">/etc/yum/pluginconf.d/versionlock.list</tt></li>
-<li><tt class="docutils literal">/etc/yum.repos.d/*</tt></li>
-<li><tt class="docutils literal">/etc/yum.conf</tt></li>
+<li><tt class="docutils literal">*.old</tt></li>
+<li><tt class="docutils literal">*.bak</tt></li>
+<li><tt class="docutils literal">*.augnew</tt></li>
+<li><tt class="docutils literal">*.augsave</tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-dist</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-bak</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-new</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-old</span></tt></li>
+<li><tt class="docutils literal">*.rpmsave</tt></li>
+<li><tt class="docutils literal">*.rpmnew</tt></li>
+<li><tt class="docutils literal">*~</tt></li>
 </ul>
 </td>
 </tr>

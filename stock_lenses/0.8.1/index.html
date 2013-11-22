@@ -90,10 +90,10 @@
 together with their default includes and excludes.</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="47%" />
+<col width="43%" />
 <col width="4%" />
 <col width="25%" />
-<col width="24%" />
+<col width="28%" />
 </colgroup>
 <thead valign="bottom">
 <tr><th class="head">Lens</th>
@@ -134,7 +134,17 @@ together with their default includes and excludes.</p>
 </ul>
 </td>
 <td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
+<li><tt class="docutils literal">*.old</tt></li>
+<li><tt class="docutils literal">*.bak</tt></li>
+<li><tt class="docutils literal">*.augnew</tt></li>
+<li><tt class="docutils literal">*.augsave</tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-dist</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-bak</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-new</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-old</span></tt></li>
+<li><tt class="docutils literal">*.rpmsave</tt></li>
+<li><tt class="docutils literal">*.rpmnew</tt></li>
+<li><tt class="docutils literal">*~</tt></li>
 </ul>
 </td>
 </tr>
@@ -142,11 +152,21 @@ together with their default includes and excludes.</p>
 <td>true</td>
 <td><ul class="first last simple">
 <li><tt class="docutils literal">/etc/apt/sources.list.d/*</tt></li>
+<li><tt class="docutils literal">/etc/apt/sources.list</tt></li>
 </ul>
 </td>
 <td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
-<li><tt class="docutils literal">/etc/apt/sources.list</tt></li>
+<li><tt class="docutils literal">*.old</tt></li>
+<li><tt class="docutils literal">*.bak</tt></li>
+<li><tt class="docutils literal">*.augnew</tt></li>
+<li><tt class="docutils literal">*.augsave</tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-dist</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-bak</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-new</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-old</span></tt></li>
+<li><tt class="docutils literal">*.rpmsave</tt></li>
+<li><tt class="docutils literal">*.rpmnew</tt></li>
+<li><tt class="docutils literal">*~</tt></li>
 </ul>
 </td>
 </tr>
@@ -157,7 +177,17 @@ together with their default includes and excludes.</p>
 </ul>
 </td>
 <td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
+<li><tt class="docutils literal">*.old</tt></li>
+<li><tt class="docutils literal">*.bak</tt></li>
+<li><tt class="docutils literal">*.augnew</tt></li>
+<li><tt class="docutils literal">*.augsave</tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-dist</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-bak</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-new</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-old</span></tt></li>
+<li><tt class="docutils literal">*.rpmsave</tt></li>
+<li><tt class="docutils literal">*.rpmnew</tt></li>
+<li><tt class="docutils literal">*~</tt></li>
 </ul>
 </td>
 </tr>
@@ -202,11 +232,25 @@ together with their default includes and excludes.</p>
 <td>true</td>
 <td><ul class="first last simple">
 <li><tt class="docutils literal">/etc/crontab</tt></li>
+<li><tt class="docutils literal">/etc/cron.d/*</tt></li>
 </ul>
 </td>
 <td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
-<li><tt class="docutils literal">/etc/cron.d/*</tt></li>
+<li><tt class="docutils literal">/etc/cron.d/cron.deny</tt></li>
+<li><tt class="docutils literal">/etc/cron.d/cron.allow</tt></li>
+<li><tt class="docutils literal">/etc/cron.d/at.deny</tt></li>
+<li><tt class="docutils literal">/etc/cron.d/at.allow</tt></li>
+<li><tt class="docutils literal">*.old</tt></li>
+<li><tt class="docutils literal">*.bak</tt></li>
+<li><tt class="docutils literal">*.augnew</tt></li>
+<li><tt class="docutils literal">*.augsave</tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-dist</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-bak</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-new</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-old</span></tt></li>
+<li><tt class="docutils literal">*.rpmsave</tt></li>
+<li><tt class="docutils literal">*.rpmnew</tt></li>
+<li><tt class="docutils literal">*~</tt></li>
 </ul>
 </td>
 </tr>
@@ -218,11 +262,6 @@ together with their default includes and excludes.</p>
 </td>
 <td>&nbsp;</td>
 </tr>
-<tr><td><a class="reference external" href="../../docs/references/0.8.1/lenses/files/cyrus-aug.html">Cyrus</a></td>
-<td>false</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
 <tr><td><a class="reference external" href="../../docs/references/0.8.1/lenses/files/darkice-aug.html">Darkice</a></td>
 <td>true</td>
 <td><ul class="first last simple">
@@ -230,7 +269,17 @@ together with their default includes and excludes.</p>
 </ul>
 </td>
 <td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
+<li><tt class="docutils literal">*.old</tt></li>
+<li><tt class="docutils literal">*.bak</tt></li>
+<li><tt class="docutils literal">*.augnew</tt></li>
+<li><tt class="docutils literal">*.augsave</tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-dist</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-bak</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-new</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-old</span></tt></li>
+<li><tt class="docutils literal">*.rpmsave</tt></li>
+<li><tt class="docutils literal">*.rpmnew</tt></li>
+<li><tt class="docutils literal">*~</tt></li>
 </ul>
 </td>
 </tr>
@@ -257,7 +306,17 @@ together with their default includes and excludes.</p>
 </ul>
 </td>
 <td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
+<li><tt class="docutils literal">*.old</tt></li>
+<li><tt class="docutils literal">*.bak</tt></li>
+<li><tt class="docutils literal">*.augnew</tt></li>
+<li><tt class="docutils literal">*.augsave</tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-dist</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-bak</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-new</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-old</span></tt></li>
+<li><tt class="docutils literal">*.rpmsave</tt></li>
+<li><tt class="docutils literal">*.rpmnew</tt></li>
+<li><tt class="docutils literal">*~</tt></li>
 </ul>
 </td>
 </tr>
@@ -265,12 +324,22 @@ together with their default includes and excludes.</p>
 <td>true</td>
 <td><ul class="first last simple">
 <li><tt class="docutils literal">/etc/dhcpd.conf</tt></li>
+<li><tt class="docutils literal">/etc/dhcp/dhcpd.conf</tt></li>
+<li><tt class="docutils literal">/etc/dhcp3/dhcpd.conf</tt></li>
 </ul>
 </td>
 <td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
-<li><tt class="docutils literal">/etc/dhcp/dhcpd.conf</tt></li>
-<li><tt class="docutils literal">/etc/dhcp3/dhcpd.conf</tt></li>
+<li><tt class="docutils literal">*.old</tt></li>
+<li><tt class="docutils literal">*.bak</tt></li>
+<li><tt class="docutils literal">*.augnew</tt></li>
+<li><tt class="docutils literal">*.augsave</tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-dist</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-bak</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-new</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-old</span></tt></li>
+<li><tt class="docutils literal">*.rpmsave</tt></li>
+<li><tt class="docutils literal">*.rpmnew</tt></li>
+<li><tt class="docutils literal">*~</tt></li>
 </ul>
 </td>
 </tr>
@@ -278,11 +347,23 @@ together with their default includes and excludes.</p>
 <td>true</td>
 <td><ul class="first last simple">
 <li><tt class="docutils literal">/etc/dnsmasq.d/*</tt></li>
+<li><tt class="docutils literal">/etc/dnsmasq.conf</tt></li>
 </ul>
 </td>
 <td><ul class="first last simple">
-<li><tt class="docutils literal">/.*</tt></li>
-<li><tt class="docutils literal">/etc/dnsmasq.conf</tt></li>
+<li><tt class="docutils literal">.*</tt></li>
+<li><tt class="docutils literal">#*#</tt></li>
+<li><tt class="docutils literal">*.old</tt></li>
+<li><tt class="docutils literal">*.bak</tt></li>
+<li><tt class="docutils literal">*.augnew</tt></li>
+<li><tt class="docutils literal">*.augsave</tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-dist</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-bak</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-new</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-old</span></tt></li>
+<li><tt class="docutils literal">*.rpmsave</tt></li>
+<li><tt class="docutils literal">*.rpmnew</tt></li>
+<li><tt class="docutils literal">*~</tt></li>
 </ul>
 </td>
 </tr>
@@ -297,12 +378,22 @@ together with their default includes and excludes.</p>
 <tr><td><a class="reference external" href="../../docs/references/0.8.1/lenses/files/dput-aug.html">Dput</a></td>
 <td>true</td>
 <td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/~/.dput.cf</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">~/.dput.cf</span></tt></li>
+<li><tt class="docutils literal">/etc/dput.cf</tt></li>
 </ul>
 </td>
 <td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
-<li><tt class="docutils literal">/etc/dput.cf</tt></li>
+<li><tt class="docutils literal">*.old</tt></li>
+<li><tt class="docutils literal">*.bak</tt></li>
+<li><tt class="docutils literal">*.augnew</tt></li>
+<li><tt class="docutils literal">*.augsave</tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-dist</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-bak</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-new</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-old</span></tt></li>
+<li><tt class="docutils literal">*.rpmsave</tt></li>
+<li><tt class="docutils literal">*.rpmnew</tt></li>
+<li><tt class="docutils literal">*~</tt></li>
 </ul>
 </td>
 </tr>
@@ -326,21 +417,30 @@ together with their default includes and excludes.</p>
 <td>true</td>
 <td><ul class="first last simple">
 <li><tt class="docutils literal">/etc/mtab</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
 <li><tt class="docutils literal">/etc/fstab</tt></li>
 </ul>
 </td>
+<td>&nbsp;</td>
 </tr>
 <tr><td><a class="reference external" href="../../docs/references/0.8.1/lenses/files/gdm-aug.html">Gdm</a></td>
 <td>true</td>
 <td><ul class="first last simple">
+<li><tt class="docutils literal">/etc/gdm/custom.conf</tt></li>
 <li><tt class="docutils literal">/etc/gdm/gdm.conf*</tt></li>
 </ul>
 </td>
 <td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
+<li><tt class="docutils literal">*.old</tt></li>
+<li><tt class="docutils literal">*.bak</tt></li>
+<li><tt class="docutils literal">*.augnew</tt></li>
+<li><tt class="docutils literal">*.augsave</tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-dist</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-bak</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-new</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-old</span></tt></li>
+<li><tt class="docutils literal">*.rpmsave</tt></li>
+<li><tt class="docutils literal">*.rpmnew</tt></li>
+<li><tt class="docutils literal">*~</tt></li>
 </ul>
 </td>
 </tr>
@@ -351,7 +451,17 @@ together with their default includes and excludes.</p>
 </ul>
 </td>
 <td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
+<li><tt class="docutils literal">*.old</tt></li>
+<li><tt class="docutils literal">*.bak</tt></li>
+<li><tt class="docutils literal">*.augnew</tt></li>
+<li><tt class="docutils literal">*.augsave</tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-dist</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-bak</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-new</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-old</span></tt></li>
+<li><tt class="docutils literal">*.rpmsave</tt></li>
+<li><tt class="docutils literal">*.rpmnew</tt></li>
+<li><tt class="docutils literal">*~</tt></li>
 </ul>
 </td>
 </tr>
@@ -359,12 +469,11 @@ together with their default includes and excludes.</p>
 <td>true</td>
 <td><ul class="first last simple">
 <li><tt class="docutils literal">/etc/grub.conf</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
 <li><tt class="docutils literal">/boot/grub/menu.lst</tt></li>
+<li><tt class="docutils literal">/boot/grub/grub.conf</tt></li>
 </ul>
 </td>
+<td>&nbsp;</td>
 </tr>
 <tr><td><a class="reference external" href="../../docs/references/0.8.1/lenses/files/hosts-aug.html">Hosts</a></td>
 <td>true</td>
@@ -378,10 +487,6 @@ together with their default includes and excludes.</p>
 <td>true</td>
 <td><ul class="first last simple">
 <li><tt class="docutils literal">/etc/httpd/conf/httpd.conf</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
 <li><tt class="docutils literal">/etc/httpd/httpd.conf</tt></li>
 <li><tt class="docutils literal"><span class="pre">/etc/httpd/conf.d/*.conf</span></tt></li>
 <li><tt class="docutils literal"><span class="pre">/etc/apache2/sites-available/*</span></tt></li>
@@ -390,6 +495,20 @@ together with their default includes and excludes.</p>
 <li><tt class="docutils literal">/etc/apache2/ports.conf</tt></li>
 <li><tt class="docutils literal">/etc/apache2/httpd.conf</tt></li>
 <li><tt class="docutils literal">/etc/apache2/apache2.conf</tt></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal">*.old</tt></li>
+<li><tt class="docutils literal">*.bak</tt></li>
+<li><tt class="docutils literal">*.augnew</tt></li>
+<li><tt class="docutils literal">*.augsave</tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-dist</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-bak</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-new</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-old</span></tt></li>
+<li><tt class="docutils literal">*.rpmsave</tt></li>
+<li><tt class="docutils literal">*.rpmnew</tt></li>
+<li><tt class="docutils literal">*~</tt></li>
 </ul>
 </td>
 </tr>
@@ -421,7 +540,17 @@ together with their default includes and excludes.</p>
 </ul>
 </td>
 <td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
+<li><tt class="docutils literal">*.old</tt></li>
+<li><tt class="docutils literal">*.bak</tt></li>
+<li><tt class="docutils literal">*.augnew</tt></li>
+<li><tt class="docutils literal">*.augsave</tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-dist</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-bak</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-new</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-old</span></tt></li>
+<li><tt class="docutils literal">*.rpmsave</tt></li>
+<li><tt class="docutils literal">*.rpmnew</tt></li>
+<li><tt class="docutils literal">*~</tt></li>
 </ul>
 </td>
 </tr>
@@ -429,19 +558,12 @@ together with their default includes and excludes.</p>
 <td>true</td>
 <td><ul class="first last simple">
 <li><tt class="docutils literal"><span class="pre">/etc/iptables-save</span></tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
 <li><tt class="docutils literal">/etc/sysconfig/iptables</tt></li>
 </ul>
 </td>
+<td>&nbsp;</td>
 </tr>
 <tr><td><a class="reference external" href="../../docs/references/0.8.1/lenses/files/json-aug.html">Json</a></td>
-<td>false</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<tr><td><a class="reference external" href="../../docs/references/0.8.1/lenses/files/kvf-aug.html">KVF</a></td>
 <td>false</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
@@ -453,7 +575,17 @@ together with their default includes and excludes.</p>
 </ul>
 </td>
 <td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
+<li><tt class="docutils literal">*.old</tt></li>
+<li><tt class="docutils literal">*.bak</tt></li>
+<li><tt class="docutils literal">*.augnew</tt></li>
+<li><tt class="docutils literal">*.augsave</tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-dist</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-bak</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-new</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-old</span></tt></li>
+<li><tt class="docutils literal">*.rpmsave</tt></li>
+<li><tt class="docutils literal">*.rpmnew</tt></li>
+<li><tt class="docutils literal">*~</tt></li>
 </ul>
 </td>
 </tr>
@@ -469,12 +601,10 @@ together with their default includes and excludes.</p>
 <td>true</td>
 <td><ul class="first last simple">
 <li><tt class="docutils literal"><span class="pre">/etc/security/limits.d/*.conf</span></tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
 <li><tt class="docutils literal">/etc/security/limits.conf</tt></li>
 </ul>
 </td>
+<td>&nbsp;</td>
 </tr>
 <tr><td><a class="reference external" href="../../docs/references/0.8.1/lenses/files/login_defs-aug.html">Login_defs</a></td>
 <td>true</td>
@@ -483,7 +613,17 @@ together with their default includes and excludes.</p>
 </ul>
 </td>
 <td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
+<li><tt class="docutils literal">*.old</tt></li>
+<li><tt class="docutils literal">*.bak</tt></li>
+<li><tt class="docutils literal">*.augnew</tt></li>
+<li><tt class="docutils literal">*.augsave</tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-dist</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-bak</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-new</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-old</span></tt></li>
+<li><tt class="docutils literal">*.rpmsave</tt></li>
+<li><tt class="docutils literal">*.rpmnew</tt></li>
+<li><tt class="docutils literal">*~</tt></li>
 </ul>
 </td>
 </tr>
@@ -491,11 +631,21 @@ together with their default includes and excludes.</p>
 <td>true</td>
 <td><ul class="first last simple">
 <li><tt class="docutils literal">/etc/logrotate.conf</tt></li>
+<li><tt class="docutils literal">/etc/logrotate.d/*</tt></li>
 </ul>
 </td>
 <td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
-<li><tt class="docutils literal">/etc/logrotate.d/*</tt></li>
+<li><tt class="docutils literal">*.old</tt></li>
+<li><tt class="docutils literal">*.bak</tt></li>
+<li><tt class="docutils literal">*.augnew</tt></li>
+<li><tt class="docutils literal">*.augsave</tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-dist</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-bak</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-new</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-old</span></tt></li>
+<li><tt class="docutils literal">*.rpmsave</tt></li>
+<li><tt class="docutils literal">*.rpmnew</tt></li>
+<li><tt class="docutils literal">*~</tt></li>
 </ul>
 </td>
 </tr>
@@ -507,11 +657,6 @@ together with their default includes and excludes.</p>
 </td>
 <td>&nbsp;</td>
 </tr>
-<tr><td><a class="reference external" href="../../docs/references/0.8.1/lenses/files/migration-aug.html">Migration</a></td>
-<td>false</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
 <tr><td><a class="reference external" href="../../docs/references/0.8.1/lenses/files/mke2fs-aug.html">Mke2fs</a></td>
 <td>true</td>
 <td><ul class="first last simple">
@@ -519,7 +664,17 @@ together with their default includes and excludes.</p>
 </ul>
 </td>
 <td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
+<li><tt class="docutils literal">*.old</tt></li>
+<li><tt class="docutils literal">*.bak</tt></li>
+<li><tt class="docutils literal">*.augnew</tt></li>
+<li><tt class="docutils literal">*.augsave</tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-dist</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-bak</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-new</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-old</span></tt></li>
+<li><tt class="docutils literal">*.rpmsave</tt></li>
+<li><tt class="docutils literal">*.rpmnew</tt></li>
+<li><tt class="docutils literal">*~</tt></li>
 </ul>
 </td>
 </tr>
@@ -527,12 +682,22 @@ together with their default includes and excludes.</p>
 <td>true</td>
 <td><ul class="first last simple">
 <li><tt class="docutils literal">/etc/modprobe.conf.local</tt></li>
+<li><tt class="docutils literal">/etc/modprobe.d/*</tt></li>
+<li><tt class="docutils literal">/etc/modprobe.conf</tt></li>
 </ul>
 </td>
 <td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
-<li><tt class="docutils literal">/etc/modprobe.d/*</tt></li>
-<li><tt class="docutils literal">/etc/modprobe.conf</tt></li>
+<li><tt class="docutils literal">*.old</tt></li>
+<li><tt class="docutils literal">*.bak</tt></li>
+<li><tt class="docutils literal">*.augnew</tt></li>
+<li><tt class="docutils literal">*.augsave</tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-dist</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-bak</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-new</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-old</span></tt></li>
+<li><tt class="docutils literal">*.rpmsave</tt></li>
+<li><tt class="docutils literal">*.rpmnew</tt></li>
+<li><tt class="docutils literal">*~</tt></li>
 </ul>
 </td>
 </tr>
@@ -540,11 +705,21 @@ together with their default includes and excludes.</p>
 <td>true</td>
 <td><ul class="first last simple">
 <li><tt class="docutils literal">/etc/conf.modules</tt></li>
+<li><tt class="docutils literal">/etc/modules.conf</tt></li>
 </ul>
 </td>
 <td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
-<li><tt class="docutils literal">/etc/modules.conf</tt></li>
+<li><tt class="docutils literal">*.old</tt></li>
+<li><tt class="docutils literal">*.bak</tt></li>
+<li><tt class="docutils literal">*.augnew</tt></li>
+<li><tt class="docutils literal">*.augsave</tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-dist</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-bak</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-new</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-old</span></tt></li>
+<li><tt class="docutils literal">*.rpmsave</tt></li>
+<li><tt class="docutils literal">*.rpmnew</tt></li>
+<li><tt class="docutils literal">*~</tt></li>
 </ul>
 </td>
 </tr>
@@ -555,7 +730,17 @@ together with their default includes and excludes.</p>
 </ul>
 </td>
 <td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
+<li><tt class="docutils literal">*.old</tt></li>
+<li><tt class="docutils literal">*.bak</tt></li>
+<li><tt class="docutils literal">*.augnew</tt></li>
+<li><tt class="docutils literal">*.augsave</tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-dist</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-bak</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-new</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-old</span></tt></li>
+<li><tt class="docutils literal">*.rpmsave</tt></li>
+<li><tt class="docutils literal">*.rpmnew</tt></li>
+<li><tt class="docutils literal">*~</tt></li>
 </ul>
 </td>
 </tr>
@@ -571,12 +756,22 @@ together with their default includes and excludes.</p>
 <td>true</td>
 <td><ul class="first last simple">
 <li><tt class="docutils literal">/etc/my.cnf</tt></li>
+<li><tt class="docutils literal"><span class="pre">/etc/mysql/conf.d/*.cnf</span></tt></li>
+<li><tt class="docutils literal">/etc/mysql/my.cnf</tt></li>
 </ul>
 </td>
 <td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
-<li><tt class="docutils literal"><span class="pre">/etc/mysql/conf.d/*.cnf</span></tt></li>
-<li><tt class="docutils literal">/etc/mysql/my.cnf</tt></li>
+<li><tt class="docutils literal">*.old</tt></li>
+<li><tt class="docutils literal">*.bak</tt></li>
+<li><tt class="docutils literal">*.augnew</tt></li>
+<li><tt class="docutils literal">*.augsave</tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-dist</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-bak</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-new</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-old</span></tt></li>
+<li><tt class="docutils literal">*.rpmsave</tt></li>
+<li><tt class="docutils literal">*.rpmnew</tt></li>
+<li><tt class="docutils literal">*~</tt></li>
 </ul>
 </td>
 </tr>
@@ -587,7 +782,19 @@ together with their default includes and excludes.</p>
 </ul>
 </td>
 <td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
+<li><tt class="docutils literal">/etc/nagios3/resource.cfg</tt></li>
+<li><tt class="docutils literal">/etc/nagios3/commands.cfg</tt></li>
+<li><tt class="docutils literal">*.old</tt></li>
+<li><tt class="docutils literal">*.bak</tt></li>
+<li><tt class="docutils literal">*.augnew</tt></li>
+<li><tt class="docutils literal">*.augsave</tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-dist</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-bak</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-new</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-old</span></tt></li>
+<li><tt class="docutils literal">*.rpmsave</tt></li>
+<li><tt class="docutils literal">*.rpmnew</tt></li>
+<li><tt class="docutils literal">*~</tt></li>
 </ul>
 </td>
 </tr>
@@ -598,7 +805,17 @@ together with their default includes and excludes.</p>
 </ul>
 </td>
 <td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
+<li><tt class="docutils literal">*.old</tt></li>
+<li><tt class="docutils literal">*.bak</tt></li>
+<li><tt class="docutils literal">*.augnew</tt></li>
+<li><tt class="docutils literal">*.augsave</tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-dist</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-bak</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-new</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-old</span></tt></li>
+<li><tt class="docutils literal">*.rpmsave</tt></li>
+<li><tt class="docutils literal">*.rpmnew</tt></li>
+<li><tt class="docutils literal">*~</tt></li>
 </ul>
 </td>
 </tr>
@@ -606,11 +823,21 @@ together with their default includes and excludes.</p>
 <td>true</td>
 <td><ul class="first last simple">
 <li><tt class="docutils literal">/etc/nagios/nrpe.cfg</tt></li>
+<li><tt class="docutils literal">/etc/nrpe.cfg</tt></li>
 </ul>
 </td>
 <td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
-<li><tt class="docutils literal">/etc/nrpe.cfg</tt></li>
+<li><tt class="docutils literal">*.old</tt></li>
+<li><tt class="docutils literal">*.bak</tt></li>
+<li><tt class="docutils literal">*.augnew</tt></li>
+<li><tt class="docutils literal">*.augsave</tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-dist</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-bak</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-new</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-old</span></tt></li>
+<li><tt class="docutils literal">*.rpmsave</tt></li>
+<li><tt class="docutils literal">*.rpmnew</tt></li>
+<li><tt class="docutils literal">*~</tt></li>
 </ul>
 </td>
 </tr>
@@ -621,7 +848,17 @@ together with their default includes and excludes.</p>
 </ul>
 </td>
 <td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
+<li><tt class="docutils literal">*.old</tt></li>
+<li><tt class="docutils literal">*.bak</tt></li>
+<li><tt class="docutils literal">*.augnew</tt></li>
+<li><tt class="docutils literal">*.augsave</tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-dist</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-bak</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-new</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-old</span></tt></li>
+<li><tt class="docutils literal">*.rpmsave</tt></li>
+<li><tt class="docutils literal">*.rpmnew</tt></li>
+<li><tt class="docutils literal">*~</tt></li>
 </ul>
 </td>
 </tr>
@@ -632,7 +869,17 @@ together with their default includes and excludes.</p>
 </ul>
 </td>
 <td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
+<li><tt class="docutils literal">*.old</tt></li>
+<li><tt class="docutils literal">*.bak</tt></li>
+<li><tt class="docutils literal">*.augnew</tt></li>
+<li><tt class="docutils literal">*.augsave</tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-dist</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-bak</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-new</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-old</span></tt></li>
+<li><tt class="docutils literal">*.rpmsave</tt></li>
+<li><tt class="docutils literal">*.rpmnew</tt></li>
+<li><tt class="docutils literal">*~</tt></li>
 </ul>
 </td>
 </tr>
@@ -640,36 +887,42 @@ together with their default includes and excludes.</p>
 <td>true</td>
 <td><ul class="first last simple">
 <li><tt class="docutils literal">/etc/odbcinst.ini</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
 <li><tt class="docutils literal">/etc/odbc.ini</tt></li>
 </ul>
 </td>
+<td>&nbsp;</td>
 </tr>
 <tr><td><a class="reference external" href="../../docs/references/0.8.1/lenses/files/openvpn-aug.html">OpenVPN</a></td>
 <td>true</td>
 <td><ul class="first last simple">
 <li><tt class="docutils literal">/etc/openvpn/server.conf</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
 <li><tt class="docutils literal">/etc/openvpn/client.conf</tt></li>
 </ul>
 </td>
+<td>&nbsp;</td>
 </tr>
 <tr><td><a class="reference external" href="../../docs/references/0.8.1/lenses/files/php-aug.html">PHP</a></td>
 <td>true</td>
 <td><ul class="first last simple">
 <li><tt class="docutils literal"><span class="pre">/usr/local/zend/etc/conf.d/*.ini</span></tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
 <li><tt class="docutils literal">/usr/local/zend/etc/php.ini</tt></li>
 <li><tt class="docutils literal"><span class="pre">/etc/php.d/*.ini</span></tt></li>
 <li><tt class="docutils literal">/etc/php.ini</tt></li>
 <li><tt class="docutils literal"><span class="pre">/etc/php*/*/*.ini</span></tt></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal">*.old</tt></li>
+<li><tt class="docutils literal">*.bak</tt></li>
+<li><tt class="docutils literal">*.augnew</tt></li>
+<li><tt class="docutils literal">*.augsave</tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-dist</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-bak</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-new</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-old</span></tt></li>
+<li><tt class="docutils literal">*.rpmsave</tt></li>
+<li><tt class="docutils literal">*.rpmnew</tt></li>
+<li><tt class="docutils literal">*~</tt></li>
 </ul>
 </td>
 </tr>
@@ -680,8 +933,19 @@ together with their default includes and excludes.</p>
 </ul>
 </td>
 <td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
-<li><tt class="docutils literal">/etc/pam.conf</tt></li>
+<li><tt class="docutils literal">/etc/pam.d/README</tt></li>
+<li><tt class="docutils literal">/etc/pam.d/allow.pamlist</tt></li>
+<li><tt class="docutils literal">*.old</tt></li>
+<li><tt class="docutils literal">*.bak</tt></li>
+<li><tt class="docutils literal">*.augnew</tt></li>
+<li><tt class="docutils literal">*.augsave</tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-dist</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-bak</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-new</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-old</span></tt></li>
+<li><tt class="docutils literal">*.rpmsave</tt></li>
+<li><tt class="docutils literal">*.rpmnew</tt></li>
+<li><tt class="docutils literal">*~</tt></li>
 </ul>
 </td>
 </tr>
@@ -692,7 +956,17 @@ together with their default includes and excludes.</p>
 </ul>
 </td>
 <td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
+<li><tt class="docutils literal">*.old</tt></li>
+<li><tt class="docutils literal">*.bak</tt></li>
+<li><tt class="docutils literal">*.augnew</tt></li>
+<li><tt class="docutils literal">*.augsave</tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-dist</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-bak</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-new</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-old</span></tt></li>
+<li><tt class="docutils literal">*.rpmsave</tt></li>
+<li><tt class="docutils literal">*.rpmnew</tt></li>
+<li><tt class="docutils literal">*~</tt></li>
 </ul>
 </td>
 </tr>
@@ -700,23 +974,20 @@ together with their default includes and excludes.</p>
 <td>true</td>
 <td><ul class="first last simple">
 <li><tt class="docutils literal">/etc/pbuilderrc</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
 <li><tt class="docutils literal">/etc/pbuilder/pbuilderrc</tt></li>
 </ul>
 </td>
+<td>&nbsp;</td>
 </tr>
 <tr><td><a class="reference external" href="../../docs/references/0.8.1/lenses/files/pg_hba-aug.html">Pg_Hba</a></td>
 <td>true</td>
 <td><ul class="first last simple">
 <li><tt class="docutils literal"><span class="pre">/etc/postgresql/*/*/pg_hba.conf</span></tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">/var/lib/pgsql/*/data/pg_hba.conf</span></tt></li>
 <li><tt class="docutils literal">/var/lib/pgsql/data/pg_hba.conf</tt></li>
 </ul>
 </td>
+<td>&nbsp;</td>
 </tr>
 <tr><td><a class="reference external" href="../../docs/references/0.8.1/lenses/files/phpvars-aug.html">Phpvars</a></td>
 <td>true</td>
@@ -725,7 +996,17 @@ together with their default includes and excludes.</p>
 </ul>
 </td>
 <td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
+<li><tt class="docutils literal">*.old</tt></li>
+<li><tt class="docutils literal">*.bak</tt></li>
+<li><tt class="docutils literal">*.augnew</tt></li>
+<li><tt class="docutils literal">*.augsave</tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-dist</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-bak</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-new</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-old</span></tt></li>
+<li><tt class="docutils literal">*.rpmsave</tt></li>
+<li><tt class="docutils literal">*.rpmnew</tt></li>
+<li><tt class="docutils literal">*~</tt></li>
 </ul>
 </td>
 </tr>
@@ -744,7 +1025,17 @@ together with their default includes and excludes.</p>
 </ul>
 </td>
 <td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
+<li><tt class="docutils literal">*.old</tt></li>
+<li><tt class="docutils literal">*.bak</tt></li>
+<li><tt class="docutils literal">*.augnew</tt></li>
+<li><tt class="docutils literal">*.augsave</tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-dist</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-bak</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-new</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-old</span></tt></li>
+<li><tt class="docutils literal">*.rpmsave</tt></li>
+<li><tt class="docutils literal">*.rpmnew</tt></li>
+<li><tt class="docutils literal">*~</tt></li>
 </ul>
 </td>
 </tr>
@@ -755,13 +1046,25 @@ together with their default includes and excludes.</p>
 </ul>
 </td>
 <td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
+<li><tt class="docutils literal">*.old</tt></li>
+<li><tt class="docutils literal">*.bak</tt></li>
+<li><tt class="docutils literal">*.augnew</tt></li>
+<li><tt class="docutils literal">*.augsave</tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-dist</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-bak</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-new</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-old</span></tt></li>
+<li><tt class="docutils literal">*.rpmsave</tt></li>
+<li><tt class="docutils literal">*.rpmnew</tt></li>
+<li><tt class="docutils literal">*~</tt></li>
 </ul>
 </td>
 </tr>
 <tr><td><a class="reference external" href="../../docs/references/0.8.1/lenses/files/puppet-aug.html">Puppet</a></td>
 <td>true</td>
 <td><ul class="first last simple">
+<li><tt class="docutils literal">/etc/puppetlabs/puppet/puppet.conf</tt></li>
+<li><tt class="docutils literal">/usr/local/etc/puppet/puppet.conf</tt></li>
 <li><tt class="docutils literal">/etc/puppet/puppet.conf</tt></li>
 </ul>
 </td>
@@ -770,6 +1073,8 @@ together with their default includes and excludes.</p>
 <tr><td><a class="reference external" href="../../docs/references/0.8.1/lenses/files/puppetfileserver-aug.html">PuppetFileserver</a></td>
 <td>true</td>
 <td><ul class="first last simple">
+<li><tt class="docutils literal">/etc/puppetlabs/puppet/fileserver.conf</tt></li>
+<li><tt class="docutils literal">/usr/local/etc/puppet/fileserver.conf</tt></li>
 <li><tt class="docutils literal">/etc/puppet/fileserver.conf</tt></li>
 </ul>
 </td>
@@ -782,7 +1087,17 @@ together with their default includes and excludes.</p>
 </ul>
 </td>
 <td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
+<li><tt class="docutils literal">*.old</tt></li>
+<li><tt class="docutils literal">*.bak</tt></li>
+<li><tt class="docutils literal">*.augnew</tt></li>
+<li><tt class="docutils literal">*.augsave</tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-dist</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-bak</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-new</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-old</span></tt></li>
+<li><tt class="docutils literal">*.rpmsave</tt></li>
+<li><tt class="docutils literal">*.rpmnew</tt></li>
+<li><tt class="docutils literal">*~</tt></li>
 </ul>
 </td>
 </tr>
@@ -806,7 +1121,17 @@ together with their default includes and excludes.</p>
 </ul>
 </td>
 <td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
+<li><tt class="docutils literal">*.old</tt></li>
+<li><tt class="docutils literal">*.bak</tt></li>
+<li><tt class="docutils literal">*.augnew</tt></li>
+<li><tt class="docutils literal">*.augsave</tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-dist</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-bak</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-new</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-old</span></tt></li>
+<li><tt class="docutils literal">*.rpmsave</tt></li>
+<li><tt class="docutils literal">*.rpmnew</tt></li>
+<li><tt class="docutils literal">*~</tt></li>
 </ul>
 </td>
 </tr>
@@ -838,73 +1163,89 @@ together with their default includes and excludes.</p>
 </ul>
 </td>
 <td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
+<li><tt class="docutils literal">*.old</tt></li>
+<li><tt class="docutils literal">*.bak</tt></li>
+<li><tt class="docutils literal">*.augnew</tt></li>
+<li><tt class="docutils literal">*.augsave</tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-dist</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-bak</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-new</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-old</span></tt></li>
+<li><tt class="docutils literal">*.rpmsave</tt></li>
+<li><tt class="docutils literal">*.rpmnew</tt></li>
+<li><tt class="docutils literal">*~</tt></li>
 </ul>
 </td>
 </tr>
 <tr><td><a class="reference external" href="../../docs/references/0.8.1/lenses/files/shellvars-aug.html">Shellvars</a></td>
 <td>true</td>
 <td><ul class="first last simple">
-<li><tt class="docutils literal">/etc/sysconfig/xendomains</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
-<li><tt class="docutils literal">/etc/sysconfig/xend</tt></li>
-<li><tt class="docutils literal">/etc/sysconfig/wpa_supplicant</tt></li>
-<li><tt class="docutils literal">/etc/sysconfig/vncservers</tt></li>
-<li><tt class="docutils literal"><span class="pre">/etc/sysconfig/system-config-users</span></tt></li>
-<li><tt class="docutils literal">/etc/sysconfig/sysstat</tt></li>
-<li><tt class="docutils literal">/etc/sysconfig/suseconfig</tt></li>
-<li><tt class="docutils literal">/etc/sysconfig/spamassassin</tt></li>
-<li><tt class="docutils literal">/etc/sysconfig/snmptrapd.options</tt></li>
-<li><tt class="docutils literal">/etc/sysconfig/snmptrapd</tt></li>
-<li><tt class="docutils literal">/etc/sysconfig/snmpd.options</tt></li>
-<li><tt class="docutils literal">/etc/sysconfig/snmpd</tt></li>
-<li><tt class="docutils literal">/etc/sysconfig/smartmontools</tt></li>
-<li><tt class="docutils literal">/etc/sysconfig/sendmail</tt></li>
-<li><tt class="docutils literal">/etc/sysconfig/selinux</tt></li>
-<li><tt class="docutils literal">/etc/sysconfig/saslauthd</tt></li>
-<li><tt class="docutils literal">/etc/sysconfig/samba</tt></li>
-<li><tt class="docutils literal">/etc/sysconfig/rsyslog</tt></li>
-<li><tt class="docutils literal"><span class="pre">/etc/sysconfig/readonly-root</span></tt></li>
-<li><tt class="docutils literal">/etc/sysconfig/puppetmaster</tt></li>
-<li><tt class="docutils literal">/etc/sysconfig/puppet</tt></li>
-<li><tt class="docutils literal">/etc/sysconfig/prelink</tt></li>
-<li><tt class="docutils literal">/etc/sysconfig/ntpd</tt></li>
-<li><tt class="docutils literal">/etc/sysconfig/nfs</tt></li>
-<li><tt class="docutils literal">/etc/sysconfig/network</tt></li>
-<li><tt class="docutils literal">/etc/sysconfig/netconsole</tt></li>
-<li><tt class="docutils literal">/etc/sysconfig/nasd</tt></li>
-<li><tt class="docutils literal">/etc/sysconfig/lircd</tt></li>
-<li><tt class="docutils literal">/etc/sysconfig/libvirtd</tt></li>
-<li><tt class="docutils literal">/etc/sysconfig/kudzu</tt></li>
-<li><tt class="docutils literal">/etc/sysconfig/keyboard</tt></li>
-<li><tt class="docutils literal">/etc/sysconfig/kdump</tt></li>
-<li><tt class="docutils literal">/etc/sysconfig/irqbalance</tt></li>
-<li><tt class="docutils literal">/etc/sysconfig/irda</tt></li>
-<li><tt class="docutils literal"><span class="pre">/etc/sysconfig/iptables-config</span></tt></li>
-<li><tt class="docutils literal">/etc/sysconfig/init</tt></li>
-<li><tt class="docutils literal">/etc/sysconfig/i18n</tt></li>
-<li><tt class="docutils literal">/etc/sysconfig/httpd</tt></li>
-<li><tt class="docutils literal">/etc/sysconfig/hsqldb</tt></li>
-<li><tt class="docutils literal">/etc/sysconfig/grub</tt></li>
-<li><tt class="docutils literal">/etc/sysconfig/firstboot</tt></li>
-<li><tt class="docutils literal">/etc/sysconfig/desktop</tt></li>
-<li><tt class="docutils literal">/etc/sysconfig/crontab</tt></li>
-<li><tt class="docutils literal">/etc/sysconfig/crond</tt></li>
-<li><tt class="docutils literal">/etc/sysconfig/cpuspeed</tt></li>
-<li><tt class="docutils literal">/etc/sysconfig/clock</tt></li>
-<li><tt class="docutils literal">/etc/sysconfig/autofs</tt></li>
-<li><tt class="docutils literal">/etc/sysconfig/authconfig</tt></li>
-<li><tt class="docutils literal">/etc/sysconfig/atd</tt></li>
-<li><tt class="docutils literal"><span class="pre">/etc/sysconfig/network/ifcfg-*</span></tt></li>
+<li><tt class="docutils literal">/etc/sysconfig/SuSEfirewall2.d/services/*</tt></li>
+<li><tt class="docutils literal">/etc/sysconfig/SuSEfirewall2.d/cobbler</tt></li>
+<li><tt class="docutils literal">/etc/sysconfig/rhn/rhnsd</tt></li>
+<li><tt class="docutils literal"><span class="pre">/etc/sysconfig/rhn/allowed-actions/script/*</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">/etc/sysconfig/rhn/allowed-actions/*</span></tt></li>
 <li><tt class="docutils literal"><span class="pre">/etc/sysconfig/network-scripts/ifcfg-*</span></tt></li>
+<li><tt class="docutils literal">/etc/sysconfig/network/providers/*</tt></li>
+<li><tt class="docutils literal"><span class="pre">/etc/sysconfig/network/if-up.d/*</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">/etc/sysconfig/network/ifroute-*</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">/etc/sysconfig/network/if-down.d/*</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">/etc/sysconfig/network/ifcfg-*</span></tt></li>
+<li><tt class="docutils literal">/etc/sysconfig/network/dhcp6s</tt></li>
+<li><tt class="docutils literal">/etc/sysconfig/network/dhcp6r</tt></li>
+<li><tt class="docutils literal">/etc/sysconfig/network/dhcp</tt></li>
+<li><tt class="docutils literal">/etc/sysconfig/network/config</tt></li>
+<li><tt class="docutils literal">/etc/sysconfig/*</tt></li>
 <li><tt class="docutils literal">/etc/default/*</tt></li>
+<li><tt class="docutils literal">/etc/vconsole.conf</tt></li>
+<li><tt class="docutils literal">/etc/locale.conf</tt></li>
+<li><tt class="docutils literal">/etc/ucf.conf</tt></li>
+<li><tt class="docutils literal">/etc/selinux/config</tt></li>
+<li><tt class="docutils literal">/etc/rc.conf</tt></li>
+<li><tt class="docutils literal"><span class="pre">/etc/popularity-contest.conf</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">/etc/os-release</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">/etc/lsb-release</span></tt></li>
+<li><tt class="docutils literal">/etc/lintianrc</tt></li>
+<li><tt class="docutils literal">/etc/devscripts.conf</tt></li>
+<li><tt class="docutils literal"><span class="pre">/etc/cvs-pserver.conf</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">/etc/cvs-cron.conf</span></tt></li>
+<li><tt class="docutils literal">/etc/cowpoke.conf</tt></li>
+<li><tt class="docutils literal">/etc/adduser.conf</tt></li>
 <li><tt class="docutils literal">/etc/blkid.conf</tt></li>
 <li><tt class="docutils literal">/etc/environment</tt></li>
 <li><tt class="docutils literal"><span class="pre">/etc/cron-apt/config</span></tt></li>
 <li><tt class="docutils literal"><span class="pre">/etc/arno-iptables-firewall/debconf.cfg</span></tt></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal">/etc/sysconfig/SuSEfirewall2.d/services/TEMPLATE</tt></li>
+<li><tt class="docutils literal">/etc/sysconfig/SuSEfirewall2.d</tt></li>
+<li><tt class="docutils literal"><span class="pre">/etc/sysconfig/rhn/allowed-actions/script</span></tt></li>
+<li><tt class="docutils literal">/etc/sysconfig/rhn</tt></li>
+<li><tt class="docutils literal"><span class="pre">/etc/sysconfig/network-scripts</span></tt></li>
+<li><tt class="docutils literal">/etc/sysconfig/network</tt></li>
+<li><tt class="docutils literal"><span class="pre">/etc/sysconfig/system-config-securitylevel</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">/etc/sysconfig/system-config-firewall</span></tt></li>
+<li><tt class="docutils literal">/etc/sysconfig/sysstat.ioconf</tt></li>
+<li><tt class="docutils literal"><span class="pre">/etc/sysconfig/*.pub</span></tt></li>
+<li><tt class="docutils literal">/etc/sysconfig/kernel</tt></li>
+<li><tt class="docutils literal">/etc/sysconfig/ip*tables</tt></li>
+<li><tt class="docutils literal">/etc/sysconfig/hwconf</tt></li>
+<li><tt class="docutils literal"><span class="pre">/etc/sysconfig/hw-uuid</span></tt></li>
+<li><tt class="docutils literal">/etc/sysconfig/bootloader</tt></li>
+<li><tt class="docutils literal">/etc/default/whoopsie</tt></li>
+<li><tt class="docutils literal">/etc/default/grub_installdevice*</tt></li>
+<li><tt class="docutils literal">*.old</tt></li>
+<li><tt class="docutils literal">*.bak</tt></li>
+<li><tt class="docutils literal">*.augnew</tt></li>
+<li><tt class="docutils literal">*.augsave</tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-dist</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-bak</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-new</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-old</span></tt></li>
+<li><tt class="docutils literal">*.rpmsave</tt></li>
+<li><tt class="docutils literal">*.rpmnew</tt></li>
+<li><tt class="docutils literal">*~</tt></li>
 </ul>
 </td>
 </tr>
@@ -912,11 +1253,21 @@ together with their default includes and excludes.</p>
 <td>true</td>
 <td><ul class="first last simple">
 <li><tt class="docutils literal">/etc/sysconfig/kernel</tt></li>
+<li><tt class="docutils literal">/etc/sysconfig/bootloader</tt></li>
 </ul>
 </td>
 <td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
-<li><tt class="docutils literal">/etc/sysconfig/bootloader</tt></li>
+<li><tt class="docutils literal">*.old</tt></li>
+<li><tt class="docutils literal">*.bak</tt></li>
+<li><tt class="docutils literal">*.augnew</tt></li>
+<li><tt class="docutils literal">*.augsave</tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-dist</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-bak</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-new</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-old</span></tt></li>
+<li><tt class="docutils literal">*.rpmsave</tt></li>
+<li><tt class="docutils literal">*.rpmnew</tt></li>
+<li><tt class="docutils literal">*~</tt></li>
 </ul>
 </td>
 </tr>
@@ -924,12 +1275,10 @@ together with their default includes and excludes.</p>
 <td>true</td>
 <td><ul class="first last simple">
 <li><tt class="docutils literal">/etc/openldap/slapd.conf</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
 <li><tt class="docutils literal">/etc/ldap/slapd.conf</tt></li>
 </ul>
 </td>
+<td>&nbsp;</td>
 </tr>
 <tr><td><a class="reference external" href="../../docs/references/0.8.1/lenses/files/solaris_system-aug.html">Solaris_System</a></td>
 <td>true</td>
@@ -938,7 +1287,17 @@ together with their default includes and excludes.</p>
 </ul>
 </td>
 <td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
+<li><tt class="docutils literal">*.old</tt></li>
+<li><tt class="docutils literal">*.bak</tt></li>
+<li><tt class="docutils literal">*.augnew</tt></li>
+<li><tt class="docutils literal">*.augsave</tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-dist</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-bak</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-new</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-old</span></tt></li>
+<li><tt class="docutils literal">*.rpmsave</tt></li>
+<li><tt class="docutils literal">*.rpmnew</tt></li>
+<li><tt class="docutils literal">*~</tt></li>
 </ul>
 </td>
 </tr>
@@ -949,7 +1308,17 @@ together with their default includes and excludes.</p>
 </ul>
 </td>
 <td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
+<li><tt class="docutils literal">*.old</tt></li>
+<li><tt class="docutils literal">*.bak</tt></li>
+<li><tt class="docutils literal">*.augnew</tt></li>
+<li><tt class="docutils literal">*.augsave</tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-dist</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-bak</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-new</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-old</span></tt></li>
+<li><tt class="docutils literal">*.rpmsave</tt></li>
+<li><tt class="docutils literal">*.rpmnew</tt></li>
+<li><tt class="docutils literal">*~</tt></li>
 </ul>
 </td>
 </tr>
@@ -957,14 +1326,24 @@ together with their default includes and excludes.</p>
 <td>true</td>
 <td><ul class="first last simple">
 <li><tt class="docutils literal">/etc/pam_ldap.conf</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
 <li><tt class="docutils literal"><span class="pre">/etc/libnss-ldap.conf</span></tt></li>
 <li><tt class="docutils literal">/etc/ldap/ldap.conf</tt></li>
 <li><tt class="docutils literal">/etc/ldap.conf</tt></li>
 <li><tt class="docutils literal">/etc/havp/havp.config</tt></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal">*.old</tt></li>
+<li><tt class="docutils literal">*.bak</tt></li>
+<li><tt class="docutils literal">*.augnew</tt></li>
+<li><tt class="docutils literal">*.augsave</tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-dist</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-bak</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-new</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-old</span></tt></li>
+<li><tt class="docutils literal">*.rpmsave</tt></li>
+<li><tt class="docutils literal">*.rpmnew</tt></li>
+<li><tt class="docutils literal">*~</tt></li>
 </ul>
 </td>
 </tr>
@@ -975,7 +1354,17 @@ together with their default includes and excludes.</p>
 </ul>
 </td>
 <td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
+<li><tt class="docutils literal">*.old</tt></li>
+<li><tt class="docutils literal">*.bak</tt></li>
+<li><tt class="docutils literal">*.augnew</tt></li>
+<li><tt class="docutils literal">*.augsave</tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-dist</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-bak</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-new</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-old</span></tt></li>
+<li><tt class="docutils literal">*.rpmsave</tt></li>
+<li><tt class="docutils literal">*.rpmnew</tt></li>
+<li><tt class="docutils literal">*~</tt></li>
 </ul>
 </td>
 </tr>
@@ -991,15 +1380,25 @@ together with their default includes and excludes.</p>
 <td>true</td>
 <td><ul class="first last simple">
 <li><tt class="docutils literal">/etc/opt/csw/sudoers</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
 <li><tt class="docutils literal">/opt/csw/etc/sudoers</tt></li>
 <li><tt class="docutils literal">/usr/local/etc/sudoers.d/*</tt></li>
 <li><tt class="docutils literal">/etc/sudoers.d/*</tt></li>
 <li><tt class="docutils literal">/usr/local/etc/sudoers</tt></li>
 <li><tt class="docutils literal">/etc/sudoers</tt></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal">*.old</tt></li>
+<li><tt class="docutils literal">*.bak</tt></li>
+<li><tt class="docutils literal">*.augnew</tt></li>
+<li><tt class="docutils literal">*.augsave</tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-dist</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-bak</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-new</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-old</span></tt></li>
+<li><tt class="docutils literal">*.rpmsave</tt></li>
+<li><tt class="docutils literal">*.rpmnew</tt></li>
+<li><tt class="docutils literal">*~</tt></li>
 </ul>
 </td>
 </tr>
@@ -1011,10 +1410,25 @@ together with their default includes and excludes.</p>
 <tr><td><a class="reference external" href="../../docs/references/0.8.1/lenses/files/sysctl-aug.html">Sysctl</a></td>
 <td>true</td>
 <td><ul class="first last simple">
+<li><tt class="docutils literal">/etc/sysctl.d/*</tt></li>
 <li><tt class="docutils literal">/etc/sysctl.conf</tt></li>
 </ul>
 </td>
-<td>&nbsp;</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal">/etc/sysctl.d/README</tt></li>
+<li><tt class="docutils literal">*.old</tt></li>
+<li><tt class="docutils literal">*.bak</tt></li>
+<li><tt class="docutils literal">*.augnew</tt></li>
+<li><tt class="docutils literal">*.augsave</tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-dist</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-bak</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-new</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-old</span></tt></li>
+<li><tt class="docutils literal">*.rpmsave</tt></li>
+<li><tt class="docutils literal">*.rpmnew</tt></li>
+<li><tt class="docutils literal">*~</tt></li>
+</ul>
+</td>
 </tr>
 <tr><td><a class="reference external" href="../../docs/references/0.8.1/lenses/files/syslog-aug.html">Syslog</a></td>
 <td>true</td>
@@ -1033,22 +1447,30 @@ together with their default includes and excludes.</p>
 <td>true</td>
 <td><ul class="first last simple">
 <li><tt class="docutils literal">/etc/vsftpd/vsftpd.conf</tt></li>
-</ul>
-</td>
-<td><ul class="first last simple">
 <li><tt class="docutils literal">/etc/vsftpd.conf</tt></li>
 </ul>
 </td>
+<td>&nbsp;</td>
 </tr>
 <tr><td><a class="reference external" href="../../docs/references/0.8.1/lenses/files/webmin-aug.html">Webmin</a></td>
 <td>true</td>
 <td><ul class="first last simple">
 <li><tt class="docutils literal"><span class="pre">/etc/webmin/ldap-useradmin/config</span></tt></li>
+<li><tt class="docutils literal">/etc/webmin/miniserv.conf</tt></li>
 </ul>
 </td>
 <td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
-<li><tt class="docutils literal">/etc/webmin/miniserv.conf</tt></li>
+<li><tt class="docutils literal">*.old</tt></li>
+<li><tt class="docutils literal">*.bak</tt></li>
+<li><tt class="docutils literal">*.augnew</tt></li>
+<li><tt class="docutils literal">*.augsave</tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-dist</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-bak</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-new</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-old</span></tt></li>
+<li><tt class="docutils literal">*.rpmsave</tt></li>
+<li><tt class="docutils literal">*.rpmnew</tt></li>
+<li><tt class="docutils literal">*~</tt></li>
 </ul>
 </td>
 </tr>
@@ -1061,11 +1483,21 @@ together with their default includes and excludes.</p>
 <td>true</td>
 <td><ul class="first last simple">
 <li><tt class="docutils literal">/etc/xinetd.conf</tt></li>
+<li><tt class="docutils literal">/etc/xinetd.d/*</tt></li>
 </ul>
 </td>
 <td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
-<li><tt class="docutils literal">/etc/xinetd.d/*</tt></li>
+<li><tt class="docutils literal">*.old</tt></li>
+<li><tt class="docutils literal">*.bak</tt></li>
+<li><tt class="docutils literal">*.augnew</tt></li>
+<li><tt class="docutils literal">*.augsave</tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-dist</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-bak</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-new</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-old</span></tt></li>
+<li><tt class="docutils literal">*.rpmsave</tt></li>
+<li><tt class="docutils literal">*.rpmnew</tt></li>
+<li><tt class="docutils literal">*~</tt></li>
 </ul>
 </td>
 </tr>
@@ -1073,11 +1505,21 @@ together with their default includes and excludes.</p>
 <td>true</td>
 <td><ul class="first last simple">
 <li><tt class="docutils literal">/etc/xml/catalog</tt></li>
+<li><tt class="docutils literal"><span class="pre">/etc/xml/*.xml</span></tt></li>
 </ul>
 </td>
 <td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
-<li><tt class="docutils literal"><span class="pre">/etc/xml/*.xml</span></tt></li>
+<li><tt class="docutils literal">*.old</tt></li>
+<li><tt class="docutils literal">*.bak</tt></li>
+<li><tt class="docutils literal">*.augnew</tt></li>
+<li><tt class="docutils literal">*.augsave</tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-dist</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-bak</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-new</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-old</span></tt></li>
+<li><tt class="docutils literal">*.rpmsave</tt></li>
+<li><tt class="docutils literal">*.rpmnew</tt></li>
+<li><tt class="docutils literal">*~</tt></li>
 </ul>
 </td>
 </tr>
@@ -1085,11 +1527,21 @@ together with their default includes and excludes.</p>
 <td>true</td>
 <td><ul class="first last simple">
 <li><tt class="docutils literal"><span class="pre">/etc/X11/xorg.conf.d/*.conf</span></tt></li>
+<li><tt class="docutils literal">/etc/X11/xorg.conf</tt></li>
 </ul>
 </td>
 <td><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">/*.augnew</span></tt></li>
-<li><tt class="docutils literal">/etc/X11/xorg.conf</tt></li>
+<li><tt class="docutils literal">*.old</tt></li>
+<li><tt class="docutils literal">*.bak</tt></li>
+<li><tt class="docutils literal">*.augnew</tt></li>
+<li><tt class="docutils literal">*.augsave</tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-dist</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-bak</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-new</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-old</span></tt></li>
+<li><tt class="docutils literal">*.rpmsave</tt></li>
+<li><tt class="docutils literal">*.rpmnew</tt></li>
+<li><tt class="docutils literal">*~</tt></li>
 </ul>
 </td>
 </tr>
@@ -1097,12 +1549,23 @@ together with their default includes and excludes.</p>
 <td>true</td>
 <td><ul class="first last simple">
 <li><tt class="docutils literal">/etc/yum/pluginconf.d/*</tt></li>
+<li><tt class="docutils literal">/etc/yum.repos.d/*</tt></li>
+<li><tt class="docutils literal">/etc/yum.conf</tt></li>
 </ul>
 </td>
 <td><ul class="first last simple">
 <li><tt class="docutils literal">/etc/yum/pluginconf.d/versionlock.list</tt></li>
-<li><tt class="docutils literal">/etc/yum.repos.d/*</tt></li>
-<li><tt class="docutils literal">/etc/yum.conf</tt></li>
+<li><tt class="docutils literal">*.old</tt></li>
+<li><tt class="docutils literal">*.bak</tt></li>
+<li><tt class="docutils literal">*.augnew</tt></li>
+<li><tt class="docutils literal">*.augsave</tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-dist</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-bak</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-new</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">*.dpkg-old</span></tt></li>
+<li><tt class="docutils literal">*.rpmsave</tt></li>
+<li><tt class="docutils literal">*.rpmnew</tt></li>
+<li><tt class="docutils literal">*~</tt></li>
 </ul>
 </td>
 </tr>
