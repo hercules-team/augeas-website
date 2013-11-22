@@ -9,7 +9,7 @@ rootdir = ''
 version = nil
 
 OptionParser.new do |opts|
-  opts.banner = "Usage: example.rb [options]"
+  opts.banner = "Usage: list_lenses.rb [options]"
 
   opts.on("-f", "--format FORMAT", "Specify format (html)") do |f|
     format = f
