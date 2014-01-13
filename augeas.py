@@ -15,8 +15,8 @@ def print_entry(page, active):
     if page['thispage']:
         print "<span class='active'>%(link-title)s</span>" % page
     else:
-        if "fh-trac" in page["target"]:
-            page["target"] = "https://fedorahosted.org/augeas/report/1"
+        if "gh-issues" in page["target"]:
+            page["target"] = "https://github.com/hercules-team/augeas/issues"
         if "gh-wiki" in page["target"]:
             page["target"] = "https://github.com/hercules-team/augeas/wiki"
         if active:

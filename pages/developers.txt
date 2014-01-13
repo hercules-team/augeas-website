@@ -40,8 +40,7 @@ on Freenode_. Use the following settings in your IRC client:
 Where is the Bugtracker ?
 -------------------------
 
-Bugs are kept in a `Trac instance`_ on fedorahosted.org. You need to have
-an account in the `Fedora Account System`_ to log into it.
+Bugs are kept in the `GitHub project issues`_.
 
 Where is the source ?
 ---------------------
@@ -178,7 +177,7 @@ git repository`__.
 .. _Freenode: http://freenode.net/
 .. _write a description: docs/writing-schemas.html
 .. _Perl bindings: http://search.cpan.org/dist/Config-Augeas
-.. _Trac instance: https://fedorahosted.org/augeas/report/1
+.. _GitHub project issues: https://github.com/hercules-team/augeas/issues
 .. _Fedora Account System: https://admin.fedoraproject.org/accounts/
 .. _Haskell bindings: http://trac.haskell.org/augeas/
 .. _code.haskell.org: http://code.haskell.org/augeas/

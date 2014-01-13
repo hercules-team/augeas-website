@@ -1,6 +1,6 @@
 .. -*- rst -*-
    restindex
-     target: fh-trac
+     target: gh-issues
      build: no
      page-title: Bug tracker
    /restindex

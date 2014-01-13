@@ -43,4 +43,4 @@ much time, here are some very quick things that would help us tremendously:
   one that is already open about this file.
 
 .. _tickets in the bugtracker: https://fedorahosted.org/augeas/report/9
-.. _ticket in the bugtracker: https://fedorahosted.org/augeas/report
+.. _ticket in the bugtracker: https://github.com/hercules-team/augeas/issues
