@@ -11,7 +11,7 @@ if (browserType) {document.write("<div class=" + browserType + ">");if (browserV
 
 
 
-<div id=Content><div class="CAugeasModule"><div class=CTopic id=MainTopic><h1 class=CTitle><a name="Test_sudoers"></a>Test_sudoers</h1><div class=CBody><!--START_ND_SUMMARY--><div class=Summary><div class=STitle>Summary</div><div class=SBorder><table border=0 cellspacing=0 cellpadding=0 class=STable><tr class="SMain"><td class=SEntry><a href="#Test_sudoers" >Test_sudoers</a></td><td class=SDescription></td></tr><tr class="SGroup SIndent1"><td class=SEntry><a href="#Test_sudoers.Augeas_Tests" >Augeas Tests</a></td><td class=SDescription></td></tr><tr class="SAugeasTest SIndent2 SMarked"><td class=SEntry><a href="#Test_sudoers.test_user" id=link1 onMouseOver="ShowTip(event, 'tt1', 'link1')" onMouseOut="HideTip('tt1')">test_user</a></td><td class=SDescription></td></tr><tr class="SAugeasTest SIndent2"><td class=SEntry><a href="#Test_sudoers.Sudoers.spec" id=link2 onMouseOver="ShowTip(event, 'tt2', 'link2')" onMouseOut="HideTip('tt2')">Sudoers.spec</a></td><td class=SDescription>Spec users can be aliases</td></tr><tr class="SAugeasTest SIndent2 SMarked"><td class=SEntry><a href="#Test_sudoers.Sudoers.spec" id=link3 onMouseOver="ShowTip(event, 'tt2', 'link3')" onMouseOut="HideTip('tt2')">Sudoers.spec</a></td><td class=SDescription>Ticket #337: allow period in user names</td></tr></table></div></div><!--END_ND_SUMMARY--></div></div></div>
+<div id=Content><div class="CAugeasModule"><div class=CTopic id=MainTopic><h1 class=CTitle><a name="Test_sudoers"></a>Test_sudoers</h1><div class=CBody><!--START_ND_SUMMARY--><div class=Summary><div class=STitle>Summary</div><div class=SBorder><table border=0 cellspacing=0 cellpadding=0 class=STable><tr class="SMain"><td class=SEntry><a href="#Test_sudoers" >Test_sudoers</a></td><td class=SDescription></td></tr><tr class="SGroup SIndent1"><td class=SEntry><a href="#Test_sudoers.Augeas_Tests" >Augeas Tests</a></td><td class=SDescription></td></tr><tr class="SAugeasTest SIndent2 SMarked"><td class=SEntry><a href="#Test_sudoers.test_user" id=link1 onMouseOver="ShowTip(event, 'tt1', 'link1')" onMouseOut="HideTip('tt1')">test_user</a></td><td class=SDescription></td></tr><tr class="SAugeasTest SIndent2"><td class=SEntry><a href="#Test_sudoers.Sudoers.spec" id=link2 onMouseOver="ShowTip(event, 'tt2', 'link2')" onMouseOut="HideTip('tt2')">Sudoers.spec</a></td><td class=SDescription>Spec users can be aliases</td></tr><tr class="SAugeasTest SIndent2 SMarked"><td class=SEntry><a href="#Test_sudoers.Sudoers.spec" id=link3 onMouseOver="ShowTip(event, 'tt2', 'link3')" onMouseOut="HideTip('tt2')">Sudoers.spec</a></td><td class=SDescription>Ticket #337: allow period in user names</td></tr><tr class="SAugeasTest SIndent2"><td class=SEntry><a href="#Test_sudoers.Sudoers.spec" id=link4 onMouseOver="ShowTip(event, 'tt2', 'link4')" onMouseOut="HideTip('tt2')">Sudoers.spec</a></td><td class=SDescription>Ticket #370: allow underscore in group names</td></tr><tr class="SAugeasTest SIndent2 SMarked"><td class=SEntry><a href="#Test_sudoers.Sudoers.spec" id=link5 onMouseOver="ShowTip(event, 'tt2', 'link5')" onMouseOut="HideTip('tt2')">Sudoers.spec</a></td><td class=SDescription>Ticket #376: allow uppercase characters in user names</td></tr></table></div></div><!--END_ND_SUMMARY--></div></div></div>
 
 <div class="CGroup"><div class=CTopic><h3 class=CTitle><a name="Test_sudoers.Augeas_Tests"></a>Augeas Tests</h3></div></div>
 
@@ -85,7 +85,29 @@ www-data +biglab=(rpinson)NOEXEC: ICAL \
       { &quot;host&quot; = &quot;somehost&quot; }
       { &quot;command&quot; = &quot;ALL&quot; }
     }
-  }</td></tr></table></blockquote><p>Ticket #337: allow period in user names</p></div></div></div>
+  }
+</td></tr></table></blockquote><p>Ticket #337: allow period in user names</p></div></div></div>
+
+<div class="CAugeasTest"><div class=CTopic><h3 class=CTitle><a name="Test_sudoers.Sudoers.spec"></a>Sudoers.spec</h3><div class=CBody><blockquote><table border=0 cellspacing=0 cellpadding=0 class="Prototype"><tr><td class="prettyprint">test Sudoers.spec get &quot;%sudo_users ALL=(ALL) ALL\n&quot; =
+  { &quot;spec&quot;
+    { &quot;user&quot; = &quot;%sudo_users&quot; }
+    { &quot;host_group&quot;
+      { &quot;host&quot; = &quot;ALL&quot; }
+      { &quot;command&quot; = &quot;ALL&quot;
+        { &quot;runas_user&quot; = &quot;ALL&quot; } }
+    }
+  }
+</td></tr></table></blockquote><p>Ticket #370: allow underscore in group names</p></div></div></div>
+
+<div class="CAugeasTest"><div class=CTopic><h3 class=CTitle><a name="Test_sudoers.Sudoers.spec"></a>Sudoers.spec</h3><div class=CBody><blockquote><table border=0 cellspacing=0 cellpadding=0 class="Prototype"><tr><td class="prettyprint">test Sudoers.spec get &quot;%GrOup ALL = (ALL) ALL\n&quot; =
+  { &quot;spec&quot;
+    { &quot;user&quot; = &quot;%GrOup&quot; }
+    { &quot;host_group&quot;
+      { &quot;host&quot; = &quot;ALL&quot; }
+      { &quot;command&quot; = &quot;ALL&quot;
+        { &quot;runas_user&quot; = &quot;ALL&quot; } }
+    }
+  }</td></tr></table></blockquote><p>Ticket #376: allow uppercase characters in user names</p></div></div></div>
 
 </div><!--Content-->
 

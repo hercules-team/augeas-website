@@ -78,7 +78,7 @@ if (browserType) {document.write("<div class=" + browserType + ">");if (browserV
 
 <div class="CAugeasVariable"><div class=CTopic><h3 class=CTitle><a name="Sudoers.sto_to_com_user"></a>sto_to_com_user</h3><div class=CBody><blockquote><table border=0 cellspacing=0 cellpadding=0 class="Prototype"><tr><td class="prettyprint">let sto_to_com_user =
       let nis_re = /([A-Z]([-A-Z0-9]|(\\\\[ \t]))*+\\\\\\\\)/
-   in let user_re = /[%+@a-z]([-a-z0-9.]|(\\\\[ \t]))*/
+   in let user_re = /[%+@a-z]([-A-Za-z0-9._]|(\\\\[ \t]))*/
    in let alias_re = /[A-Z_]+/
    in store ((nis_re? . user_re) | alias_re)
 </td></tr></table></blockquote><p>Escaped spaces and NIS domains and allowed</p></div></div></div>
@@ -311,7 +311,7 @@ HideAllBut([2], 6);// --></script></div><!--Menu-->
 
 </td></tr></table></blockquote></div></div><div class=CToolTip id="tt14"><div class=CAugeasVariable><blockquote><table border=0 cellspacing=0 cellpadding=0 class="Prototype"><tr><td class="prettyprint">let sto_to_com_user =
       let nis_re = /([A-Z]([-A-Z0-9]|(\\\\[ \t]))*+\\\\\\\\)/
-   in let user_re = /[%+@a-z]([-a-z0-9.]|(\\\\[ \t]))*/
+   in let user_re = /[%+@a-z]([-A-Za-z0-9._]|(\\\\[ \t]))*/
    in let alias_re = /[A-Z_]+/
    in store ((nis_re? . user_re) | alias_re)
 </td></tr></table></blockquote>Escaped spaces and NIS domains and allowed</div></div><div class=CToolTip id="tt15"><div class=CAugeasVariable><blockquote><table border=0 cellspacing=0 cellpadding=0 class="Prototype"><tr><td class="prettyprint">let to_com_chars        = /[^&quot;,=#() \t\n\\]+/ (* &quot; relax emacs *)

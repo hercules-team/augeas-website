@@ -11,12 +11,31 @@ if (browserType) {document.write("<div class=" + browserType + ">");if (browserV
 
 
 
-<div id=Content><div class="CAugeasModule"><div class=CTopic id=MainTopic><h1 class=CTitle><a name="Test_Yum"></a>Test_Yum</h1><div class=CBody><p>Provides unit tests and examples for the &lt;Yum&gt; lens.</p><!--START_ND_SUMMARY--><div class=Summary><div class=STitle>Summary</div><div class=SBorder><table border=0 cellspacing=0 cellpadding=0 class=STable><tr class="SMain"><td class=SEntry><a href="#Test_Yum" >Test_Yum</a></td><td class=SDescription>Provides unit tests and examples for the &lt;Yum&gt; lens.</td></tr><tr class="SGroup SIndent1"><td class=SEntry><a href="#Test_Yum.Augeas_Tests" >Augeas Tests</a></td><td class=SDescription></td></tr><tr class="SAugeasTest SIndent2 SMarked"><td class=SEntry><a href="#Test_Yum.Yum.lns" id=link1 onMouseOver="ShowTip(event, 'tt1', 'link1')" onMouseOut="HideTip('tt1')">Yum.lns</a></td><td class=SDescription>Check that we can parse an empty line, to fix test-save</td></tr></table></div></div><!--END_ND_SUMMARY--></div></div></div>
+<div id=Content><div class="CAugeasModule"><div class=CTopic id=MainTopic><h1 class=CTitle><a name="Test_Yum"></a>Test_Yum</h1><div class=CBody><p>Provides unit tests and examples for the &lt;Yum&gt; lens.</p><!--START_ND_SUMMARY--><div class=Summary><div class=STitle>Summary</div><div class=SBorder><table border=0 cellspacing=0 cellpadding=0 class=STable><tr class="SMain"><td class=SEntry><a href="#Test_Yum" >Test_Yum</a></td><td class=SDescription>Provides unit tests and examples for the &lt;Yum&gt; lens.</td></tr><tr class="SGroup SIndent1"><td class=SEntry><a href="#Test_Yum.Augeas_Tests" >Augeas Tests</a></td><td class=SDescription></td></tr><tr class="SAugeasTest SIndent2 SMarked"><td class=SEntry><a href="#Test_Yum.Yum.lns" id=link1 onMouseOver="ShowTip(event, 'tt1', 'link1')" onMouseOut="HideTip('tt1')">Yum.lns</a></td><td class=SDescription>Check that we can parse an empty line, to fix test-save</td></tr><tr class="SAugeasTest SIndent2"><td class=SEntry><a href="#Test_Yum.Yum.lns" id=link2 onMouseOver="ShowTip(event, 'tt1', 'link2')" onMouseOut="HideTip('tt1')">Yum.lns</a></td><td class=SDescription>Issue #45: allow spaces around equals sign</td></tr><tr class="SAugeasTest SIndent2 SMarked"><td class=SEntry><a href="#Test_Yum.Yum.lns" id=link3 onMouseOver="ShowTip(event, 'tt1', 'link3')" onMouseOut="HideTip('tt1')">Yum.lns</a></td><td class=SDescription>Issue #275: parse excludes as a list</td></tr></table></div></div><!--END_ND_SUMMARY--></div></div></div>
 
 <div class="CGroup"><div class=CTopic><h3 class=CTitle><a name="Test_Yum.Augeas_Tests"></a>Augeas Tests</h3></div></div>
 
 <div class="CAugeasTest"><div class=CTopic><h3 class=CTitle><a name="Test_Yum.Yum.lns"></a>Yum.lns</h3><div class=CBody><blockquote><table border=0 cellspacing=0 cellpadding=0 class="Prototype"><tr><td class="prettyprint">  test Yum.lns get &quot;\n&quot; = { }
 </td></tr></table></blockquote><p>Check that we can parse an empty line, to fix test-save</p></div></div></div>
+
+<div class="CAugeasTest"><div class=CTopic><h3 class=CTitle><a name="Test_Yum.Yum.lns"></a>Yum.lns</h3><div class=CBody><blockquote><table border=0 cellspacing=0 cellpadding=0 class="Prototype"><tr><td class="prettyprint">  test Yum.lns get &quot;[rpmforge]
+name = RHEL $releasever - RPMforge.net - dag
+baseurl = http://apt.sw.be/redhat/el6/en/$basearch/rpmforge\n&quot; =
+    { &quot;rpmforge&quot;
+      { &quot;name&quot; = &quot;RHEL $releasever - RPMforge.net - dag&quot; }
+      { &quot;baseurl&quot; = &quot;http://apt.sw.be/redhat/el6/en/$basearch/rpmforge&quot; }
+    }
+</td></tr></table></blockquote><p>Issue #45: allow spaces around equals sign</p></div></div></div>
+
+<div class="CAugeasTest"><div class=CTopic><h3 class=CTitle><a name="Test_Yum.Yum.lns"></a>Yum.lns</h3><div class=CBody><blockquote><table border=0 cellspacing=0 cellpadding=0 class="Prototype"><tr><td class="prettyprint">  test Yum.lns get &quot;[epel]
+name=Extra Packages for Enterprise Linux 6 - $basearch
+exclude=ocs* clamav*
+&quot; =
+    { &quot;epel&quot;
+      { &quot;name&quot; = &quot;Extra Packages for Enterprise Linux 6 - $basearch&quot; }
+      { &quot;exclude&quot; = &quot;ocs*&quot; }
+      { &quot;exclude&quot; = &quot;clamav*&quot; } }
+</td></tr></table></blockquote><p>Issue #275: parse excludes as a list</p></div></div></div>
 
 </div><!--Content-->
 

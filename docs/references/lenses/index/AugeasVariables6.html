@@ -123,7 +123,7 @@ tmpfs                           /var/opt/hosting/tmp    500             defaults
 
 </td></tr></table></blockquote></div></div><div class=CToolTip id="tt361"><div class=CAugeasVariable><blockquote><table border=0 cellspacing=0 cellpadding=0 class="Prototype"><tr><td class="prettyprint">let sto_to_com_user =
       let nis_re = /([A-Z]([-A-Z0-9]|(\\\\[ \t]))*+\\\\\\\\)/
-   in let user_re = /[%+@a-z]([-a-z0-9.]|(\\\\[ \t]))*/
+   in let user_re = /[%+@a-z]([-A-Za-z0-9._]|(\\\\[ \t]))*/
    in let alias_re = /[A-Z_]+/
    in store ((nis_re? . user_re) | alias_re)
 </td></tr></table></blockquote>Escaped spaces and NIS domains and allowed</div></div><div class=CToolTip id="tt362"><div class=CAugeasVariable><blockquote><table border=0 cellspacing=0 cellpadding=0 class="Prototype"><tr><td class="prettyprint">let sto_to_comment = Sep.opt_space . store /[^# \t\r\n][^#\r\n]*[^# \t\r\n]|[^# \t\r\n]/
