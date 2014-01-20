@@ -132,8 +132,14 @@ Square: ``square LEFT BODY RIGHT``
   into a tree with a root labelled with `u` and children produced
   by processing `v` with ``BODY``.
   This lens makes it possible to process SGML-style languages
-  like XML in a very general fashion; in particular, it is possible to
+  like XML (when ``LEFT`` is of the form ``key RE`` and ``RIGHT``
+  is of the form ``del RE STR``) in a very general fashion;
+  in particular, it is possible to
   write lenses that accept an infinite number of different tags.
+  It can also used used to parse symetric patterns such as quotes
+  (see the ``Quote`` module) when both ``LEFT`` and ``RIGHT`` are
+  of the form ``del RE STR`` (they can actually be identical in
+  this case).
 
 .. [1] The term *lens* was coined by `Harmony and Boomerang`_, systems for
    constructing bidirectional maps between trees and between strings,
