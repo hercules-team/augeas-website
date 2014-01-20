@@ -123,15 +123,17 @@ Subtree: ``[ L ]``
   constructed by ``L``. ``L`` can contain at most one ``key``, ``label`` or
   ``seq`` lens and at most one ``store`` lens. The typechecker will reject
   violations.
-Square: ``square RE LENS``
-  Produce the same effect as ``key RE . LENS . del STR STR`` with the
-  constraint that ``STR`` is the string matched by ``key RE``. This lens
-  makes it possible to process (generalized) squares, words of the form
-  `uvu`; a matching square lens would transform `uvu` into a tree with a
-  root labelled with `u` and children produced by processing `v` with
-  ``LENS``. This lens makes it possible to process SGML-style languages
+Square: ``square LEFT BODY RIGHT``
+  Where ``LEFT``, ``BODY`` and ``RIGHT`` are three lenses, and ``LEFT``
+  and ``RIGHT`` accept the same language, and captured strings by ``LEFT``
+  and ``RIGHT`` must match.
+  This lens makes it possible to process (generalized) squares,
+  words of the form `uvu`; a matching square lens would transform `uvu`
+  into a tree with a root labelled with `u` and children produced
+  by processing `v` with ``BODY``.
+  This lens makes it possible to process SGML-style languages
   like XML in a very general fashion; in particular, it is possible to
-  write lenses that accept an infinte number of different tags.
+  write lenses that accept an infinite number of different tags.
 
 .. [1] The term *lens* was coined by `Harmony and Boomerang`_, systems for
    constructing bidirectional maps between trees and between strings,
