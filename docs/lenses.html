@@ -213,15 +213,17 @@ are set to <tt class="docutils literal">NULL</tt>. The children of the new node 
 constructed by <tt class="docutils literal">L</tt>. <tt class="docutils literal">L</tt> can contain at most one <tt class="docutils literal">key</tt>, <tt class="docutils literal">label</tt> or
 <tt class="docutils literal">seq</tt> lens and at most one <tt class="docutils literal">store</tt> lens. The typechecker will reject
 violations.</dd>
-<dt>Square: <tt class="docutils literal">square RE LENS</tt></dt>
-<dd>Produce the same effect as <tt class="docutils literal">key RE . LENS . del STR STR</tt> with the
-constraint that <tt class="docutils literal">STR</tt> is the string matched by <tt class="docutils literal">key RE</tt>. This lens
-makes it possible to process (generalized) squares, words of the form
-<cite>uvu</cite>; a matching square lens would transform <cite>uvu</cite> into a tree with a
-root labelled with <cite>u</cite> and children produced by processing <cite>v</cite> with
-<tt class="docutils literal">LENS</tt>. This lens makes it possible to process SGML-style languages
+<dt>Square: <tt class="docutils literal">square LEFT BODY RIGHT</tt></dt>
+<dd>Where <tt class="docutils literal">LEFT</tt>, <tt class="docutils literal">BODY</tt> and <tt class="docutils literal">RIGHT</tt> are three lenses, and <tt class="docutils literal">LEFT</tt>
+and <tt class="docutils literal">RIGHT</tt> accept the same language, and captured strings by <tt class="docutils literal">LEFT</tt>
+and <tt class="docutils literal">RIGHT</tt> must match.
+This lens makes it possible to process (generalized) squares,
+words of the form <cite>uvu</cite>; a matching square lens would transform <cite>uvu</cite>
+into a tree with a root labelled with <cite>u</cite> and children produced
+by processing <cite>v</cite> with <tt class="docutils literal">BODY</tt>.
+This lens makes it possible to process SGML-style languages
 like XML in a very general fashion; in particular, it is possible to
-write lenses that accept an infinte number of different tags.</dd>
+write lenses that accept an infinite number of different tags.</dd>
 </dl>
 <table class="docutils footnote" frame="void" id="id2" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
