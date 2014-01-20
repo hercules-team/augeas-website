@@ -136,7 +136,7 @@ Square: ``square LEFT BODY RIGHT``
   is of the form ``del RE STR``) in a very general fashion;
   in particular, it is possible to
   write lenses that accept an infinite number of different tags.
-  It can also used used to parse symetric patterns such as quotes
+  It can also used to parse symetric patterns such as quotes
   (see the ``Quote`` module) when both ``LEFT`` and ``RIGHT`` are
   of the form ``del RE STR`` (they can actually be identical in
   this case).
