@@ -84,9 +84,8 @@
 <div class="section" id="id1">
 <h2>1.3.0 - 2014-11-07</h2>
 <blockquote>
-<ul>
-<li><p class="first">General changes/additions</p>
 <ul class="simple">
+<li>General changes/additions<ul>
 <li>Add missing cp entry in manpage (GH issue #78)</li>
 <li>Add seq to vim syntax highlight (Robert Drake)</li>
 <li>Update augtool.1 man page with new commands and --span, RHBZ#1100077</li>
@@ -96,155 +95,73 @@
 RHBZ#1091143</li>
 </ul>
 </li>
-<li><p class="first">Lens changes/additions</p>
-<ul>
-<li><p class="first">Aliases: permit missing whitespace between colon and recipients</p>
-</li>
-<li><p class="first">AptPreferences: Support spaces in origin fields</p>
-</li>
-<li><p class="first">Cgconfig: handle additional valid controllers (Andy Grimm)</p>
-</li>
-<li><p class="first">Chrony: New lens to parse /etc/chrony.conf (Pat Riehecky)</p>
-</li>
-<li><p class="first">CPanel: New lens to parse cpanel.config files</p>
-</li>
-<li><p class="first">Desktop: Allow &#64; in keys (GH issue #92)</p>
-</li>
-<li><p class="first">Device_map: Parse all device.map files under /boot (Mike Latimer)</p>
-</li>
-<li><dl class="first docutils">
-<dt>Dhclient: Add support for option modifiers (Robert Drake,</dt>
-<dd><p class="first last">GH issue #95)
-Parse hash statements with dhcp-eval strings</p>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>Dhcpd: stmt_string quoted blocks no longer store quote marks</dt>
-<dd><p class="first last">(incompatible change),
-many changes to support more record types (Robert Drake)</p>
-</dd>
-</dl>
-</li>
-<li><p class="first">Group: NIS support (KaMichael)</p>
-</li>
-<li><p class="first">Grub: handle &quot;foreground&quot; option, RHBZ#1059383 (Miguel Armas)</p>
-</li>
-<li><p class="first">Gshadow: New lens (Lorenzo Catucci)</p>
-</li>
-<li><dl class="first docutils">
-<dt>Httpd: Allow eol comments after section tags</dt>
-<dd><p class="first last">Allow continued lines inside quoted value (GH issue #104)
-Allow comparison operators in tags (GH issue #154)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>IPRoute2: handle &quot;/&quot; in protocol name, swap ID and name fields</dt>
-<dd><p class="first last">(incompatible change), RHBZ#1063968,
+<li>Lens changes/additions<ul>
+<li>Aliases: permit missing whitespace between colon and recipients</li>
+<li>AptPreferences: Support spaces in origin fields</li>
+<li>Cgconfig: handle additional valid controllers (Andy Grimm)</li>
+<li>Chrony: New lens to parse /etc/chrony.conf (Pat Riehecky)</li>
+<li>CPanel: New lens to parse cpanel.config files</li>
+<li>Desktop: Allow &#64; in keys (GH issue #92)</li>
+<li>Device_map: Parse all device.map files under /boot (Mike Latimer)</li>
+<li>Dhclient: Add support for option modifiers (Robert Drake,
+GH issue #95)
+Parse hash statements with dhcp-eval strings</li>
+<li>Dhcpd: stmt_string quoted blocks no longer store quote marks
+(incompatible change),
+many changes to support more record types (Robert Drake)</li>
+<li>Group: NIS support (KaMichael)</li>
+<li>Grub: handle &quot;foreground&quot; option, RHBZ#1059383 (Miguel Armas)</li>
+<li>Gshadow: New lens (Lorenzo Catucci)</li>
+<li>Httpd: Allow eol comments after section tags
+Allow continued lines inside quoted value (GH issue #104)
+Allow comparison operators in tags (GH issue #154)</li>
+<li>IPRoute2: handle &quot;/&quot; in protocol name, swap ID and name fields
+(incompatible change), RHBZ#1063968,
 handle hex IDs and hyphens, as present in
-rt_dsfield, RHBZ#1063961</p>
-</dd>
-</dl>
-</li>
-<li><p class="first">Iptables: parse /etc/sysconfig/iptables.save, RHBZ#1144651</p>
-</li>
-<li><p class="first">Kdump: parse new options, permit EOL comments, refactor, RHBZ#1139298</p>
-</li>
-<li><p class="first">Keepalived: Add more virtual/real server settings and checks, RHBZ#1064388</p>
-</li>
-<li><p class="first">Known_Hosts: New lens for SSH known hosts files</p>
-</li>
-<li><p class="first">Krb5: permit braces in values when not in sub-section, RHBZ#1066419</p>
-</li>
-<li><p class="first">Ldso: handle &quot;hwcap&quot; lines (GH issue #100)</p>
-</li>
-<li><p class="first">Lvm: support negative numbers, parse /etc/lvm/lvm.conf (Pino Toscano)</p>
-</li>
-<li><p class="first">Multipath: add support for rr_min_io_rq (Joel Loudermilk)</p>
-</li>
-<li><p class="first">NagiosConfig and NagiosObjects: Fix documentation (Simon Sehier)</p>
-</li>
-<li><p class="first">NetworkManager: Use the Quote module, support # in values (no eol comments)</p>
-</li>
-<li><dl class="first docutils">
-<dt>OpenVPN: Add support for fragment, mssfix, and script-security</dt>
-<dd><p class="first last">(Frank Grötzner)</p>
-</dd>
-</dl>
-</li>
-<li><p class="first">Pagekite: New lens (Michael Pimmer)</p>
-</li>
-<li><p class="first">Pam: Add partial support for arguments enclosed in [] (Vincent Brillault)</p>
-</li>
-<li><p class="first">Passwd: Refactor lens (Lorenzo Catucci)</p>
-</li>
-<li><p class="first">Redis: Allow empty quoted values (GH issue #115)</p>
-</li>
-<li><p class="first">Rmt: New lens to parse /etc/default/rmt, RHBZ#1100549</p>
-</li>
-<li><dl class="first docutils">
-<dt>Rsyslog: support complex $template lines, property filters and file</dt>
-<dd><p class="first last">actions with templates, RHBZ#1083016</p>
-</dd>
-</dl>
-</li>
-<li><p class="first">Services: permit colons in service name, RHBZ#1121263</p>
-</li>
-<li><p class="first">Shadow: New lens (Lorenzo Catucci)</p>
-</li>
-<li><dl class="first docutils">
-<dt>Shellvars: Handle case statements with same-line ';;', RHBZ#1033799</dt>
-<dd><p class="first last">Allow any kind of quoted values in block
+rt_dsfield, RHBZ#1063961</li>
+<li>Iptables: parse /etc/sysconfig/iptables.save, RHBZ#1144651</li>
+<li>Kdump: parse new options, permit EOL comments, refactor, RHBZ#1139298</li>
+<li>Keepalived: Add more virtual/real server settings and checks, RHBZ#1064388</li>
+<li>Known_Hosts: New lens for SSH known hosts files</li>
+<li>Krb5: permit braces in values when not in sub-section, RHBZ#1066419</li>
+<li>Ldso: handle &quot;hwcap&quot; lines (GH issue #100)</li>
+<li>Lvm: support negative numbers, parse /etc/lvm/lvm.conf (Pino Toscano)</li>
+<li>Multipath: add support for rr_min_io_rq (Joel Loudermilk)</li>
+<li>NagiosConfig and NagiosObjects: Fix documentation (Simon Sehier)</li>
+<li>NetworkManager: Use the Quote module, support # in values (no eol comments)</li>
+<li>OpenVPN: Add support for fragment, mssfix, and script-security
+(Frank Grötzner)</li>
+<li>Pagekite: New lens (Michael Pimmer)</li>
+<li>Pam: Add partial support for arguments enclosed in [] (Vincent Brillault)</li>
+<li>Passwd: Refactor lens (Lorenzo Catucci)</li>
+<li>Redis: Allow empty quoted values (GH issue #115)</li>
+<li>Rmt: New lens to parse /etc/default/rmt, RHBZ#1100549</li>
+<li>Rsyslog: support complex $template lines, property filters and file
+actions with templates, RHBZ#1083016</li>
+<li>Services: permit colons in service name, RHBZ#1121263</li>
+<li>Shadow: New lens (Lorenzo Catucci)</li>
+<li>Shellvars: Handle case statements with same-line ';;', RHBZ#1033799
+Allow any kind of quoted values in block
 conditions (GH issue #118)
 Support $(( .. )) arithmetic expansion in variable
-assignment, RHBZ#1100550</p>
-</dd>
-</dl>
-</li>
-<li><p class="first">Simplevars: Support flags and empty values</p>
-</li>
-<li><p class="first">Sshd: Allow all types of entries in Match groups (GH issue #75)</p>
-</li>
-<li><p class="first">Sssd: Allow ; for comments</p>
-</li>
-<li><p class="first">Squid: Support configuration files for squid 3 (Mykola Nikishov)</p>
-</li>
-<li><p class="first">Sudoers: Allow wuoted string in default str/bool params (Nick Piacentine)</p>
-</li>
-<li><dl class="first docutils">
-<dt>Syslog: Support &quot;# !&quot; style comments (Robert Drake, GH issue #65)</dt>
-<dd><p class="first last">Permit IPv6 loghost addresses, RHBZ#1129388</p>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>Systemd: Allow quoted Environment key=value pairs, RHBZ#1100547</dt>
-<dd><p class="first last">Parse /etc/sysconfig/*.systemd, RHBZ#1083022
-Parse semicolons inside entry values, RHBZ#1139498</p>
-</dd>
-</dl>
-</li>
-<li><p class="first">Tuned: New lens for /etc/tuned/tuned-main.conf (Pat Riehecky)</p>
-</li>
-<li><dl class="first docutils">
-<dt>UpdateDB: New lens to parse /etc/updatedb.conf</dt>
-<dd><dl class="first last docutils">
-<dt>(incompatible change as this file used to be processed with</dt>
-<dd><p class="first last">Simplevars)</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>Xml: Allow backslash in #attribute values (GH issue #145)</dt>
-<dd><p class="first last">Parse CDATA elements (GH issue #80)</p>
-</dd>
-</dl>
-</li>
-<li><p class="first">Xymon_Alerting: refactor lens (GH issue #89)</p>
-</li>
+assignment, RHBZ#1100550</li>
+<li>Simplevars: Support flags and empty values</li>
+<li>Sshd: Allow all types of entries in Match groups (GH issue #75)</li>
+<li>Sssd: Allow ; for comments</li>
+<li>Squid: Support configuration files for squid 3 (Mykola Nikishov)</li>
+<li>Sudoers: Allow wuoted string in default str/bool params (Nick Piacentine)</li>
+<li>Syslog: Support &quot;# !&quot; style comments (Robert Drake, GH issue #65)
+Permit IPv6 loghost addresses, RHBZ#1129388</li>
+<li>Systemd: Allow quoted Environment key=value pairs, RHBZ#1100547
+Parse /etc/sysconfig/*.systemd, RHBZ#1083022
+Parse semicolons inside entry values, RHBZ#1139498</li>
+<li>Tuned: New lens for /etc/tuned/tuned-main.conf (Pat Riehecky)</li>
+<li>UpdateDB: New lens to parse /etc/updatedb.conf
+(incompatible change as this file used to be processed with
+Simplevars)</li>
+<li>Xml: Allow backslash in #attribute values (GH issue #145)
+Parse CDATA elements (GH issue #80)</li>
+<li>Xymon_Alerting: refactor lens (GH issue #89)</li>
 </ul>
 </li>
 </ul>
@@ -253,15 +170,13 @@ Parse semicolons inside entry values, RHBZ#1139498</p>
 <div class="section" id="id2">
 <h2>1.2.0 - 2014-01-27</h2>
 <blockquote>
-<ul>
-<li><p class="first">API changes</p>
 <ul class="simple">
+<li>API changes<ul>
 <li>Add aug_cp and the cp and copy commands</li>
 <li>aug_to_xml now includes span information in the XML dump</li>
 </ul>
 </li>
-<li><p class="first">General changes/additions</p>
-<ul class="simple">
+<li>General changes/additions<ul>
 <li>Fix documentation link in c_api NaturalDocs menu</li>
 <li>Fix NaturalDocs documentation for various lenses</li>
 <li>src/transform.c (filter_matches): wrap fnmatch to ensure that an incl
@@ -271,147 +186,76 @@ pattern containing &quot;//&quot; matches file paths, RHBZ#1031084</li>
 <li>Fix umask handling when creating new files, RHBZ#1034261</li>
 </ul>
 </li>
-<li><p class="first">Lens changes/additions</p>
-<ul>
-<li><p class="first">Access: support DOMAINuser syntax for users and groups, bug #353</p>
-</li>
-<li><p class="first">Authorized_Keys: Allow 'ssh-ed25519' as a valid authorized_key
-type (Jasper Lievisse Adriaanse)</p>
-</li>
-<li><p class="first">Automounter: Handle hostnames with dashes in them, GH issue #27</p>
-</li>
-<li><p class="first">Build: Add combinatorics group</p>
-</li>
-<li><p class="first">Cyrus_Imapd: Create new entries without space before separator,
-RHBZ#1014974 (Dietmar Kling)</p>
-</li>
-<li><p class="first">Desktop: Support square brackets in keys</p>
-</li>
-<li><p class="first">Dhclient: Add dhclient.conf path for Debian/Ubuntu (Esteve Fernandez)</p>
-</li>
-<li><dl class="first docutils">
-<dt>Dhcpd: Support conditionals, GH issue #34</dt>
-<dd><p class="first last">Support a wider variety of allow/deny statement, including
+<li>Lens changes/additions<ul>
+<li>Access: support DOMAINuser syntax for users and groups, bug #353</li>
+<li>Authorized_Keys: Allow 'ssh-ed25519' as a valid authorized_key
+type (Jasper Lievisse Adriaanse)</li>
+<li>Automounter: Handle hostnames with dashes in them, GH issue #27</li>
+<li>Build: Add combinatorics group</li>
+<li>Cyrus_Imapd: Create new entries without space before separator,
+RHBZ#1014974 (Dietmar Kling)</li>
+<li>Desktop: Support square brackets in keys</li>
+<li>Dhclient: Add dhclient.conf path for Debian/Ubuntu (Esteve Fernandez)</li>
+<li>Dhcpd: Support conditionals, GH issue #34
+Support a wider variety of allow/deny statement, including
 booting and bootp (Yanis Guenane)
 Support a wider variety of DHCP allow/deny/ignore statements
-(Yanis Guenane)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>Dovecot: Various enhancements and bug fixes (Michael Haslgrübler):</dt>
-<dd><p class="first last">add mailbox to block_names, fix for block_args in quotes,
+(Yanis Guenane)</li>
+<li>Dovecot: Various enhancements and bug fixes (Michael Haslgrübler):
+add mailbox to block_names, fix for block_args in quotes,
 fix for block's brackets upon write,
 fixes broken tests for mailbox,
 fixes indention,
 test case for block_args with &quot;&quot;
 fixes broken indention
-Use Quote module</p>
-</dd>
-</dl>
-</li>
-<li><p class="first">Exports: Permit colons for IPv6 client addresses, bug #366</p>
-</li>
-<li><dl class="first docutils">
-<dt>Grub: Support the 'setkey' and 'lock' directives</dt>
-<dd><p class="first last">NFC fix whitespace errors
+Use Quote module</li>
+<li>Exports: Permit colons for IPv6 client addresses, bug #366</li>
+<li>Grub: Support the 'setkey' and 'lock' directives
+NFC fix whitespace errors
 Handle makeactive menu command, bug #340
-Add 'verbose' option, GH issue #73</p>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>Interfaces: Add in support for the source stanza in</dt>
-<dd><p class="first last">/etc/network/interfaces files
+Add 'verbose' option, GH issue #73</li>
+<li>Interfaces: Add in support for the source stanza in
+/etc/network/interfaces files
 Map bond-slaves and bridge-ports to arrays (incompatible
 change) (Kaarle Ritvanen)
 Add /etc/network/interfaces.d/* support
-Allow numeric characters in stanza options (Pascal Lalonde)</p>
-</dd>
-</dl>
-</li>
-<li><p class="first">Koji: New lens to parse Koji configs (Pat Riehecky)</p>
-</li>
-<li><p class="first">MongoDBServer: Accept quoted values (Tomas Klouda)</p>
-</li>
-<li><dl class="first docutils">
-<dt>NagiosCfg: Do not try to parse /etc/nagios/nrpe.cfg anymore, GH issue #43</dt>
-<dd><p class="first last">/etc/nagios/nrpe.cfg is parsed by Nrpe (Yanis Guenane)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>Nagiosobjects: Add support for optional spaces and indents</dt>
-<dd><p class="first last">and whole-line comments (Sean Millichamp)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>OpenVPN: Support daemon, client-config-dir, route, and management</dt>
-<dd><p class="first last">directives (Freakin <a class="reference external" href="https://github.com/Freakin">https://github.com/Freakin</a>)</p>
-</dd>
-</dl>
-</li>
-<li><p class="first">PHP: allow php-fpm syntax in keys, GH issue #35</p>
-</li>
-<li><p class="first">Postfix_Main: Handle stray whitespace at end of multiline lines, bug #348</p>
-</li>
-<li><p class="first">Postfix_virtual: allow '+' and '=' in email addresses (Tom Hendrikx)</p>
-</li>
-<li><p class="first">Properties: support multiline starting with an empty string, GH issue #19</p>
-</li>
-<li><p class="first">Samba: Permit asterisk in key name, bug #354</p>
-</li>
-<li><dl class="first docutils">
-<dt>Shellvars: Read /etc/firewalld/firewalld.conf, bug #363</dt>
-<dd><p class="first last">Support all types of quoted strings in arrays, bug #357
-Exclude /etc/sysconfig/ip*tables.save files</p>
-</dd>
-</dl>
-</li>
-<li><p class="first">Shellvars, Sysconfig: map &quot;bare&quot; export and unset lines to seq numbered
-nodes to handle multiple variables (incompatible change), RHBZ#1033795</p>
-</li>
-<li><dl class="first docutils">
-<dt>Shellvars_list: Handle backtick variable assignments, bug #368</dt>
-<dd><p class="first last">Allow end-of-line comments, bug #342</p>
-</dd>
-</dl>
-</li>
-<li><p class="first">Simplevars: Add /etc/selinux/semanage.conf</p>
-</li>
-<li><p class="first">Slapd: use smart quotes for database entries; rename by/what to by/access;
-allow access to be absent as per official docs (incompatible change)</p>
-</li>
-<li><dl class="first docutils">
-<dt>Sshd: Indent Match entries by 2 spaces by default</dt>
-<dd><p class="first last">Support Ciphers and KexAlgorithms groups, GH issue #69
-Let all special keys be case-insensitive</p>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>Sudoers: Permit underscores in group names, bug #370 (Matteo Cerutti)</dt>
-<dd><p class="first last">Allow uppercase characters in user names, bug #376</p>
-</dd>
-</dl>
-</li>
-<li><p class="first">Sysconfig: Permit empty comments after comment lines, RHBZ#1043636</p>
-</li>
-<li><p class="first">Sysconfig_Route: New lens for RedHat's route configs</p>
-</li>
-<li><p class="first">Syslog: Accept UDP(&#64;) and TCP(&#64;&#64;) protocol, bug #364 (Yanis Guenane)</p>
-</li>
-<li><p class="first">Xymon_Alerting: New lens for Xymon alerting files (François Maillard)</p>
-</li>
-<li><dl class="first docutils">
-<dt>Yum: Add yum-cron*.conf files (Pat Riehecky)</dt>
-<dd><p class="first last">Include only *.repo files from yum.repos.d (Andrew N Golovkov)
+Allow numeric characters in stanza options (Pascal Lalonde)</li>
+<li>Koji: New lens to parse Koji configs (Pat Riehecky)</li>
+<li>MongoDBServer: Accept quoted values (Tomas Klouda)</li>
+<li>NagiosCfg: Do not try to parse /etc/nagios/nrpe.cfg anymore, GH issue #43
+/etc/nagios/nrpe.cfg is parsed by Nrpe (Yanis Guenane)</li>
+<li>Nagiosobjects: Add support for optional spaces and indents
+and whole-line comments (Sean Millichamp)</li>
+<li>OpenVPN: Support daemon, client-config-dir, route, and management
+directives (Freakin <a class="reference external" href="https://github.com/Freakin">https://github.com/Freakin</a>)</li>
+<li>PHP: allow php-fpm syntax in keys, GH issue #35</li>
+<li>Postfix_Main: Handle stray whitespace at end of multiline lines, bug #348</li>
+<li>Postfix_virtual: allow '+' and '=' in email addresses (Tom Hendrikx)</li>
+<li>Properties: support multiline starting with an empty string, GH issue #19</li>
+<li>Samba: Permit asterisk in key name, bug #354</li>
+<li>Shellvars: Read /etc/firewalld/firewalld.conf, bug #363
+Support all types of quoted strings in arrays, bug #357
+Exclude /etc/sysconfig/ip*tables.save files</li>
+<li>Shellvars, Sysconfig: map &quot;bare&quot; export and unset lines to seq numbered
+nodes to handle multiple variables (incompatible change), RHBZ#1033795</li>
+<li>Shellvars_list: Handle backtick variable assignments, bug #368
+Allow end-of-line comments, bug #342</li>
+<li>Simplevars: Add /etc/selinux/semanage.conf</li>
+<li>Slapd: use smart quotes for database entries; rename by/what to by/access;
+allow access to be absent as per official docs (incompatible change)</li>
+<li>Sshd: Indent Match entries by 2 spaces by default
+Support Ciphers and KexAlgorithms groups, GH issue #69
+Let all special keys be case-insensitive</li>
+<li>Sudoers: Permit underscores in group names, bug #370 (Matteo Cerutti)
+Allow uppercase characters in user names, bug #376</li>
+<li>Sysconfig: Permit empty comments after comment lines, RHBZ#1043636</li>
+<li>Sysconfig_Route: New lens for RedHat's route configs</li>
+<li>Syslog: Accept UDP(&#64;) and TCP(&#64;&#64;) protocol, bug #364 (Yanis Guenane)</li>
+<li>Xymon_Alerting: New lens for Xymon alerting files (François Maillard)</li>
+<li>Yum: Add yum-cron*.conf files (Pat Riehecky)
+Include only *.repo files from yum.repos.d (Andrew N Golovkov)
 Permit spaces after equals sign in list options, GH issue #45
-Split excludes as lists, bug #275</p>
-</dd>
-</dl>
-</li>
+Split excludes as lists, bug #275</li>
 </ul>
 </li>
 </ul>
