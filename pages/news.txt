@@ -13,6 +13,7 @@ Releases
 ------------------
 
   - General changes/additions
+
     * Add missing cp entry in manpage (GH issue #78)
     * Add seq to vim syntax highlight (Robert Drake)
     * Update augtool.1 man page with new commands and --span, RHBZ#1100077
@@ -21,6 +22,7 @@ Releases
     * aug_save returns non-zero result when unable to delete files,
       RHBZ#1091143
   - Lens changes/additions
+
     * Aliases: permit missing whitespace between colon and recipients
     * AptPreferences: Support spaces in origin fields
     * Cgconfig: handle additional valid controllers (Andy Grimm)
@@ -92,9 +94,11 @@ Releases
 ------------------
 
   - API changes
+
     * Add aug_cp and the cp and copy commands
     * aug_to_xml now includes span information in the XML dump
   - General changes/additions
+
     * Fix documentation link in c_api NaturalDocs menu
     * Fix NaturalDocs documentation for various lenses
     * src/transform.c (filter_matches): wrap fnmatch to ensure that an incl
@@ -103,6 +107,7 @@ Releases
     * Corrections for CVE-2012-0786 tests (Tomas Hoger)
     * Fix umask handling when creating new files, RHBZ#1034261
   - Lens changes/additions
+
     * Access: support DOMAIN\user syntax for users and groups, bug #353
     * Authorized_Keys: Allow 'ssh-ed25519' as a valid authorized_key
       type (Jasper Lievisse Adriaanse)
