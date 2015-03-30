@@ -78,7 +78,7 @@ sync:
 	git status
 	# Add new doc
 	find . -not -path './build/html/*' -type f \
-	  -name '*.html' -or -name '*.js' -or -name '*.css' \
+	  -regex '.*\.\(html\|js\|css\)'	\
 	  -exec git add {} \;
 	git commit -a && git checkout master
 
