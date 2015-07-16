@@ -84,9 +84,8 @@
 <div class="section" id="id1">
 <h2>1.4.0 - 2015-05-22</h2>
 <blockquote>
-<ul>
-<li><p class="first">General changes/additions</p>
 <ul class="simple">
+<li>General changes/additions<ul>
 <li>add a aug_escape_name call to sanitize strings for use in path
 expressions. There are a few characters that are special in path
 expressions. This function makes it possible to have them all escaped
@@ -108,123 +107,61 @@ exiting (jeremy Lin)</li>
 issue #242)</li>
 </ul>
 </li>
-<li><p class="first">Lens changes/additions</p>
-<ul>
-<li><p class="first">AFS_Cellalias: new lens (Pat Riehecky)</p>
-</li>
-<li><p class="first">Authorized_keys: allow double quotes in option values (Issue #135)</p>
-</li>
-<li><p class="first">Chrony: fix typo in log flag 'measurements' (Pat Riehecky)</p>
-</li>
-<li><p class="first">Clamav: new lens  (Andrew Colin Kissa)</p>
-</li>
-<li><p class="first">Dns_Zone: New lens to parse DNS zone files (Kaarle Ritvanen)</p>
-</li>
-<li><dl class="first docutils">
-<dt>Dnsmasq: Parse the structure of the 'address' and 'server' options</dt>
-<dd><p class="first last">(incompatible change) (Kaarle Ritvanen)</p>
-</dd>
-</dl>
-</li>
-<li><p class="first">Erlang: parse kernel app config, handle empty lists (RHBZ#1175546)</p>
-</li>
-<li><p class="first">Exports: support brackets in machine names (Vincent Desjardins)</p>
-</li>
-<li><p class="first">Grub: support password stanza inside boot/title section (Issue #229)</p>
-</li>
-<li><p class="first">Httpd: handle eol after opening tag (Issue #220); fix type checking
-issue (Issue #223)</p>
-</li>
-<li><p class="first">Iscsid: new lens (Joey Boggs and Pat Riehecky) (Issue #174)</p>
-</li>
-<li><p class="first">Jaas: several improvements to cover more valid syntax (Steve Shipway)</p>
-</li>
-<li><p class="first">Known_Hosts: handle aliases for the host name</p>
-</li>
-<li><dl class="first docutils">
-<dt>Krb5: support keyword krb524_server; allow realm names starting</dt>
-<dd><p class="first last">with lower-case characters (Jurjen Bokma)</p>
-</dd>
-</dl>
-</li>
-<li><p class="first">Limits: allow comments at end of line (timdeluxe)</p>
-</li>
-<li><dl class="first docutils">
-<dt>Logrotate: support 'dateformat' directive (Issue #217)</dt>
-<dd><p class="first last">support 'maxsize' directive (RHBZ#1213292)
-do not require a space before an opening '{' (Issue #123)</p>
-</dd>
-</dl>
-</li>
-<li><p class="first">Mailscanner: new lens (Andrew Colin Kissa)</p>
-</li>
-<li><p class="first">Mailscanner_Rules: new lens for MailScanner rules (Andrew Colin Kissa)</p>
-</li>
-<li><p class="first">NagiosCfg: default to no spaces around equal (Issue #177)</p>
-</li>
-<li><dl class="first docutils">
-<dt>Nginx: significantly reworked, now parses entire Nginx stock</dt>
-<dd><p class="first last">config successfully (Issue #179)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>Pagekite: more fine-grained control of service_on entries; instead of</dt>
-<dd><p class="first last">'source' and 'destination', parse into protocol, kitename,
+<li>Lens changes/additions<ul>
+<li>AFS_Cellalias: new lens (Pat Riehecky)</li>
+<li>Authorized_keys: allow double quotes in option values (Issue #135)</li>
+<li>Chrony: fix typo in log flag 'measurements' (Pat Riehecky)</li>
+<li>Clamav: new lens  (Andrew Colin Kissa)</li>
+<li>Dns_Zone: New lens to parse DNS zone files (Kaarle Ritvanen)</li>
+<li>Dnsmasq: Parse the structure of the 'address' and 'server' options
+(incompatible change) (Kaarle Ritvanen)</li>
+<li>Erlang: parse kernel app config, handle empty lists (RHBZ#1175546)</li>
+<li>Exports: support brackets in machine names (Vincent Desjardins)</li>
+<li>Grub: support password stanza inside boot/title section (Issue #229)</li>
+<li>Httpd: handle eol after opening tag (Issue #220); fix type checking
+issue (Issue #223)</li>
+<li>Iscsid: new lens (Joey Boggs and Pat Riehecky) (Issue #174)</li>
+<li>Jaas: several improvements to cover more valid syntax (Steve Shipway)</li>
+<li>Known_Hosts: handle aliases for the host name</li>
+<li>Krb5: support keyword krb524_server; allow realm names starting
+with lower-case characters (Jurjen Bokma)</li>
+<li>Limits: allow comments at end of line (timdeluxe)</li>
+<li>Logrotate: support 'dateformat' directive (Issue #217)
+support 'maxsize' directive (RHBZ#1213292)
+do not require a space before an opening '{' (Issue #123)</li>
+<li>Mailscanner: new lens (Andrew Colin Kissa)</li>
+<li>Mailscanner_Rules: new lens for MailScanner rules (Andrew Colin Kissa)</li>
+<li>NagiosCfg: default to no spaces around equal (Issue #177)</li>
+<li>Nginx: significantly reworked, now parses entire Nginx stock
+config successfully (Issue #179)</li>
+<li>Pagekite: more fine-grained control of service_on entries; instead of
+'source' and 'destination', parse into protocol, kitename,
 backend_host, backend_port, and secret (Michael Pimmer)
-(incompatible change)</p>
-</dd>
-</dl>
-</li>
-<li><p class="first">Passwd: support nis [+-]username syntax (Borislav Stoichkov); fix
-&#64;nisdefault on OpenBSD (Matt Dainty)</p>
-</li>
-<li><p class="first">Pgbouncer: new lense for the pgbouncer connection pooler (Andrew
-Colin Kissa)</p>
-</li>
-<li><p class="first">Postfix_sasl_smtpd: new lens contributed by larsen0815 (Issue #182)</p>
-</li>
-<li><dl class="first docutils">
-<dt>Postgresql: look for postgresql.conf in paths used on Red Hat based</dt>
-<dd><p class="first last">distros (Haotian Liu)</p>
-</dd>
-</dl>
-</li>
-<li><p class="first">Puppetfile: new lens to parse librarian-puppet's Puppetfile</p>
-</li>
-<li><dl class="first docutils">
-<dt>Pylonspaste: new lense for Pylon's paste init configuration files</dt>
-<dd><p class="first last">(Andrew Colin Kissa)</p>
-</dd>
-</dl>
-</li>
-<li><p class="first">PythonPaste: parse &quot;set&quot; keyword for default overrides (RHBZ#1175545)</p>
-</li>
-<li><p class="first">Shadow: allow NIS entries (Borislav Stoichkov)</p>
-</li>
-<li><dl class="first docutils">
-<dt>Shellvars: case: support ;; on same line with multiple commands</dt>
-<dd><p class="first last">(Kaarle Ritvanen); make insertion at the beginning of a
+(incompatible change)</li>
+<li>Passwd: support nis [+-]username syntax (Borislav Stoichkov); fix
+&#64;nisdefault on OpenBSD (Matt Dainty)</li>
+<li>Pgbouncer: new lense for the pgbouncer connection pooler (Andrew
+Colin Kissa)</li>
+<li>Postfix_sasl_smtpd: new lens contributed by larsen0815 (Issue #182)</li>
+<li>Postgresql: look for postgresql.conf in paths used on Red Hat based
+distros (Haotian Liu)</li>
+<li>Puppetfile: new lens to parse librarian-puppet's Puppetfile</li>
+<li>Pylonspaste: new lense for Pylon's paste init configuration files
+(Andrew Colin Kissa)</li>
+<li>PythonPaste: parse &quot;set&quot; keyword for default overrides (RHBZ#1175545)</li>
+<li>Shadow: allow NIS entries (Borislav Stoichkov)</li>
+<li>Shellvars: case: support ;; on same line with multiple commands
+(Kaarle Ritvanen); make insertion at the beginning of a
 file that starts with blank lines work; the new lens will
 remove blank lines from the beginning of a file as soon as
 lines are added to or removed from it (GH issue #202);
 handle associative arrays; add /etc/periodic.conf for
-FreeBSD (Michael Moll)</p>
-</dd>
-</dl>
-</li>
-<li><p class="first">Shellvars_list: support double-quoted continued lines</p>
-</li>
-<li><p class="first">Sudoers: allow '+' in user/groupnames (Andreas Grüninger)</p>
-</li>
-<li><p class="first">Sysctl: add /boot/loader.conf for FreeBSD (Michael Moll)</p>
-</li>
-<li><dl class="first docutils">
-<dt>Sysconfig: handle leading whitespace at beginning of a line,</dt>
-<dd><p class="first last">RHBZ#761246</p>
-</dd>
-</dl>
-</li>
+FreeBSD (Michael Moll)</li>
+<li>Shellvars_list: support double-quoted continued lines</li>
+<li>Sudoers: allow '+' in user/groupnames (Andreas Grüninger)</li>
+<li>Sysctl: add /boot/loader.conf for FreeBSD (Michael Moll)</li>
+<li>Sysconfig: handle leading whitespace at beginning of a line,
+RHBZ#761246</li>
 </ul>
 </li>
 </ul>
