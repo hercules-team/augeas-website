@@ -17,7 +17,7 @@ Frequently Asked Questions
 Basic Questions
 ---------------
 
-What license is Augeas ditributed under ?
+What license is Augeas distributed under ?
   Augeas is distributed under the GNU Lesser General Public License (LGPL_)
   A copy of the license is included in the file ``COPYING`` in the source
   distribution.
