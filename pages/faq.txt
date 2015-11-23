@@ -19,8 +19,8 @@ Basic Questions
 
 What license is Augeas distributed under ?
   Augeas is distributed under the GNU Lesser General Public License (LGPL_)
-  A copy of the license is included in the file ``COPYING`` in the source
-  distribution.
+  version 2.1. A copy of the license is included in the file ``COPYING`` in
+  the source distribution.
 Can I use Augeas from a proprietary application ?
   Yes. The LGPL allows you to use Augeas from a proprietary application. It
   would be very helpful to both you and the community if you send bug fixes
@@ -175,7 +175,7 @@ Why is there no operation to match a regular expression against a string ?
   would ever hope to write for ``libfa`` |---| being able to use that
   matcher is the main reason for using extended POSIX syntax.
 
-.. _LGPL: http://www.gnu.org/licenses/lgpl.html
+.. _LGPL: http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html
 .. _download: download.html
 .. _Augeas mailing list: https://www.redhat.com/mailman/listinfo/augeas-devel
 .. _the contribute page: developers.html
