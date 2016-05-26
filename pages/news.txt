@@ -9,6 +9,153 @@
 Releases
 ====================
 
+1.5.0 - 2016-05-11
+------------------
+
+  - General changes/additions
+
+    * augtool: new --timing option that prints after each operation how long
+      it took
+    * augtool: print brief help message when incorrect options are given rather
+      than dumping all help text
+    * Path expressions: optimize performance of evaluating certain
+      expressions
+    * lots of safety improvements in libfa to avoid using uninitialized
+      values and the like (Daniel Trebbien)
+    * tolerate building against OSX' libedit (Issue #256)
+  - API changes
+
+    * aug_match: fix a bug where expressions like /foo/\*[2] would match a
+      hidden node and pretend there was no match at all. We now make sure
+      we never match a hidden node. Thanks to Xavier Mol for reporting the
+      problem.
+    * aug_get: make sure we set \*value to NULL, even if the provided path is
+      invalid (Issue #372)
+    * aug_rm: fix segfault when deleting a tree and one of its ancestors
+      (Issue #319)
+    * aug_save: fix segfault when trying to save an invalid subtree. A
+      routine that was generating details for the error message overflowed
+      a buffer it had created (Issue #349)
+  - Lens changes/additions
+
+    * AptConf: support hash comments
+    * AptSources: support options (Issue #295),
+      support brackets with spaces in URI (GH #296)
+      rename test file to test_aptsources.aug
+    * Chrony: allow signed numbers and indentation, fix stray EOL entry,
+      disallow comment on EOL, add many missing directives and
+      options (Miroslav Lichvar, RHBZ#1213281)
+      add new directives and options that were added in
+      chrony-2.2 and chrony-2.3 and improve parsing of
+      access configuration (Miroslav Lichvar, Issue #348)
+      add new options for chrony-2.4 (Miroslav Lichvar)
+    * Dhclient: avoid put ambiguity for node without value (Issue #294)
+    * Group: support NIS map, support an overridden and disabled password,
+      i.e. `+:*::` (Matt Dainty) (Issue #258)
+    * Host_Conf: support spaces between list items (Cedric Bosdonnat, Issue #358)
+    * Httpd: add paths to SLES vhosts
+      (Jan Doleschal) (Issue #268)
+      parse backslashes in directive arguments (Issue #307)
+      parse mismatching case of opening/closing tags
+      parse multiple ending section tags on one line
+      parse wordlists in braces in SSLRequire directives
+      parse directive args starting with double quote (Issue #330)
+      parse directive args containing quotes
+      support perl directives (Issue #327)
+      parse line breaks/continuations in section arguments
+      parse escaped spaces in directive/section arguments
+      parse backslashes at the start of directive args (Issue #324)
+    * Inputrc: support $else (Cedric Bosdonnat, Issue #359)
+    * Interfaces: add support for source-directory (Issue #306)
+    * Json: add comments support, refactor,
+      allow escaped quotes and blackslashes
+    * Keepalived: fix space/tag alignments and hanging spaces,
+      add vrrp_mcast_group4 and vrrp_mcast_group6,
+      add more vrrp_instance flags,
+      add mcast/unicast_src_ip and unicast_peer,
+      add missing garp options,
+      add vrrp_script options,
+      expand vrrp_sync_group block,
+      allow notify option
+      (Joe Topjian) (Issue #266)
+    * Known_Hosts: refactoring and description fixed
+    * Logrotate: support dateyesterday option (Chris Reeves) (GH #367, #368)
+    * MasterPasswd: new lens to parse /etc/master.passwd
+      (Matt Dainty) (Issue #258)
+    * Multipath: add various missing keywoards (Olivier Mangold) (Issue #289)
+    * MySQL: include /etc/my.cnf.d/\*.cnf (Issue #353)
+    * Nginx: improve typechecking of lens,
+      allow masks in IP keys and IPv6 (Issue #260)
+      add @server simple nodes (Issue #335)
+    * Ntp: add support for basic interface syntax
+    * OpenShift_Quickstarts: Use Json.lns
+    * OpenVPN: add all options available in OpenVPN 2.3o
+      (Justin Akers) (Issue #278)
+    * Puppetfile: name separator is not mandatory
+      add support for moduledir (Christoph Maser)
+    * Rabbitmq: remove space in option name,
+      add support for cluster_partitioning_handling,
+      add missing simple options (Joe Topjian) (Issue #264)
+    * Reprepro_Uploaders: add support for distribution field
+      (Mathieu Alorent) (Issue #277),
+      add support for groups (Issue #283)
+    * Rhsm: new lens to parse subscription-manager's /etc/rhsm/rhsm.conf
+    * Rsyslog: improve property filter parsing,
+      treat whitespace after commas as optional.
+      recognize '~' as a valid syslog action (discard)
+      (Gregory Smith) (Issue #282),
+      add support for redirecting output to named pipes
+      (Gerlof Fokkema) (Issue #366)
+    * Shellvars: allow partial quoting, mixing multiple styles
+      (Kaarle Ritvanen) (Issue #183);
+      allow wrapping builtin argument to multiple lines
+      (Kaarle Ritvanen) (Issue #184);
+      support ;; on same line with multiple commands
+      (Kaarle Ritvanen) (Issue #185);
+      allow line wrapping and improve quoting support
+      (Kaarle Ritvanen) (Issue #187);
+      accept [] and [[]] builtins (Issue #188);
+      allow && and || constructs after condition
+      (Kaarle Ritvanen) (Issue #265);
+      add pattern nodes in case entries
+      (BREAKING CHANGE: case entry values are now in a
+      @pattern subnode) (Kaarle Ritvanen) (Issue #265)
+      add eval builtin support;
+      add alias builtin support;
+      allow (almost) any command;
+      allow && and || after commands (Issue #215);
+      allow wrapping command sequences
+      (Kaarle Ritvanen) (Issue #333);
+      allow command-specific environment variable
+      (Kaarle Ritvanen) (Issue #332);
+      support subshells (Issue #339)
+      newlines in start of functions
+      allow newlines after actions
+      support comments after function name (Issue #339)
+      exclude SuSEfirewall2 (Cedric Bosdonnat, Issue #357)
+    * Simplelines: parse OpenBSD's hostname.if(5)
+      files (Jasper Lievisse Adriaanse) (Issue #252)
+    * Smbusers: add support for ; comments
+    * Spacevars: support flags (Issue #279)
+    * Ssh: add support for HostKeyAlgorithms, KexAlgorithms
+      and PubkeyAcceptedKeyTypes (Oliver Mangold) (Issue #290),
+      add support for GlobalKnownHostsFile (Issue #316)
+    * Star: New lens to parse /etc/default/star
+    * Sudoers: support for negated command alias
+      (Geoff Williams) (Issue #262)
+    * Syslog: recognize '~' as a valid syslog action (discard)
+      (Gregory Smith) (Issue #282)
+    * Tmpfiles: new lens to parse systemd's tempfiles.d configuration
+      files (Julien Pivotto) (Issue #269)
+    * Trapperkeeper: new lens for Puppet server configuration files
+    * Util: add comment_c_style_or_hash lens
+      add empty_any lens
+    * Vsftpd: add isolate and isolate_network options
+      (Florian Chazal) (Issue #334)
+    * Xml: allow empty document (Issue #255)
+    * YAML: new lens (subset) (Dimitar Dimitrov) (Issue #338)
+
+
 1.4.0 - 2015-05-22
 ------------------
 
