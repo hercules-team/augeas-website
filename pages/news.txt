@@ -46,7 +46,7 @@ Releases
              (yannh) (Issue #194)
     * Rsyslog: support include() directive introduced in rsyslog 8.33
     * Strongswan: new lens (Kaarle Ritvanen)
-    * Systemd: do not try to treat *.d or *.wants directories as
+    * Systemd: do not try to treat \*.d or \*.wants directories as
                configuration files (Issue #548)
 
 1.10.1 - 2018-01-29
@@ -72,7 +72,7 @@ Releases
   - API changes
 
     * libfa has now a function fa_json to export an FA as a JSON file, and
-      fa_state_* functions that make it possible to iterate over the FA's
+      fa_state\_\* functions that make it possible to iterate over the FA's
       states and transitions. (Pedro Valero Mejia)
     * Add functions aug_ns_label, aug_ns_value, aug_ns_count, and
       aug_ns_path to get the label (with index), the value, the number of
@@ -81,7 +81,7 @@ Releases
   - Lens changes/additions
 
     * Grubenv: new lens to process /boot/grub/grubenv (omgold)
-    * Httpd: also read files from /etc/httpd/conf.modules.d/*.conf
+    * Httpd: also read files from /etc/httpd/conf.modules.d/\*.conf
              (Tomas Meszaros) (Issue #537)
     * Nsswitch: allow comments at the end of a line (Philip Hahn) (Issue #517)
     * Ntp: accept 'ntpsigndsocket' statement (Philip Hahn) (Issue #516)
@@ -190,7 +190,7 @@ Releases
     * Krb5: support include/includedir directives (Jason Smith) (Issue #430)
             support realms that start with numbers (Dustin Wheeler) (Issue #437)
     * Multipath: update to multipath-0.4.9-99.el7 (Xavier Mol)
-    * Php: also look for FPM files in /etc/php/*/fpm/pool.d (Daniel Dico)
+    * Php: also look for FPM files in /etc/php/\*/fpm/pool.d (Daniel Dico)
     * Postfix_virtual: allow underscores in e-mail addresses (Jason Lingohr)
                        (Issue #439)
     * Radicale: new lens for config of http://radicale.org/ (James Valleroy)
@@ -229,7 +229,7 @@ Releases
 
     * Cron_User: New lens to handle user crontab files in /var/spool/cron
     * Csv: fix failure to load lens on OpenBSD (Issue #396)
-    * Grub: also look for UEFI grub files in /boot/efi/EFI/*/grub.conf
+    * Grub: also look for UEFI grub files in /boot/efi/EFI/\*/grub.conf
             (Rich Jones)
     * Opendkim: new lens for /etc/opendkim.conf (Craig Miskell)
     * Php: look for php.ini where Ubunto 16.04 puts it, too (Michael Wodniok)
@@ -263,7 +263,7 @@ Releases
            (Craig Miskell) (Issue #379)
     * Shellvars: Load /etc/lbu/lbu.conf, the config for Alpine's Local
            Backup Utility (Kaarle Ritvanen)
-           Load /etc/profile, /etc/profile.d/*, and /etc/byobu
+           Load /etc/profile, /etc/profile.d/\*, and /etc/byobu
     * Vsftpd: Add allow_writeable_chroot boolead option
            (Robert Moucha) (Issue #376)
 
