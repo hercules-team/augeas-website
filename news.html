@@ -86,11 +86,8 @@
 <blockquote>
 <ul class="simple">
 <li>General changes/additions<ul>
-<li><dl class="first docutils">
-<dt>augmatch: add a --quiet option; make the exit status useful to tell</dt>
-<dd>whether there was a match or not</dd>
-</dl>
-</li>
+<li>augmatch: add a --quiet option; make the exit status useful to tell
+whether there was a match or not</li>
 <li>Drastically reduce the amount of memory needed to evaluate complex
 path expressions against large files (Issue #569)</li>
 <li>Fix a segfault on OSX when 'augmatch' is run without any
@@ -104,48 +101,27 @@ NULL for that. That has been fixed.</li>
 </li>
 <li>Lens changes/additions<ul>
 <li>Chrony: add new options supported in chrony 3.2 and 3.3 (Miroslav Lichvar)</li>
-<li><dl class="first docutils">
-<dt>Dhclient: fix parsing of append/prepend and similar directives</dt>
-<dd>(John Morrissey)</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>Fstab: allow leading whitespace in mount entry lines</dt>
-<dd>(Pino Toscano) (Issue #544)</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>Grub: tolerate some invalid entries. Those invalid entries</dt>
-<dd>get mapped to '#error' nodes</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>Httpd: accept comments with whitespace right after a tag</dt>
-<dd>opening a section (Issue #577)</dd>
-</dl>
-</li>
+<li>Dhclient: fix parsing of append/prepend and similar directives
+(John Morrissey)</li>
+<li>Fstab: allow leading whitespace in mount entry lines
+(Pino Toscano) (Issue #544)</li>
+<li>Grub: tolerate some invalid entries. Those invalid entries
+get mapped to '#error' nodes</li>
+<li>Httpd: accept comments with whitespace right after a tag
+opening a section (Issue #577)</li>
 <li>Json: allow escaped slashes in strings (Issue #557)</li>
 <li>Multipath: accept regular expressions for devnode, wwid, and property
 in blacklist and blacklist_exceptions sections (Issue #564)</li>
-<li><dl class="first docutils">
-<dt>Nginx: parse /etc/nginx/sites-enabled (plumbeo)</dt>
-<dd>allow semicolons inside double quoted strings in
+<li>Nginx: parse /etc/nginx/sites-enabled (plumbeo)
+allow semicolons inside double quoted strings in
 simple directives, and allow simple directives without
-an argument (Issue #566)</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>Redis: accept the 'bind' statement with multiple IP addresses</dt>
-<dd>(yannh) (Issue #194)</dd>
-</dl>
-</li>
+an argument (Issue #566)</li>
+<li>Redis: accept the 'bind' statement with multiple IP addresses
+(yannh) (Issue #194)</li>
 <li>Rsyslog: support include() directive introduced in rsyslog 8.33</li>
 <li>Strongswan: new lens (Kaarle Ritvanen)</li>
-<li><dl class="first docutils">
-<dt>Systemd: do not try to treat *.d or *.wants directories as</dt>
-<dd>configuration files (Issue #548)</dd>
-</dl>
-</li>
+<li>Systemd: do not try to treat *.d or *.wants directories as
+configuration files (Issue #548)</li>
 </ul>
 </li>
 </ul>
@@ -188,11 +164,8 @@ a variable efficiently</li>
 </li>
 <li>Lens changes/additions<ul>
 <li>Grubenv: new lens to process /boot/grub/grubenv (omgold)</li>
-<li><dl class="first docutils">
-<dt>Httpd: also read files from /etc/httpd/conf.modules.d/*.conf</dt>
-<dd>(Tomas Meszaros) (Issue #537)</dd>
-</dl>
-</li>
+<li>Httpd: also read files from /etc/httpd/conf.modules.d/*.conf
+(Tomas Meszaros) (Issue #537)</li>
 <li>Nsswitch: allow comments at the end of a line (Philip Hahn) (Issue #517)</li>
 <li>Ntp: accept 'ntpsigndsocket' statement (Philip Hahn) (Issue #516)</li>
 <li>Properties: accept empty comments with DOS line endings (Issue #161)</li>
@@ -311,31 +284,19 @@ exact same details as described above for augtool</li>
 </ul>
 </li>
 <li>Lens changes/additions<ul>
-<li><dl class="first docutils">
-<dt>Chrony: allow floating point numbers (Miroslav Lichvar)</dt>
-<dd>add new directives from chrony 3.0 and 3.1 (Miroslav Lichvar)</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>Krb5: support include/includedir directives (Jason Smith) (Issue #430)</dt>
-<dd>support realms that start with numbers (Dustin Wheeler) (Issue #437)</dd>
-</dl>
-</li>
+<li>Chrony: allow floating point numbers (Miroslav Lichvar)
+add new directives from chrony 3.0 and 3.1 (Miroslav Lichvar)</li>
+<li>Krb5: support include/includedir directives (Jason Smith) (Issue #430)
+support realms that start with numbers (Dustin Wheeler) (Issue #437)</li>
 <li>Multipath: update to multipath-0.4.9-99.el7 (Xavier Mol)</li>
 <li>Php: also look for FPM files in /etc/php/*/fpm/pool.d (Daniel Dico)</li>
-<li><dl class="first docutils">
-<dt>Postfix_virtual: allow underscores in e-mail addresses (Jason Lingohr)</dt>
-<dd>(Issue #439)</dd>
-</dl>
-</li>
+<li>Postfix_virtual: allow underscores in e-mail addresses (Jason Lingohr)
+(Issue #439)</li>
 <li>Radicale: new lens for config of <a class="reference external" href="http://radicale.org/">http://radicale.org/</a> (James Valleroy)</li>
 <li>Rsyslog: support multiple options in module statements (Craig Miskell)</li>
 <li>Ssh: also look for files in in /etc/ssh/ssh_config.d (Ian Mortimer)</li>
-<li><dl class="first docutils">
-<dt>Tmpfiles: parse 'q'/'Q' modes, parse two-character arguments,</dt>
-<dd>parse three-digit file modes</dd>
-</dl>
-</li>
+<li>Tmpfiles: parse 'q'/'Q' modes, parse two-character arguments,
+parse three-digit file modes</li>
 <li>Xml: support external entity declarations in the doctype (Issue #142)</li>
 <li>Yum: also read DNF files from /etc/dnf (Pat Riehecky) (Issue #434)</li>
 </ul>
@@ -372,18 +333,12 @@ lenses, requiring that they be fixed.</li>
 <li>Lens changes/additions<ul>
 <li>Cron_User: New lens to handle user crontab files in /var/spool/cron</li>
 <li>Csv: fix failure to load lens on OpenBSD (Issue #396)</li>
-<li><dl class="first docutils">
-<dt>Grub: also look for UEFI grub files in /boot/efi/EFI/*/grub.conf</dt>
-<dd>(Rich Jones)</dd>
-</dl>
-</li>
+<li>Grub: also look for UEFI grub files in /boot/efi/EFI/*/grub.conf
+(Rich Jones)</li>
 <li>Opendkim: new lens for /etc/opendkim.conf (Craig Miskell)</li>
 <li>Php: look for php.ini where Ubunto 16.04 puts it, too (Michael Wodniok)</li>
-<li><dl class="first docutils">
-<dt>Splunk: support Splunk Universal Forwarder and underscore-prefixed</dt>
-<dd>keys for 6.x (Jason Antman)</dd>
-</dl>
-</li>
+<li>Splunk: support Splunk Universal Forwarder and underscore-prefixed
+keys for 6.x (Jason Antman)</li>
 </ul>
 </li>
 </ul>
@@ -407,38 +362,20 @@ rather than whatever the C compiler decided 'int' would be</li>
 <li>Lens changes/additions<ul>
 <li>Httpd: follow line continuations in comments</li>
 <li>Nginx: look for nginx.conf in /usr/local/etc, too (Omer Katz)</li>
-<li><dl class="first docutils">
-<dt>Ntp: allow 'pool' (Craig Miskell) (Issue #378);</dt>
-<dd>fix restrict to allow also -4 and also fix
-save/store ability (Josef Reidinger) (Issue #386)</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>Pam: use spaces instead of tabs as the separator in new entries</dt>
-<dd>(Loren Gordon) (Issue #236)</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>Postfix_Passwordmap: New lens to parse Postfix password maps</dt>
-<dd>(Anton Baranov) (Issue #380)</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>Rsyslog: Support for rsyslog RainerScript syntax</dt>
-<dd>(Craig Miskell) (Issue #379)</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>Shellvars: Load /etc/lbu/lbu.conf, the config for Alpine's Local</dt>
-<dd>Backup Utility (Kaarle Ritvanen)
-Load /etc/profile, /etc/profile.d/*, and /etc/byobu</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>Vsftpd: Add allow_writeable_chroot boolead option</dt>
-<dd>(Robert Moucha) (Issue #376)</dd>
-</dl>
-</li>
+<li>Ntp: allow 'pool' (Craig Miskell) (Issue #378);
+fix restrict to allow also -4 and also fix
+save/store ability (Josef Reidinger) (Issue #386)</li>
+<li>Pam: use spaces instead of tabs as the separator in new entries
+(Loren Gordon) (Issue #236)</li>
+<li>Postfix_Passwordmap: New lens to parse Postfix password maps
+(Anton Baranov) (Issue #380)</li>
+<li>Rsyslog: Support for rsyslog RainerScript syntax
+(Craig Miskell) (Issue #379)</li>
+<li>Shellvars: Load /etc/lbu/lbu.conf, the config for Alpine's Local
+Backup Utility (Kaarle Ritvanen)
+Load /etc/profile, /etc/profile.d/*, and /etc/byobu</li>
+<li>Vsftpd: Add allow_writeable_chroot boolead option
+(Robert Moucha) (Issue #376)</li>
 </ul>
 </li>
 </ul>
