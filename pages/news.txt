@@ -15,7 +15,7 @@ Releases
   - General changes/additions
 
     * augmatch: add a --quiet option; make the exit status useful to tell
-                whether there was a match or not
+      whether there was a match or not
     * Drastically reduce the amount of memory needed to evaluate complex
       path expressions against large files (Issue #569)
     * Fix a segfault on OSX when 'augmatch' is run without any
@@ -28,26 +28,26 @@ Releases
 
     * Chrony: add new options supported in chrony 3.2 and 3.3 (Miroslav Lichvar)
     * Dhclient: fix parsing of append/prepend and similar directives
-                (John Morrissey)
+      (John Morrissey)
     * Fstab: allow leading whitespace in mount entry lines
-             (Pino Toscano) (Issue #544)
+      (Pino Toscano) (Issue #544)
     * Grub: tolerate some invalid entries. Those invalid entries
-            get mapped to '#error' nodes
+      get mapped to '#error' nodes
     * Httpd: accept comments with whitespace right after a tag
-             opening a section (Issue #577)
+      opening a section (Issue #577)
     * Json: allow escaped slashes in strings (Issue #557)
     * Multipath: accept regular expressions for devnode, wwid, and property
       in blacklist and blacklist_exceptions sections (Issue #564)
     * Nginx: parse /etc/nginx/sites-enabled (plumbeo)
-             allow semicolons inside double quoted strings in
-             simple directives, and allow simple directives without
-             an argument (Issue #566)
+      allow semicolons inside double quoted strings in
+      simple directives, and allow simple directives without
+      an argument (Issue #566)
     * Redis: accept the 'bind' statement with multiple IP addresses
-             (yannh) (Issue #194)
+      (yannh) (Issue #194)
     * Rsyslog: support include() directive introduced in rsyslog 8.33
     * Strongswan: new lens (Kaarle Ritvanen)
     * Systemd: do not try to treat \*.d or \*.wants directories as
-               configuration files (Issue #548)
+      configuration files (Issue #548)
 
 1.10.1 - 2018-01-29
 -------------------
@@ -82,7 +82,7 @@ Releases
 
     * Grubenv: new lens to process /boot/grub/grubenv (omgold)
     * Httpd: also read files from /etc/httpd/conf.modules.d/\*.conf
-             (Tomas Meszaros) (Issue #537)
+      (Tomas Meszaros) (Issue #537)
     * Nsswitch: allow comments at the end of a line (Philip Hahn) (Issue #517)
     * Ntp: accept 'ntpsigndsocket' statement (Philip Hahn) (Issue #516)
     * Properties: accept empty comments with DOS line endings (Issue #161)
@@ -186,18 +186,18 @@ Releases
   - Lens changes/additions
 
     * Chrony: allow floating point numbers (Miroslav Lichvar)
-              add new directives from chrony 3.0 and 3.1 (Miroslav Lichvar)
+      add new directives from chrony 3.0 and 3.1 (Miroslav Lichvar)
     * Krb5: support include/includedir directives (Jason Smith) (Issue #430)
-            support realms that start with numbers (Dustin Wheeler) (Issue #437)
+      support realms that start with numbers (Dustin Wheeler) (Issue #437)
     * Multipath: update to multipath-0.4.9-99.el7 (Xavier Mol)
     * Php: also look for FPM files in /etc/php/\*/fpm/pool.d (Daniel Dico)
     * Postfix_virtual: allow underscores in e-mail addresses (Jason Lingohr)
-                       (Issue #439)
+      (Issue #439)
     * Radicale: new lens for config of http://radicale.org/ (James Valleroy)
     * Rsyslog: support multiple options in module statements (Craig Miskell)
     * Ssh: also look for files in in /etc/ssh/ssh_config.d (Ian Mortimer)
     * Tmpfiles: parse 'q'/'Q' modes, parse two-character arguments,
-                parse three-digit file modes
+      parse three-digit file modes
     * Xml: support external entity declarations in the doctype (Issue #142)
     * Yum: also read DNF files from /etc/dnf (Pat Riehecky) (Issue #434)
 
@@ -230,11 +230,11 @@ Releases
     * Cron_User: New lens to handle user crontab files in /var/spool/cron
     * Csv: fix failure to load lens on OpenBSD (Issue #396)
     * Grub: also look for UEFI grub files in /boot/efi/EFI/\*/grub.conf
-            (Rich Jones)
+      (Rich Jones)
     * Opendkim: new lens for /etc/opendkim.conf (Craig Miskell)
     * Php: look for php.ini where Ubunto 16.04 puts it, too (Michael Wodniok)
     * Splunk: support Splunk Universal Forwarder and underscore-prefixed
-              keys for 6.x (Jason Antman)
+      keys for 6.x (Jason Antman)
 
 1.6.0 - 2016-08-05
 ------------------
@@ -253,19 +253,19 @@ Releases
     * Httpd: follow line continuations in comments
     * Nginx: look for nginx.conf in /usr/local/etc, too (Omer Katz)
     * Ntp: allow 'pool' (Craig Miskell) (Issue #378);
-           fix restrict to allow also -4 and also fix
-           save/store ability (Josef Reidinger) (Issue #386)
+      fix restrict to allow also -4 and also fix
+      save/store ability (Josef Reidinger) (Issue #386)
     * Pam: use spaces instead of tabs as the separator in new entries
-           (Loren Gordon) (Issue #236)
+      (Loren Gordon) (Issue #236)
     * Postfix_Passwordmap: New lens to parse Postfix password maps
-           (Anton Baranov) (Issue #380)
+      (Anton Baranov) (Issue #380)
     * Rsyslog: Support for rsyslog RainerScript syntax
-           (Craig Miskell) (Issue #379)
+      (Craig Miskell) (Issue #379)
     * Shellvars: Load /etc/lbu/lbu.conf, the config for Alpine's Local
-           Backup Utility (Kaarle Ritvanen)
-           Load /etc/profile, /etc/profile.d/\*, and /etc/byobu
+      Backup Utility (Kaarle Ritvanen)
+      Load /etc/profile, /etc/profile.d/\*, and /etc/byobu
     * Vsftpd: Add allow_writeable_chroot boolead option
-           (Robert Moucha) (Issue #376)
+      (Robert Moucha) (Issue #376)
 
 
 1.5.0 - 2016-05-11
