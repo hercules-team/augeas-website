@@ -82,6 +82,53 @@
       <div class="document" id="releases">
 <h1 class="title">Releases</h1>
 <div class="section" id="id1">
+<h2>1.12.0 - 2019-04-13</h2>
+<blockquote>
+<ul class="simple">
+<li>General changes/additions<ul>
+<li>update gnulib to 91584ed6</li>
+</ul>
+</li>
+<li>Lens changes/additions<ul>
+<li>Anaconda: new lens to process /etc/sysconfig/anaconda instead of
+Shellvars (Pino Toscano) (Issue #597)</li>
+<li>DevfsRules: add lens for FreeBSD devfs.rules files</li>
+<li>Dovecot: permit ! in block titles (Nathan Ward) (Issue #599)</li>
+<li>Hostname: Allow creation of hostname when file is missing
+(David Farrell) (Issue #606)</li>
+<li>Krb5: add more pkinit_* options (Issue #603)</li>
+<li>Logrotate: fix missing recognition of double quoted filenames (Issue #611)</li>
+<li>Multipath: accept values enclosed in quotes (Issue #583)</li>
+<li>Nginx: support unix sockets as server address (Issue #618)</li>
+<li>Nsswitch: add merge action (Issue #609)</li>
+<li>Pam: accept continuation lines (Issue #590)</li>
+<li>Puppetfile: allow symbols as (optional) values (Issue #619)
+allow comments in entries (Issue #620)</li>
+<li>Rsyslog: support dynamic file paths (Issue #622)
+treat #!/+/- as comment (arnolda, PR #595)</li>
+<li>Syslog: accept 'include' directive (Issue #486)</li>
+<li>Semanage: new lens to process /etc/selinux/semanage.conf instead of
+Simplevars (Pino Toscano) (Issue #594)</li>
+<li>Shellvars: allow and/or in &#64;if conditions (#582)
+accept functions wrapped in round brackets,
+accept variables with a dash in their name,
+exclude csh/tcsh profile scripts (Pino Toscano) (Issue #600)
+accept variable as command (Issue #601)</li>
+<li>Ssh: accept RekeyLimit (Issue #605)</li>
+<li>Sshd: accept '=' to separate option names from their values
+(Emil Dragu, #587)</li>
+<li>Sudoers: support 'always_query_group_plugin' flag (Steve Traylen, #588)</li>
+<li>Strongswan: parse lists. This is a backwards-incompatible change
+since list entries that were parsed into a single string
+are now split into a list of entries (Kaarle Ritvanen)</li>
+<li>Toml: new lens to parse .toml files (PR #91)</li>
+<li>Xorg: accept empty values for options (arnolda, PR #596)</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+</div>
+<div class="section" id="id2">
 <h2>1.11.0 - 2018-08-24</h2>
 <blockquote>
 <ul class="simple">
@@ -127,7 +174,7 @@ configuration files (Issue #548)</li>
 </ul>
 </blockquote>
 </div>
-<div class="section" id="id2">
+<div class="section" id="id3">
 <h2>1.10.1 - 2018-01-29</h2>
 <blockquote>
 <ul class="simple">
@@ -138,7 +185,7 @@ configuration files (Issue #548)</li>
 </ul>
 </blockquote>
 </div>
-<div class="section" id="id3">
+<div class="section" id="id4">
 <h2>1.10.0 - 2018-01-25</h2>
 <blockquote>
 <p>DO NOT USE THIS RELEASE, USE 1.10.1 INSTEAD</p>
@@ -178,7 +225,7 @@ a variable efficiently</li>
 </ul>
 </blockquote>
 </div>
-<div class="section" id="id4">
+<div class="section" id="id5">
 <h2>1.9.0 - 2017-10-06</h2>
 <blockquote>
 <ul class="simple">
@@ -244,7 +291,7 @@ group names with spaces in them (Issue #477)</li>
 </ul>
 </blockquote>
 </div>
-<div class="section" id="id5">
+<div class="section" id="id6">
 <h2>1.8.1 - 2017-08-17</h2>
 <blockquote>
 <ul class="simple">
@@ -256,7 +303,7 @@ group names with spaces in them (Issue #477)</li>
 </ul>
 </blockquote>
 </div>
-<div class="section" id="id6">
+<div class="section" id="id7">
 <h2>1.8.0 - 2017-03-20</h2>
 <blockquote>
 <ul class="simple">
@@ -304,7 +351,7 @@ parse three-digit file modes</li>
 </ul>
 </blockquote>
 </div>
-<div class="section" id="id7">
+<div class="section" id="id8">
 <h2>1.7.0 - 2016-11-08</h2>
 <blockquote>
 <ul class="simple">
@@ -344,7 +391,7 @@ keys for 6.x (Jason Antman)</li>
 </ul>
 </blockquote>
 </div>
-<div class="section" id="id8">
+<div class="section" id="id9">
 <h2>1.6.0 - 2016-08-05</h2>
 <blockquote>
 <ul class="simple">
@@ -381,7 +428,7 @@ Load /etc/profile, /etc/profile.d/*, and /etc/byobu</li>
 </ul>
 </blockquote>
 </div>
-<div class="section" id="id9">
+<div class="section" id="id10">
 <h2>1.5.0 - 2016-05-11</h2>
 <blockquote>
 <ul class="simple">
@@ -533,7 +580,7 @@ add empty_any lens</li>
 </ul>
 </blockquote>
 </div>
-<div class="section" id="id10">
+<div class="section" id="id11">
 <h2>1.4.0 - 2015-05-22</h2>
 <blockquote>
 <ul class="simple">
@@ -619,7 +666,7 @@ RHBZ#761246</li>
 </ul>
 </blockquote>
 </div>
-<div class="section" id="id11">
+<div class="section" id="id12">
 <h2>1.3.0 - 2014-11-07</h2>
 <blockquote>
 <ul class="simple">
@@ -705,7 +752,7 @@ Parse CDATA elements (GH issue #80)</li>
 </ul>
 </blockquote>
 </div>
-<div class="section" id="id12">
+<div class="section" id="id13">
 <h2>1.2.0 - 2014-01-27</h2>
 <blockquote>
 <ul class="simple">
@@ -799,7 +846,7 @@ Split excludes as lists, bug #275</li>
 </ul>
 </blockquote>
 </div>
-<div class="section" id="id13">
+<div class="section" id="id14">
 <h2>1.1.0 - 2013-06-14</h2>
 <blockquote>
 <ul class="simple">
@@ -900,7 +947,7 @@ Support dos eol.</li>
 </ul>
 </blockquote>
 </div>
-<div class="section" id="id14">
+<div class="section" id="id15">
 <h2>1.0.0 - 2012-12-21</h2>
 <blockquote>
 <ul class="simple">
@@ -1191,7 +1238,7 @@ RedHat bug #799885, bug #258</li>
 </ul>
 </blockquote>
 </div>
-<div class="section" id="id15">
+<div class="section" id="id16">
 <h2>0.10.0 - 2011-12-02</h2>
 <ul class="simple">
 <li>support relative paths by taking them relative to the value
@@ -1281,7 +1328,7 @@ and select; load /etc/blkid.conf by default</li>
 </li>
 </ul>
 </div>
-<div class="section" id="id16">
+<div class="section" id="id17">
 <h2>0.9.0 - 2011-07-25</h2>
 <ul class="simple">
 <li>augtool: keep history in ~/.augeas/history</li>
@@ -1320,7 +1367,7 @@ bug #197</li>
 </li>
 </ul>
 </div>
-<div class="section" id="id17">
+<div class="section" id="id18">
 <h2>0.8.1 - 2011-04-15</h2>
 <ul class="simple">
 <li>augtool: respect autosave flag in oneshot mode, bug #193; fix segfault
@@ -1350,7 +1397,7 @@ lines anywhere</li>
 </li>
 </ul>
 </div>
-<div class="section" id="id18">
+<div class="section" id="id19">
 <h2>0.8.0 - 2011-02-22</h2>
 <ul class="simple">
 <li>add new 'square' lens combinator</li>
@@ -1393,7 +1440,7 @@ section; bug #175 (omzkk)</li>
 </li>
 </ul>
 </div>
-<div class="section" id="id19">
+<div class="section" id="id20">
 <h2>0.7.4 - 2010-11-19</h2>
 <ul class="simple">
 <li>augtool: new clearm command to parallel setm</li>
@@ -1443,7 +1490,7 @@ Debian; bug #154 (Marc Fournier)</li>
 </li>
 </ul>
 </div>
-<div class="section" id="id20">
+<div class="section" id="id21">
 <h2>0.7.3 - 2010-08-06</h2>
 <ul class="simple">
 <li>aug_load: only reparse files that have actually changed; greatly speeds
@@ -1474,7 +1521,7 @@ strips quotes automatically</li>
 </li>
 </ul>
 </div>
-<div class="section" id="id21">
+<div class="section" id="id22">
 <h2>0.7.2 - 2010-06-22</h2>
 <ul class="simple">
 <li>new API call aug_setm to set/create multiple nodes simultaneously</li>
@@ -1493,7 +1540,7 @@ space-separated words as lists (Frederik Wagner)</li>
 </li>
 </ul>
 </div>
-<div class="section" id="id22">
+<div class="section" id="id23">
 <h2>0.7.1 - 2010-04-21</h2>
 <ul class="simple">
 <li><a class="reference external" href="http://augeas.net/docs/lenses.html">new primitive lens 'value'</a> to set value of a node to a constant,
@@ -1553,7 +1600,7 @@ Wagner); allow spaces after/before opening/closing parens for array</li>
 </li>
 </ul>
 </div>
-<div class="section" id="id23">
+<div class="section" id="id24">
 <h2>0.7.0 - 2010-01-14</h2>
 <ul class="simple">
 <li>Support for context-free lenses via the 'let rec' keyword. The syntax
@@ -1590,7 +1637,7 @@ syntaxes</li>
 </li>
 </ul>
 </div>
-<div class="section" id="id24">
+<div class="section" id="id25">
 <h2>0.6.0 - 2009-11-30</h2>
 <ul class="simple">
 <li>Add error reporting API (<cite>aug_error</cite> and related calls); use to report
@@ -1625,7 +1672,7 @@ Palmer)</li>
 </li>
 </ul>
 </div>
-<div class="section" id="id25">
+<div class="section" id="id26">
 <h2>0.5.3 - 2009-09-14</h2>
 <ul class="simple">
 <li>Match trees on label and value, not just label; see
@@ -1655,7 +1702,7 @@ and move lens/info to lens</li>
 </li>
 </ul>
 </div>
-<div class="section" id="id26">
+<div class="section" id="id27">
 <h2>0.5.2 - 2009-07-13</h2>
 <p>The schema for <cite>/etc/inittab</cite> has changed (see below)</p>
 <ul class="simple">
@@ -1676,7 +1723,7 @@ filenames to be indented</li>
 </li>
 </ul>
 </div>
-<div class="section" id="id27">
+<div class="section" id="id28">
 <h2>0.5.1 - 2009-06-09</h2>
 <ul class="simple">
 <li>augeas.h: flag AUG_NO_MODL_AUTOLOAD suppresses initial loading
@@ -1714,7 +1761,7 @@ vsftpd.conf on Fedora/RHEL</li>
 </li>
 </ul>
 </div>
-<div class="section" id="id28">
+<div class="section" id="id29">
 <h2>0.5.0 - 2009-03-27</h2>
 <ul class="simple">
 <li>Clean up interface for libfa; the interface is now considered stable</li>
@@ -1750,7 +1797,7 @@ parts of a tree being saved when multiple files were modified</li>
 </li>
 </ul>
 </div>
-<div class="section" id="id29">
+<div class="section" id="id30">
 <h2>0.4.2 - 2009-03-09</h2>
 <ul class="simple">
 <li>Do not delete files that had an error upon parsing</li>
@@ -1769,7 +1816,7 @@ the latter reads a the contents of a file into a string</li>
 </li>
 </ul>
 </div>
-<div class="section" id="id30">
+<div class="section" id="id31">
 <h2>0.4.1 - 2009-03-02</h2>
 <ul class="simple">
 <li>Remove files when their entire subtree under /files is deleted</li>
@@ -1793,7 +1840,7 @@ that builds on platforms with broken headers will work out of the box</li>
 </li>
 </ul>
 </div>
-<div class="section" id="id31">
+<div class="section" id="id32">
 <h2>0.4.0 - 2009-02-06</h2>
 <ul class="simple">
 <li>Much improved and expanded support for path expressions in the public
@@ -1806,7 +1853,7 @@ API. See doc/xpath.txt and tests/xpath.tests for details.</li>
 </li>
 </ul>
 </div>
-<div class="section" id="id32">
+<div class="section" id="id33">
 <h2>0.3.6 - 2009-01-26</h2>
 <ul class="simple">
 <li>report version in /augeas/version, report legal save modes in
@@ -1829,7 +1876,7 @@ expand filter for Php config files (Robin Lee Powell)</li>
 </li>
 </ul>
 </div>
-<div class="section" id="id33">
+<div class="section" id="id34">
 <h2>0.3.5 - 2008-12-23</h2>
 <ul class="simple">
 <li>add an option to rewrite files by overwriting their contents instead of
@@ -1859,21 +1906,21 @@ spurious errors from the typechecker</li>
 </li>
 </ul>
 </div>
-<div class="section" id="id34">
+<div class="section" id="id35">
 <h2>0.3.4 - 2008-11-05</h2>
 <ul class="simple">
 <li>fix saving of backup files; in 0.3.3, when AUG_SAVE_BACKUP was passed
 to aug_init, aug_save would always fail</li>
 </ul>
 </div>
-<div class="section" id="id35">
+<div class="section" id="id36">
 <h2>0.3.3 - 2008-10-24</h2>
 <ul class="simple">
 <li>restore the behavior of aug_save; in 0.3.2, aug_save broke API by
 returning the number of files changed on success instead of 0</li>
 </ul>
 </div>
-<div class="section" id="id36">
+<div class="section" id="id37">
 <h2>0.3.2 - 2008-10-21</h2>
 <ul class="simple">
 <li><cite>aug_save</cite> now reports which files were actually changed in
@@ -1901,7 +1948,7 @@ on the Auegas website (Raphael Pinson)</li>
 </li>
 </ul>
 </div>
-<div class="section" id="id37">
+<div class="section" id="id38">
 <h2>0.3.1 - 2008-09-04</h2>
 <ul class="simple">
 <li>Major performance improvement when processing huge files, reducing some
@@ -1941,7 +1988,7 @@ deleting them</li>
 </ul>
 </div>
 </div>
-<div class="section" id="id38">
+<div class="section" id="id39">
 <h2>0.3.0 - 2008-08-07</h2>
 <ul class="simple">
 <li>Add aug_mv call to public API</li>
@@ -1961,7 +2008,7 @@ deleting them</li>
 </li>
 </ul>
 </div>
-<div class="section" id="id39">
+<div class="section" id="id40">
 <h2>0.2.2 - 2008-07-18</h2>
 <ul class="simple">
 <li>Fix segfault in store.put on NULL values</li>
@@ -1979,7 +2026,7 @@ put unit tests</li>
 </li>
 </ul>
 </div>
-<div class="section" id="id40">
+<div class="section" id="id41">
 <h2>0.2.1 - 2008-07-01</h2>
 <ul class="simple">
 <li>Address some compilation issues found on Ubuntu/Debian unstable</li>
@@ -1988,7 +2035,7 @@ put unit tests</li>
 <li>New lens for <cite>/etc/sysconfig/selinux</cite>, bugfixes for <cite>grub.conf</cite></li>
 </ul>
 </div>
-<div class="section" id="id41">
+<div class="section" id="id42">
 <h2>0.2.0 - 2008-06-05</h2>
 <ul class="simple">
 <li>Augeas is now much more portable<ul>
@@ -2004,7 +2051,7 @@ put unit tests</li>
 </li>
 </ul>
 </div>
-<div class="section" id="id42">
+<div class="section" id="id43">
 <h2>0.1.1 - 2008-05-16</h2>
 <ul class="simple">
 <li>Add subtraction of regexps to the language, for example <tt class="docutils literal">let re =
@@ -2024,7 +2071,7 @@ put unit tests</li>
 <li>New lenses for <tt class="docutils literal">/etc/fstab</tt>, <tt class="docutils literal">/etc/xinetd.conf</tt> and <tt class="docutils literal">/etc/xinetd.d/*</tt></li>
 </ul>
 </div>
-<div class="section" id="id43">
+<div class="section" id="id44">
 <h2>0.1.0 - 2008-05-01</h2>
 <ul class="simple">
 <li>Various changes to public API:<ul>
@@ -2049,13 +2096,13 @@ shell variables)</li>
 <li>Man page for augtool (Dean Wilson)</li>
 </ul>
 </div>
-<div class="section" id="id44">
+<div class="section" id="id45">
 <h2>0.0.8 - 2008-04-16</h2>
 <ul class="simple">
 <li>Complete rewrite of the language for schema descriptions</li>
 </ul>
 </div>
-<div class="section" id="id45">
+<div class="section" id="id46">
 <h2>0.0.7 - 2008-03-14</h2>
 <ul class="simple">
 <li>Typecheck lenses; in particular, discover and complain about ambiguous
@@ -2069,7 +2116,7 @@ fast. Typechecking cmfm.aug went from more than two hours to under two
 seconds</li>
 </ul>
 </div>
-<div class="section" id="id46">
+<div class="section" id="id47">
 <h2>0.0.6 - 2008-03-05</h2>
 <ul class="simple">
 <li>Make it possible to overwrite files when saving with and without
@@ -2078,7 +2125,7 @@ backups</li>
 <li>Expose these two things as command line options in augtool</li>
 </ul>
 </div>
-<div class="section" id="id47">
+<div class="section" id="id48">
 <h2>0.0.5 - 2008-03-05</h2>
 <ul class="simple">
 <li>Changed public API to contain explicit reference to augeas_t
@@ -2087,13 +2134,13 @@ structure. This makes it easier to write threadsafe code using Augeas</li>
 Augeas</li>
 </ul>
 </div>
-<div class="section" id="id48">
+<div class="section" id="id49">
 <h2>0.0.4 - 2008-02-25</h2>
 <ul class="simple">
 <li>package as RPM and make sure Augeas can be build on Fedora/RHEL</li>
 </ul>
 </div>
-<div class="section" id="id49">
+<div class="section" id="id50">
 <h2>0.0.3 - 2008-02-25</h2>
 <ul class="simple">
 <li>further rework; file processing now resembles Boomerang lenses much
@@ -2104,7 +2151,7 @@ multiple children can have the same label, including NULL labels)</li>
 enable much better ahead-of-time checks (which are not implemented yet)</li>
 </ul>
 </div>
-<div class="section" id="id50">
+<div class="section" id="id51">
 <h2>0.0.2 - 2008-01-29:</h2>
 <ul class="simple">
 <li>completely reworked</li>
@@ -2112,7 +2159,7 @@ enable much better ahead-of-time checks (which are not implemented yet)</li>
 structure of the files (basically a LL(1) grammar)</li>
 </ul>
 </div>
-<div class="section" id="id51">
+<div class="section" id="id52">
 <h2>0.0.1 - 2007-12-01:</h2>
 <ul class="simple">
 <li>First release.</li>
