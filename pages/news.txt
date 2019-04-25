@@ -16,6 +16,7 @@ Releases
 
     * update gnulib to 91584ed6
   - Lens changes/additions
+
     * Anaconda: new lens to process /etc/sysconfig/anaconda instead of
       Shellvars (Pino Toscano) (Issue #597)
     * DevfsRules: add lens for FreeBSD devfs.rules files
