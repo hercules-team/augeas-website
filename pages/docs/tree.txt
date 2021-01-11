@@ -38,7 +38,7 @@ the *children*
 
 The tree can be searched in all kinds of ways by using `path expressions`_
 
-.. _path expressions: /page/Path_expressions
+.. _path expressions: https://github.com/hercules-team/augeas/wiki/Path-expressions
 
 Important paths
 ---------------
