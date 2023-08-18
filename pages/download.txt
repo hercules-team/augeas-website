@@ -122,7 +122,7 @@ The Go bindings are maintained by Dominik Honnef.
 Tcl bindings
 ------------
 
-The Tcl bindings are maintained by Danyil Bohdan.
+The Tcl bindings are maintained by D. Bohdan.
 
 * Sources are in `this git repository`__
 

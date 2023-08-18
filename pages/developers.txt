@@ -169,7 +169,7 @@ git repository`__.
 Tcl
 +++
 
-Tcl bindings have been contributed by Danyil Bohdan. Sources are kept in `this
+Tcl bindings have been contributed by D. Bohdan. Sources are kept in `this
 git repository`__.
 
 .. __: https://github.com/dbohdan/tcl-augeas
